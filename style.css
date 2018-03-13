@@ -1,11 +1,11 @@
 body {
   background-color: #F4EBE0;
-  text-align: right;
+  text-align: center;
   color: red;
   overflow: visible;
   font-family: renner;
 }
 
 h1 {
-  width: 80%;
+  font-size: 80%;
 }
