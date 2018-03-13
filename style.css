@@ -6,5 +6,6 @@ body {
   font-family: renner;
 }
 
-
-
+h1 {
+  width: 80%;
+}
