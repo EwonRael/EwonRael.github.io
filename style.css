@@ -3,9 +3,9 @@ body {
   text-align: center;
   color: red;
   overflow: visible;
-  font-family: "Renner";
+  font-family: serif, "Renner";
 }
 
 h1 {
-  font-size: 20vw;
+  font-size: 8vw;
 }
