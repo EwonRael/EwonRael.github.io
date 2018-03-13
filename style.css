@@ -3,7 +3,7 @@ body {
   text-align: center;
   color: red;
   overflow: visible;
-  font-family: serif, "Renner";
+  font-family: "Renner", serif;
 }
 
 h1 {
