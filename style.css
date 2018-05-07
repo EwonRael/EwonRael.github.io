@@ -1,10 +1,9 @@
 body {
-  background-color: Black;
-  text-align: center;
-  color: White;
-  overflow: visible;
+  background-color: #E6E6E6;
+  text-align: left;
+  color: #404040;
   font-weight: normal;
-  font-family: "rennermedium", serif;
+  font-family: "Renner*", sans;
 }
 
 h1 {
