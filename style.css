@@ -1,11 +1,12 @@
 body {
   background-color: #E6E6E6;
   text-align: left;
-  color: #404040;
+  color: #1a1a1a;
   font-weight: normal;
   font-family: "Renner*", sans;
+  padding: 2vw;
 }
 
 h1 {
-  font-size: 8vw;
+  line-height: 1;
 }
