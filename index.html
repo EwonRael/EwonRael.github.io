@@ -14,9 +14,8 @@
 		      "can't eat money",
 		      "fill in the blank: <br>&quot;okay gang, let's split up and look for ______&quot;"
 	      ];
-	      var quote = quotes[Math.floor(Math.random() * tweets.length)];
-	      document.getElementById("tweet").innerHTML =
-	        quotes;
+		var i = parseInt(Math.random() * tweets.length);
+        	location.href = tweets[i];
 	    })();
 	</script>
 	<hr>
