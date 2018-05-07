@@ -1,7 +1,7 @@
 body {
  font-family: "renner", sans; 
  color: #333333;
- background-color: #E6E6E6;
+ background-color: #F2F2F2;
 }
 
 h1 {
@@ -11,5 +11,4 @@ h1 {
 h2 {
  font-family: "rennermedium", sans;
  font-weight: normal;
- color: #666666;
 }
