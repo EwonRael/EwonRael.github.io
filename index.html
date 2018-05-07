@@ -4,51 +4,28 @@
 	<title>Owen Earl Official Site</title>
 	<link rel="stylesheet" href="https://indestructibletype-fonthosting.github.io/renner.css" type="text/css" charset="utf-8" />
     	<link rel="stylesheet" href="style.css"/>
-	<script>
-    	  var tweets = [
-    	     	'/2018/04/09/sparsificationoflanguage.html',
-        	'/2018/02/15/NothinTeaTalkshow.html',
-  	        '/2017/10/01/WhatIWantYoutoKnow.html',
-  	        '/2017/10/01/WalkingwithGratitude.html',
-  	        '/2017/10/01/SomePrayersAreWordless.html',
-  	        '/2017/10/01/SettlingAroundUs.html',
-  	        '/2017/10/01/AtRestAtPiece.html',
-  	        '/2017/07/25/SteelingConversations.html',
-  	        '/1971/11/01/TheTuningMeditation.html',
-  	        '/1971/11/01/TheHeartChant.html',
-  	        '/1971/11/01/EarPiece.html',
-	        '/1971/11/01/26TeachYourselfToFly.html',
-	        '/1971/11/01/25PacificTell.html',
-	        '/1971/11/01/24TelepathicImprov.html',
-	        '/1971/11/01/23Native.html',
-	        '/1971/11/01/22SonicRorschach.html',
- 	        '/1971/11/01/21RemovingTheDemon.html',
-       		'/1971/11/01/20TheFlamingIndian.html',
- 	        '/1971/11/01/19EnvironmentalDialogue.html',
- 	        '/1971/11/01/18TheGreeting.html',
- 	        '/1971/11/01/17IcebergMelting.html',
- 	        '/1971/11/01/16X.html',
- 	        '/1971/11/01/15BowlGong.html',
-  	        '/1971/11/01/14OneWord.html',
-  	        '/1971/11/01/13OneWordII.html',
-  	        '/1971/11/01/12EnergyChanges.html',
-  	        '/1971/11/01/11TumblingSong.html',
-  	        '/1971/11/01/10ZinasCircle.html',
-  	        '/1971/11/01/09XVI.html',
-  	        '/1971/11/01/08EarLy.html',
-          
- 	     ];
-
- 	     function randomTweet() {
- 	         var i = parseInt(Math.random() * tweets.length);
-	         document.getElementById("tweets").innerHTML = sites[i];
- 	     }
-	     window.onload = randomTweet;
-  	</script>
   </head>
   <body>
 	<h1>Owen Earl</h1>
-	<h2 id="tweets">#</h2>
+	  <div id="quote"></div>
+  <script>
+    (function() {
+      var quotes = [
+        {
+          text: "text1",
+          img:  "http://i.stack.imgur.com/FqBE6.jpg?s=32&g=1"
+        },
+        {
+          text: "text2",
+          img:  "https://www.gravatar.com/avatar/ca3e484c121268e4c8302616b2395eb9?s=32&d=identicon&r=PG",
+        }
+      ];
+      var quote = quotes[Math.floor(Math.random() * quotes.length)];
+      document.getElementById("quote").innerHTML =
+        '<p>' + quote.text + '</p>' +
+        '<img src="' + quote.img + '">';
+    })();
+  </script>
 	<hr>
 	<p>
 		<b>Recent Activity</b>
