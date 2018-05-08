@@ -307,5 +307,13 @@
 	<p>&nbsp;&nbsp;&nbsp; Inside the room Brian starts the countdown.</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
+	<scrpit>
+$(function() {
+    $("html, body, *").mousewheel(function(event, delta) {
+        this.scrollLeft -= (delta * 50);
+        event.preventDefault();
+    });
+});
+	</scrpit>
    </body>
 </html>
