@@ -7,17 +7,17 @@ body {
 
 @media screen and (min-width: 60em) {
     body {
-        -webkit-columns: 40em 100;
-        -moz-columns: 40em 100;
-        columns: 40em 100;
+        -webkit-columns: 35em 100;
+        -moz-columns: 35em 100;
+        columns: 35em 100;
     }
 }
 
 @media screen and (max-width: 60em) {
     body {
-        -webkit-columns: 90vw 100;
+        -webkit-columns: 95vw 100;
         -moz-columns: 95vw 100;
-        columns: 90vw 100;
+        columns: 95vw 100;
     }
 }
 
