@@ -4,9 +4,6 @@
 	<title>Zeros</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" href="style.css"/>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
-	<script src="http://www.designedbyaturtle.co.uk/demos/horizontal-scrolling/jquery.mousewheel.min.js.pagespeed.jm.jfOY7xKcOw.js"></script>
-	<script>$(document).ready(function(){$('html, body, *').mousewheel(function(e,delta){this.scrollLeft-=(delta*40);e.preventDefault();});});</script>
   <body>
 	<div class="title">ZEROS<br><span id="fade">(scroll to start)</span></div>
 	<p>&nbsp;&nbsp;&nbsp; I&rsquo;m not a scientist. I&rsquo;m an ethicist. </p>
@@ -309,5 +306,18 @@
 	<p>&nbsp;&nbsp;&nbsp; Inside the room Brian starts the countdown.</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
+	<script>
+var mouseWheelEvt = function (event) {
+    if (document.body.doScroll)
+        document.body.doScroll(event.wheelDelta>0?"left":"right");
+    else if ((event.wheelDelta || event.detail) > 0)
+        document.body.scrollLeft -= 10;
+    else
+        document.body.scrollLeft += 10;
+
+    return false;
+}
+document.body.addEventListener("mousewheel", mouseWheelEvt);
+	</script>
    </body>
 </html>
