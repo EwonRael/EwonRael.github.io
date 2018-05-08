@@ -306,24 +306,29 @@
 	<p>&nbsp;&nbsp;&nbsp; Inside the room Brian starts the countdown.</p>
 	<p>&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
-	<script>
-jQuery(function ($) {
-    $.fn.hScroll = function (amount) {
-        amount = amount || 120;
-        $(this).bind("DOMMouseScroll mousewheel", function (event) {
-            var oEvent = event.originalEvent, 
-                direction = oEvent.detail ? oEvent.detail * -amount : oEvent.wheelDelta, 
-                position = $(this).scrollLeft();
-            position += direction > 0 ? -amount : amount;
-            $(this).scrollLeft(position);
-            event.preventDefault();
-        })
-    };
-});
+<script type="text/javascript">
 
-$(document).ready(function() {
-    $('#box').hScroll(60); // You can pass (optionally) scrolling amount
-});
-	</script>
+// http://www.dte.web.id/2013/02/event-mouse-wheel.html
+
+(function() {
+    function scrollHorizontally(e) {
+        e = window.event || e;
+        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
+        document.documentElement.scrollLeft -= (delta*40); // Multiplied by 40
+        document.body.scrollLeft -= (delta*40); // Multiplied by 40
+        e.preventDefault();
+    }
+    if (window.addEventListener) {
+        // IE9, Chrome, Safari, Opera
+        window.addEventListener("mousewheel", scrollHorizontally, false);
+        // Firefox
+        window.addEventListener("DOMMouseScroll", scrollHorizontally, false);
+    } else {
+        // IE 6/7/8
+        window.attachEvent("onmousewheel", scrollHorizontally);
+    }
+})();
+
+</script>
    </body>
 </html>
