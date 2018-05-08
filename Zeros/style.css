@@ -10,10 +10,18 @@ body {
   scroll-snap-type: mandatory;
   scroll-snap-destination: 0% 100%;
   scroll-snap-points-x: repeat(100%);
+  animation: fade 5s;
 }
 
 .fade {
-  opacity: 0;
+  @keyframes fade {
+    0% {
+      opacity: 0;
+    }
+    100% {
+     opacity: 100%;
+    }
+  }
 }
 
 p {
