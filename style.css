@@ -14,3 +14,7 @@ h2 {
  font-family: "rennermedium", sans;
  font-weight: normal;
 }
+
+a {
+ text-decoration: inherit;
+}
