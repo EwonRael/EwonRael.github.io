@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-	<title>Zeros</title>
+	<title>Zeros<br>(scroll to start)</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" href="style.css"/>
   </head>
@@ -315,17 +315,14 @@
     function scrollHorizontally(e) {
         e = window.event || e;
         var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        document.documentElement.scrollLeft -= (delta*150); // Multiplied by 40
-        document.body.scrollLeft -= (delta*150); // Multiplied by 40
+        document.documentElement.scrollLeft -= (delta*60);
+        document.body.scrollLeft -= (delta*60);
         e.preventDefault();
     }
     if (window.addEventListener) {
-        // IE9, Chrome, Safari, Opera
         window.addEventListener("mousewheel", scrollHorizontally, false);
-        // Firefox
         window.addEventListener("DOMMouseScroll", scrollHorizontally, false);
     } else {
-        // IE 6/7/8
         window.attachEvent("onmousewheel", scrollHorizontally);
     }
 })();
