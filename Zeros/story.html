@@ -6,7 +6,7 @@
 	<link rel="stylesheet" href="style.css"/>
   </head>
   <body>
-	  <div>ZEROS<br><span>(scroll to start)</span></div>
+	  <div>ZEROS<br><span id="fade">(scroll to start)</span></div>
 	<p>&nbsp;&nbsp;&nbsp; I&rsquo;m not a scientist. I&rsquo;m an ethicist. </p>
 	<p>&nbsp;&nbsp;&nbsp; Science is like war, I think, although I&rsquo;ve never been in a war. We sit around and train, and think, and prepare for what we think we will need to prepare for. We think about what we don&rsquo;t think we will need to prepare for, and we try to prepare for that too. It becomes something of a system-- a routine. If we can quantify the unknown then it isn&rsquo;t so scary. </p>
 	<p>&nbsp;&nbsp;&nbsp; Barbara tells me that when the first nuclear bomb was detonated, people didn&rsquo;t know if it would ever stop. She&rsquo;s an old woman with a history and a Brooklyn accent. We&rsquo;re sitting outside for brunch under a tree, and she&rsquo;s smiling at me matter-of-factly. She explains that a nuclear bomb uses pieces of atoms. When they collide into other atoms, pieces of those atoms fly off and run into more atoms. </p>
@@ -317,7 +317,7 @@ var e = new KeyboardEvent('keydown',{'keyCode':16,'which':16});
 console.log(e);
 document.dispatchEvent(e);
 
-
+document.getElementById("fade").style = "opacity: 100%;"
 </script>
    </body>
 </html>
