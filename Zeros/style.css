@@ -5,7 +5,13 @@ body {
   -webkit-columns: 90vw 100; /* Chrome, Safari, Opera */
   -moz-columns: 95vw 100; /* Firefox */
   columns: 90vw 100;
-  height: 90vh;
+  height: 95vh;
+}
+
+@media screen and (min-width: 45em) {
+    body {
+        background-color: lightgreen;
+    }
 }
 
 p {
