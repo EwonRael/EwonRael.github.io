@@ -1,9 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-	  <title>Zeros</title>
-	  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
-    <link rel="stylesheet" href="style.css"/>
+	<title>Zeros</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
+	<link rel="stylesheet" href="style.css"/>
+	<script>
+		$('.selector ul li').click( function() {
+  $('.selector ul li').removeClass('selected');
+  $(this).addClass('selected');
+});
+$(document).ready(function () {
+    $('.selector').mousewheel(function(e, delta) {
+        this.scrollLeft -= (delta * 40);
+        e.preventDefault();
+    });
+    
+    });
+
+	</script>
   </head>
   <body>
   	<p>ZEROS<p>
