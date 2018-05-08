@@ -12,6 +12,10 @@ body {
   scroll-snap-points-x: repeat(100%);
 }
 
+span {
+  opacity: 0;
+}
+
 p {
   max-width: 40em;
   padding-left: 2em;
