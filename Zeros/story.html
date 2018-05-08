@@ -4,6 +4,8 @@
 	<title>Zeros</title>
 	<link href="https://fonts.googleapis.com/css?family=Roboto+Mono" rel="stylesheet">
 	<link rel="stylesheet" href="style.css"/>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+	<script src="/js/jquery.mousewheel.js"></script>
   </head>
   <body>
 	  <div>ZEROS<br><span id="fade">(scroll to start)</span></div>
@@ -308,7 +310,12 @@
 	<p>&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
 <script type="text/javascript">
-
+$(function() {
+   $("body").mousewheel(function(evt, chg) {
+      this.scrollLeft -= (chg * 50); //need a value to speed up the change
+      evt.preventDefault();
+   });
+});
 </script>
    </body>
 </html>
