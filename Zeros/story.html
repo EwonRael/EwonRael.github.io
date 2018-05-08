@@ -307,17 +307,23 @@
 	<p>&nbsp;</p>
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
 	<script>
-var mouseWheelEvt = function (event) {
-    if (document.body.doScroll)
-        document.body.doScroll(event.wheelDelta>0?"left":"right");
-    else if ((event.wheelDelta || event.detail) > 0)
-        document.body.scrollLeft -= 10;
-    else
-        document.body.scrollLeft += 10;
+jQuery(function ($) {
+    $.fn.hScroll = function (amount) {
+        amount = amount || 120;
+        $(this).bind("DOMMouseScroll mousewheel", function (event) {
+            var oEvent = event.originalEvent, 
+                direction = oEvent.detail ? oEvent.detail * -amount : oEvent.wheelDelta, 
+                position = $(this).scrollLeft();
+            position += direction > 0 ? -amount : amount;
+            $(this).scrollLeft(position);
+            event.preventDefault();
+        })
+    };
+});
 
-    return false;
-}
-document.body.addEventListener("mousewheel", mouseWheelEvt);
+$(document).ready(function() {
+    $('#box').hScroll(60); // You can pass (optionally) scrolling amount
+});
 	</script>
    </body>
 </html>
