@@ -2,8 +2,8 @@ body {
  font-family: "renner", sans; 
  color: #333333;
  background-color: #F2F2F2;
- width: 80%;
- vertical-align: middle;
+ padding-left: 10%;
+ padding-right: 10%;
 }
 
 h1 {
