@@ -13,7 +13,7 @@ body {
 }
 
 span {
-  animation: fade 10s;
+  animation: fade 7s;
 }
 
 @keyframes fade {
