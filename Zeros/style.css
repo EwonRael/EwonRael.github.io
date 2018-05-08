@@ -10,9 +10,9 @@ body {
   scroll-snap-type: mandatory;
   scroll-snap-destination: 0% 100%;
   scroll-snap-points-x: repeat(100%);
-  animation: fade 5s;
 }
 
+span {
 
 @keyframes fade {
   0% {
