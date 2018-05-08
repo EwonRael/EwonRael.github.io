@@ -7,9 +7,9 @@ body {
 
 @media screen and (min-width: 60em) {
     body {
-        -webkit-columns: 40em 100;
-        -moz-columns: 40em 100;
-        columns: 40em 100;
+        -webkit-columns: 30em 100;
+        -moz-columns: 30em 100;
+        columns: 30em 100;
     }
 }
 
