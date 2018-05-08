@@ -5,12 +5,15 @@ body {
   -webkit-columns: 90vw 100; /* Chrome, Safari, Opera */
   -moz-columns: 95vw 100; /* Firefox */
   columns: 90vw 100;
-  height: 95vh;
+  height: 94vh;
 }
 
-@media screen and (min-width: 45em) {
+@media screen and (min-width: 60em) {
     body {
         background-color: lightgreen;
+        -webkit-columns: 60em 100; /* Chrome, Safari, Opera */
+        -moz-columns: 60em 100; /* Firefox */
+        columns: 60em 100;
     }
 }
 
