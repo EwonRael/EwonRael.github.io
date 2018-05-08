@@ -2,17 +2,22 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 1.2em;
   line-height: 2;
-  -webkit-columns: 90vw 100; /* Chrome, Safari, Opera */
-  -moz-columns: 95vw 100; /* Firefox */
-  columns: 90vw 100;
   height: 95vh;
 }
 
 @media screen and (min-width: 60em) {
     body {
-        -webkit-columns: 45em 100; /* Chrome, Safari, Opera */
-        -moz-columns: 45em 100; /* Firefox */
-        columns: 45em 100;
+        -webkit-columns: 10em 100;
+        -moz-columns: 10em 100;
+        columns: 10em 100;
+    }
+}
+
+@media screen and (max-width: 60em) {
+    body {
+        -webkit-columns: 90vw 100;
+        -moz-columns: 95vw 100;
+        columns: 90vw 100;
     }
 }
 
