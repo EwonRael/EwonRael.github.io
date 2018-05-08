@@ -12,8 +12,8 @@ body {
   scroll-snap-points-x: repeat(100%);
 }
 
-span {
-  opacity: 0;
+.fade {
+  opacity: 10%;
 }
 
 p {
