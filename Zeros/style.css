@@ -2,4 +2,5 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 1.2em;
   line-height: 2;
+  column-count: 3;
 }
