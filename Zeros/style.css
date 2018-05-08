@@ -5,11 +5,12 @@ body {
   -webkit-columns: 90vw 100; /* Chrome, Safari, Opera */
   -moz-columns: 90vw 100; /* Firefox */
   columns: 90vw 100;
-  height: 100vh;
+  height: 99vh;
 }
 
 div {
   width: 100%;
   height: 100vh;
   text-align: center;
+  padding-top: 40vh;
 }
