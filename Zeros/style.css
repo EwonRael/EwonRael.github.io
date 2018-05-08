@@ -2,5 +2,7 @@ body {
   font-family: 'Roboto Mono', monospace;
   font-size: 1.2em;
   line-height: 2;
-  column-count: 3;
+  -webkit-columns: 100% 100; /* Chrome, Safari, Opera */
+  -moz-columns: 100% 100; /* Firefox */
+  columns: 100% 100;
 }
