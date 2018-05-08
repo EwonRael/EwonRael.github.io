@@ -4,22 +4,12 @@ body {
   line-height: 2;
   height: 95vh;
   overflow-y: hidden;
-}
-
-@media screen and (min-width: 60em) {
-    body {
-        -webkit-columns: 35em 100;
-        -moz-columns: 35em 100;
-        columns: 35em 100;
-    }
-}
-
-@media screen and (max-width: 60em) {
-    body {
-        -webkit-columns: 95vw 100;
-        -moz-columns: 95vw 100;
-        columns: 95vw 100;
-    }
+  -webkit-columns: 95vw 100;
+  -moz-columns: 95vw 100;
+  columns: 95vw 100;
+  scroll-snap-type: mandatory;
+  scroll-snap-destination: 0% 100%;
+  scroll-snap-points-x: repeat(100%);
 }
 
 p {
