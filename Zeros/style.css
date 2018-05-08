@@ -13,8 +13,7 @@ body {
 }
 
 .fade {
-  transition-duration: 5s;
-  opacity: 10%;
+  opacity: 0;
 }
 
 p {
