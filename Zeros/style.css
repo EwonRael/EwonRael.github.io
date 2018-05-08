@@ -8,9 +8,13 @@ body {
   height: 90vh;
 }
 
+p {
+  width: 10em;
+}
+
 div {
   height: 100%;
   width: 100%;
   text-align: center;
-  padding-top: 30vh;
+  margin-top: 30vh;
 }
