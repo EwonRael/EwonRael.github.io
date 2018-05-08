@@ -309,23 +309,14 @@
 	<p>&nbsp;&nbsp;&nbsp; 10&hellip; 9&hellip; 8&hellip; 7&hellip; 6&hellip; 5&hellip; 4&hellip; 3&hellip; 2&hellip; 1&hellip;</p>
 <script type="text/javascript">
 
-// http://www.dte.web.id/2013/02/event-mouse-wheel.html
+document.addEventListener('keydown', function(ev){
+  console.log(ev.which);
+});
 
-(function() {
-    function scrollHorizontally(e) {
-        e = window.event || e;
-        var delta = Math.max(-1, Math.min(1, (e.wheelDelta || -e.detail)));
-        document.documentElement.scrollLeft -= (delta*60);
-        document.body.scrollLeft -= (delta*60);
-        e.preventDefault();
-    }
-    if (window.addEventListener) {
-        window.addEventListener("mousewheel", scrollHorizontally, false);
-        window.addEventListener("DOMMouseScroll", scrollHorizontally, false);
-    } else {
-        window.attachEvent("onmousewheel", scrollHorizontally);
-    }
-})();
+var e = new KeyboardEvent('keydown',{'keyCode':32,'which':32});
+console.log(e);
+document.dispatchEvent(e);
+
 
 </script>
    </body>
