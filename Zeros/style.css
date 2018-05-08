@@ -9,7 +9,7 @@ body {
 }
 
 p {
-  width: 50em;
+  max-width: 40em;
 }
 
 div {
