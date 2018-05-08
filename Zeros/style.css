@@ -35,9 +35,14 @@ p {
   padding-right: 2em;
 }
 
-div {
+.title {
   width: 100vw;
   text-align: center;
   margin-top: 30vh;
   margin-bottom: 68vh;
+}
+
+.everything {
+  transform: rotate(-90deg);
+  transform-origin: right top;
 }
