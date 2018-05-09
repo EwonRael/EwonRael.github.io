@@ -18,6 +18,19 @@
 <div class="fb-login-button" data-max-rows="1" data-size="large" data-button-type="login_with" data-show-faces="false" data-auto-logout-link="false" data-use-continue-as="true"></div>
 </div>
     
-    
+<script>
+    document.getElementById('text').onclick = duplicate;
+
+
+var i = 0;
+
+function duplicate() {
+    var original = document.getElementById('text' + i);
+    var clone = original.cloneNode(true); // "deep" clone
+    clone.id = "text" + ++i; // there can only be one element with an ID
+    clone.onclick = duplicate; // event handlers are not cloned
+    original.parentNode.appendChild(clone);
+}
+</script>
 </body>
 </html>
