@@ -26,4 +26,6 @@ a {
  margin-bottom: -12px;
  width: 200px;
  height: 40px;
+ -webkit-filter: url(#monochrome);
+ filter:  url(#monochrome);
 }
