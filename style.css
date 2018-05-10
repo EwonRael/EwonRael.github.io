@@ -18,3 +18,7 @@ h2 {
 a {
  text-decoration: inherit;
 }
+
+#hideme {
+ background-color: red;
+}
