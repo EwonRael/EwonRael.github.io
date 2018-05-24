@@ -27,4 +27,5 @@ a {
  width: 200px;
  height: 40px;
  visibility: hidden;
+ height: 0;
 }
