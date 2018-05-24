@@ -26,4 +26,5 @@ a {
  margin-bottom: -12px;
  width: 200px;
  height: 40px;
+ visibility: hidden;
 }
