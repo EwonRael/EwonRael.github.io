@@ -1,0 +1,234 @@
+@font-face {
+    font-family: "schoolbook";
+    src: url("CenturySchLB.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "gothic";
+    src: url("LeagueGothic.otf") format("opentype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "type";
+    src: url("underwood.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "text";
+    src: url("AveriaItalic.ttf") format("truetype");
+    font-weight: 100;
+    font-style: italic;
+}
+
+body {
+  margin: 0;
+  text-align: center;
+  position: relative;
+  min-height: 100vh;
+}
+
+#logo {
+  margin-top: 1em;
+  width: 35%;
+}
+
+#bottle {
+  width: 45%
+}
+
+#about {
+  float: left;
+  width: 50%;
+  font-family: "schoolbook";
+  font-size: 1.5em;
+  margin-top: 1em;
+  letter-spacing: 0.3em;
+}
+
+a span {
+  letter-spacing: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+h2 {
+  font-family: "schoolbook";
+  font-size: 1.5em;
+  letter-spacing: 0.3em;
+  font-weight: normal;
+}
+
+p {
+  font-family: "text";
+  font-size: 1.2em;
+  line-height: 1.5em;
+}
+
+#nm span {
+  font-size: 3em;
+  font-family: "gothic";
+  position: absolute;
+  margin-left: -1.2em;
+  margin-top: -0.35em;
+  text-shadow: 2px 2px 0 #fff, -2px -2px 0 #fff, 5px 5px 0 #000;
+}
+
+#body {
+  width: 40em;
+  margin: 0 auto;
+  text-align: left;
+}
+
+#c {
+  text-align: center;
+}
+
+.textarea {
+  padding-top: 0.5em;
+  width: 100%;
+  resize: vertical;
+  border: 0;
+  border-bottom-style: solid;
+  border-bottom-color: #000;
+  border-bottom-width: 2px;
+  border-radius: 2px;
+  font-family: "type";
+  color: #000;
+  font-size: 1.5em;
+  height: auto;
+  min-height: 1em;
+  margin-bottom: 5em;
+}
+
+#lovespace {
+  height: 11em;
+  width: 100%;
+}
+
+#love {
+  position: absolute;
+  bottom: 0.4em;
+  width: 100%;
+}
+
+#love img {
+  width: 8.5em;
+}
+
+#load {
+  height: 15em;
+  animation: MoveUpDown 3s linear infinite;
+  position: absolute;
+  left: 50%;
+  z-index: -1;
+}
+
+@keyframes MoveUpDown {
+  0%, 100% {
+    top: 8em;
+    transform: rotate(22deg);
+    margin-left: -1.5em;
+  }
+  25% {
+    transform: rotate(20deg);
+    margin-left: -1.7em;
+  }
+  50% {
+    top: 10em;
+    transform: rotate(22deg);
+    margin-left: -1.5em;
+  }
+  75% {
+    transform: rotate(26deg);
+    margin-left: -1.3em;
+  }
+}
+
+#widther {
+  height: 24em;
+  width: 20em;
+  overflow: hidden;
+  margin: 0 auto;
+  top: 6em;
+}
+
+#widther #waves {
+  animation: flow 7s linear infinite;
+  background-image: url("waves.svg");
+  height: 10em;
+  width: 80em;
+  margin-top: 10em;
+}
+
+@keyframes flow {
+  0%, 100% {
+    top: 6em;
+    margin-left: 0;
+  }
+  100% {
+    margin-left: -40.5em;
+  }
+}
+
+#sending {
+  animation: send 5s linear;
+  margin-top: -5em;
+  color: #fff;
+}
+
+@keyframes send {
+  0% {
+    color: #fff;
+  }
+  10% {
+    color: #000;
+  }
+  90% {
+    color: #000;
+  }
+  100% {
+    color: #fff;
+  }
+}
+
+#recieveing {
+  animation: recieveing 12s linear;
+  margin-top: -2.2em;
+  color: #fff;
+  visibility: hidden;
+}
+
+@keyframes recieveing {
+  0% {
+    color: #fff;
+    visibility: hidden;
+  }
+  50% {
+    color: #fff;
+    visibility: hidden;
+  }
+  55% {
+    color: #000;
+    visibility: visible;
+  }
+  95% {
+    color: #000;
+  }
+  100% {
+    color: #fff;
+  }
+}
