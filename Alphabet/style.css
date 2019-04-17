@@ -488,4 +488,7 @@ h2 {
     visibility: hidden;
     height: 0;
   }
+  #textarea {
+    letter-spacing: 30px;
+  }
 }}
