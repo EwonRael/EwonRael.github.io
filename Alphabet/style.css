@@ -479,10 +479,10 @@ h2 {
 @supports (-ms-ime-align:auto) {
   #nosupport {
     visibility: hidden;
-    height: 5em;
+    height: 7em;
   }
   #textarea {
-    letter-spacing: 30px;
+    letter-spacing: 100px;
   }
 }
 
