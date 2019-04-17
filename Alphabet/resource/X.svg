@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   version="1.1"
+   width="1500"
+   height="1500"
+   id="svg2"
+   sodipodi:docname="X.svg"
+   inkscape:version="0.92.4 (unknown)">
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1366"
+     inkscape:window-height="716"
+     id="namedview56"
+     showgrid="false"
+     inkscape:zoom="0.31466667"
+     inkscape:cx="520.93846"
+     inkscape:cy="566.31691"
+     inkscape:window-x="0"
+     inkscape:window-y="24"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg2" />
+  <defs
+     id="defs4">
+    <clipPath
+       id="clipPath3862">
+      <rect
+         width="744"
+         height="1052"
+         x="0"
+         y="0.36218262"
+         id="rect3864"
+         style="fill:#2ad4ff;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3075">
+      <rect
+         width="880.29663"
+         height="769.06781"
+         x="320.97458"
+         y="572.48926"
+         id="rect3077"
+         style="opacity:0.71836733;fill:#c8ab37;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3949">
+      <rect
+         width="750"
+         height="750"
+         x="0"
+         y="2.6171874e-06"
+         id="rect3951"
+         style="fill:#2ad4ff;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3964">
+      <path
+         d="m 542.68968,295.5 -47.75218,173.03125 122.46875,0 0,-173.03125 z m -316.28343,5.625 0,156.75 84.8125,0 -35.39279,-161.80611 z"
+         id="path3966"
+         style="fill:#ff5f00;fill-opacity:1;stroke:#aa4400;stroke-width:3;stroke-linecap:square;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3036">
+      <rect
+         width="629.2052"
+         height="620.21655"
+         x="791.00079"
+         y="-176.83527"
+         id="rect3038"
+         style="opacity:0.55510206;fill:#ffe680;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3042">
+      <rect
+         width="1276.3877"
+         height="606.73358"
+         x="480.89255"
+         y="304.05728"
+         id="rect3044"
+         style="opacity:0.55510206;fill:#ffe680;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath3986">
+      <rect
+         width="391.00607"
+         height="175.27859"
+         x="-1478.6322"
+         y="283.83286"
+         id="rect3988"
+         style="opacity:0.53061224;fill:#9955ff;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4018">
+      <rect
+         width="1500"
+         height="1500"
+         x="0"
+         y="2.9296871e-08"
+         id="rect4020"
+         style="fill:#2ad4ff;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       id="clipPath4024">
+      <rect
+         width="1500"
+         height="1500"
+         x="0"
+         y="2.9296871e-08"
+         id="rect4026"
+         style="fill:#2ad4ff;fill-opacity:1;stroke:none" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath911">
+      <rect
+         style="opacity:1;fill:#aa0000;fill-opacity:1;stroke:#000000;stroke-width:3.02362204;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;paint-order:stroke markers fill"
+         id="rect913"
+         width="692.79663"
+         height="641.94916"
+         x="966.10168"
+         y="699.15253"
+         ry="1.67204" />
+    </clipPath>
+    <clipPath
+       clipPathUnits="userSpaceOnUse"
+       id="clipPath982">
+      <rect
+         width="1105.9957"
+         height="1105.9957"
+         x="193.8522"
+         y="193.01425"
+         id="rect984"
+         style="fill:#aa0000;fill-opacity:1;stroke:none;stroke-width:0.7373305" />
+    </clipPath>
+  </defs>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <rect
+     style="fill:#808080;fill-opacity:1;stroke:none"
+     id="rect3082"
+     y="2.9296871e-08"
+     x="-1500"
+     height="1500"
+     width="1500"
+     transform="scale(-1,1)" />
+  <path
+     style="fill:#333333;fill-rule:evenodd;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+     clip-path="none"
+     d="M 774.9375 149.20117 C 771.43289 149.23173 767.8788 149.32629 764.27344 149.48633 C 648.90194 154.60752 582.21275 188.08473 547.82812 238.35352 C 513.44349 288.62233 499.67441 361.30349 489.34961 409.83984 C 479.02471 458.3762 461.13477 521.79492 461.13477 521.79492 C 461.13477 521.79492 458.04708 502.89985 435.36328 499.75391 C 412.67978 496.60796 408.65807 536.72529 418.04297 571.09766 C 427.42787 605.47003 453.19358 651.40813 449.52148 672.38281 C 445.84938 693.35748 442.98225 701.52931 459.24805 711.50977 C 475.51395 721.49022 489.71875 726.83984 489.71875 726.83984 C 489.71875 726.83984 480.99771 773.66761 519.93359 834.58789 C 525.43922 843.20215 531.7064 851.95093 538.62695 860.61133 C 522.85079 900.81471 502.62221 943.99239 486.55469 950.10156 C 455.54179 961.89324 353.9073 1010.631 257.4707 1043.0645 C 161.034 1075.498 108.31405 1139.8328 62.873047 1260.9941 C 45.365347 1307.6757 31.765778 1401.8625 21.642578 1500 L 1500 1500 L 1500 1301.8047 C 1474.4218 1254.788 1448.3657 1210.6565 1431.0938 1191.1504 C 1386.0068 1140.2316 1238.1174 1077.5976 1114.6738 1000.459 C 1053.6434 962.32169 987.33288 937.04374 935.85547 921.21484 C 937.74371 893.76306 939.50893 865.38642 941.14453 837.56055 C 944.91771 831.57852 948.13296 825.54353 950.71484 819.5 C 978.8026 753.75365 988.77734 724.35937 988.77734 724.35938 C 988.77734 724.35938 1042.7376 730.03326 1051.4648 659.30859 C 1060.192 588.58392 1070.8726 497.00755 1063.4277 489.57812 C 1055.9829 482.14871 1030.8906 493.51367 1030.8906 493.51367 C 1030.8906 493.51367 1037.0117 314.64562 989.93945 260.68359 C 944.33824 208.40788 883.58031 148.25388 774.9375 149.20117 z "
+     id="path848" />
+</svg>

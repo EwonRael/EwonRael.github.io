@@ -1,0 +1,463 @@
+@font-face {
+    font-family: "color";
+    src: url("resource/color.woff") format("woff");
+    font-weight: 100;
+    font-style: normal;
+}
+
+body {
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+a {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+h1 {
+  font-family: "Jones";
+  font-weight: 900;
+  font-size: 5vw;
+  letter-spacing: 0.5vw;
+  margin-top: 0.3em;
+  margin-bottom: 0;
+}
+
+h2 {
+  font-family: "Jones";
+  font-weight: 900;
+  font-size: 2em;
+  letter-spacing: 0.5vw;
+  margin-top: 0;
+  margin-bottom: 3em;
+}
+
+#people {
+  width: 80%;
+  margin-left: 10%;
+}
+
+#people img {
+  width: 10em;
+}
+
+#people div {
+  width: 10em;
+  height: 10em;
+  display: inline-block;
+  background-size: contain;
+}
+
+#people #A {
+  background-image: url("resource/A.svg");
+}
+
+#people #A:hover {
+  background-image: url("resource/Ah.svg");
+}
+
+#people #B {
+  background-image: url("resource/B.svg");
+}
+
+#people #B:hover {
+  background-image: url("resource/Bh.svg");
+}
+
+#people #c {
+  background-image: url("resource/c.svg");
+}
+
+#people #c:hover {
+  background-image: url("resource/ch.svg");
+}
+
+#people #C {
+  background-image: url("resource/C.svg");
+}
+
+#people #C:hover {
+  background-image: url("resource/Ch.svg");
+}
+
+#people #D {
+  background-image: url("resource/D.svg");
+}
+
+#people #D:hover {
+  background-image: url("resource/Dh.svg");
+}
+
+#people #E {
+  background-image: url("resource/E.svg");
+}
+
+#people #E:hover {
+  background-image: url("resource/Eh.svg");
+}
+
+#people #F {
+  background-image: url("resource/F.svg");
+}
+
+#people #F:hover {
+  background-image: url("resource/Fh.svg");
+}
+
+#people #G {
+  background-image: url("resource/G.svg");
+}
+
+#people #G:hover {
+  background-image: url("resource/Gh.svg");
+}
+
+#people #H {
+  background-image: url("resource/H.svg");
+}
+
+#people #H:hover {
+  background-image: url("resource/Hh.svg");
+}
+
+#people #I {
+  background-image: url("resource/I.svg");
+}
+
+#people #I:hover {
+  background-image: url("resource/Ih.svg");
+}
+
+#people #J {
+  background-image: url("resource/J.svg");
+}
+
+#people #J:hover {
+  background-image: url("resource/Jh.svg");
+}
+
+#people #K {
+  background-image: url("resource/K.svg");
+}
+
+#people #K:hover {
+  background-image: url("resource/Kh.svg");
+}
+
+#people #L {
+  background-image: url("resource/L.svg");
+}
+
+#people #L:hover {
+  background-image: url("resource/Lh.svg");
+}
+
+#people #M {
+  background-image: url("resource/M.svg");
+}
+
+#people #M:hover {
+  background-image: url("resource/Mh.svg");
+}
+
+#people #N {
+  background-image: url("resource/N.svg");
+}
+
+#people #N:hover {
+  background-image: url("resource/Nh.svg");
+}
+
+#people #O {
+  background-image: url("resource/O.svg");
+}
+
+#people #O:hover {
+  background-image: url("resource/Oh.svg");
+}
+
+#people #P {
+  background-image: url("resource/P.svg");
+}
+
+#people #P:hover {
+  background-image: url("resource/Ph.svg");
+}
+
+#people #Q {
+  background-image: url("resource/Q.svg");
+}
+
+#people #Q:hover {
+  background-image: url("resource/Qh.svg");
+}
+
+#people #R {
+  background-image: url("resource/R.svg");
+}
+
+#people #R:hover {
+  background-image: url("resource/Rh.svg");
+}
+
+#people #S {
+  background-image: url("resource/S.svg");
+}
+
+#people #S:hover {
+  background-image: url("resource/Sh.svg");
+}
+
+#people #T {
+  background-image: url("resource/T.svg");
+}
+
+#people #T:hover {
+  background-image: url("resource/Th.svg");
+}
+
+#people #U {
+  background-image: url("resource/U.svg");
+}
+
+#people #U:hover {
+  background-image: url("resource/Uh.svg");
+}
+
+#people #V {
+  background-image: url("resource/V.svg");
+}
+
+#people #V:hover {
+  background-image: url("resource/Vh.svg");
+}
+
+#people #W {
+  background-image: url("resource/W.svg");
+}
+
+#people #W:hover {
+  background-image: url("resource/Wh.svg");
+}
+
+#people #X {
+  background-image: url("resource/X.svg");
+}
+
+#people #X:hover {
+  background-image: url("resource/Xh.svg");
+}
+
+#people #Y {
+  background-image: url("resource/Y.svg");
+}
+
+#people #Y:hover {
+  background-image: url("resource/Yh.svg");
+}
+
+#people #Z {
+  background-image: url("resource/Z.svg");
+}
+
+#people #Z:hover {
+  background-image: url("resource/Zh.svg");
+}
+
+#colorA {
+  color: rgb(170,0,0);
+}
+
+#colorB {
+  color: rgb(113,200,55);
+}
+
+#colorc {
+  color: rgb(42,212,255);
+}
+
+#colorC {
+  color: rgb(255,42,42);
+}
+
+#colorD {
+  color: rgb(113,55,200);
+}
+
+#colorE {
+  color: rgb(42,255,213);
+}
+
+#colorF {
+  color: rgb(42,212,255);
+}
+
+#colorG {
+  color: rgb(80,45,22);
+}
+
+#colorH {
+  color: rgb(42,212,255);
+}
+
+#colorI {
+  color: rgb(0,170,0);
+}
+
+#colorJ {
+  color: rgb(255,102,0);
+}
+
+#colorK {
+  color: rgb(166,101,126);
+}
+
+#colorL {
+  color: rgb(55,171,200);
+}
+
+#colorM {
+  color: rgb(211,95,141);
+}
+
+#colorN {
+  color: rgb(170,0,0);
+}
+
+#colorO {
+  color: rgb(0,128,0);
+}
+
+#colorP {
+  color: rgb(212,0,85);
+}
+
+#colorQ {
+  color: rgb(255,255,0);
+}
+
+#colorR {
+  color: rgb(255,42,212);
+}
+
+#colorRs {
+  color: rgb(0,255,255);
+}
+#colorS {
+  color: rgb(51,51,204);
+}
+
+#colorT {
+  color: rgb(36,92,36);
+}
+
+#colorU {
+  color: rgb(212,0,0);
+}
+
+#colorV {
+  color: rgb(255,42,212);
+}
+
+#colorW {
+  color: rgb(0,255,102);
+}
+
+#colorX {
+  color: rgb(128,128,128);
+}
+
+#colorY {
+  color: rgb(145,111,111);
+}
+
+#colorZ {
+  color: rgb(127,255,42);
+}
+
+#back {
+  height: 45vw;
+  width: 10vw;
+  position: absolute;
+  left: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#back:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#back h1 {
+  margin-top: 20vw;
+}
+
+#forward {
+  height: 45vw;
+  width: 10vw;
+  position: absolute;
+  right: 0;
+  margin: 0;
+  padding: 0;
+}
+
+#forward:hover {
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+#forward h1 {
+  margin-top: 20vw;
+}
+
+#click {
+  text-align: left;
+  width: 90vw;
+  margin: 0;
+  padding: 0;
+  display: inline-block;
+}
+
+#click img {
+  width: 50%;
+  float: left;
+}
+
+#click div {
+  display: inline-block;
+  width: 50%;
+  float: left;
+  text-align: center;
+}
+
+#click div h1 {
+  margin: 1em;
+  letter-spacing: 0;
+}
+
+#click div p {
+  font-size: 1.5em;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+
+#textarea {
+  border: none;
+  font-family: "color";
+  text-align: center;
+  font-size: 333.333px;
+  width: 100%;
+  line-height: 200px;
+  padding-top: 0;
+  margin-top: 0.3em;
+}
+
+#topw {
+  position: absolute;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
