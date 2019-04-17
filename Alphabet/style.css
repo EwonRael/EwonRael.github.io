@@ -461,3 +461,31 @@ h2 {
   left: 0;
   right: 0;
 }
+
+#nosupport {
+  width: 80%;
+  margin-top: 9em;
+  padding-left: 10%;
+  margin-bottom: -8em;
+}
+
+@-moz-document url-prefix() {
+  #nosupport {
+    visibility: hidden;
+    height: 0;
+  }
+}
+
+@supports (-ms-ime-align:auto) {
+  #nosupport {
+    visibility: hidden;
+    height: 3em;
+  }
+}
+
+@media not all and (min-resolution:.001dpcm) { @media {
+  #nosupport {
+    visibility: hidden;
+    height: 0;
+  }
+}}
