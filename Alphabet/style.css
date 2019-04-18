@@ -528,13 +528,6 @@ h2 {
   }
 }
 
-@media not all and (min-resolution:.001dpcm) { @media {
-  #nosupport {
-    visibility: hidden;
-    height: 0;
-  }
-}}
-
 #areas {
   width: 40em;
   margin-left: auto;
