@@ -263,6 +263,20 @@ h2 {
   background-image: url("resource/Z.svg");
 }
 
+#people #Z img{
+  width: 1px;
+}
+
+#people #Zd {
+  width: 26px;
+  height: 0;
+  visibility: hidden;
+}
+
+#people #Zd img{
+  width: 1px;
+}
+
 #people #Z:hover {
   background-image: url("resource/Zh.svg");
 }
@@ -493,3 +507,22 @@ h2 {
     height: 0;
   }
 }}
+
+#areas {
+  width: 40em;
+  margin-left: auto;
+  margin-right: auto;
+  left: 0;
+  right: 0;
+}
+
+#areas h2 {
+  font-size: 3em;
+  margin-bottom: 0;
+  margin-top: 1em;
+}
+
+#areas p {
+  font-size: 1.5em;
+  text-align: left;
+}
