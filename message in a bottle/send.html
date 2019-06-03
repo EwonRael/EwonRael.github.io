@@ -2,14 +2,23 @@
 <html>
 	<head>
 		<title>Message in a Bottle</title>
+		<link rel="shortcut icon" href="Favicon.png">
+		<link rel="icon" type="image/png" href="Favicon.png">
     <link rel="stylesheet" href="style.css"/>
 		<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
 		<script src="record.js"></script>
 	</head>
   <body>
+		<div id="alert">
+			<div id="alertext">
+				<a id="ex" onclick="buttono()">X</a><br>
+				<p>You must answer every question!</p>
+			</div>
+			<div id="insidec" onclick="buttono()"></div>
+		</div>
     <a href="home.html"><img src="logo.svg" id="logo"></a>
     <br><br><br>
-		<div id="body">
+		<div id="body" class="lefter">
 			<h2 id="nm"><span>1.</span>WHAT IS YOUR NAME?</h2>
 			<div class="textarea" contentEditable="true" id="name"></div>
 			<h2 id="nm"><span>2.</span>WHAT IS THE DATE?</h2>

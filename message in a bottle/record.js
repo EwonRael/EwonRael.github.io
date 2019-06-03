@@ -81,7 +81,7 @@ function button() {
 		})
 	}
 	else {
-		alert("You must answer every question!");
+		document.getElementById("alert").style = "visibility: visible; z-index: 1;";
 	}
 }
 
@@ -111,4 +111,25 @@ function display() {
 	}).catch(function (fromReject) {
 		console.log(error);
 	})
+}
+
+function buttonc() {
+	document.getElementById("alert").style = "visibility: visible; z-index: 1;";
+}
+
+function buttono() {
+	document.getElementById("alert").style = "visibility: hidden; z-index: -1;";
+}
+
+
+function selectText(containerid) {
+	if (document.selection) {
+			var range = document.body.createTextRange();
+			range.moveToElementText(document.getElementById(containerid));
+			range.select();
+	} else if (window.getSelection) {
+			var range = document.createRange();
+			range.selectNode(document.getElementById(containerid));
+			window.getSelection().addRange(range);
+	}
 }

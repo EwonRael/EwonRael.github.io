@@ -2,22 +2,62 @@
 <html>
 	<head>
 		<title>Message in a Bottle</title>
+		<link rel="shortcut icon" href="Favicon.png">
+		<link rel="icon" type="image/png" href="Favicon.png">
     <link rel="stylesheet" href="style.css"/>
+		<script src="https://www.gstatic.com/firebasejs/5.8.0/firebase.js"></script>
+		<script src="record.js"></script>
 		<script type="text/javascript">
-    function Redirect()
-    {
-        window.location="receive.html";
-    }
-    setTimeout('Redirect()', 14000);
+		function del()
+		{
+				document.getElementById('loadbody').innerHTML="";
+		}
+		setTimeout('del()', 14000);
 		</script>
 	</head>
   <body>
+		<div id="alert">
+			<div id="alertext">
+				<a id="ex" onclick="buttono()">X</a><br>
+				<p>The answers you've received just now are meant for only you. <br>They will be lost forever if you choose to continue!</p>
+				<br><a href="share.html"><h2 id="c">CONTINU<span>E</span></h2></a>
+			</div>
+			<div id="insidec" onclick="buttono()"></div>
+		</div>
     <a href="home.html"><img src="logo.svg" id="logo"></a>
     <br><br><br>
-    <img src="loading.png" id="load">
-    <div id="widther"><div id="waves"></div></div>
-		<h2 id="sending">SENDING MESSAGE</h2>
-		<h2 id="recieveing">RECEIVING MESSAGE</h2>
+		<div id="loadbody">
+	    <img src="loading.svg" id="load">
+	    <div id="widther"><div id="waves"></div></div>
+			<h2 id="sending">SENDING MESSAGE</h2>
+			<h2 id="recieveing">RECEIVING MESSAGE</h2>
+		</div>
+		<div id="revbody">
+		<div id="body" class="lefter">
+			<h2 id="c">THE PREVIOUS SENDER SAYS:</h2><br><br>
+			<h2 id="nm"><span>1.</span>WHAT IS YOUR NAME?</h2>
+			<div class="textarea" id="name"></div>
+			<h2 id="nm"><span>2.</span>WHAT IS THE DATE?</h2>
+			<div class="textarea" id="date"></div>
+			<h2 id="nm"><span>3.</span>WHERE ARE YOU?</h2>
+			<div class="textarea" id="from"></div>
+			<h2 id="nm"><span>4.</span>WHAT DO YOU LOVE?</h2>
+			<div class="textarea" id="loves"></div>
+			<h2 id="nm"><span>5.</span>WHAT DO YOU FEAR?</h2>
+			<div class="textarea" id="fear"></div>
+			<h2 id="nm"><span>6.</span>WHAT DO YOU HOPE TO ACHIEVE?</h2>
+			<div class="textarea" id="want"></div>
+			<h2 id="nm"><span>7.</span>WHAT DO YOU HOPE TO LET GO OF?</h2>
+			<div class="textarea" id="hate"></div>
+			<h2 id="nm"><span>8.</span>HOW DO YOU WANT TO BE REMEMBERED?</h2>
+			<div class="textarea" id="gift"></div>
+			<h2 id="nm"><span>9.</span>WHAT IS A SECRET YOU'RE KEEPING?</h2>
+			<div class="textarea" id="hide"></div>
+			<h2 id="nm"><span>10.</span>WHAT IS A MESSAGE YOU WOULD LIKE TO SEND?</h2>
+			<div class="textarea" contentEditable="true" id="note"></div>
+			<a><h2 id="c" onclick="buttonc()">CONTINU<span>E</span></h2></a>
+		</div>
+		</div>
     <div id="lovespace"></div>
     <div id="love"><a href="https://ewonrael.github.io/"><img src="love.svg"></a></div>
   </body>

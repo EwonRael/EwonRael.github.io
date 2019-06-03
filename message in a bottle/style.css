@@ -35,11 +35,23 @@ body {
 
 #logo {
   margin-top: 1em;
-  width: 35%;
+  width: 35em;
+}
+
+@media only screen and (max-width: 44em) {
+  #logo {
+    width: 80%;
+  }
 }
 
 #bottle {
-  width: 45%
+  width: 30em;
+}
+
+@media only screen and (max-width: 44em) {
+  #bottle {
+    width: 70%;
+  }
 }
 
 #about {
@@ -49,6 +61,34 @@ body {
   font-size: 1.5em;
   margin-top: 1em;
   letter-spacing: 0.3em;
+}
+
+#about #space {
+  padding: 4em;
+}
+
+@media only screen and (max-width: 70em) {
+  #about #space {
+    padding: 3em;
+  }
+}
+
+@media only screen and (max-width: 65em) {
+  #about #space {
+    padding: 2em;
+  }
+}
+
+@media only screen and (max-width: 60em) {
+  #about #space {
+    padding: 1em;
+  }
+}
+
+@media only screen and (max-width: 50em) {
+  #about #space {
+    padding: 0;
+  }
 }
 
 a span {
@@ -93,6 +133,21 @@ p {
   text-align: left;
 }
 
+@media only screen and (max-width: 50em) {
+  #body {
+    width: 80%;
+  }
+}
+
+@media only screen and (max-width: 42em) {
+  #body br {
+    margin-bottom: 1.5em;
+  }
+  #body p {
+    margin-bottom: 3em;
+  }
+}
+
 #c {
   text-align: center;
 }
@@ -135,6 +190,21 @@ p {
   position: absolute;
   left: 50%;
   z-index: -1;
+}
+
+.lefter {
+  padding-left: 6em;
+  padding-right: 6em;
+}
+
+@media only screen and (max-width: 55em) {
+  .lefter {
+    padding-left: 6em;
+    padding-right: 0;
+  }
+  .lefter #c {
+    margin-left: -3em;
+  }
 }
 
 @keyframes MoveUpDown {
@@ -212,6 +282,10 @@ p {
   visibility: hidden;
 }
 
+#revbody {
+  animation: showme 14s linear;
+}
+
 @keyframes recieveing {
   0% {
     color: #fff;
@@ -232,3 +306,109 @@ p {
     color: #fff;
   }
 }
+
+@keyframes showme {
+  0% {
+    float: left;
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+  }
+  99% {
+    float: left;
+    position: absolute;
+    height: 0;
+    overflow: hidden;
+  }
+  100% {
+    float: none;
+    position: relative;
+    height: inherit;
+    overflow: inherit;
+  }
+}
+
+#alert {
+  position: fixed;
+  width: 100%;
+  height: 100vh;
+  z-index: -1;
+  visibility: hidden;
+}
+
+#insidec {
+  width: 100%;
+  height: 100vh;
+  background-color: #fff;
+  opacity: 0.5;
+}
+
+#alertext {
+  width: 40em;
+  border-width: 2px;
+  border-color: #000;
+  border-style: solid;
+  position: fixed;
+  z-index: 2;
+  background-color: #fff;
+  margin-top: 30vh;
+  padding-bottom: 2em;
+  left: 50%;
+  margin-left: -20em;
+}
+
+@media only screen and (max-width: 50em) {
+  #alertext {
+    width: 80%;
+    left: auto;
+    margin-left: 10%;
+    margin-top: 10vh;
+  }
+}
+
+#alertext p {
+  margin-left: 1em;
+  margin-right: 1em;
+}
+
+#ex {
+  margin: 1em;
+  position: absolute;
+  float: left;
+  left: 0;
+}
+
+@media only screen and (max-width: 42em) {
+  #alertext br {
+    margin-bottom: 1.5em;
+  }
+}
+
+#imgs img {
+  width: 15em;
+  padding-right: 1em;
+  float: right;
+}
+
+#imgs {
+   min-height: 15em;
+   text-align: center;
+ }
+
+ #imgs h2{
+   text-align: left;
+   padding-top: 3em;
+ }
+
+ @media only screen and (max-width: 40em) {
+   #imgs h2{
+     padding-top: 0;
+     margin-top: 0;
+     text-align: center;
+     margin-bottom: 3em;
+   }
+   #imgs img {
+     margin: 0 auto;
+     float: none;
+   }
+ }
