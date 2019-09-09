@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>𝐸𝑣𝑒𝑟𝑦𝑡ℎ𝑖𝑛𝑔 𝑖𝑠 𝑓𝑖𝑛𝑒!</title>
+    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Bodoni/Bodoni.css" type="text/css" charset="utf-8" />
+    <style>
+      body {
+        padding: 0;
+        margin: 0;
+      }
+      #background {
+        width: 100vw;
+        height: 100vh;
+        overflow: hidden;
+        position: relative;
+        float: left;
+      }
+      #pic {
+        width: 200vw;
+        height: 200vh;
+        background-image: url("spiral.svg");
+        background-position: center;
+        background-size: 120%;
+        background-repeat: no-repeat;
+        animation: animatedBackground 3s linear infinite;
+        position: absolute;
+        right: -49.75vw;
+        top: -50vh;
+        z-index: -1;
+      }
+      @keyframes animatedBackground {
+      	0% {
+          transform: rotate3d(0, 0, 1, 0deg);
+        }
+      	100% {
+          transform: rotate3d(0, 0, 1, 360deg);
+        }
+      }
+      h1 {
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        padding-top: 50vh;
+        margin-top: -15.65vw;
+        font-style: italic;
+        font-size: 10vw;
+        font-family: "Bodoni 48";
+        animation: flash 1s linear infinite;
+        z-index: 1;
+      }
+      @keyframes flash {
+        0% {
+          color: black;
+        }
+        50% {
+          color: white;
+        }
+        100% {
+          color: black;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="background">
+      <div id="pic"></div>
+      <h1>Everything<br>is fine!</h1>
+    </div>
+  </body>
+</html>
