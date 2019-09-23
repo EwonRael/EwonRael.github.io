@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+  <head>
+	<title>where is the art museum?</title>
+  <link rel="stylesheet" href="style.css"/>
+  <script src="big.js"></script>
+  </head>
+  <body onload="resize()">
+    <div id="bd">
+      <div id="big">
+        <img id="img" src="map/outside.svg" usemap="#enter"/>
+        <map name="enter">
+            <area target="" onclick="lobby()" alt="" title="" coords="491,396,491,288,710,286,710,395" shape="poly">
+        </map>
+        <map name="lobby">
+            <area target="" onclick="outside()" alt="outside" title="outside" coords="231,158,230,467,8,469,8,157" shape="poly">
+            <area target="" onclick="f01()" alt="" title="" coords="232,397,232,368,292,371,291,395" shape="poly">
+            <area target="" onclick="f01()" alt="" title="" coords="232,310,232,285,291,288,290,309" shape="poly">
+        </map>
+        <map name="stairs">
+            <area target="" onclick="f01()" alt="" title="" coords="289,304,348,310,350,335,286,340" shape="poly">
+            <area target="" onclick="lobby()" alt="" title="" coords="354,335,353,309,420,309,424,336" shape="poly">
+        </map>
+        <map name="01">
+          <area target="" onclick="lobby()" alt="" title="" coords="236,393,240,349,260,350,270,356,278,361,284,370,288,380,288,392" shape="poly" />
+          <area target="" onclick="lobby()" alt="" title="" coords="250,287,295,287,296,298,293,308,287,315,278,323,266,326,242,323" shape="poly">
+          <area target="" onclick="f26()" alt="xxvi" title="xxvi" coords="255,236,271,237,273,195,319,196,318,286,249,286" shape="poly" />
+          <area target="" onclick="f02()" alt="ii" title="ii" coords="477,381,477,304,583,304,582,380" shape="poly" />
+        </map>
+      <map name="02">
+          <area target="" onclick="f01()" alt="i" title="i" coords="60,386,309,385,309,281,76,279" shape="poly">
+          <area target="" onclick="f03()" alt="iii" title="iii" coords="403,295,402,236,309,234,309,297,329,295,330,309,355,309,356,297" shape="poly">
+      </map>
+      <map name="03">
+          <area target="" onclick="f04()" alt="iv" title="iv" coords="305,308,352,309,351,263,305,262" shape="poly">
+          <area target="" onclick="f05()" alt="v" title="v" coords="404,266,404,306,353,307,352,264" shape="poly">
+          <area target="" onclick="f06()" alt="vi" title="vi" coords="547,308,546,373,410,372,409,310" shape="poly">
+          <area target="" onclick="f02()" alt="ii" title="ii" coords="408,445,408,372,307,373,305,444" shape="poly">
+      </map>
+      <map name="04">
+          <area target="" onclick="f03()" alt="iii" title="iii" coords="332,365,428,365,430,423,333,422" shape="poly">
+          <area target="" onclick="f05()" alt="v" title="v" coords="430,318,381,318,380,362,430,361" shape="poly">
+      </map>
+      <map name="05">
+          <area target="" onclick="f04()" alt="iv" title="iv" coords="287,362,285,317,328,317,328,364" shape="poly">
+          <area target="" onclick="f03()" alt="iii" title="iii" coords="287,422,384,424,384,365,287,363" shape="poly">
+      </map>
+      <map name="06">
+          <area target="" onclick="f03()" alt="iii" title="iii" coords="200,371,200,312,294,309,293,372" shape="poly">
+          <area target="" onclick="f07()" alt="vii" title="vii" coords="302,436,302,376,333,376,334,440" shape="poly">
+          <area target="" onclick="f09()" alt="ix" title="ix" coords="398,438,399,375,439,375,441,439" shape="poly">
+          <area target="" onclick="f10()" alt="x" title="x" coords="441,199,540,197,541,393,442,395" shape="poly">
+      </map>
+      <map name="07">
+          <area target="" onclick="f06()" alt="vi" title="vi" coords="336,307,335,248,478,250,478,308" shape="poly">
+          <area target="" onclick="f08()" alt="viii" title="viii" coords="440,375,441,310,374,309,373,375" shape="poly">
+      </map>
+      <map name="08">
+          <area target="" onclick="f07()" alt="vii" title="vii" coords="322,377,323,309,291,309,291,376" shape="poly">
+      </map>
+      <map name="09">
+          <area target="" onclick="f06()" alt="vi" title="vi" coords="235,309,237,248,376,247,377,308" shape="poly">
+      </map>
+      <map name="10">
+          <area target="" onclick="f06()" alt="vi" title="vi" coords="305,360,306,421,167,421,167,360" shape="poly">
+          <area target="" onclick="f11()" alt="xi" title="xi" coords="309,34,306,241,409,241,410,32" shape="poly">
+      </map>
+      <map name="11">
+          <area target="" onclick="f10()" alt="x" title="x" coords="307,647,307,452,408,452,408,647" shape="poly">
+          <area target="" onclick="f12()" alt="xii" title="xii" coords="306,283,306,311,26,312,24,283" shape="poly">
+      </map>
+      <map name="12">
+          <area target="" onclick="f11()" alt="xi" title="xi" coords="510,280,511,493,611,492,613,279" shape="poly">
+          <area target="" onclick="f13()" alt="xiii" title="xiii" coords="429,322,430,281,506,281,507,324" shape="poly">
+          <area target="" onclick="f14()" alt="xiv" title="xiv" coords="326,282,327,323,430,322,428,282" shape="poly">
+          <area target="" onclick="f15()" alt="xv" title="xv" coords="229,283,230,322,326,323,326,283" shape="poly">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="227,352,81,352,81,322,227,322" shape="poly">
+      </map>
+      <map name="13">
+          <area target="" onclick="f12()" alt="xii" title="xii" coords="398,362,398,387,116,391,116,358" shape="poly">
+      </map>
+      <map name="14">
+          <area target="" onclick="f12()" alt="xii" title="xii" coords="214,358,213,388,492,391,492,358" shape="poly">
+      </map>
+      <map name="15">
+          <area target="" onclick="f12()" alt="xii" title="xii" coords="314,359,312,389,592,391,591,360" shape="poly">
+      </map>
+      <map name="16">
+          <area target="" onclick="f12()" alt="xii" title="xii" coords="429,322,429,354,705,352,706,325" shape="poly">
+          <area target="" onclick="f17()" alt="xvii" title="xvii" coords="390,286,389,320,428,320,428,286" shape="poly">
+          <area target="" onclick="f18()" alt="xviii" title="xviii" coords="314,287,314,323,388,320,386,283" shape="poly">
+          <area target="" onclick="bathroom()" alt="bathroom" title="bathroom" coords="282,287,279,321,312,322,313,286" shape="poly">
+          <area target="" onclick="f19()" alt="xix" title="xix" coords="309,353,308,381,428,381,428,353" shape="poly">
+          <area target="" onclick="f20()" alt="xx" title="xx" coords="275,354,267,502,307,505,307,355" shape="poly">
+      </map>
+      <map name="17">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="229,359,377,357,376,385,227,383" shape="poly">
+      </map>
+      <map name="18">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="285,358,431,360,432,383,284,385" shape="poly">
+      </map>
+      <map name="19">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="269,296,415,296,417,322,266,322" shape="poly">
+      </map>
+      <map name="bathroom">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="337,358,489,358,488,386,338,384" shape="poly">
+      </map>
+      <map name="20">
+          <area target="" onclick="f16()" alt="xvi" title="xvi" coords="346,231,494,229,494,258,344,256" shape="poly">
+          <area target="" onclick="f25()" alt="xxv" title="xxv" coords="198,499,328,506,346,217,340,202,325,201,316,213,307,201,296,192,278,192,259,202,252,215,245,197,232,197,217,211" shape="poly">
+          <area target="" onclick="f21()" alt="xxi" title="xxi" coords="376,410,375,384,494,385,520,410" shape="poly">
+          <area target="" onclick="f24()" alt="xxiv" title="xxiv" coords="374,467,374,412,335,411,329,467" shape="poly">
+      </map>
+      <map name="21">
+          <area target="" onclick="f20()" alt="xx" title="xx" coords="258,351,296,352,295,199,269,199" shape="poly">
+          <area target="" onclick="f23()" alt="xxiii" title="xxiii" coords="298,406,443,405,443,352,298,352" shape="poly">
+          <area target="" onclick="f22()" alt="xxii" title="xxii" coords="355,229,420,229,419,321,353,323" shape="poly">
+      </map>
+      <map name="22">
+          <area target="" onclick="f21()" alt="xxi" title="xxi" coords="269,411,413,409,389,385,270,384" shape="poly">
+      </map>
+      <map name="23">
+          <area target="" onclick="f21()" alt="xx1" title="xx1" coords="282,290,282,309,429,308,403,286" shape="poly">
+      </map>
+      <map name="24">
+          <area target="" onclick="f25()" alt="xxv" title="xxv" coords="202,390,333,399,348,106,342,95,328,95,318,106,311,92,300,85,281,85,265,93,258,108,247,87,234,87,223,101,204,385" shape="poly">
+          <area target="" onclick="f26()" alt="xxvi" title="xxvi" coords="313,450,376,445,376,359,336,361,335,400,316,400" shape="poly">
+          <area target="" onclick="f20()" alt="xx" title="xx" coords="376,299,379,150,347,149,339,299" shape="poly">
+      </map>
+      <map name="25">
+          <area target="" onclick="f24()" alt="xxiv" title="xxiv" coords="417,446,457,446,454,391,420,390" shape="poly">
+          <area target="" onclick="f20()" alt="xx" title="xx" coords="427,239,457,240,457,389,418,390" shape="poly">
+      </map>
+      <map name="26">
+          <area target="" onclick="f24()" alt="xxiv" title="xxiv" coords="343,273,348,217,384,219,387,274" shape="poly">
+          <area target="" onclick="f01()" alt="i" title="i" coords="301,465,318,368,550,365,550,467" shape="poly">
+      </map>
+      </div>
+    </div>
+    <audio id="enter" class="au" src="sounds/enter.mp3" type="audio/mpeg" loop></audio><audio id= "stairwell" src="sounds/stairwell.mp3" type="audio/mpeg" loop></audio><audio id= "i" src="sounds/i.mp3" type="audio/mpeg" loop></audio><audio id= "ii" src="sounds/ii.mp3" type="audio/mpeg" loop></audio><audio id= "iii" src="sounds/iii.mp3" type="audio/mpeg" loop></audio><audio id= "iv" src="sounds/iv.mp3" type="audio/mpeg" loop></audio><audio id= "v" src="sounds/v.mp3" type="audio/mpeg" loop></audio><audio id= "vi" src="sounds/vi.mp3" type="audio/mpeg" loop></audio><audio id= "vii" src="sounds/vii.mp3" type="audio/mpeg" loop></audio><audio id= "viii" src="sounds/viii.mp3" type="audio/mpeg" loop></audio><audio id= "ix" src="sounds/ix.mp3" type="audio/mpeg" loop></audio><audio id= "x" src="sounds/x.mp3" type="audio/mpeg" loop></audio><audio id= "xi" src="sounds/xi.mp3" type="audio/mpeg" loop></audio><audio id= "xii" src="sounds/xii.mp3" type="audio/mpeg" loop></audio><audio id= "xiii" src="sounds/xiii.mp3" type="audio/mpeg" loop></audio><audio id= "xiv" src="sounds/xiv.mp3" type="audio/mpeg" loop></audio><audio id= "xv" src="sounds/xv.mp3" type="audio/mpeg" loop></audio><audio id= "xvi" src="sounds/xvi.mp3" type="audio/mpeg" loop></audio><audio id= "xvii" src="sounds/xvii.mp3" type="audio/mpeg" loop></audio><audio id= "xviii" src="sounds/xviii.mp3" type="audio/mpeg" loop></audio><audio id= "xix" src="sounds/xix.mp3" type="audio/mpeg" loop></audio><audio id= "xx" src="sounds/xx.mp3" type="audio/mpeg" loop></audio><audio id= "xxi" src="sounds/xxi.mp3" type="audio/mpeg" loop></audio><audio id= "xxii" src="sounds/xxii.mp3" type="audio/mpeg" loop></audio><audio id= "xxiii" src="sounds/xxiii.mp3" type="audio/mpeg" loop></audio><audio id= "xxiv" src="sounds/xxiv.mp3" type="audio/mpeg" loop></audio><audio id= "xxv" src="sounds/xxv.mp3" type="audio/mpeg" loop></audio><audio id= "xxvi" src="sounds/xxvi.mp3" type="audio/mpeg" loop></audio><audio id= "bathroom" src="sounds/bathroom.mp3" type="audio/mpeg" loop></audio>
+  </body>
+</html>

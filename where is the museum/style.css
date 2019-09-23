@@ -1,0 +1,24 @@
+body {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+#bd {
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+}
+
+img {
+  margin-top: -342.5px;
+  transform-origin: center;
+}
+
+#big {
+  padding-top: 45vh;
+}
+
+area {
+  cursor: pointer;
+}
