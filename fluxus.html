@@ -20,7 +20,7 @@ h1 {
         </style>
   </head>
   <body>
-	<h1 id="tweet"></h1>
+	<h1 id="tweet" onclick="location.reload();"></h1>
   	<script>
 (function() {
 	      var tweets = [
@@ -88,4 +88,3 @@ h1 {
         	document.getElementById("tweet").innerHTML = tweets[i];
 	    })();
 	</script>
-<button onclick="location.reload();">new card</button>
