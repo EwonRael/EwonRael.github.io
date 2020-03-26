@@ -1,0 +1,80 @@
+@font-face {
+  font-family: "type";
+  src: url(text.ttf);
+}
+
+body {
+  font-family: "type";
+  margin: 0;
+}
+
+div {
+  text-align: center;
+  font-size: 8vw;
+  margin: 0;
+}
+
+#play {
+  background-color: black;
+  color: white;
+  width: 15vw;
+  position: fixed;
+  bottom: 3vw;
+  right: 5vw;
+  cursor: pointer;
+}
+
+#play:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+.red {
+  background-color: red;
+  color: white;
+  width: 30vw;
+  float: left;
+  margin-left: 5vw;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 1vw;
+  margin-top: 2vw;
+  line-height: 100%;
+}
+
+span:hover {
+  color: red;
+  cursor: pointer;
+}
+
+.hi {
+  background-color: black;
+  color: white;
+  width: 30vw;
+  float: left;
+  margin-left: 5vw;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 1vw;
+  margin-top: 2vw;
+  line-height: 100%;
+}
+
+.bottom {
+  background-color: white;
+  height: 2vw;
+  margin: 0;
+  padding-bottom: 0;
+  margin-top: 2.5vw;
+  margin-left: 1vw;
+  margin-right: 1vw;
+}
+
+.bottom:hover {
+  background-color: red;
+  cursor: pointer;
+}
+
+#c8 {
+  margin-bottom: 3vw;
+}
