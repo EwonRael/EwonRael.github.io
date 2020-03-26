@@ -1,3 +1,6 @@
+var loader = new Audio('all.wav');
+all.load();
+
 function allPlay() {
   var all = new Audio('all.wav');
   all.play();
