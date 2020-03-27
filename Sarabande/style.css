@@ -25,22 +25,10 @@ div {
 }
 
 #play:hover {
-  background-color: red;
+  color: red;
   cursor: pointer;
 }
 
-.red {
-  background-color: red;
-  color: white;
-  width: 30vw;
-  float: left;
-  margin-left: 5vw;
-  margin-right: 0;
-  padding-top: 0;
-  padding-bottom: 1vw;
-  margin-top: 2vw;
-  line-height: 100%;
-}
 
 span:hover {
   color: red;
@@ -77,4 +65,32 @@ span:hover {
 
 #c8 {
   margin-bottom: 3vw;
+}
+
+.red {
+  background-color: red;
+  color: white;
+  width: 30vw;
+  float: left;
+  margin-left: 5vw;
+  margin-right: 0;
+  padding-top: 0;
+  padding-bottom: 1vw;
+  margin-top: 2vw;
+  line-height: 100%;
+}
+
+#red2 {
+  background-color: red;
+  color: white;
+  width: 15vw;
+  position: fixed;
+  bottom: 3vw;
+  right: 5vw;
+  cursor: pointer;
+}
+
+
+#red2:hover {
+  color: red;
 }
