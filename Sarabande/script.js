@@ -1,8 +1,5 @@
-var loader = new Audio('all.wav');
-all.load();
-
 function allPlay() {
-  var all = new Audio('all.wav');
+  var all = new Audio('all.mp3');
   all.play();
   setTimeout(function(){ document.getElementById("play").className = "red", document.getElementById("c1").className = "red"; }, 20);
   setTimeout(function(){ document.getElementById("c1").className = "hi", document.getElementById("c2").className = "red"; }, 1620);
