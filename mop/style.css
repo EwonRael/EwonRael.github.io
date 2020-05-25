@@ -29,8 +29,9 @@ a:hover {
 }
 
 .left {
-  width: 33vw;
-  margin-left: 13vw;
+  width: 40vw;
+  margin-left: 10vw;
+  padding-right: 0.5em;
   position: absolute;
   top: 0;
   max-height: 100vh;
@@ -48,9 +49,19 @@ a:hover {
   margin-bottom: 60px;
 }
 
+.left p {
+  padding-right: 7vw;
+}
+
+.left img {
+  width: 100%;
+  margin-top: 140px;
+  box-shadow: 0.5em 0.5em rgb(55, 62, 72);
+}
+
 .right {
-  width: 33vw;
-  right: 13vw;
+  width: 40vw;
+  right: 10vw;
   position: absolute;
   top: 0;
   max-height: 100vh;
@@ -67,6 +78,18 @@ a:hover {
 .right #single{
   margin-top: 40vh;
   text-align: right;
+}
+
+.right h1 {
+  margin-bottom: 60px;
+}
+
+.right p {
+  padding-left: 7vw;
+}
+
+.right h2 {
+  padding-left: 7vw;
 }
 
 #topfade {
@@ -98,20 +121,71 @@ a:hover {
 }
 
 .galinner {
-  pbackground-color: red;
   height: 60vh;
-  width: 270vh;
-  margin-top: 7em;
-  stransform: rotate(90deg);
+  width: 410vh;
+  margin-top: -30vh;
+  margin-left: -205vh;
+  transform: rotate(90deg) translate(205vh,-30vh);
 }
 
 .galinner img {
   height: 50vh;
-  margin: 5vh;
+  margin: 20vh;
+  margin-top: 5vh;
   float: left;
   box-shadow: 0.5em 0.5em rgb(55, 62, 72);
 }
 
+.galinner a {
+  cursor: zoom-in;
+}
+
 .galinner img.wide {
-  height: 40vh;
+  height: 35vh;
+  margin-top: 9vh;
+}
+
+.galone {
+  width: 60vh;
+  height: 100vw;
+  margin-left: -30vh;
+  margin-top: -50vw;
+  height: 100vw;
+  transform: rotate(270deg) translate(-30vh,50vw);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+.galone::-webkit-scrollbar {
+    display: none;
+}
+
+.galout {
+  margin-top: 150px;
+  width: 100%;
+  height: 60vh;
+  overflow: hidden;
+}
+
+#leftscroll {
+  height: 60vh;
+  position: absolute;
+  left: 0;
+  top: 150px;
+  z-index: 2;
+  background-image: linear-gradient(to right, rgb(83, 93, 108), rgb(83, 93, 108) 30%, rgba(219, 222, 227, 0));
+  width: 4em;
+}
+
+#rightscroll {
+  height: 60vh;
+  position: absolute;
+  right: 0;
+  top: 150px;
+  z-index: 2;
+  background-image: linear-gradient(to left, rgb(83, 93, 108), rgb(83, 93, 108) 10%, rgba(219, 222, 227, 0));
+  width: 3em;
 }
