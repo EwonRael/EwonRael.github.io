@@ -1,0 +1,117 @@
+body {
+  background-color: rgb(83, 93, 108);
+  color: rgb(219, 222, 227);
+  margin: 0;
+  font-family: "IBM Plex Sans";
+  font-size: 20px;
+}
+
+a {
+  text-decoration: inherit;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#head {
+  font-family: 'Bodoni 11';
+  font-size: 45px;
+  font-weight: 500;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  position: absolute;
+  top: 0;
+  z-index: 2;
+  width: 100%;
+}
+
+.left {
+  width: 33vw;
+  margin-left: 13vw;
+  position: absolute;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+.left::-webkit-scrollbar {
+    display: none;
+}
+
+.left h1 {
+  margin-bottom: 60px;
+}
+
+.right {
+  width: 33vw;
+  right: 13vw;
+  position: absolute;
+  top: 0;
+  max-height: 100vh;
+  overflow-y: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;  /* IE 10+ */
+  overflow-y:scroll;
+  overflow-x:hidden;
+}
+.right::-webkit-scrollbar {
+    display: none;
+}
+
+.right #single{
+  margin-top: 40vh;
+  text-align: right;
+}
+
+#topfade {
+  background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 60%, rgba(219, 222, 227, 0));
+  height: 150px;
+  z-index: 1;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+}
+
+@media only screen and (max-width: 850px) {
+#topfade {
+    background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 80%, rgba(219, 222, 227, 0));
+    height: 200px;
+  }
+  .left h1 {
+    margin-bottom: 110px;
+  }
+}
+
+#bottomfade {
+  background-image: linear-gradient(rgba(219, 222, 227, 0), rgb(83, 93, 108));
+  height: 60px;
+  z-index: 1;
+  width: 100vw;
+  position: absolute;
+  bottom: 0;
+}
+
+.galinner {
+  pbackground-color: red;
+  height: 60vh;
+  width: 270vh;
+  margin-top: 7em;
+  stransform: rotate(90deg);
+}
+
+.galinner img {
+  height: 50vh;
+  margin: 5vh;
+  float: left;
+  box-shadow: 0.5em 0.5em rgb(55, 62, 72);
+}
+
+.galinner img.wide {
+  height: 40vh;
+}
