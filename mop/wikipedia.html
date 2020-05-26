@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Wikipedia</title>
+    <title>Gallery of Wikipedia Nudes</title>
     <link rel="stylesheet" href="https://indestructibletype.com/fonts/Bodoni/Bodoni.css" type="text/css" charset="utf-8" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
@@ -9,16 +9,31 @@
   </head>
   <body>
     <h1 id="head">Gallery of Wikipedia Nudes</h1>
+    <div id="floatingScroll">&nbsp;Scroll (&#x2195;) to navigate&nbsp;</div>
     <div class="galout">
-    <div class="galone">
+    <div class="galone" onscroll="scrollin()">
     <div class="galinner">
-       <a href="hatMan.html"><img src="resource/hatMan.jpg"></a>
-       <img src="resource/pregnantWoman.jpg">
-       <img src="resource/blowjob.jpg">
-       <img class="wide" src="resource/bra.jpg">
-       <img class="wide" src="resource/penis.jpg">
+       <a href="hatMan.html" onmouseover="showTitle('Dressed for a Party in a Costume Hat with Socks and Sandals')" onmouseout="leave()"><img src="resource/hatMan.jpg"></a>
+       <a href="pregnantWoman.html" onmouseover="showTitle('Nude Pregnant Bodypainting 0')" onmouseout="leave()"><img src="resource/pregnantWoman.jpg"></a>
+       <a href="blowjob.html" onmouseover="showTitle('Ulf Larsen and teen 01')" onmouseout="leave()"><img src="resource/blowjob.jpg"></a>
+       <a href="bra.html" onmouseover="showTitle('Victoria secret bralette')" onmouseout="leave()"><img class="wide" src="resource/bra.jpg"></a>
+       <a href="penis.html" onmouseover="showTitle('Hidden part of the penis')" onmouseout="leave()"><img class="wide" src="resource/penis.jpg"></a>
     </div>
     </div>
   </div>
+  <div id="title"></div>
+  <div id="navleft"><a href="wikiabout.html">&larr; About</a></div>
+  <div id="navright"><a href="dworkin.html">Dworkin and Discourse &rarr;</a></div>
+  <script>
+  function scrollin() {
+    document.getElementById("floatingScroll").innerHTML = "";
+  }
+  function showTitle(x) {
+    document.getElementById("title").innerHTML = x;
+  }
+  function leave(x) {
+    document.getElementById("title").innerHTML = "";
+  }
+  </script>
   </body>
 </html>

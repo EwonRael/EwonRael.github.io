@@ -15,6 +15,10 @@ a:hover {
   text-decoration: underline;
 }
 
+h2 {
+  margin-bottom: -0.5em;
+}
+
 #head {
   font-family: 'Bodoni 11';
   font-size: 45px;
@@ -96,7 +100,7 @@ a:hover {
   background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 60%, rgba(219, 222, 227, 0));
   height: 150px;
   z-index: 1;
-  width: 100vw;
+  width: 50vw;
   position: absolute;
   top: 0;
 }
@@ -109,28 +113,40 @@ a:hover {
   .left h1 {
     margin-bottom: 110px;
   }
+  .right h1 {
+    margin-bottom: 110px;
+  }
+  .left img {
+    margin-top: 210px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  #floatingScroll{
+    visibility: hidden;
+  }
 }
 
 #bottomfade {
   background-image: linear-gradient(rgba(219, 222, 227, 0), rgb(83, 93, 108));
   height: 60px;
   z-index: 1;
-  width: 100vw;
-  position: absolute;
+  width: 50vw;
+  position: fixed;
   bottom: 0;
 }
 
 .galinner {
   height: 60vh;
-  width: 410vh;
+  width: 310vh;
   margin-top: -30vh;
-  margin-left: -205vh;
-  transform: rotate(90deg) translate(205vh,-30vh);
+  margin-left: -155vh;
+  transform: rotate(90deg) translate(155vh,-30vh);
 }
 
 .galinner img {
   height: 50vh;
-  margin: 20vh;
+  margin: 10vh;
   margin-top: 5vh;
   float: left;
   box-shadow: 0.5em 0.5em rgb(55, 62, 72);
@@ -188,4 +204,59 @@ a:hover {
   z-index: 2;
   background-image: linear-gradient(to left, rgb(83, 93, 108), rgb(83, 93, 108) 10%, rgba(219, 222, 227, 0));
   width: 3em;
+}
+
+.rightstick {
+  right: 0;
+}
+
+#floatingScroll{
+  position: absolute;
+  right: 5vw;
+  margin-top: 25vh;
+  z-index: 2;
+  background-color: rgb(83, 93, 108);
+  animation: tips 10s linear;
+  animation-iteration-count: 1;
+}
+
+@keyframes tips {
+  0% {
+    visibility: hidden;
+  }
+  50% {
+    visibility: hidden;
+  }
+  100% {
+    visibility: visible;
+  }
+}
+
+#title {
+  text-align: center;
+  margin-top: 1em;
+  font-weight: bold;
+}
+
+#navleft {
+  position: absolute;
+  left: 5em;
+  bottom: 3em;
+  z-index: 2;
+}
+
+#navright {
+  position: absolute;
+  right: 5em;
+  bottom: 3em;
+  z-index: 2;
+}
+
+#bottomfadei {
+  background-image: linear-gradient(rgba(83, 93, 108, 0), rgb(83, 93, 108) 40%, rgb(83, 93, 108));
+  height: 150px;
+  z-index: 1;
+  width: 50vw;
+  position: fixed;
+  bottom: 0;
 }

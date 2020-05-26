@@ -5,14 +5,32 @@
     <link rel="stylesheet" href="https://indestructibletype.com/fonts/Bodoni/Bodoni.css" type="text/css" charset="utf-8" />
     <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css"/>
+    <meta name=viewport content="width=device-width, initial-scale=0.8">
   </head>
   <body>
-    <h1 id="head">Dworkin & Discourse</h1>
-    <div id="topfade"></div>
-    <div id="bottomfade"></div>
-    <div class="left">
+    <h1 id="head">Dworkin and Discourse</h1>
+    <div id="floatingScroll">&nbsp;Scroll (&#x2195;) to navigate&nbsp;</div>
+    <div class="galout">
+    <div class="galone" onscroll="scrollin()">
+    <div class="galinner">
+       <a href="video.html" onmouseover="showTitle('Why Men Like Pornography & Prostitution So Much')" onmouseout="leave()"><img class="wide" src="resource/video.png"></a>
+       <a href="letter.html" onmouseover="showTitle('Letter from the artist to Andrea Dworkin')" onmouseout="leave()"><img src="resource/letter.png"></a>
     </div>
-    <div class="right">
     </div>
+  </div>
+  <div id="title"></div>
+  <div id="navleft"><a href="overview.html">&larr; Exhibition overview</a></div>
+  <div id="navright"><a href="wikiabout.html">Gallery of Wikipedia Nudes &rarr;</a></div>
+  <script>
+  function scrollin() {
+    document.getElementById("floatingScroll").innerHTML = "";
+  }
+  function showTitle(x) {
+    document.getElementById("title").innerHTML = x;
+  }
+  function leave(x) {
+    document.getElementById("title").innerHTML = "";
+  }
+  </script>
   </body>
 </html>
