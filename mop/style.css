@@ -13,6 +13,11 @@ a {
 
 a:hover {
   text-decoration: underline;
+  cursor: pointer;
+}
+
+#marysue {
+  text-align: right;
 }
 
 h2 {
@@ -40,8 +45,8 @@ h2 {
   top: 0;
   max-height: 100vh;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   overflow-y:scroll;
   overflow-x:hidden;
 }
@@ -63,6 +68,55 @@ h2 {
   box-shadow: 0.5em 0.5em rgb(55, 62, 72);
 }
 
+.left #letter {
+  color: rgb(83, 93, 108);
+  background-color: rgb(219, 222, 227);
+  width: 40vw;
+  height: 60vh;
+  margin-top: 140px;
+  box-shadow: 0.5em 0.5em rgb(55, 62, 72);
+  padding: 0;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  overflow-y:scroll;
+  overflow-x:hidden;
+  font-family: "IBM Plex Mono";
+}
+.left #letter::-webkit-scrollbar {
+    display: none;
+}
+
+.left #letter p {
+  width: auto;
+  margin: 1em;
+  padding: 0;
+}
+
+.left #letter #topfade {
+  background-image: linear-gradient(rgb(219, 222, 227), rgba(83, 93, 108, 0));
+  height: 1.5em;
+  top: 140px;
+  width: 40vw;
+}
+
+.left #letter #bottomfade {
+  background-image: linear-gradient(rgba(83, 93, 108, 0), rgb(219, 222, 227));
+  height: 3vh;
+  float: none;
+  position: absolute;
+  margin-top: 57vh;
+  bottom: auto;
+  width: 40vw;
+}
+
+.left iframe {
+  width: 40vw;
+  height: 25vw;
+  margin-top: 140px;
+  box-shadow: 0.5em 0.5em rgb(55, 62, 72);
+}
+
 .right {
   width: 40vw;
   right: 10vw;
@@ -70,8 +124,8 @@ h2 {
   top: 0;
   max-height: 100vh;
   overflow-y: auto;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   overflow-y:scroll;
   overflow-x:hidden;
 }
@@ -100,38 +154,16 @@ h2 {
   background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 60%, rgba(219, 222, 227, 0));
   height: 150px;
   z-index: 1;
-  width: 50vw;
+  width: 43vw;
   position: absolute;
   top: 0;
-}
-
-@media only screen and (max-width: 850px) {
-#topfade {
-    background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 80%, rgba(219, 222, 227, 0));
-    height: 200px;
-  }
-  .left h1 {
-    margin-bottom: 110px;
-  }
-  .right h1 {
-    margin-bottom: 110px;
-  }
-  .left img {
-    margin-top: 210px;
-  }
-  h2 {
-    font-size: 25px;
-  }
-  #floatingScroll{
-    visibility: hidden;
-  }
 }
 
 #bottomfade {
   background-image: linear-gradient(rgba(219, 222, 227, 0), rgb(83, 93, 108));
   height: 60px;
   z-index: 1;
-  width: 50vw;
+  width: 43vw;
   position: fixed;
   bottom: 0;
 }
@@ -170,8 +202,8 @@ h2 {
   transform: rotate(270deg) translate(-30vh,50vw);
   overflow-y: scroll;
   overflow-x: hidden;
-  scrollbar-width: none; /* Firefox */
-  -ms-overflow-style: none;  /* IE 10+ */
+  scrollbar-width: none;
+  -ms-overflow-style: none;
   overflow-y:scroll;
   overflow-x:hidden;
 }
@@ -206,10 +238,6 @@ h2 {
   width: 3em;
 }
 
-.rightstick {
-  right: 0;
-}
-
 #floatingScroll{
   position: absolute;
   right: 5vw;
@@ -234,8 +262,8 @@ h2 {
 
 #title {
   text-align: center;
-  margin-top: 1em;
   font-weight: bold;
+  margin: 1em;
 }
 
 #navleft {
@@ -256,7 +284,45 @@ h2 {
   background-image: linear-gradient(rgba(83, 93, 108, 0), rgb(83, 93, 108) 40%, rgb(83, 93, 108));
   height: 150px;
   z-index: 1;
-  width: 50vw;
+  width: 43vw;
   position: fixed;
   bottom: 0;
+}
+
+.rightstick {
+  right: 0;
+}
+
+@media only screen and (max-width: 850px) {
+#topfade {
+    background-image: linear-gradient(rgb(83, 93, 108), rgb(83, 93, 108) 80%, rgba(219, 222, 227, 0));
+    height: 200px;
+  }
+  .left h1 {
+    margin-bottom: 110px;
+  }
+  .right h1 {
+    margin-bottom: 110px;
+  }
+  .left img {
+    margin-top: 210px;
+  }
+  .left #letter {
+    margin-top: 210px;
+  }
+  .left #letter #topfade {
+    top: 210px;
+  }
+  h2 {
+    font-size: 25px;
+  }
+  #floatingScroll{
+    visibility: hidden;
+  }
+  #navleft {
+    left: 1em;
+  }
+  #navright {
+    right: 1em;
+  }
 }
