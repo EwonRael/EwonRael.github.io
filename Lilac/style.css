@@ -14,7 +14,7 @@ img {
 audio {
   width: 80vw;
   margin-bottom: -4px;
-  filter: invert(10%) grayscale() sepia(80%) hue-rotate(180deg) brightness(108%) opacity(60%);
+  filter: invert(10%) grayscale() sepia(80%) hue-rotate(180deg) brightness(133%) contrast(110%) opacity(60%);
 }
 
 #audio {
