@@ -13,10 +13,17 @@ img {
 
 audio {
   width: 80vw;
+  margin-bottom: -4px;
+  filter: invert(10%) grayscale() sepia(100%) hue-rotate(180deg) brightness(105%) opacity(60%);
+}
+
+#audio {
+  width: 80vw;
   position: absolute;
   left: 10vw;
   bottom: 7.5vh;
-  filter: invert(18%) grayscale() sepia(100%) contrast(95%) saturate(1000%) hue-rotate(185deg) brightness(102%) grayscale(78%) opacity(90%);
+  background-color: rgb(173,164,188);
+  border-radius: 50px;
 }
 
 #left {
@@ -29,7 +36,11 @@ audio {
 
 @-moz-document url-prefix() {
   audio {
-    filter: contrast(200%) invert(80%) grayscale() sepia(100%) saturate(1000%) hue-rotate(184deg) brightness(99%) grayscale(80%) opacity(90%);
+    filter: invert(90%) grayscale() sepia(100%) hue-rotate(210deg) brightness(108%) opacity(60%);
+  }
+  #audio {
+    background-color: rgb(189,184,204);
+    border-radius: 0;
   }
 }
 
@@ -40,7 +51,7 @@ audio {
     padding-left: 50vw;
     margin-top: 2vh;
   }
-  audio {
+  #audio {
     bottom: 5vh;
   }
 }
