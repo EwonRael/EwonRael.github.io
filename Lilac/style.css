@@ -14,7 +14,7 @@ img {
 audio {
   width: 80vw;
   margin-bottom: -4px;
-  filter: invert(10%) grayscale() sepia(100%) hue-rotate(180deg) brightness(105%) opacity(60%);
+  filter: invert(10%) grayscale() sepia(80%) hue-rotate(180deg) brightness(108%) opacity(60%);
 }
 
 #audio {
@@ -22,7 +22,7 @@ audio {
   position: absolute;
   left: 10vw;
   bottom: 7.5vh;
-  background-color: rgb(173,164,188);
+  background-color: rgb(174,165,187);
   border-radius: 50px;
 }
 
@@ -36,7 +36,7 @@ audio {
 
 @-moz-document url-prefix() {
   audio {
-    filter: invert(90%) grayscale() sepia(100%) hue-rotate(210deg) brightness(108%) opacity(60%);
+    filter: invert(90%) grayscale() sepia(50%) hue-rotate(210deg) brightness(114%) opacity(60%);
   }
   #audio {
     background-color: rgb(189,184,204);
