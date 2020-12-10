@@ -7,8 +7,8 @@ body {
 img {
   width: 40vw;
   float: left;
-  padding-left: 5vw;
-  padding-top: 5vh;
+  margin-left: 5vw;
+  margin-top: 5vh;
 }
 
 audio {
@@ -16,7 +16,7 @@ audio {
   position: absolute;
   left: 10vw;
   bottom: 7.5vh;
-  filter: invert(18%) grayscale() sepia(100%) contrast(95%) saturate(1000%) hue-rotate(184deg) brightness(103%) grayscale(77%) opacity(90%);
+  filter: invert(18%) grayscale() sepia(100%) contrast(95%) saturate(1000%) hue-rotate(185deg) brightness(102%) grayscale(78%) opacity(90%);
 }
 
 #left {
@@ -29,6 +29,18 @@ audio {
 
 @-moz-document url-prefix() {
   audio {
-    filter: contrast(200%) invert(80%) grayscale() sepia(100%) saturate(1000%) hue-rotate(184deg) brightness(99%) grayscale(77%) opacity(90%);
+    filter: contrast(200%) invert(80%) grayscale() sepia(100%) saturate(1000%) hue-rotate(184deg) brightness(99%) grayscale(80%) opacity(90%);
+  }
+}
+
+@media only screen and (max-width: 800px) {
+  img {
+    width: 40vh;
+    margin-left: -20vh;
+    padding-left: 50vw;
+    margin-top: 2vh;
+  }
+  audio {
+    bottom: 5vh;
   }
 }
