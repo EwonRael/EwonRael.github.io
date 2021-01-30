@@ -1,0 +1,63 @@
+CHAPTER 02 Saussure’s Legacy
+
+Stuart Hall talks a lot about "constructionist" thinking or "the social constructionist view." He's talking about structuralism. Structuralism is the term I'm more familiar with, it's more commonly used. Consider these interchangeable. 
+
+The structuralist way of understanding the world can be applied to all areas of knowledge, and is often most insightful when thinking about broad topics such as race or class, but much of it's history comes from linguistics, or the study of language. Talking about structuralism in terms of linguistics is helpful for a couple reason. First, you are reading a written work, so providing examples of words and sentences makes sense because we are already in the realm of language. Second, starting with a smaller scale concept is useful for wrapping our heads around this, before we can apply it to larger structures of knowledge. Finally,  structuralism owes much of its history to Ferdinand de Saussure, who first conceived of these concepts in relationship to linguistics. Learning about structuralism as a linguistic phenomenon first will mean our own understanding of these concepts will mirror their historical development.
+
+So Saussure thinks that for something to have meaning it must be part of a language. This doesn't have to be a verbal language; think about how people might refer to the "language of cinema." If it communicates ideas/meaning it's part of a language. This is important. Anything at all that communicates anything to us is a sign. And anything that is a sign must be part of a larger system, that of languge.
+
+Language isn't restricted to words and writing/speaking. Language can exist in physical objects. Think of the earlier traffic light example. Traffic lights communicate something to us, and in doing so must necessarily use signs that function as part of a language. 
+
+Perhaps the most important part of this is the idea that anything that has meaning to us can only do so because it is part of a larger system. Meaning is created by a sign's location in a system relative to other signs. We cannot understand anything at all in isolation, only when it is put in the context of other signs does it become meaningful.
+
+A green light on its own does not mean "go". A green light on its own means nothing. Its only when we understand a red light meaning "stop" that green can mean "go."
+
+Imagine trying to explain what a "father" is without explaining a "mother." Or a "son" or "daughter" for that matter. It would be difficult and silly.
+
+Something about this proposal of structuralism goes against some of our core ideas about how meaning is created in the western world. We tend to conceptualize meaning as a series of tiny pieces that add up to a whole, and when trying to understand something we tend to try break it down into a series of discrete, tiny bits, and understand each of those bits. If we can understand each tiny piece on its own it will add up to a cohesive big picture.
+
+Reflect on your own education and ask yourself how often you were taught something using this kind of reductionist thinking. Perhaps in a theory class you were told to write definitions of a bunch of individual words when looking to understand a concept like structuralism. This kind of thinking is deeply ingrained, and to really, really take the proposals of structuralism seriously we must reject, or at least calls into question, aspects of our thinking that we don't always realize are present.
+
+Structuralism says, nothing means anything as a tiny bit. Only as part of a big picture does it take on meaning. It's meaning is created through its location in a system of language.
+
+In the land of structuralism we talk about a sign as having two parts: there is the sign itself, and there is the meaning it points to. The first is called the "signifier" and the latter is the "signified." In the case of a traffic light, red is a signifier that signifies "stop."
+
+Saussure felt that all signs are arbitrary. There is nothing fundamental about the color red that relates to the concept of stopping. Signs are also subject to change over time. Words like "gay" have signified different things over the years. People can actively work to change signifier's meaning. Hall gives the example of the 1960s "black is beautiful" slogan as a time when people fought to change the signification of blackness.
+
+Each language has a different set of signifiers and signifieds. This means that not only is the language arbitrary, but the way in which the language divides the world up into bits is arbitrary. We categorize everything as part of the process of making meaning of it, but ultimately that system of categorization is arbitrary.
+
+The arbitrary nature of it all, and its subject to change, means that meaning is always created through a historical context, and for us to make meaning of things that exist we must take into account their historical and cultural context. Nothing has any single one true meaning.
+
+CHAPTER 02.01 The Social Part of Language
+
+Within a language I am able to combine words in a way that is totally new to you and yet still understandable. For example I might say:
+
+"Please don't poke me on my left elbow with that frozen turkey leg you bought last October."
+
+I'm guessing that those words in that order you have not heard before, but you are able to understand the meaning of the sentence. I might also say:
+
+"Then in of and cars with pictures magazines red old three has my."
+
+which is also a sentence you've probably never heard before, but unlike the last one, I'm guessing it would be difficult for you to understand the meaning of it.
+
+This is because within a given language there are actually two different things going on at any given time. There is the individual act of communication (parole), me telling you about my feelings on being poked with a frozen turkey leg, and there is the social part of language (langue), which is the set of rules for forming language that we've all agreed to.
+
+The social part, parole, is actually often quite rigid. For instance in English, we tend to put the subject first and the predicate second (Jesus wept.) and not the other way around (Wept Jesus.). The rules are so consistent and strict that we can study them with scientific precision.
+
+This makes Language out to be a social thing. We might have individual ideas, but to communicate we follow the same rules in forming our ideas as our peers.
+
+CHAPTER 02.02 Critique of Saussure’s model
+
+Saussure was on to a lot of cool ideas over here, and we agree with what he's saying for the most part. However, there are some important things that he didn't really think of talk about when coming up with his model of language.
+
+First, imagine there was a water glass on a table, and I were to say: "look at that water glass."
+
+In Saussure’s system we have a signifier: the word "glass," and we have a signified: the concept of a "glass," but those are both conceptual things, and in this example there is also a real-world physical object on a table that I am referring to. 
+
+Later linguists such as Charles Sanders Pierce expanded this concept to also include "referents" which in the case of "look at the water glass" would be the literal physical object on the table.
+
+Another limitation of Saussure is that he was considering language on its own, and kind of ignoring the fact that people speak in a real world context. Imagine two different people of different backgrounds are speaking to each other. They speak in different ways, but through this dialogue with each other come to understand those differences and modify their own ways of speaking to accommodate.
+
+Language exists in dialogue and this is something Saussure doesn't really account for.
+
+Later theorists expanded on his ideas to accommodate these things and that leads to "post-structuralism" 
