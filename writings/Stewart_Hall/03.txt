@@ -1,0 +1,79 @@
+CHAPTER 03 From language to culture: linguistics to semiotics
+
+We've looked at what structuralism is and how it operates within a linguistic context; hopefully you  have a basic understanding of how a sign gets meaning through the larger system of language.
+
+As mentioned previously, structuralism gives us more interesting insights when applied to culture, not just language. Saussure didn't contribute much to this form of culture studies, but he did name it "semiology." This is more commonly called "semiotics."
+
+A really fun and worthwhile exploration of applying structuralist principles to culture can be found in Roland Barthes' "The World of Wrestling."
+
+It's a fun read, but there's some necessary context in understanding what he's talking about that isn't given quite enough emphases in the text. Mainly, you kind of have to have a sense of what wrestling is before you can get at what Barthes is talking about.
+
+If you aren't a wrestling fan, I'd recommend you watch some on youtube. I'll do my best to explain it.
+
+A common remark people who don't really understand wrestling make to those that do is that it's all fake. It's staged. As if this is going to be a great moment of disillusionment. We know. Everyone knows it's fake. It's a form of theatre.
+
+Wrestling is highly exaggerated. The bad guys go out of their way to display their wickedness, the good guys their virtue. Everybody is an identifiable character with costumes and music to match. When people fall they slam the mat with their arm to make the sound louder. It's a spectical.
+
+Because the entire thing is staged it's fair to understand everything as a kind of symbol. Nothing happens accidentally, so we can understand everything that happens as servicing a story.
+
+People might talk about what the story was, but it's rare for people to ask, "what does the story say?"
+
+This is a really interesting question because the point of wrestling isn't the story. It's like claiming to watch pornography "for the plot." That's clearly not why it's being made, and it's not why people are watching it.
+
+Wrestling is obviously about the exciting moments where people fall from great heights or slam their bodies into chairs. It's about the fun costumes and smoke and light effects.
+
+But, just because nobody's making or watching it for the story doesn't mean it doesn't contain a story, and we can ask, what does this story say?
+
+This is a really fun intellectual exercise, asking ourselves what the meaning of wrestling is, and it certainly says more interesting things about society then analyzing the meaning of stuff that was conceived of in service of conveying meaning.
+
+However, it's kind of a bad place to start when transitioning from linguistics into semiotics. It would have been better on Hall's part to start with some more straight-forward examples.
+
+*****
+
+If we're going to start asking "what is the meaning of wrestling?" when wrestling was not really made to have meaning, what's to stop us from asking this question in regards to other aspects of culture that weren't made with the primary goal of conveying meaning?
+
+Nothing!
+
+We then start talking about clothes, which, unlike wrestling, is a better starting place for this kind of discussion.
+
+Clothes serve a really clear function in society: they help us not be naked. On some level it feels a bit silly to ask "what's the meaning of clothes?" when not freezing to death in the snow or protecting our feet from the rough gravel is an obvious answer.
+
+But we also all kind of know that clothes do more then just protect us from the elements. They help us express who we are, and for this reason it's quite reasonable to ask, "what do clothes mean?" 
+
+Someone might say "oh no, don't wear jeans to this event; it's more formal; wear something more elegant."
+
+For someone to say something like this, they must believe that jeans, in addition to communicating "I don't want to be naked" also communicate "informal"
+
+The meaning changes from one era to the next; women wearing pants back in the day was a sign of rebellion, which it really is not anymore. It also changes by an individual person's cultural context; but so does the meaning of words.
+
+This broader kind of interpretation of cultural objects we might refer to as "connotation". Jeans have a "connotation" of informality.
+
+In order for this to be true you must be part of a society that has some big-picture ideas about the world. Jeans being informal in-and-of-itself doesn't mean much, but consider that it's part of a larger system of connotation and historical context.
+
+Jeans are practical clothes that originated as something manual laborers would wear due to their strength. Compare this to something "formal" like a tuxedo, which is impractical and something harder for poor people to afford.
+
+We can see the connotation of jeans as a fragment of ideology. Or at least, that's how Roland Barthes sees it.
+
+CHAPTER 03.01 Myth today
+
+Say for the sake of argument I were to show you a picture of someone wearing jeans and I were to ask "what does this signify?"
+
+Assuming you've been paying attention thus far, and that you agree with my readings, you would likely say "informal."
+
+But here's the funny thing: I'm not presenting you with jeans, I'm presenting you with a representation of jeans. A photo is a signifier, and in this case it's signifying "someone wearing jeans," and someone wearing jeans is a signifier, which signifies "informality."
+
+We can see that there are different levels of signifier and signified. We can have at a basic level something that adds up to signify an idea, which we can then apply the same process to and arrive at a new signified idea and so on and so fourth.
+
+The higher level this process is, the more likely one interpretation of somethings meaning is going to change person to person. If I were to show you a picture of someone wearing jeans, it's unlikely that you would disagree it signifies "someone wearing jeans," but if I were to say "wearing jeans represents informality" you might be more inclined to have a different interpretation.
+
+Barthes applies this process of interpreting higher and higher level meanings from a photo of a black guy wearing a French uniform and saluting the French flag on the cover of a magazine (Barthes is French). A flag, a salute, a military uniform, a black person, are all signifiers. They add up to create a message, "this black guy is an agent of the French empire that also has respect for the French empire." But Barthes the says that the new message is a kind of signifier that points to a new message:
+
+"France is a great Empire, and that all her sons, without any colour discrimination, faithfully serve under her flag, and that there is no better answer to the detractors of an alleged colonialism than the zeal shown by this Negro in serving his so-called oppressors’"
+
+or put more plainly "we (the French) can't be racist; look at how much this black guy likes us!" 
+
+Barthes calls this higher level signification "Myth"
+
+Using this kind of framework, we go on to analyze the "mythology" created by a couple related advertisements. 
+
+First, an ad for Panzani which is mythologizing their products as being part of an Italian cultural identity, and second, an ad for Jaguar which mythologizes the lack of sufficient resolution as an intrinsic part of my inability to read the text or see the photo in this figure (FIGURE 1.7).
