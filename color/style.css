@@ -1,0 +1,56 @@
+@font-face {
+    font-family: "Drafting";
+    src: url("Drafting-Mono.ttf") format("truetype");
+    font-style: normal;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#color {
+  height: 100vh;
+  width: 50vw;
+  background-color: red;
+  position: absolute;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  cursor: url(https://ewonrael.github.io/Lilac/sources/left.svg) 0 0, auto;
+}
+
+#color div {
+  width: 50vw;
+  flex-grow: 1;
+  color: white;
+}
+
+h1 {
+  font-family: "Drafting", monospace;
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 3vh;
+}
+
+h2 {
+  position: absolute;
+  font-family: "Drafting", monospace;
+  font-weight: 400;
+  margin-top: 0;
+  font-size: 3vh;
+  right: 0;
+  background-color: white;
+  max-width: 50%;
+  text-align: right;
+}
+
+#photo {
+  width: 50vw;
+  height: 100vh;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  right: 0;
+  cursor: url(https://ewonrael.github.io/Lilac/sources/right.svg) 0 0, auto;
+}
