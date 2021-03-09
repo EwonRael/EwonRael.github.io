@@ -1,0 +1,118 @@
+CHAPTER 04 Discourse, power and the subject 
+
+Already we are seeing that this linguistic model is being applied to a broader ranger of things, like images in advertisements, not just literal words. We also see that as we trend towards trying to understand the meaning of bigger things the linguistic model becomes more interpretive. You could more easily argue that the image of the black guy saluting the french flag means something else then Barthes argues for, then, say, argue the French flag isn't representative of France.
+
+Because understanding the meaning of something requires greater and greater context, and culture is always changing, there is no 'final moment' where the meaning of something can be fully understood and identified. Just the act of writing down what you think something means gives that thing context that in someway changes the meaning of it.
+
+The semiotic approach to understanding language just kind of took words on their own, and ignored the context surrounding them, like culture, time, and place, but also, very importantly, who's speaking. It is nice to imagine we can just take words that people said on their own terms, without taking into consideration the societal circumstances that lead to people speaking those words, but this would give us a wildly incomplete picture. For example, doctors in the western world were men during the late 1800s. Women, who were rightfully dissatisfied with their subservient role in the world, were labeled by male doctors as "crazy" as a form of dismissal. The social and power dynamics that enabled men to occupy the position of "doctor" and excluded female voices from occupying that same position, is necessary to take into consideration when trying to understand writings on the subject from that era. This is where we get the idea of "subject," which isn't the same as saying the author's intention is what creates meaning, rather is to say the author's social position is a necessary part of the structure of meaning.
+
+This is the first time in the book we start discussing Michel Foucault seriously. He's still a big deal within theory departments at Universities for some reason, despite being decades out of date at this point. Some of his ideas are really cool and important, for example, the thing about women being labeled as "crazy" by male doctors comes from his book on sexuality. Some of his ideas are less relevant. His use of the word "representation" is a little different then our boy Stewart Halls, but that's okay. One of his bigger contributions to theory was this idea of the "episteme," which is useful for understanding meaning, but we don't go into that at this point in the book. We just do the classic "stay tuned for Michel Foucault!" His ideas do build off of Saussure and Barthes in some ways. He's french just like Barthes; I wonder what that's about.
+
+Somehow Foucault was both against dialectic and semiotics structures of communication, and he writes about this using the terms of literal war, which like, okay dude. Any system of understanding meaning is going to be limited or incomplete in some ways, but it feels weird to be so admittedly against things that your own system of understanding meaning is derivative of. Feels a little edge-lordy, and I'm not sure why we're bringing it up at this point in the book.
+
+
+CHAPTER 04.01 From language to discourse 
+
+Okay so, we are talking about Foucault's idea of "discourse," which you may have a vague idea of the meaning of. If you've heard the word used it's probably been in the context of "what words and language people are using to talk about something," which isn't in opposition to what Foucault means when he uses that word, but maybe isn't the best way of wrapping our head around his usage.
+
+For Foucault "discourse" is the collection of words, phrases, or rules that allow for meaningful statements about a topic to be made. "Discourse" is very dependent on the group of people engaging in conversation, as well as their time in history, and the subject they are talking about.
+
+For example: in science, we talk about "laws," like the "law" of gravity or the "law" of conservation of energy. Normally, a "law" is a rule that the government tells everyone they have to obey, or face consequences. Obviously no cop is going to give you a $20 fine for breaking the law of gravity, because within the discourse of science, a "law" some observable fact that we can use to predict outcomes, not a rule that the government instituted. 
+
+What we see is that within the realm of science, we have words that have different definitions then they do outside of that realm. Scientists have a different definition of the word "law" because it allows them to communicate something that is important to science that they wouldn't otherwise be able to communicate. The collection of words and phrases and rules that scientists use that is specific to science adds up to a scientific "discourse."
+
+I am sure that you have friends with whom certain words or phrases mean something different then they do to the rest of the world. You guys have your own discourse.
+
+Foucault argued that "nothing has any meaning outside discourse," which is to say the social context of something is always important. 
+
+It's worth noting that discourse includes non-linguistic things too.
+
+READING E Reflections on the Revolution of Our Time
+
+We like to make this big distinction between stuff that exists in the physical word, and stuff that exists in our minds. Obviously there is some truth to this. If everyone were to die tomorrow the buildings humans made would still exist, even if no one was making sense of them. However, it's not actually that useful or important to make a distinction between the physical world, and the discursive world. Or at least, not according to Ernesto Laclau and Chantal Mouffe!
+
+They start out by giving this example of two people who are brick-laying. One says to the other, "pass me that brick" before being handed the brick and using it to build the wall. There are two parts of this action, the words part, and the putting the brick in the wall part. One of them exists only really in the mind, and the other leaves something physically different in the world. But, they are both part of the same action. Neither the asking for the brick, nor the laying of the brick make sense without the other. Nobody just says "please hand me that brick" because they like the idea of other people thinking about bricks. No, they say that because they are hoping for the other person to do something physical.
+
+A football isn't really a football unless it's being used to play football. But the rules of football exist in the mind.
+
+A rock that someone throws in order to break a window is a destructive weapon. That same rock displayed in a natural history museum is now an artifact. 
+
+----
+
+Foucault argued that we can only have knowledge about things for which a discourse exists. Therefore the knowledge exists in the discourse and not in the thing-in-itself. For this reason he argued that in order to talk about historical concepts surrounding "madness"  or "sexuality" one first has to include the relevant discourse of the time we are talking about. This includes that language and systems of thought we used at the time, but also, importantly, the way in which authority and institutions existed. One cannot understand madness without understanding who within a society are doctors, and the drugs/treatments/institutionalizations people were facing as mad at the time.
+
+CHAPTER 04.02 Historicizing discourse: discursive practices
+
+Foucault felt that something can only be true within a specific discourse. 
+
+An interesting argument that Foucault makes, is that of the "homosexual." He argues that at one point within western society, there was no language or discourse to talk about homosexuality. It wasn't an idea that existed. Then, within repressive, Victorian era thought around sex, people started talking about homosexuality, but it was a very negative thing: a kind of insanity. But, because the idea of the "homosexual" had entered the discourse, even in a negative way, it created the ability to talk about homosexuals in a positive way too. He argues that a positive, gay-rights, language was only possible through the negation of existing discourse.
+
+It would be inappropriate to look at writings or people from a time before the modern idea of a "homosexual" existed and try and understand them using our modern day framework because what a "homosexual" is only can exist within our contemporary discourse.
+
+He makes a similar argument surrounding madness (not totally unrelated from a social stigmatization standpoint) saying that no one can have a mental illness outside of their society's constructs that enable that understanding of their condition. It's not to say that people in other societal formations wouldn't hear voices in their heads or something, only that those people wouldn't necessarily be seen as having a mental illness by that society.
+
+These are specific examples, but Foucault believes this system of meaning making is true of everything, these examples are just cases where looking to our history makes clearer how they are socially created because it was not too long ago that we thought very differently about these things. 
+
+CHAPTER 04.03 From discourse to power/knowledge
+Okay jeepers, we are getting into some fairly hairy territory, if we weren't already. 
+
+In his later years Foucault started examining more and more the way that power and power dynamics influence the creation of and systems of knowledge. Power dynamics always exist between people, and always exist between groups of people, and in this way, we are always in a bit of a political struggle when we related to other people. This means that behind every discourse is some kind of power relation, and that all forms of knowledge are applied to the regulation of social conduct in practice. What this means is that how we think about the world, and how we understand the world, has bearing on how we act in the world, and influences how people act is always political, so any system of knowledge is political.
+
+That is very complicated, but I'll try to give a small example. Back in the day there wasn't really an idea of "bisexual." People were either gay or straight but there wasn't a wide-spread cultural idea of being attracted to both men and women. If you were bisexual and living in such a society, you wouldn't have the knowledge to understand your own sexuality, and this would lead to you regulating your own behavior. Perhaps you are a bisexual women, and you doubt that what you are feeling towards other women is sexual attraction because you know you are attracted to men and you must therefore be straight. This idea might lead you not explore potential relationships with women that might otherwise be good for you.
+
+You are in that moment oppressing yourself in a way. A discourse that includes a concept of bisexual is therefore a political thing. And, every discourse is political because it has influence, even if in a small way, over how people act.
+
+If you are someone who reads a lot of theory but for some reason hasn't read Foucault, this whole idea of political struggle leading to systems of knowledge might ring a bell for you: it sounds like Marxism.
+
+Karl Marx, granddaddy of communism, talked about something very similar. He had a theory of capitalism that identified two political classes that were in opposition to each other, namely the bourgeoisie and proletariat. Marx argued that the bourgeoisie are always going to try and support their political interests, and in pursuit of this goal they come up with bodies of knowledge and systems of thought that reinforce their positions of political power.
+
+Mr. Foucault, the man the myth and the legend, disagrees with Marx but in a very specific way. He agrees that the bourgeoisie exist, and that they have political power, and that they want to maintain their political power, and that they come up with systems of knowledge and thought in support of their continued political supremacy. No, the one area that Foucault disagreed with Marx on was with the proletariat. Foucault argues that the proletariat are also politically motivated and that they are going to come up with their own systems of thought and knowledge that advance their political goal in much the same way. Marx, on the other-hand, felt that the proletariat were speaking the Truth in a capital-T Truth kind of way.
+
+Foucault feels this way, not because he disagrees with the proletariat, or thinks they are corrupt in their motivation. He feels this way because he thinks this is true about literally all knowledge. He would say the same thing about any group of people who are coming up with any system of thought (including himself and his own). 
+
+Foucault also expanded on the idea of ways that discourse can promote political ideologies, which isn't really going against Marx, just some fun new ideas.
+
+I. Knowledge, power and truth 
+
+Foucault felt that, first, any form of knowledge is a form of power. This might feel disagreeable on its surface, but imagine you are in a foreign country and you don't speak the language. You have a lot less power in that situation then someone who does speak the language. Any form of knowledge is a form of power in some way.
+
+He also felt like people in power could make something true just because they believe that thing is true. If you were to grow up in a situation in which everyone who had any power over you believed you were a crazy person, and constantly reminded you on your own insanity and gave you pills, you  would become crazy. It's difficult to know what the limits of this idea are. In Orwells "Nineteen Eighty Four" the ministry of truth says that two and two are five and so it becomes true. Maybe Foucault believes this I don't know.
+
+II. New conceptions of power 
+Old school thoughts of power see it as very direct and one directional. Like a teacher having power over a student, or a cop having power over a motorist. We also tend to, traditionally speaking, see power as a negative thing. To be the oppressed is bad. 
+
+However, because Foucault sees everyone as having various forms of power over each other and power as a necessary and inseparable part of the creation of knowledge, he doesn't have quite such a bleak or one-directional idea of power. It is the play of power between people that creates desire, ideas, and knowledge. In this way power isn't always about control, but can be a productive force.
+
+Power isn't a top down chain, but more like an interconnected web or net.
+
+Foucault saw the thing that is produced by power relations as a "body." This isn't meant in a literal, physical way (like the human body), it's just the word he uses to describe the thing that is created by power relations.
+
+For example, a "criminal" can't exists without there being a government that's in charge of making rules. The government and their rules are a kind of power relationship, and the "criminal" is the body that is created through that.
+
+CHAPTER 04.04 Summery
+
+Foucault felt that any kind of knowledge that can exist in the world does so through "discursive formation," which is also to say that meaning is very specific to the time, place and people who created it. He also felt that all people relate to each other through various forms of power, and that knowledge is a form of power and that knowledge can only be created through power.
+
+Some people feel that he focuses too much on "discourse" and sometimes that ignore that marital realities that are at play. For example, if someone is starving to death because they don't have enough food it isn't helpful to try and understand that situation through discourse.
+
+CHAPTER 04.05 Charcot and the performance of hysteria
+
+This history of female "hysteria" is important to Foucault, and in this section we are asked to put ourselves in the mental shoes of him and analyze a painting that depicts a woman performing the symptoms of her hysteria for an audience of Jean-Martin Charcot's medical students. A lot of context for the image, Jean-Martin Charcot, and hysteria is given before we are asked to participate in activity 8, which is basically asking us to do a Foucauldian discourse analysis of the painting.
+
+READING F The performance of hysteria
+
+The French physician Jean-Martin Charcot was helpful in progressing ideas about female "hysteria" in a positive way. Before his time "hysteria" was used as a catch-all that dismissed and stigmatized the problems facing women as being due to weakness, and some issue in their biology.
+
+Charcot was able to prove that "hysteria" was not physical, but physiological. However, they shouldn't be dismissed as the women experiencing symptoms of "hysteria" we're not consciously in control.
+
+He also proved that men can have the symptoms of "hysteria" which means it's not just something that should be chalked up to "women are weak" but that might have it's origin in trauma (many men that he observed as hysterical had been in major railroad accidents)
+
+In this way he gave some dignity to the hysterical women.
+
+However, it was not all good. He used to hold these public performances where hysterical women were paraded around like circus animals. People from all walks of life would gather in an auditorium to watch hysterical women eat charcoal or bark like a dog or have a seizure.
+
+The study was also very image-heavy. He hired people to take all sorts of photos of hysterical women that he resealed in a big book called "Iconographie photographique de fa Salpetriere." In his book he also links in a big way female hysteria to their sexuality, which is maybe not such a cool move.
+
+It seams some of the women were being coached on how to act, maybe implicitly, maybe explicitly. People, even back then were saying he's a fraud. He argued that it was a real medical condition he was documenting, and that he couldn't make this up, even though it looked a little fishy.
+
+A hysterical women named Augustine, was frequently photographed for these studies. She seemed to like to please the camera, and was able to experience various symptoms of hysteria on cue. However, she started experiencing weird symptoms, like total color blindness, and became angry and difficult to deal with. Eventually she escaped by dressing as a man and wasn't heard from again.
