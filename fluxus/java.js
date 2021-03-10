@@ -130,6 +130,7 @@ var cards = [
 "You're being hypnotized.",
 "Interpret everything as a sly inside joke.",
 "You cannot speak or make sound. Only communicate using hand gestures.",
+"Bully the other person out of their lunch money.",
 "Try to actually hurt the other person."];
 
 var i = 0;
