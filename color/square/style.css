@@ -1,0 +1,18 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+
+#square {
+  width: 40vh;
+  height: 40vh;
+  margin-left: -20vh;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  background-color: red;
+}
+
+#squarebox {
+  transition: opacity 0.1s;
+}
