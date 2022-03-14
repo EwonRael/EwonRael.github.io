@@ -1,0 +1,81 @@
+@font-face {
+    font-family: "Drafting";
+    src: url("https://indestructibletype.com/Drafting/Drafting[wght].ttf") format("truetype");
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Drafting";
+    src: url("https://indestructibletype.com/Drafting/Drafting-Italic[wght].ttf") format("truetype");
+    font-style: italic;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Drafting";
+}
+
+img {
+  width: 100%;
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+h1 {
+  margin: 0;
+  font-size: 300px;
+  line-height: 0.8;
+  word-break: break-word;
+  width: 100%;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: normal;
+  font-variation-settings: 'wght' 700;
+}
+
+.overpic {
+  margin-top: -0.5em;
+}
+
+h2 {
+  margin: 0;
+  font-size: 50px;
+  line-height: 0.8;
+  word-break: break-word;
+  text-transform: lowercase;
+  font-variant: small-caps;
+  margin-left: calc(50vw - 500px);
+  text-shadow: 3px  3px 15px #fff, -3px -3px 15px #fff;
+}
+
+@media only screen and (max-width: 1000px) {
+  h2 {
+    margin-left: 0;
+  }
+}
+
+p {
+  font-size: 20px;
+  width: 800px;
+  margin-left: calc(50vw - 400px);
+}
+
+@media only screen and (max-width: 860px) {
+  p {
+    width: inherit;
+    margin-left: 30px;
+    margin-right: 15px;
+  }
+}
+
+.images {
+  height: 50vh;
+  background-size: cover;
+  filter: brightness(95%);
+  z-index: -1;
+  position:relative;
+}
