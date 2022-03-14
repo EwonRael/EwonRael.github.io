@@ -42,6 +42,8 @@ h1 {
 }
 
 h2 {
+  font-weight: normal;
+  font-variation-settings: 'wght' 700;
   margin: 0;
   font-size: 50px;
   line-height: 0.8;
