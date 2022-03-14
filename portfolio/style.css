@@ -51,7 +51,8 @@ h2 {
   text-transform: lowercase;
   font-variant: small-caps;
   margin-left: calc(50vw - 500px);
-  text-shadow: 5px  5px 30px #fff, 0  0 20px #fff, -5px  -5px 30px #fff;
+  background-color: white;
+  width: fit-content;
 }
 
 @media only screen and (max-width: 1000px) {
