@@ -81,17 +81,43 @@ p {
 .images {
   height: 50vh;
   background-size: cover;
+  background-position: top;
+  filter: brightness(95%);
+  z-index: -1;
+  position:relative;
+}
+
+.imagesC {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(95%);
+  z-index: -1;
+  position:relative;
+}
+
+.imagesC {
+  height: 50vh;
+  background-size: cover;
+  background-position: center;
+  filter: brightness(95%);
+  z-index: -1;
+  position:relative;
+}
+
+.images3 {
+  height: 50vh;
+  background-size: cover;
+  background-position: 50% 33%;
   filter: brightness(95%);
   z-index: -1;
   position:relative;
 }
 
 #blackout {
-  background-color: black;
   cursor: pointer;
 }
 
 #blackout2 {
-  background-color: black;
   cursor: pointer;
 }
