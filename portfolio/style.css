@@ -124,3 +124,16 @@ p {
 #blackout2 {
   cursor: pointer;
 }
+
+#tweetRand {
+  cursor: pointer;
+  padding-top: 1em;
+  padding-bottom: 1em;
+  border-left: black 2px solid;
+}
+
+#tweetRand span {
+  display: block;
+  margin-left: 3em;
+  margin-right: 5em;
+}
