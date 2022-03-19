@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Owen Earl Portfolio</title>
+    <link rel="stylesheet" href="style.css"/>
+    <link href="https://cdn.jsdelivr.net/gh/SebastianAigner/twemoji-amazing@1.0.0/twemoji-amazing.css" rel="stylesheet">
+    <meta name=viewport content="width=device-width, initial-scale=1">
+    <script src="tweets.js"></script>
+    <script src="script.js"></script>
+  </head>
+  <body id="tweets">
+  </body>
+  <script>
+    for (i in tweets) {
+      var p = document.createElement('p');
+      p.innerHTML = tweets[i] + "<br><br><br><br>";
+      document.getElementById("tweets").appendChild(p);
+    }
+  </script>
+</html>
