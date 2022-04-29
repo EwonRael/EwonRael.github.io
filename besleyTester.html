@@ -17,7 +17,7 @@
   <body>
     <h1 contenteditable="true" id="edit">This is to test things out.</h1>
     <div>
-    <p style="float: left; margin-top: 0">WEIGHT: &nbsp;</p>
+    <span id="size"><span id="italic"><p style="float: left; margin-top: 0">WEIGHT: &nbsp;</p></span></span>
     <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 400';">Book</button>
     <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 500';">Medium</button>
     <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 600';">Semi</button>
@@ -26,11 +26,11 @@
     <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 900';">Fatface</button>
     </div><br><div>
     <p style="float: left; margin-top: 0">ITALIC: &nbsp;</p>
-    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-style: normal';">Roman</button>
-    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-style: italic';">Italic</button>
+    <button type="button" name="button" onclick="document.getElementById('italic').style = 'font-style: normal';">Roman</button>
+    <button type="button" name="button" onclick="document.getElementById('italic').style = 'font-style: italic';">Italic</button>
     </div><br><div>
     <p style="float: left; margin-top: 0">SIZE: &nbsp;</p>
-    <input id="size" type="range" min="10" max="100" oninput="document.getElementById('edit').style = 'font-size: ' + document.getElementById('size').value + 'px ;'">
+    <input id="size" type="range" min="10" max="100" oninput="document.getElementById('size').style = 'font-size: ' + document.getElementById('size').value + 'px ;'">
     </div><br><div>
     <button type="button" name="button" onClick="location.href='https://indestructibletype.com/Besley.zip'">Download the Font</button>
     </div>
