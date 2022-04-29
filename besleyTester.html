@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Besley* Testing</title>
+    <link rel="stylesheet" href='https://indestructibletype.com/fonts/Besley.css' type="text/css" charset="utf-8" />
+    <style>
+      body {
+        font-family: "Besley";
+      }
+      h1 {
+        font-weight: 400;
+        font-size: 55px;
+        line-height: 1.2;
+      }
+    </style>
+</head>
+  <body>
+    <h1 contenteditable="true" id="edit">This is to test things out.</h1>
+    <div>
+    <p style="float: left; margin-top: 0">WEIGHT: &nbsp;</p>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 400';">Book</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 500';">Medium</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 600';">Semi</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 700';">Bold</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 800';">Heavy</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-weight: 900';">Fatface</button>
+    </div><br><div>
+    <p style="float: left; margin-top: 0">ITALIC: &nbsp;</p>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-style: normal';">Roman</button>
+    <button type="button" name="button" onclick="document.getElementById('edit').style = 'font-style: italic';">Italic</button>
+    </div><br><div>
+    <p style="float: left; margin-top: 0">SIZE: &nbsp;</p>
+    <input id="size" type="range" min="10" max="100" oninput="document.getElementById('edit').style = 'font-size: ' + document.getElementById('size').value + 'px ;'">
+    </div><br><div>
+    <button type="button" name="button" onClick="location.href='https://indestructibletype.com/Besley.zip'">Download the Font</button>
+    </div>
+	</body>
+</html>
