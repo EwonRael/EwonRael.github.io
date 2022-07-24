@@ -1,0 +1,28 @@
+<!--
+Made with love by Owen Earl
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>P2P</title>
+	<link rel='stylesheet' href='style.css'/>
+	<link rel='stylesheet' href='fonts/fonts.css'/>
+	<script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1>Drawing Games</h1>
+	<div id="nameInput">
+		<h2>Name:
+		<input id="nameInputText" type="text" onkeyup="nameInputType(event)" autofocus="autofocus"></input></h2>
+		<button id="nameInputButton" disabled onclick="nameInputButton()">continue</button>
+	</div>
+	<div id="gameInput" class="hidden">
+		<p id="date">Date: <u id="dateSpot">07/23/2022</u></p>
+		<p id="name" onclick="nameRemove()">Name: <u id="nameSpot">Owen Earl</u></p>
+		<br>
+		<h2><a href="Scribblish">Scribblish</a></h2>
+		<h2><a href="About.html">About</a></h2>
+	</div>
+</body>
+</html>
