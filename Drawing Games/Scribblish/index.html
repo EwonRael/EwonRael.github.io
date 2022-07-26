@@ -9,6 +9,8 @@ Made with love by Owen Earl
 	<link rel='stylesheet' href='../fonts/fonts.css'/>
 	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
 	<script src="script.js"></script>
+	<script src="host.js"></script>
+	<script src="guest.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 </head>
 <body>
@@ -20,7 +22,14 @@ Made with love by Owen Earl
 	<div id="hostName" class="hidden">
 		<h2>Name of Host:
 		<input id="hostNameInput" type="text" autofocus="autofocus" onkeyup="hostNameInputType(event)"></input></h2>
-		<button id="hostNameInputButton" disabled onclick="hostNameSet()">continue</button>
+		<button id="hostNameInputButton" disabled onclick="hostNameSet()">Continue</button>
+	</div>
+	<div id="lobby" class="hidden">
+		<h2>Players:</h2><h2 id="playerList">Owen Earl<br>Joey Joe<br>Joey Joe<br>Joey Joe<br>Joey Joe<br>Joey Joe</h2>
+		<button id="hostNameInputButton" onclick="startGamePlz()">Let&rsquo;s Play!</button>
+	</div>
+	<div id="caption1" class="hidden">
+		<h2>The Game is a foot!</h2>
 	</div>
 </body>
 </html>

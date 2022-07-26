@@ -112,6 +112,7 @@ button {
 button:hover {
 	box-shadow: 3px 3px 0 #8a75a3;
 	background-color: inherit;
+	outline: none;
 }
 
 button:active {
@@ -142,4 +143,23 @@ button[disabled]{
 .hidden {
 	display: none;
 	height: 0;
+}
+
+#lobby {
+	width: 80%;
+	margin-left: 10%;
+	background-color: #fff;
+	padding: 1px;
+	transform: rotate(-1deg);
+	padding-bottom: 9em;
+	filter: blur(0.7px) contrast(2);
+	animation: fadeInInput 1.5s;
+}
+
+#hostNameInputButton {
+	float: right;
+}
+
+#playerList {
+	text-align: center;
 }
