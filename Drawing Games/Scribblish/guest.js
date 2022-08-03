@@ -32,7 +32,8 @@ function initializeGuest() {
 
 	peer.on('error', function (err) {
 		console.log(err)
-		alert('' + err)
+		alert('I can\'t find a host by the name "' + hostName + '"')
+		location.href = page + "#hostName"
 	})
 }
 
@@ -73,12 +74,24 @@ function guestData(data) {
 			playerList = playerList + players[i][0] + "<br>"
 		}
 		document.querySelector("#playerList").innerHTML = playerList
+		let waiter = players[playerPrior][1][waiting]
+		if (document.querySelector("#waiting").style.display == "inherit" && waiter) {
+			if (waiter.constructor == Array) {
+				drawing = waiter
+				loadDrawing("load")
+			}
+			else {
+				document.querySelector("#" + writeTo).innerHTML = waiter
+			}
+			document.querySelector("#waiting").style.display = "none"
+		}
 	}
 	
 	if (data[0] == "Start Game") {
 		playerNumber = data[1]
-		document.querySelector("#lobby").classList.add("hidden")
-		document.querySelector("#caption1").classList.remove("hidden")
+		playerPrior = playerNumber - 1
+		location.href = page + "#caption1"
+		pageChange()
 		console.log("I'm player number " + playerNumber)
 	}
 }

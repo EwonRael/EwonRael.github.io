@@ -42,9 +42,19 @@ h1:hover::before {
 	z-index: -1;
 }
 
+.hide {
+	width: 80%;
+	margin-left: 10%;
+	background-color: #fff;
+	padding: 1px;
+	transform: rotate(-1deg);
+	padding-bottom: 9em;
+	filter: blur(0.7px) contrast(2);
+	animation: fadeInInput 1.5s;
+}
+
 @keyframes fadeIn {
-  0% { color: #fff }
-  100% { color: #8a75a3 }
+  0% { color: transparent }
 }
 
 h2 {
@@ -52,28 +62,6 @@ h2 {
 	color: #8a75a3;
 	background-color: #fff;
 	font-size: 40px;
-}
-
-#joinOrHost {
-	width: 80%;
-	margin-left: 10%;
-	background-color: #fff;
-	padding: 1px;
-	transform: rotate(-1deg);
-	padding-bottom: 9em;
-	filter: blur(0.7px) contrast(2);
-	animation: fadeInInput 1.5s;
-}
-
-#hostName {
-	width: 80%;
-	margin-left: 10%;
-	background-color: #fff;
-	padding: 1px;
-	transform: rotate(-1deg);
-	padding-bottom: 9em;
-	filter: blur(0.7px) contrast(2);
-	animation: fadeInInput 1.5s;
 }
 
 #hostName input {
@@ -127,14 +115,6 @@ button[disabled]{
 	color: #8a75a3;
 }
 
-#joinButton {
-	float: left;
-}
-
-#hostButton {
-	float: right;
-}
-
 @keyframes fadeInInput {
   0% { filter: invert(0.5) brightness(2) blur(0.7px) contrast(2); }
   100% { filter: invert(0) brightness(1) blur(0.7px) contrast(2); }
@@ -145,21 +125,89 @@ button[disabled]{
 	height: 0;
 }
 
-#lobby {
-	width: 80%;
-	margin-left: 10%;
-	background-color: #fff;
-	padding: 1px;
-	transform: rotate(-1deg);
-	padding-bottom: 9em;
-	filter: blur(0.7px) contrast(2);
+#playerList {
+	text-align: center;
+}
+
+h3 {
+	color: #555;
+	font-size: 30px;
+	min-height: 3.6em;
+	font-weight: 400;
+	line-height: 1.2em;
+	background: repeating-linear-gradient(0deg, #fff, #fff 0.2em, #8a75a3 0.2em, #8a75a3 0.3em, #fff 0.3em, #fff 1.2em)
+}
+
+h3:focus {
+	outline: none;
+}
+
+.drawOutline {
+	border: solid #8a75a3 3px;
+	height: 49.44vw;
+	width: calc(80vw - 6px);
+}
+
+#drawSpace {
+	position: absolute;
+	top: calc(13.6vw + 116px);
+	right: 0;
 	animation: fadeInInput 1.5s;
 }
 
-#hostNameInputButton {
+#drawSpace svg {
+	stroke: #555;
+	stroke-width: 0.3; 
+	stroke-linecap: round;
+	width: 100vw;
+	filter: blur(0.05vw) contrast(2);
+}
+
+#drawLoad {
+	position: absolute;
+	top: calc(13.6vw + 116px);
+	right: 0;
+	animation: fadeInInput 1.5s;
+}
+
+#drawLoad svg {
+	stroke: #555;
+	stroke-width: 0.3; 
+	stroke-linecap: round;
+	width: 100vw;
+	filter: blur(0.05vw) contrast(2);
+}
+
+.right {
 	float: right;
 }
 
-#playerList {
+#waiting {
+	position: fixed;
+	background-color: rgba(255,255,255,0.6);
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	display: none;
+}
+
+#waiting h2 {
+	width: calc(80vw - 1em);
+	margin-left: calc(10vw - 3px);
 	text-align: center;
+	padding: 1em 0.5em 1em 0.5em;
+	margin-top: 20vh;
+	border: 3px solid #8a75a3;
+	border-radius: 5px;
+	transform: rotate(0.5deg);
+	filter: blur(0.7px) contrast(2);
+	animation: waiting linear 3s infinite;
+	box-shadow: 0 0 0 #8a75a3;
+}
+
+@keyframes waiting {
+  35% { box-shadow: 3px 0 0 #8a75a3; }
+  50% { box-shadow: 3px 3px 0 #8a75a3; }
+  85% { box-shadow: 0 3px 0 #8a75a3; }
 }

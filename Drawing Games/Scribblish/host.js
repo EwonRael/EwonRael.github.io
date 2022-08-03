@@ -42,8 +42,16 @@ function hostReady() {
 			updatePlayerList(data[1])
 		}
 		
-		if (data == "Let's Play!") {
+		else if (data == "Let's Play!") {
 			startGame()
+		}
+		
+		else {
+			let player = data[0]
+			let lookup = data[1]
+			let content = data[2]
+			players[player][1][lookup] = content
+			updateGroup()
 		}
 
 //END THAT PART
@@ -77,18 +85,30 @@ function updateGroup() {
 			console.log('Connection is closed')
 		}
 	}
+	let waiter = players[playerPrior][1][waiting]
+	if (document.querySelector("#waiting").style.display == "inherit" && waiter) {
+		if (waiter.constructor == Array) {
+			drawing = waiter
+			loadDrawing("load")
+		}
+		else {
+			document.querySelector("#" + writeTo).innerHTML = waiter
+		}
+		document.querySelector("#waiting").style.display = "none"
+	}
 }
 
 function startGame() {
 	for (let i = 0; i < hostConn.length; i++) {
 		if (hostConn[i] && hostConn[i].open) {
 			hostConn[i].send(["Start Game", i + 1])
-			document.querySelector("#lobby").classList.add("hidden")
-			document.querySelector("#caption1").classList.remove("hidden")
+			location.href = page + "#caption1"
+			pageChange()
 			console.log("game start")
 		} else {
 			console.log('Connection is closed')
 		}
 	}
 	console.log("I'm player number " + playerNumber)
+	playerPrior = hostConn.length
 }

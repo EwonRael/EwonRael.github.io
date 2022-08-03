@@ -15,21 +15,78 @@ Made with love by Owen Earl
 </head>
 <body>
 	<h1><a href="..">Scribblish</a></h1>
-	<div id="joinOrHost">
+	<div id="joinOrHost" class="hide">
 		<h2>Would you like to join an exsisting game, or host your own?</h2>
-		<button id="joinButton" onclick="joinButton()">Join</button><button id="hostButton" onclick="hostButton()">Host</button>
+		<button id="joinButton" onclick="joinButton()">Join</button><button id="hostButton" class="right" onclick="hostButton()">Host</button>
 	</div>
-	<div id="hostName" class="hidden">
+	<div id="hostName" class="hidden hide">
 		<h2>Name of Host:
 		<input id="hostNameInput" type="text" autofocus="autofocus" onkeyup="hostNameInputType(event)"></input></h2>
 		<button id="hostNameInputButton" disabled onclick="hostNameSet()">Continue</button>
 	</div>
-	<div id="lobby" class="hidden">
-		<h2>Players:</h2><h2 id="playerList">Owen Earl<br>Joey Joe<br>Joey Joe<br>Joey Joe<br>Joey Joe<br>Joey Joe</h2>
-		<button id="hostNameInputButton" onclick="startGamePlz()">Let&rsquo;s Play!</button>
+	<div id="lobby" class="hidden hide">
+		<h2>Players:</h2><h2 id="playerList">...connecting...</h2>
+		<button id="hostNameInputButton" class="right" onclick="startGamePlz()">Let&rsquo;s Play!</button>
 	</div>
-	<div id="caption1" class="hidden">
-		<h2>The Game is a foot!</h2>
+	<div id="caption1" class="hidden hide">
+		<h2>Write a caption for the next player to draw:</h2>
+		<h3 id="caption1C" contenteditable="true"></h3>
+		<button class="right" onclick="captionB(1)">Next</button>
+	</div>
+	<div id="drawing1" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing1C">A big box of hamburgers being eaten by a sexy snake.</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right" onclick="drawingB(1)">Next</button>
+	</div>
+	<div id="caption2" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption2C" contenteditable="true"></h3>
+		<button class="right" onclick="captionB(2)">Next</button>
+	</div>
+	<div id="drawing2" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing2C">Second Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+	<button class="right" onclick="drawingB(2)">Next</button>
+	</div>
+	<div id="caption3" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption3C" contenteditable="true"></h3>
+		<button class="right" onclick="captionB(3)">Next</button>
+	</div>
+	<div id="drawing3" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing3C">third Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right" onclick="drawingB(3)">Next</button>
+	</div>
+	<div id="caption4" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption4C" contenteditable="true"></h3>
+		<button class="right" onclick="captionB(4)">Next</button>
+	</div>
+	<div id="drawing4" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing4C">fourth Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right" onclick="drawing4B()">Next</button>
+	</div>
+	<div id="drawSpace" class="hidden" onmousedown="drawMousedown = true">
+		<svg id="drawSVG" viewBox="0 0 100 53"></svg>
+	</div>
+	<div id="drawLoad" class="hidden">
+		<svg id="loadSVG" viewBox="0 0 100 53"></svg>
+	</div>
+	<div id="waiting">
+		<h2 id="waitingNote">Waiting for the previous player to finish up...</h2>
 	</div>
 </body>
 </html>
