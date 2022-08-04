@@ -201,9 +201,6 @@ function drawing4B() {
 		conn.send([playerNumber, "drawing4", content])
 	}
 	eraceSVG()
-	loadDrawing("load")
-	location.href = page + "#lobby"
+	location.href = page + "#gallery"
 	pageChange()
-	document.querySelector("#waitingNote").innerHTML = "that's the end of the game this is where the review of the drawings will be but I haven't made that yet!"
-	document.querySelector("#waiting").style.display = "inherit"
 }

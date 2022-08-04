@@ -1,6 +1,6 @@
 function initializeGuest() {
 	// Create own peer object with connection to shared PeerJS server
-	peer = new Peer([peerID + "-drawingGames-d219-46b1-b09c-15c9205cff96"], {debug: 2})
+	peer = new Peer({debug: 2})
 
 	peer.on('open', function (id) {
 		if (peer.id === null) {
@@ -31,9 +31,10 @@ function initializeGuest() {
 	})
 
 	peer.on('error', function (err) {
-		console.log(err)
-		alert('I can\'t find a host by the name "' + hostName + '"')
-		location.href = page + "#hostName"
+		if (err.toString().includes("Could not connect to peer")) {
+			alert('I can\'t find a host by the name "' + hostName + '"')
+			location.href = page + "#hostName"
+		}
 	})
 }
 
@@ -69,9 +70,25 @@ function joinHost() {
 function guestData(data) {
 	if (data[0] == "updateGroup") {
 		players = data[1]
-		playerList = ""
+		let playerList = ""
+		let galleryBox = document.querySelector("#galleryBox")
+		galleryBox.innerHTML = ""
 		for (let i = 0; i < players.length; i++) {
 			playerList = playerList + players[i][0] + "<br>"
+			if (players[i][1].drawing4) {
+				let drw = players[i][1].drawing4
+				let gallery = document.createElement("div")
+				gallery.setAttribute("class", "gallery")
+				let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+				pic.setAttribute("viewBox", "0 0 100 53")
+				for (let i = 0; i < drw.length; i++) {
+					let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+					path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
+					pic.appendChild(path)
+				}
+				gallery.appendChild(pic)
+				galleryBox.appendChild(gallery)
+			}
 		}
 		document.querySelector("#playerList").innerHTML = playerList
 		let waiter = players[playerPrior][1][waiting]

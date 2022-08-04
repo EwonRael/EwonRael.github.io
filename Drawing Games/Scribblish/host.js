@@ -68,7 +68,7 @@ function hostReady() {
 
 function updatePlayerList(newPlayer) {
 	players.push([newPlayer, {caption1: null, drawing1: null, caption2: null, drawing2: null, caption3: null, drawing3: null, caption4: null, drawing4: null}])
-	playerList = ""
+	let playerList = ""
 	for (let i = 0; i < players.length; i++) {
 		playerList = playerList + players[i][0] + "<br>"
 	}
@@ -83,6 +83,24 @@ function updateGroup() {
 			console.log("message signal sent")
 		} else {
 			console.log('Connection is closed')
+		}
+	}
+	let galleryBox = document.querySelector("#galleryBox")
+	galleryBox.innerHTML = ""
+	for (let i = 0; i < players.length; i++) {
+		if (players[i][1].drawing4) {
+			let drw = players[i][1].drawing4
+			let gallery = document.createElement("div")
+			gallery.setAttribute("class", "gallery")
+			let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+			pic.setAttribute("viewBox", "0 0 100 53")
+			for (let i = 0; i < drw.length; i++) {
+				let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+				path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
+				pic.appendChild(path)
+			}
+			gallery.appendChild(pic)
+			galleryBox.appendChild(gallery)
 		}
 	}
 	let waiter = players[playerPrior][1][waiting]

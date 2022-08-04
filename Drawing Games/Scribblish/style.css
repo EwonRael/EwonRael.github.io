@@ -211,3 +211,36 @@ h3:focus {
   50% { box-shadow: 3px 3px 0 #8a75a3; }
   85% { box-shadow: 0 3px 0 #8a75a3; }
 }
+
+.gallery {
+	border: solid #8a75a3 3px;
+	float: left;
+	width: calc(38vw - 6px);
+	height: calc(23.48vw - 6px);
+	margin-bottom: 4vw;
+	transition: box-shadow 0.3s, filter 0.5s;
+	transition-timing-function: ease-in;
+}
+
+.gallery:hover {
+	box-shadow: 3px 3px 0 #8a75a3;
+}
+
+.gallery:active {
+	box-shadow: 1px 1px 0 #8a75a3;
+	transition: box-shadow 0s;
+}
+
+.gallery:nth-child(odd) {
+	margin-right: 4vw;
+}
+
+.gallery svg {
+	stroke: #555;
+	stroke-width: 1; 
+	stroke-linecap: round;
+	transform: rotate(1deg);
+	margin: -1vw -4.8vw 0 -4.7vw;
+}
+
+
