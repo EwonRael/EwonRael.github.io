@@ -18,8 +18,6 @@ let drawing = []
 let waiting = null
 let writeTo = null
 
-name = "Owen Earl"
-
 if (name) {console.log("my name is " + name)} else {location.href = "../index.html"}
 
 function joinButton() {
