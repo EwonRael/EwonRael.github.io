@@ -92,6 +92,7 @@ function updateGroup() {
 			let drw = players[i][1].drawing4
 			let gallery = document.createElement("div")
 			gallery.setAttribute("class", "gallery")
+			gallery.setAttribute("onclick", "loadGallery("+i+")")
 			let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
 			pic.setAttribute("viewBox", "0 0 100 53")
 			for (let i = 0; i < drw.length; i++) {

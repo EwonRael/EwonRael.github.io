@@ -18,6 +18,8 @@ let drawing = []
 let waiting = null
 let writeTo = null
 
+name = "Owen Earl"
+
 if (name) {console.log("my name is " + name)} else {location.href = "../index.html"}
 
 function joinButton() {
@@ -204,3 +206,46 @@ function drawing4B() {
 	location.href = page + "#gallery"
 	pageChange()
 }
+
+function loadGallery(m) {
+	let total = (players.length - 1)
+	let current = m
+	let drw = null
+	function prior() {
+		if (current == 0) {
+			current = total
+		}
+		else {
+			current = (current - 1)
+		}
+	}
+	const removeChilds = (parent) => {
+		while (parent.lastChild) {
+			parent.removeChild(parent.lastChild);
+		}
+	}
+	removeChilds(document.querySelector("#galleryD1"))
+	removeChilds(document.querySelector("#galleryD2"))
+	removeChilds(document.querySelector("#galleryD3"))
+	removeChilds(document.querySelector("#galleryD4"))
+	
+	for (let j = 1; j < 5; j++) {
+		drw = players[current][1]["drawing" + (5 - j)]
+		for (let i = 0; i < drw.length; i++) {
+			let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
+			document.querySelector("#galleryD" + j).appendChild(path)
+		}
+		console.log(current)
+		prior()
+		
+		document.querySelector("#galleryC" + j).innerHTML = players[current][1]["caption" + (5 - j)]
+		console.log(current)
+		prior()
+	}
+	
+	location.href = page + "#galleryItem"
+	pageChange()
+}
+
+

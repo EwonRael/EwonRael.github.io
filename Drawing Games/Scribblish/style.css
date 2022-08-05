@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: "Spartan";
+	overflow-x: hidden;
 }
 
 a {
@@ -237,10 +238,16 @@ h3:focus {
 
 .gallery svg {
 	stroke: #555;
-	stroke-width: 1; 
+	stroke-width: 0.5; 
 	stroke-linecap: round;
 	transform: rotate(1deg);
 	margin: -1vw -4.8vw 0 -4.7vw;
 }
 
-
+#galleryItem div svg {
+	stroke: #555;
+	stroke-width: 0.3; 
+	stroke-linecap: round;
+	transform: rotate(1deg);
+	margin: -1.05em -10.5vw 0 -10vw;
+}
