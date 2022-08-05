@@ -132,19 +132,28 @@ onmouseup = function() {
 	drawMousedown = false
 }
 
+function endTouch() {
+	drawMousedown = false
+	posXold = null
+	posYold = null
+}
+
 window.addEventListener("DOMContentLoaded", function() {
-	let drawSpace = document.querySelector("#drawSpace")
+	let drawSpace = document.querySelector("#drawSVG")
 	drawSpace.addEventListener("touchmove", handleMove)
+	window.addEventListener("touchend", endTouch)
 })
 
 function handleMove(evt) {
 	evt.preventDefault()
 	posX = (evt.changedTouches[0].clientX * 100) / window.innerWidth
 	let posY = ((evt.changedTouches[0].clientY - 116 + window.pageYOffset) * 100) / window.innerWidth - 13.6
-	let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-	path.setAttributeNS(null, 'd', "M " + posX + "," + posY + " " + posXold + "," + posYold);
-	document.querySelector("#drawSVG").appendChild(path)
-	drawing.push([posX,posY,posXold,posYold])
+	if (drawMousedown) {
+		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+		path.setAttributeNS(null, 'd', "M " + posX + "," + posY + " " + posXold + "," + posYold);
+		document.querySelector("#drawSVG").appendChild(path)
+		drawing.push([posX,posY,posXold,posYold])
+	}
 	posXold = posX
 	posYold = posY
 }

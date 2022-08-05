@@ -251,3 +251,18 @@ h3:focus {
 	transform: rotate(1deg);
 	margin: -1.05em -10.5vw 0 -10vw;
 }
+
+#rightblocker {
+	width: 9vw;
+	height: 53vw;
+	position: absolute;
+	z-index: 1;
+	right: 0;
+}
+
+#leftblocker {
+	width: 9vw;
+	height: 53vw;
+	position: absolute;
+	z-index: 1;
+}

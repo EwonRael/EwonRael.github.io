@@ -80,7 +80,8 @@ Made with love by Owen Earl
 		<button class="right" onclick="drawing4B()">Next</button>
 	</div>
 	<div id="drawSpace" class="hidden" onmousedown="drawMousedown = true">
-		<svg id="drawSVG" viewBox="0 0 100 53"></svg>
+		<div id="rightblocker"></div><div id="leftblocker"></div>
+		<svg ontouchstart="drawMousedown = true" id="drawSVG" viewBox="0 0 100 53"></svg>
 	</div>
 	<div id="drawLoad" class="hidden">
 		<svg id="loadSVG" viewBox="0 0 100 53"></svg>
