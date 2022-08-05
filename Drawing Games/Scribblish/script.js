@@ -132,6 +132,23 @@ onmouseup = function() {
 	drawMousedown = false
 }
 
+window.addEventListener("DOMContentLoaded", function() {
+	let drawSpace = document.querySelector("#drawSpace")
+	drawSpace.addEventListener("touchmove", handleMove)
+})
+
+function handleMove(evt) {
+	evt.preventDefault()
+	posX = (evt.changedTouches[0].clientX * 100) / window.innerWidth
+	let posY = ((evt.changedTouches[0].clientY - 116 + window.pageYOffset) * 100) / window.innerWidth - 13.6
+	let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+	path.setAttributeNS(null, 'd', "M " + posX + "," + posY + " " + posXold + "," + posYold);
+	document.querySelector("#drawSVG").appendChild(path)
+	drawing.push([posX,posY,posXold,posYold])
+	posXold = posX
+	posYold = posY
+}
+
 function loadDrawing(m) {
 	for (let i = 0; i < drawing.length; i++) {
 		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
