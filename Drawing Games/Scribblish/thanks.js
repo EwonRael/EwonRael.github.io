@@ -1,6 +1,6 @@
 let page = location.href.split('#')[0]
 let players = []
-let oldGames = localStorage.getItem("drawing-games-old")
+let oldGames = JSON.parse(localStorage.getItem("drawing-games-old"))
 
 function pageChange() {
 	let hide = document.querySelectorAll(".hide")

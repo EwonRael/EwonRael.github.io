@@ -281,12 +281,17 @@ function finishGame() {
 	let oldGames = localStorage.getItem("drawing-games-old")
 	
 	if (oldGames) {
-		localStorage.setItem("drawing-games-old", oldGames.push([getDate(),players]))
+		let parced = JSON.parse(oldGames)
+		parced.push([getDate(),players])
+		localStorage.setItem("drawing-games-old", JSON.stringify(parced))
 	}
 	
 	else {
-		localStorage.setItem("drawing-games-old", [[getDate(),players]])
+		localStorage.setItem("drawing-games-old", JSON.stringify([[getDate(),players]]))
 	}
 	
-	location.href = "thanks.html"
+	var life = JSON.parse(localStorage.getItem("drawing-games-old"))
+	console.log(life)
+	
+	//location.href = "thanks.html"
 }
