@@ -156,6 +156,7 @@ function handleMove(evt) {
 	}
 	posXold = posX
 	posYold = posY
+	drawMousedown = true
 }
 
 function loadDrawing(m) {
