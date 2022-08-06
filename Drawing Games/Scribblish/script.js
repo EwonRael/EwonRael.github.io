@@ -273,4 +273,20 @@ function loadGallery(m) {
 	pageChange()
 }
 
+function getDate() {
+	return new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear()
+}
 
+function finishGame() {
+	let oldGames = localStorage.getItem("drawing-games-old")
+	
+	if (oldGames) {
+		localStorage.setItem("drawing-games-old", oldGames.push([getDate(),players]))
+	}
+	
+	else {
+		localStorage.setItem("drawing-games-old", [[getDate(),players]])
+	}
+	
+	location.href = "thanks.html"
+}

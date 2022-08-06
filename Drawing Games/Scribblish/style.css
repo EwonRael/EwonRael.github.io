@@ -267,3 +267,34 @@ h3:focus {
 	position: absolute;
 	z-index: 1;
 }
+
+.button {
+	text-transform: uppercase;
+	text-align: center;
+	margin-top: 10vh;
+}
+
+.button:hover {
+	transform: rotate(-1deg);
+}
+
+.button:nth-child(4):hover {
+	color: rgb(213, 109, 114);
+}
+
+.button:nth-child(5):hover {
+	color: gray;
+}
+
+#pastGames p {
+	font-size: 20px;
+	padding-left: 150px;
+	cursor: pointer;
+}
+
+#pastGames p.date {
+	font-size: 20px;
+	padding: 0;
+	margin: 0;
+	float: left;
+}
