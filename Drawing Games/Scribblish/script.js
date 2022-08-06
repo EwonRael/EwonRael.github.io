@@ -293,5 +293,5 @@ function finishGame() {
 	var life = JSON.parse(localStorage.getItem("drawing-games-old"))
 	console.log(life)
 	
-	//location.href = "thanks.html"
+	location.href = "thanks.html"
 }
