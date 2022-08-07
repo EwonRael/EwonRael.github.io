@@ -175,7 +175,7 @@ function captionB(m) {
 	let content = document.querySelector("#caption" + m + "C").innerHTML
 	if (isHost) {
 		players[0][1]["caption" + m] = content
-		updateGroup()
+		updateGroup([playerNumber, "caption" + m, content])
 	}
 	else {
 		conn.send([playerNumber, "caption" + m, content])
@@ -196,7 +196,7 @@ function drawingB(m) {
 	let content = drawing
 	if (isHost) {
 		players[0][1]["drawing" + m] = content
-		updateGroup()
+		updateGroup([playerNumber, "drawing" + m, content])
 	}
 	
 	else {
@@ -220,7 +220,7 @@ function drawing4B() {
 	let content = drawing
 	if (isHost) {
 		players[0][1]["drawing4"] = content
-		updateGroup()
+		updateGroup([playerNumber, "drawing4", content])
 	}
 	
 	else {
