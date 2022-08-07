@@ -4,13 +4,11 @@ function initializeGuest() {
 
 	peer.on('open', function (id) {
 		if (peer.id === null) {
-			console.log("something's weird with the IDs");
-			peer.id = lastPeerId;
+			console.log("something's weird with the IDs")
+			peer.id = lastPeerId
 		} else {
-			lastPeerId = peer.id;
+			lastPeerId = peer.id
 		}
-
-		console.log("Peer ID " + peer.id);
 	})
 
 	peer.on('connection', function (c) {
@@ -22,12 +20,12 @@ function initializeGuest() {
 	})
 
 	peer.on('disconnected', function () {
-		console.log("Connection lost. Please reconnect");
+		console.log("Connection lost. Please reconnect")
 	})
 
 	peer.on('close', function() {
 		conn = null;
-		console.log("Connection destroyed");
+		console.log("Connection destroyed")
 	})
 
 	peer.on('error', function (err) {
@@ -50,14 +48,12 @@ function joinHost() {
 	conn = peer.connect(hostID + "-drawingGames-host-d219-46b1-b09c-15c9205cff96", {reliable: true})
 
 	conn.on('open', function () {
-		console.log("Connected to: " + conn.peer)
 		conn.send(["playerName", name]);
+		console.log("connection established!")
 	})
 
 	// Handle incoming data (messages only since this is the signal sender)
 	conn.on('data', function (data) {
-		console.log("Data recieved")
-		console.log(data)
 		guestData(data)
 	})
 

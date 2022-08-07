@@ -110,6 +110,7 @@ function eraceSVG() {
 	removeChilds(document.querySelector("#drawSVG"))
 	removeChilds(document.querySelector("#loadSVG"))
 	drawing = []
+	toggleDrawButtons(false)
 }
 
 onmousemove = function(e){
@@ -120,6 +121,7 @@ onmousemove = function(e){
 		path.setAttributeNS(null, 'd', "M " + posX + "," + posY + " " + posXold + "," + posYold);
 		document.querySelector("#drawSVG").appendChild(path)
 		drawing.push([posX,posY,posXold,posYold])
+		toggleDrawButtons(true)
 	}
 	posXold = posX
 	posYold = posY
@@ -156,6 +158,7 @@ function handleMove(evt) {
 		path.setAttributeNS(null, 'd', "M " + posX + "," + posY + " " + posXold + "," + posYold);
 		document.querySelector("#drawSVG").appendChild(path)
 		drawing.push([posX,posY,posXold,posYold])
+		toggleDrawButtons(true)
 	}
 	posXold = posX
 	posYold = posY
@@ -175,7 +178,6 @@ function captionB(m) {
 	if (isHost) {
 		players[0][1]["caption" + m] = content
 		updateGroup()
-		console.log(players)
 	}
 	else {
 		conn.send([playerNumber, "caption" + m, content])
@@ -194,11 +196,9 @@ function captionB(m) {
 
 function drawingB(m) {
 	let content = drawing
-	console.log(drawing)
 	if (isHost) {
 		players[0][1]["drawing" + m] = content
 		updateGroup()
-		console.log(players)
 	}
 	
 	else {
@@ -220,11 +220,9 @@ function drawingB(m) {
 
 function drawing4B() {
 	let content = drawing
-	console.log(drawing)
 	if (isHost) {
 		players[0][1]["drawing4"] = content
 		updateGroup()
-		console.log(players)
 	}
 	
 	else {
@@ -264,11 +262,9 @@ function loadGallery(m) {
 			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
 			document.querySelector("#galleryD" + j).appendChild(path)
 		}
-		console.log(current)
 		prior()
 		
 		document.querySelector("#galleryC" + j).innerHTML = players[current][1]["caption" + (5 - j)]
-		console.log(current)
 		prior()
 	}
 	
@@ -294,7 +290,29 @@ function finishGame() {
 	}
 	
 	var life = JSON.parse(localStorage.getItem("drawing-games-old"))
-	console.log(life)
 	
 	location.href = "thanks.html"
+}
+
+function buttonEnable(m) {
+	if (m.innerHTML == "<br>") {
+		m.parentNode.querySelector("button").disabled = true
+	}
+	else {
+		m.parentNode.querySelector("button").disabled = false
+	}
+}
+
+function toggleDrawButtons(m) {
+	let buttons = document.querySelectorAll("button.draw")
+	if (m)	{
+		for (let i = 0; i < buttons.length; i++) {
+			buttons[i].disabled = false
+		}
+	}
+	else {
+		for (let i = 0; i < buttons.length; i++) {
+			buttons[i].disabled = true
+		}	
+	}
 }

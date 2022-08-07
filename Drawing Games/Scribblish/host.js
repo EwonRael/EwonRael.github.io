@@ -12,14 +12,11 @@ function initializeHost() {
 		} else {
 			lastPeerId = peer.id
 		}
-
-		console.log("Peer ID " + peer.id)
 		console.log("Awaiting connection...")
 	})
 
 	peer.on('connection', function (c) {
 		hostConn = hostConn.concat(c)
-		console.log("Connected to: " + hostConn[hostConn.length - 1].peer)
 		hostReady()
 	})
 
@@ -33,13 +30,12 @@ function initializeHost() {
 function hostReady() {
 	for (let i = 0; i < hostConn.length; i++) {
 	hostConn[i].on('data', function (data) {
-		console.log("Data recieved")
-		console.log(data)
 		
 //STUFF TO DO WHEN GUESTS SEND DATA TO HOST
 
 		if (data[0] == "playerName") {
 			updatePlayerList(data[1])
+			console.log("connected to " + data[1])
 		}
 		
 		else if (data == "Let's Play!") {
@@ -80,7 +76,6 @@ function updateGroup() {
 	for (let i = 0; i < hostConn.length; i++) {
 		if (hostConn[i] && hostConn[i].open) {
 			hostConn[i].send(["updateGroup", players])
-			console.log("message signal sent")
 		} else {
 			console.log('Connection is closed')
 		}
@@ -123,7 +118,6 @@ function startGame() {
 			hostConn[i].send(["Start Game", i + 1])
 			location.href = page + "#caption1"
 			pageChange()
-			console.log("game start")
 		} else {
 			console.log('Connection is closed')
 		}
