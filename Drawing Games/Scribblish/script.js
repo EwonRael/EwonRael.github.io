@@ -17,6 +17,9 @@ let posYold = 0
 let drawing = []
 let waiting = null
 let writeTo = null
+let screenshot = null
+
+name = "owen"
 
 if (name) {console.log("my name is " + name)} else {location.href = "../index.html"}
 

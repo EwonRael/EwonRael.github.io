@@ -89,6 +89,7 @@ h2 {
 button {
 	border: solid #8a75a3 4px;
 	color: #8a75a3;
+	background-color: white;
 	border-radius: 5px;
 	font-family: "Spartan";
 	font-size: 40px;
@@ -250,7 +251,7 @@ h3:focus {
 	stroke-width: 0.3; 
 	stroke-linecap: round;
 	transform: rotate(1deg);
-	margin: -1.05em -10.5vw 0 -10vw;
+	margin: -1.5vw -10.5vw 0 -10vw;
 }
 
 #rightblocker {
