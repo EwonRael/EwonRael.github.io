@@ -113,6 +113,9 @@ function eraceSVG() {
 
 onmousemove = function(e){
 	posX = (e.clientX * 100) / window.innerWidth
+	if (!!window.chrome) {
+		posX = ((e.clientX + 17) * 100) / window.innerWidth
+	}
 	let posY = ((e.clientY - 116 + window.pageYOffset) * 100) / window.innerWidth - 13.6
 	if (drawMousedown) {
 		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
