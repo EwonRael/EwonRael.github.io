@@ -90,31 +90,29 @@ document.addEventListener('keydown', function(e) {
 		}
 	}
 	else if (code == 8) {
-		if (across) {
-			if (currentselect == 1) {
-				currentselect = 25
-				document.getElementById(1).innerHTML = "&nbsp;"
-				clicked(1)
+		window.setTimeout(function() {
+			declicked(currentselect)
+			if (across) {
+				if (currentselect == 1) {
+					currentselect = 25
+					clicked(currentselect)
+				}
+				else {
+					currentselect = currentselect - 1
+					clicked(currentselect)
+				}
 			}
 			else {
-				currentselect = currentselect - 2
-				declicked(currentselect)
+				if (currentselect < 6) {
+					currentselect = currentselect + 20
+					clicked(currentselect)
+				}
+				else {
+					currentselect = currentselect - 5
+					clicked(currentselect)
+				}
 			}
-		}
-		else {
-			if (currentselect == 5) {
-				currentselect = currentselect - 5
-				declicked(currentselect)		
-			}
-			else if ((Math.trunc(currentselect/5)+1) == 1) {
-				currentselect = currentselect - 5
-				declicked(currentselect)
-			}
-			else {
-				currentselect = currentselect - 10
-				declicked(currentselect)
-			}
-		}
+		},2)
 	}
 	else {
 		progress = true
@@ -132,6 +130,7 @@ function change(i) {
 	square = document.getElementById(i)
 	square.innerHTML = square.innerHTML.replace("<br>","").replace("&nbsp;"," ").slice(0, 1).toLowerCase()
 	if (square.innerHTML == "") {
+		progress = false
 		square.innerHTML = "&nbsp;"
 	}
 	else if (square.innerHTML == " ") {
@@ -140,9 +139,11 @@ function change(i) {
 	else if (square.innerHTML == "&lt;") {
 		square.innerHTML = "&nbsp;"
 	}
-	progressByOne()
-	checkCrossword()
-	progress = false
+	else if (progress) {
+		progressByOne()
+		checkCrossword()
+		progress = false
+	}
 }
 
 function checkCrossword() {
