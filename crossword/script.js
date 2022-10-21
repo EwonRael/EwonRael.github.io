@@ -48,6 +48,7 @@ function clicked(i){
 }
 
 document.addEventListener('keydown', function(e) {
+	window.setTimeout(function() {
 	var code = e.which || e.keyCode;
 	if (code == '38') {
 		if (currentselect < 6) {
@@ -90,7 +91,6 @@ document.addEventListener('keydown', function(e) {
 		}
 	}
 	else if (code == 8) {
-		window.setTimeout(function() {
 			declicked(currentselect)
 			if (across) {
 				if (currentselect == 1) {
@@ -112,11 +112,11 @@ document.addEventListener('keydown', function(e) {
 					clicked(currentselect)
 				}
 			}
-		},2)
 	}
 	else {
 		progress = true
 	}
+	},2)
 })
 
 function declicked(i) {
