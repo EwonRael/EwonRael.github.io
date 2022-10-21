@@ -1,8 +1,18 @@
+let mastersolved = localStorage.getItem("crossword-mastersolved")
 let lastselect = 0
 let currentselect = 0
 let across = true
 let progress = true
 let solved = false
+
+if (mastersolved) {
+	mastersolved = JSON.parse(mastersolved)
+}
+else {
+	mastersolved = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+}
+
+console.log(mastersolved[crossnum])
 
 function toggle(i) {
 	if (lastselect == i){
@@ -153,11 +163,23 @@ function checkCrossword() {
 	if (solved == false) {
 		let current = ""
 		for (let i = 1; i < 26; i++) {
-			current = current + document.getElementById(i).innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
+			let square = document.getElementById(i)
+			current = current + square.innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
 		}
 		if (current == goal) {
+			for (let i = 1; i < 26; i++) {
+				let square = document.getElementById(i)
+				square.contentEditable = false
+				square.classList.add("solved")
+			}
+			for (let i = 1; i < 6; i++) {
+				document.getElementById("across").children[i].classList.add("solved")
+				document.getElementById("down").children[i].classList.add("solved")
+			}
 			alert("You solved the crossword!")
-			
+			mastersolved[crossnum] = true
+			console.log(mastersolved)
+			localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 		}
 	}
 }
@@ -196,6 +218,21 @@ function progressByOne() {
 		else {
 			currentselect = currentselect + 5
 			clicked(currentselect)
+		}
+	}
+}
+
+window.onload = function() {
+	if (mastersolved[crossnum]) {
+		for (let i = 1; i < 26; i++) {
+			let square = document.getElementById(i)
+			square.contentEditable = false
+			square.innerHTML = goal[i-1]
+			square.classList.add("solved")
+		}
+		for (let i = 1; i < 6; i++) {
+			document.getElementById("across").children[i].classList.add("solved")
+			document.getElementById("down").children[i].classList.add("solved")
 		}
 	}
 }

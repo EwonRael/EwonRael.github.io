@@ -43,6 +43,10 @@ table#crossword td {
 	height: 20%;
 }
 
+table#crossword td:nth-child(1n).solved {
+	background-color: #c6fe9a;
+}
+
 td::selection {
 	background: none;
 }
@@ -176,6 +180,11 @@ td::-moz-selection {
 	box-shadow: -5px 0 #cce5ff, -43px 30px #fffcf7, -43px 0 #fff5b1;
 }
 
+#across p:nth-child(n).solved, #down p:nth-child(n).solved {
+	background-color: #c6fe9a;
+	box-shadow: -5px 0 #c6fe9a, -43px 30px #fffcf7, -43px 0 #c6fe9a;
+}
+
 @media only screen and (max-width: 750px) {
 	#across {
 		margin-left: 1em;
@@ -198,4 +207,9 @@ td::-moz-selection {
 		margin-top: calc(-4.5vw + 19px);
 		font-size: 30px;
 	}
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
 }
