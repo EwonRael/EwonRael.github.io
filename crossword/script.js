@@ -2,6 +2,7 @@ let lastselect = 0
 let currentselect = 0
 let across = true
 let progress = true
+let solved = false
 
 function toggle(i) {
 	if (lastselect == i){
@@ -48,6 +49,7 @@ function clicked(i){
 }
 
 document.addEventListener('keydown', function(e) {
+	checkCrossword()
 	window.setTimeout(function() {
 	var code = e.which || e.keyCode;
 	if (code == '38') {
@@ -142,19 +144,20 @@ function change(i) {
 	}
 	else if (progress) {
 		progressByOne()
-		checkCrossword()
 		progress = false
 	}
 }
 
 function checkCrossword() {
-	let current = ""
-	for (let i = 1; i < 26; i++) {
-		current = current + document.getElementById(i).innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
-	}
-	if (current == goal) {
-		alert("You solved the crossword!")
-		
+	if (solved == false) {
+		let current = ""
+		for (let i = 1; i < 26; i++) {
+			current = current + document.getElementById(i).innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
+		}
+		if (current == goal) {
+			alert("You solved the crossword!")
+			
+		}
 	}
 }
 
