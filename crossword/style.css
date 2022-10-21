@@ -1,0 +1,201 @@
+@font-face {
+	font-family: "Drafting";
+	src: url("https://indestructibletype.com/Drafting/Drafting[wght].ttf") format("truetype");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Drafting";
+	src: url("https://indestructibletype.com/Drafting/Drafting-Italic[wght].ttf") format("truetype");
+	font-style: italic;
+}
+
+body {
+	background-color: #fffcf7;
+	color: #15141e;
+	font-family: Drafting;
+}
+
+h1 {
+	text-align: center;
+	text-transform: uppercase;
+	font-weight: 600;
+}
+
+table#crossword {
+	border-collapse: collapse;
+	width: 500px;
+	height: 500px;
+	box-shadow: 6px 6px #15141e;
+	margin: auto;
+	margin-top: 50px;
+	margin-bottom: 50px;
+}
+
+table#crossword td {
+	border: 2px solid #15141e;
+	text-align: center;
+	text-transform: lowercase;
+	font-variant: small-caps;
+	font-size: 70px;
+	font-weight: 350;
+	width: 20%;
+	height: 20%;
+}
+
+td::selection {
+	background: #ff6e00;
+}
+
+td::-moz-selection {
+	background: none;
+}
+
+#crossword td:focus, #crossword.down1 td:nth-child(1n):focus, #crossword.down2 td:nth-child(1n):focus, #crossword.down3 td:nth-child(1n):focus, #crossword.down4 td:nth-child(1n):focus, #crossword.down0 td:nth-child(1n):focus {
+	background-color: #fff5b1;
+	outline: none;
+}
+
+#crossword.across1 tr:nth-child(1), #crossword.across2 tr:nth-child(2), #crossword.across3 tr:nth-child(3), #crossword.across4 tr:nth-child(4), #crossword.across5 tr:nth-child(5), #crossword.down1 td:nth-child(1), #crossword.down2 td:nth-child(2), #crossword.down3 td:nth-child(3), #crossword.down4 td:nth-child(4), #crossword.down0 td:nth-child(5) {
+	background-color: #cce5ff;
+}
+
+#crossword tr:nth-child(1) :nth-child(1)::before {
+	content: "\00B9";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(1) :nth-child(2)::before {
+	content: "\00B2";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(1) :nth-child(3)::before {
+	content: "\00B3";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(1) :nth-child(4)::before {
+	content: "\2074";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(1) :nth-child(5)::before {
+	content: "\2075";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(2) :nth-child(1)::before {
+	content: "\2076";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(3) :nth-child(1)::before {
+	content: "\2077";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(4) :nth-child(1)::before {
+	content: "\2078";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#crossword tr:nth-child(5) :nth-child(1)::before {
+	content: "\2079";
+	float: left;
+	position: absolute;
+	font-size: 40px;
+	margin-top: -10px;
+	margin-left: -25px;
+	font-weight: 450;
+}
+
+#across, #down {
+	width: 264px;
+	float: left;
+	font-size: 20px;
+	line-height: 1.5em;
+	padding-left: 36px;
+	margin: 1em;
+}
+
+#across {
+	margin-left: calc(50vw - 300px);
+}
+
+#across p, #down p {
+	width: 264px;
+	margin: auto;
+	margin-top: 0;
+	margin-bottom: 0;
+	text-indent: -36px;
+}
+
+#across.across1 p:nth-child(2), #across.across2 p:nth-child(3), #across.across3 p:nth-child(4), #across.across4 p:nth-child(5), #across.across5 p:nth-child(6), #down.down1 p:nth-child(2), #down.down2 p:nth-child(3), #down.down3 p:nth-child(4), #down.down4 p:nth-child(5), #down.down0 p:nth-child(6) {
+	background-color: #cce5ff;
+	box-shadow: -5px 0 #cce5ff, -43px 30px #fffcf7, -43px 0 #fff5b1;
+}
+
+@media only screen and (max-width: 750px) {
+	#across {
+		margin-left: 1em;
+	}
+	#across, #down {
+		width: inherit;
+	}
+	#across p, #down p {
+		min-width: calc(100vw - 90px);
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	table#crossword {
+		width: calc(100vw - 90px);
+		height: calc(100vw - 90px);
+	}
+	#crossword tr:nth-child(n) :nth-child(n)::before{
+		margin-left: calc(-10vw + 33px);
+		margin-top: calc(-4.5vw + 19px);
+		font-size: 30px;
+	}
+}
