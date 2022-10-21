@@ -49,7 +49,6 @@ function clicked(i){
 }
 
 document.addEventListener('keydown', function(e) {
-	checkCrossword()
 	window.setTimeout(function() {
 	var code = e.which || e.keyCode;
 	if (code == '38') {
@@ -146,6 +145,8 @@ function change(i) {
 		progressByOne()
 		progress = false
 	}
+	checkCrossword()
+	clicked(currentselect)
 }
 
 function checkCrossword() {
