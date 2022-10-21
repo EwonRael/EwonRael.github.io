@@ -1,6 +1,7 @@
 let lastselect = 0
 let currentselect = 0
 let across = true
+let progress = true
 
 function toggle(i) {
 	if (lastselect == i){
@@ -115,6 +116,9 @@ document.addEventListener('keydown', function(e) {
 			}
 		}
 	}
+	else {
+		progress = true
+	}
 })
 
 function declicked(i) {
@@ -136,6 +140,34 @@ function change(i) {
 	else if (square.innerHTML == "&lt;") {
 		square.innerHTML = "&nbsp;"
 	}
+	progressByOne()
+	checkCrossword()
+	progress = false
+}
+
+function checkCrossword() {
+	let current = ""
+	for (let i = 1; i < 26; i++) {
+		current = current + document.getElementById(i).innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
+	}
+	if (current == goal) {
+		alert("You solved the crossword!")
+		
+	}
+}
+
+function pclick(i, acr) {
+	if (acr) {
+		across = true
+		clicked(i)
+	}
+	else {
+		across = false
+		clicked(i)
+	}
+}
+
+function progressByOne() {
 	if (across) {
 		if (currentselect == 25) {
 			currentselect = 1
@@ -159,28 +191,5 @@ function change(i) {
 			currentselect = currentselect + 5
 			clicked(currentselect)
 		}
-	}
-	checkCrossword()
-}
-
-function checkCrossword() {
-	let current = ""
-	for (let i = 1; i < 26; i++) {
-		current = current + document.getElementById(i).innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
-	}
-	if (current == goal) {
-		alert("You solved the crossword!")
-		
-	}
-}
-
-function pclick(i, acr) {
-	if (acr) {
-		across = true
-		clicked(i)
-	}
-	else {
-		across = false
-		clicked(i)
 	}
 }
