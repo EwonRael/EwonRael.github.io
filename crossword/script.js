@@ -30,21 +30,21 @@ function clicked(i){
 	}
 	square = document.getElementById(i)
 	window.setTimeout(function() {
-        var sel, range;
-        if (window.getSelection && document.createRange) {
-            range = document.createRange();
-            range.selectNodeContents(square);
-            sel = window.getSelection();
-            sel.removeAllRanges();
-            sel.addRange(range);
-        } else if (document.body.createTextRange) {
-            range = document.body.createTextRange();
-            range.moveToElementText(square);
-            range.select();
-        }
-    }, 1);
-    lastselect = currentselect
-    currentselect = i
+		var sel, range;
+		if (window.getSelection && document.createRange) {
+			range = document.createRange();
+			range.selectNodeContents(square);
+			sel = window.getSelection();
+			sel.removeAllRanges();
+			sel.addRange(range);
+		} else if (document.body.createTextRange) {
+			range = document.body.createTextRange();
+			range.moveToElementText(square);
+			range.select();
+		}
+	}, 1);
+	lastselect = currentselect
+	currentselect = i
 }
 
 document.addEventListener('keydown', function(e) {
@@ -120,6 +120,7 @@ document.addEventListener('keydown', function(e) {
 })
 
 function declicked(i) {
+	window.focus()
 	document.getElementById("crossword").classList.remove("across" + (Math.trunc((i-1)/5)+1))
 	document.getElementById("across").classList.remove("across" + (Math.trunc((i-1)/5)+1))
 	document.getElementById("crossword").classList.remove("down" + (i%5))
