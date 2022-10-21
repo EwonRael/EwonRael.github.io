@@ -44,7 +44,7 @@ table#crossword td {
 }
 
 td::selection {
-	background: #ff6e00;
+	background: none;
 }
 
 td::-moz-selection {
