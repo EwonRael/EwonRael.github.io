@@ -185,30 +185,6 @@ td::-moz-selection {
 	box-shadow: -5px 0 #c6fe9a, -43px 30px #fffcf7, -43px 0 #c6fe9a;
 }
 
-@media only screen and (max-width: 750px) {
-	#across {
-		margin-left: 1em;
-	}
-	#across, #down {
-		width: inherit;
-	}
-	#across p, #down p {
-		min-width: calc(100vw - 90px);
-	}
-}
-
-@media only screen and (max-width: 550px) {
-	table#crossword {
-		width: calc(100vw - 90px);
-		height: calc(100vw - 90px);
-	}
-	#crossword tr:nth-child(n) :nth-child(n)::before{
-		margin-left: calc(-10vw + 33px);
-		margin-top: calc(-4.5vw + 19px);
-		font-size: 30px;
-	}
-}
-
 a {
 	color: inherit;
 	text-decoration: none;
@@ -246,4 +222,36 @@ table#crosswordPicker td:hover {
 	margin: auto;
 	margin-top: 0;
 	margin-bottom: 0;
+}
+
+@media only screen and (max-width: 750px) {
+	#across, #explain {
+		margin-left: 1em;
+	}
+	#across, #down, #explain {
+		width: inherit;
+	}
+	#across p, #down p, #explain p {
+		width: inherit;
+		min-width: calc(100vw - 90px);
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	table#crosswordPicker {
+		width: calc(100vw - 90px);
+		height: calc(100vw - 90px);
+	}
+	table#crosswordPicker td:nth-child(n) {
+		font-size: 8vw;
+	}
+	table#crossword:nth-child(n) {
+		width: calc(100vw - 90px);
+		height: calc(100vw - 90px);
+	}
+	#crossword tr:nth-child(n) :nth-child(n)::before{
+		margin-left: calc(-10vw + 33px);
+		margin-top: calc(-4.5vw + 19px);
+		font-size: 30px;
+	}
 }
