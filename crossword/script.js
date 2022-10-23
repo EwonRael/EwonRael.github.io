@@ -143,13 +143,13 @@ function change(i) {
 	square.innerHTML = square.innerHTML.replace("<br>","").replace("&nbsp;"," ").slice(0, 1).toLowerCase()
 	if (square.innerHTML == "") {
 		progress = false
-		square.innerHTML = "&nbsp;"
+		square.innerHTML = "&emsp;"
 	}
 	else if (square.innerHTML == " ") {
-		square.innerHTML = "&nbsp;"
+		square.innerHTML = "&emsp;"
 	}
 	else if (square.innerHTML == "&lt;") {
-		square.innerHTML = "&nbsp;"
+		square.innerHTML = "&emsp;"
 	}
 	else if (progress) {
 		progressByOne()

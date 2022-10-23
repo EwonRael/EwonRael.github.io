@@ -36,7 +36,8 @@ table#crossword td {
 	border: 2px solid #15141e;
 	text-align: center;
 	text-transform: lowercase;
-	font-variant: small-caps;
+	font-feature-settings: "smcp" on;
+	width: 0;
 	font-size: 70px;
 	font-weight: 350;
 	width: 20%;
