@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>5x5 crossword 04</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script>let goal = "jiffyazuremaniaeagerskids"; let crossnum = 3</script>
+		<script src="script.js"></script>
+		<link rel="shortcut icon" href="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/Favicon.png">
+		<link rel="icon" type="../image/png" href="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/Favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+		<meta property="og:title" content="5x5 crossword 04" />
+		<meta property="og:description" content="The fourth five-by-five crossword in a series of twenty-five." />
+		<meta property="og:image" content="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/preview.png" />
+	</head>
+	<body>
+		<h1><a href="index.html">square crosswords</a></h1>
+		<table id="crossword">
+			<tr>
+				<td contenteditable="true" id="1" onclick="toggle(1)" onfocus="clicked(1)" onfocusout="declicked(1)" oninput="change(1)">&emsp;</td>
+				<td contenteditable="true" id="2" onclick="toggle(2)" onfocus="clicked(2)" onfocusout="declicked(2)" oninput="change(2)">&emsp;</td>
+				<td contenteditable="true" id="3" onclick="toggle(3)" onfocus="clicked(3)" onfocusout="declicked(3)" oninput="change(3)">&emsp;</td>
+				<td contenteditable="true" id="4" onclick="toggle(4)" onfocus="clicked(4)" onfocusout="declicked(4)" oninput="change(4)">&emsp;</td>
+				<td contenteditable="true" id="5" onclick="toggle(5)" onfocus="clicked(5)" onfocusout="declicked(5)" oninput="change(5)">&emsp;</td>
+			</tr>
+			<tr>
+				<td contenteditable="true" id="6" onclick="toggle(6)" onfocus="clicked(6)" onfocusout="declicked(6)" oninput="change(6)">&emsp;</td>
+				<td contenteditable="true" id="7" onclick="toggle(7)" onfocus="clicked(7)" onfocusout="declicked(7)" oninput="change(7)">&emsp;</td>
+				<td contenteditable="true" id="8" onclick="toggle(8)" onfocus="clicked(8)" onfocusout="declicked(8)" oninput="change(8)">&emsp;</td>
+				<td contenteditable="true" id="9" onclick="toggle(9)" onfocus="clicked(9)" onfocusout="declicked(9)" oninput="change(9)">&emsp;</td>
+				<td contenteditable="true" id="10" onclick="toggle(10)" onfocus="clicked(10)" onfocusout="declicked(10)" oninput="change(10)">&emsp;</td>
+			</tr>
+			<tr>
+				<td contenteditable="true" id="11" onclick="toggle(11)" onfocus="clicked(11)" onfocusout="declicked(11)" oninput="change(11)">&emsp;</td>
+				<td contenteditable="true" id="12" onclick="toggle(12)" onfocus="clicked(12)" onfocusout="declicked(12)" oninput="change(12)">&emsp;</td>
+				<td contenteditable="true" id="13" onclick="toggle(13)" onfocus="clicked(13)" onfocusout="declicked(13)" oninput="change(13)">&emsp;</td>
+				<td contenteditable="true" id="14" onclick="toggle(14)" onfocus="clicked(14)" onfocusout="declicked(14)" oninput="change(14)">&emsp;</td>
+				<td contenteditable="true" id="15" onclick="toggle(15)" onfocus="clicked(15)" onfocusout="declicked(15)" oninput="change(15)">&emsp;</td>
+			</tr>
+			<tr>
+				<td contenteditable="true" id="16" onclick="toggle(16)" onfocus="clicked(16)" onfocusout="declicked(16)" oninput="change(16)">&emsp;</td>
+				<td contenteditable="true" id="17" onclick="toggle(17)" onfocus="clicked(17)" onfocusout="declicked(17)" oninput="change(17)">&emsp;</td>
+				<td contenteditable="true" id="18" onclick="toggle(18)" onfocus="clicked(18)" onfocusout="declicked(18)" oninput="change(18)">&emsp;</td>
+				<td contenteditable="true" id="19" onclick="toggle(19)" onfocus="clicked(19)" onfocusout="declicked(19)" oninput="change(19)">&emsp;</td>
+				<td contenteditable="true" id="20" onclick="toggle(20)" onfocus="clicked(20)" onfocusout="declicked(20)" oninput="change(20)">&emsp;</td>
+			</tr>
+			<tr>
+				<td contenteditable="true" id="21" onclick="toggle(21)" onfocus="clicked(21)" onfocusout="declicked(21)" oninput="change(21)">&emsp;</td>
+				<td contenteditable="true" id="22" onclick="toggle(22)" onfocus="clicked(22)" onfocusout="declicked(22)" oninput="change(22)">&emsp;</td>
+				<td contenteditable="true" id="23" onclick="toggle(23)" onfocus="clicked(23)" onfocusout="declicked(23)" oninput="change(23)">&emsp;</td>
+				<td contenteditable="true" id="24" onclick="toggle(24)" onfocus="clicked(24)" onfocusout="declicked(24)" oninput="change(24)">&emsp;</td>
+				<td contenteditable="true" id="25" onclick="toggle(25)" onfocus="clicked(25)" onfocusout="declicked(25)" oninput="change(25)">&emsp;</td>
+			</tr>
+		</table>
+		<div id="across">
+			<p><b>&emsp;&emsp;&emsp;Across</b></p>
+			<p onclick="pclick(1, true)">1.&emsp;A moment, not a brand of peanut butter.</p>
+			<p onclick="pclick(6, true)">6.&emsp;The color of a cloudless sky.</p>
+			<p onclick="pclick(11, true)">7.&emsp;When sports makes you too excited.</p>
+			<p onclick="pclick(16, true)">8.&emsp;When you are excitedly anxious, maybe because of sports.</p>
+			<p onclick="pclick(21, true)">9.&emsp;Multiple marks of car tires.</p>
+		</div>
+		<div id="down">
+			<p><b>&emsp;&emsp;&emsp;Down</b></p>
+			<p onclick="pclick(1, false)">1.&emsp;Last name, <i>first name</i> last name.</p>
+			<p onclick="pclick(2, false)">2.&emsp;First word of the only organization training, equipping, and coordinating volunteer water quality monitors on a national scale.</p>
+			<p onclick="pclick(3, false)">3.&emsp;They will make you healthy, sick, or high.</p>
+			<p onclick="pclick(4, false)">4.&emsp;Eggs and ham</p>
+			<p onclick="pclick(5, false)">5.&emsp;Multiple Annus</p>
+		</div>
+	</body>
+</html>
+
