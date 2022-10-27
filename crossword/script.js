@@ -4,6 +4,7 @@ let currentselect = 0
 let across = true
 let progress = true
 let solved = false
+let starttime = 0
 
 if (mastersolved) {
 	mastersolved = JSON.parse(mastersolved)
@@ -56,6 +57,10 @@ function clicked(i){
 	}, 1);
 	lastselect = currentselect
 	currentselect = i
+	if (starttime == 0) {
+		starttime = new Date().getTime()
+		console.log(starttime)
+	}
 }
 
 document.addEventListener('keydown', function(e) {
@@ -176,10 +181,21 @@ function checkCrossword() {
 				document.getElementById("across").children[i].classList.add("solved")
 				document.getElementById("down").children[i].classList.add("solved")
 			}
-			alert("You solved the crossword!")
+			document.getElementById("solved").classList.remove("invisable")
 			mastersolved[crossnum] = true
 			console.log(mastersolved)
 			localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
+			let seconds = Math.round((new Date().getTime() - starttime) / 1000)
+			if (seconds < 61) {
+				document.getElementById("timer").innerHTML = "It took you " + seconds + " seconds!"
+			}
+			else if (seconds < 120) {
+				console.log(seconds)
+				document.getElementById("timer").innerHTML = "It took you 1 minute and " + seconds%60 + " seconds!"
+			}
+			else {
+				document.getElementById("timer").innerHTML = "It took you " + Math.floor(seconds/60) + " minutes and " + seconds%60 + " seconds!"
+			}
 		}
 	}
 }
@@ -234,5 +250,23 @@ window.onload = function() {
 			document.getElementById("across").children[i].classList.add("solved")
 			document.getElementById("down").children[i].classList.add("solved")
 		}
+		document.getElementById("solved").classList.remove("invisable")
 	}
+}
+
+function redo() {
+	starttime = 0
+	for (let i = 1; i < 6; i++) {
+		document.getElementById("across").children[i].classList.remove("solved")
+		document.getElementById("down").children[i].classList.remove("solved")
+	}
+	for (let i = 1; i < 26; i++) {
+		let square = document.getElementById(i)
+		square.contentEditable = true
+		square.innerHTML = "&emsp;"
+		square.classList.remove("solved")
+	}
+	document.getElementById("solved").classList.add("invisable")
+	mastersolved[crossnum] = false
+	localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 }

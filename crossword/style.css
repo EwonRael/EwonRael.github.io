@@ -225,6 +225,53 @@ table#crosswordPicker td:hover {
 	margin-bottom: 0;
 }
 
+#solved {
+	background-color: rgba(255,252,247,0.5);
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+}
+
+#solved div {
+	background-color: #fffcf7;
+	box-shadow: 6px 6px #15141e;
+	border: 2px solid #15141e;
+	text-align: center;
+	font-size: 20px;
+	line-height: 1.5em;
+	width: 400px;
+	margin: auto;
+	margin-top: 30vh;
+}
+
+.invisable {
+	display: none;
+}
+
+button {
+	outline: none;
+	border: 2px solid #15141e;
+	box-shadow: 0px 0px #15141e;
+	background-color: transparent;
+	font-size: 20px;
+	margin: 1em;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	transition: box-shadow 0.3s;
+	transition-timing-function: ease-out;
+}
+
+button:hover {
+	box-shadow: 3px 3px #15141e;
+}
+
+button:active {
+	box-shadow: 0px 0px #15141e;
+	transition: box-shadow 0s;
+}
+
 @media only screen and (max-width: 750px) {
 	#across, #explain {
 		margin-left: 1em;
@@ -254,5 +301,8 @@ table#crosswordPicker td:hover {
 		margin-left: calc(-10vw + 33px);
 		margin-top: calc(-4.5vw + 19px);
 		font-size: 30px;
+	}
+	#solved div {
+		width: 70vw;
 	}
 }
