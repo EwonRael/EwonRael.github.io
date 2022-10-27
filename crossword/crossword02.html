@@ -67,6 +67,14 @@
 			<p onclick="pclick(4, false)">4.&emsp;It&rsquo;s better than a trick!</p>
 			<p onclick="pclick(5, false)">5.&emsp;Something I am doing with dead batteries</p>
 		</div>
+		<div id="solved" class="invisable">
+			<div>
+			<p><b>You solved the crossword!</b></p>
+			<p id="timer"></p>
+			<button onclick="redo()">redo</button>
+			<button onclick='document.getElementById("solved").classList.add("invisable")'>admire</button>
+			</div>
+		</div>
 	</body>
 </html>
 
