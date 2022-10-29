@@ -1,0 +1,119 @@
+<!--
+Made with love by Owen Earl
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Captioner</title>
+	<link rel='stylesheet' href='style.css'/>
+	<link rel='stylesheet' href='../fonts/fonts.css'/>
+	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+	<script src="script.js"></script>
+	<script src="host.js"></script>
+	<script src="guest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1><a href="..">Captioner</a></h1>
+	<div id="joinOrHost" class="hide">
+		<h2>Would you like to join an exsisting game or host your own?</h2>
+		<button id="joinButton" onclick="joinButton()">Join</button><button id="hostButton" class="right" onclick="hostButton()">Host</button>
+	</div>
+	<div id="hostName" class="hidden hide">
+		<h2>Name of Host:
+		<input id="hostNameInput" type="text" autofocus="autofocus" onkeyup="hostNameInputType(event)"></input></h2>
+		<button id="hostNameInputButton" disabled onclick="hostNameSet()">Continue</button>
+	</div>
+	<div id="lobby" class="hidden hide">
+		<h2>Players:</h2><h2 id="playerList">...connecting...</h2>
+		<button id="hostNameInputButton" class="right" onclick="startGamePlz()">Let&rsquo;s Play!</button>
+	</div>
+	<div id="caption1" class="hidden hide">
+		<h2>Write a caption for the next player to draw:</h2>
+		<h3 id="caption1C" onkeyup="buttonEnable(this)" contenteditable="true"></h3>
+		<button class="right" disabled onclick="captionB(1)">Next</button>
+	</div>
+	<div id="drawing1" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing1C">A big box of hamburgers being eaten by a sexy snake.</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" disabled onclick="drawingB(1)">Next</button>
+	</div>
+	<div id="caption2" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption2C" onkeyup="buttonEnable(this)" contenteditable="true"></h3>
+		<button class="right" disabled onclick="captionB(2)">Next</button>
+	</div>
+	<div id="drawing2" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing2C">Second Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" onclick="drawingB(2)">Next</button>
+	</div>
+	<div id="caption3" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption3C" onkeyup="buttonEnable(this)" contenteditable="true"></h3>
+		<button class="right" disabled onclick="captionB(3)">Next</button>
+	</div>
+	<div id="drawing3" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing3C">third Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" onclick="drawingB(3)">Next</button>
+	</div>
+	<div id="caption4" class="hidden hide">
+		<h2>Caption:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="caption4C" onkeyup="buttonEnable(this)" contenteditable="true"></h3>
+		<button class="right" disabled onclick="captionB(4)">Next</button>
+	</div>
+	<div id="drawing4" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="drawing4C">fourth Caption... Heyo!</h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" onclick="drawing4B()">Next</button>
+	</div>
+	<div id="drawSpace" class="hidden" onmousedown="drawMousedown = true">
+		<div id="rightblocker"></div><div id="leftblocker"></div>
+		<svg id="drawSVG" viewBox="0 0 100 53"></svg>
+	</div>
+	<div id="drawLoad" class="hidden">
+		<svg id="loadSVG" viewBox="0 0 100 53"></svg>
+	</div>
+	<div id="waiting">
+		<h2 id="waitingNote">Waiting for the previous player to finish up...</h2>
+	</div>
+	<div id="gallery" class="hidden hide">
+		<h2>Gallery</h2>
+		<div id="galleryBox"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+		<button class="right" onclick="finishGame()">Finished!</button>
+	</div>
+	<div id="galleryItem" class="hidden hide">
+		<div class="drawOutline">
+			<svg id="galleryD1" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryC1"></h3><br>
+		<div class="drawOutline">
+			<svg id="galleryD2" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryC2"></h3><br>
+		<div class="drawOutline">
+			<svg id="galleryD3" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryC3"></h3><br>
+		<div class="drawOutline">
+			<svg id="galleryD4" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryC4"></h3>
+		
+		<button id="galleryBack" class="right" onclick="history.back()">Back to Gallery</button>
+	</div>
+</body>
+</html>
