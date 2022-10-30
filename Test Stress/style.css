@@ -1,0 +1,180 @@
+body {
+	font-family: "BSans", sans-serif;
+	padding: 40px;
+	max-width: 1000px;
+	margin: auto;
+	counter-reset: section;
+}
+
+h1 {
+	font-family: "BSerif", serif;
+	text-align: center;
+	font-size: 50px;
+	margin-top: 1.5em;
+	margin-bottom: 2em;
+}
+
+h2 {
+	font-family: "BSerif", serif;
+	text-align: center;
+	font-size: 30px;
+}
+
+h3 {
+	font-family: "Condensed", serif;
+	font-size: 20px;
+	margin: 0;
+}
+
+#form {
+	font-family: "Condensed", serif;
+	text-align: center;
+	font-size: 30px;
+	margin-top: 2em;
+	margin-bottom: 4em;
+}
+
+#directions {
+	column-count: 2;
+	column-gap: 35px;
+	margin: 0;
+	margin-top: 1em;
+}
+
+#directions p {
+	margin: none;
+	margin-top: 0;
+	margin-bottom: 1.5em;
+	padding: none;
+	line-height: 1.5em;
+	font-size: 20px;
+	text-align: justify;
+	letter-spacing: 1px;
+	text-indent: 60px;
+}
+
+#copyright {
+	margin-top: 100px;
+	width: 70%;
+	font-size: 14px;
+}
+
+.warnbox {
+	font-weight: 700;
+	border: 2px solid black;
+	padding: 1em;
+	width: 66%;
+	margin: auto;
+	font-size: 20px;
+	margin-top: 4em;
+}
+
+a {
+	font-weight: bold;
+}
+
+.hidden {
+	display: none;
+}
+
+#timer {
+	background-color: black;
+	max-width: 1000px;
+	width: calc(100vw - 80px);
+	position: fixed;
+	top: 30px;
+	outline: white solid 10px;
+	z-index: 1;
+}
+
+#timer h1 {
+	margin: 0;
+	padding: 0;
+	line-height: 0.8;
+	margin-bottom: 5px;
+	color: white;
+	font-family: "BSans", sans-serif;
+	text-align: center;
+}
+
+.coll {
+	width: 50%;
+	font-family: "BSerif", serif;
+	font-size: 20px;
+	line-height: 2em;
+	float: left;
+}
+
+.coll p {
+	text-indent: 60px;
+	width: 90%;
+	font-weight: 400;
+}
+
+.coll p u::after {
+	counter-increment: section;
+	content: counter(section);
+	text-decoration: none;
+	font-weight: bold;
+	font-size: 15px;
+	display: inline-block;
+	transform: translate(-70px, 1.3em);
+	width: 0;
+}
+
+ol {
+	font-weight: bold;
+	width: 90%;
+}
+
+ol ol {
+	font-weight: 400;
+	list-style: circled-alpha;
+}
+
+@counter-style circled-alpha {
+  system: fixed;
+  symbols: Ⓐ Ⓑ Ⓒ Ⓓ;
+  suffix: "  ";
+}
+
+ol ol {
+	margin-bottom: 2em;
+}
+
+ol ol li {
+	cursor: pointer;
+}
+
+ol ol li.checked {
+	cursor: not-allowed;
+}
+
+.checked::before {
+	content: "●";
+	float: left;
+	position: absolute;
+	margin-left: -30px;
+	font-size: 27px;
+}
+
+hr {
+	width: 100%;
+}
+
+.center {
+	margin-left: -60px;
+	text-align: center;
+}
+
+.center u {
+	text-decoration: none;
+}
+
+.center u::after {
+	color: white;
+}
+
+img {
+	width: 100%;
+}
