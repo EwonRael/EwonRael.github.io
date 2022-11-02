@@ -1,5 +1,6 @@
 let english = 0
 let math = 0
+let reading = 0
 
 function pagechange() {
 	let hide = document.querySelectorAll(".hide")
@@ -11,6 +12,10 @@ function pagechange() {
 	}
 	if (show == undefined) {
 		document.querySelector("#page1").classList.remove("hidden")
+	}
+	if (show == "results") {
+		document.querySelector("#timer").classList.add("hidden")
+		document.querySelector("#" + show).classList.remove("hidden")
 	}
 	else {
 		document.querySelector("#" + show).classList.remove("hidden")
@@ -49,8 +54,9 @@ function starttimer(time) {
 			}
 			if (location.href.split('#')[1] == "math") {
 				window.location = "#endmath"
-				document.querySelector("#englishscore").innerHTML = "English: " + 115*english
-				document.querySelector("#mathscore").innerHTML = "Math: " + 125*math
+			}
+			if (location.href.split('#')[1] == "reading") {
+				window.location = "#endreading"
 			}
 			clearInterval(boopsound)
 			clearInterval(counttimer)
@@ -66,5 +72,70 @@ function bubble(m,n) {
 	if (n == "math") {
 		math = math + 1
 	}
-	console.log(english)
+	if (n == "reading") {
+		reading = reading + 1
+	}
+}
+
+function rateperform(i) {
+	if (i == 1){
+		return ": Proficient"
+	}
+	if (i > 0.5){
+		return ": Below Average"
+	}
+	if (i > 0){
+		return ": Well Below Average"
+	}
+	if (i == 0){
+		return ": Utter Failure"
+	}
+}
+
+function results() {
+	let grammar = Math.floor(Math.random() * english)
+	let spelling = english - grammar
+	let algebra = Math.floor(Math.random() * math)
+	let geometry = math - algebra
+	let comprehension = Math.floor(Math.random() * reading)
+	let analyses = reading - comprehension
+
+	let centgrammar = Math.sqrt(Math.sqrt((english/160)*(2*(grammar/english))))
+	if (centgrammar > 1) {
+		centgrammar = 1
+	}
+	let centspelling = Math.sqrt(Math.sqrt((english/160)*(2*(spelling/english))))
+	if (centspelling > 1) {
+		centspelling = 1
+	}
+	let centalgebra = Math.sqrt(Math.sqrt((math/51)*(2*(algebra/math))))
+	if (centalgebra > 1) {
+		centalgebra = 1
+	}
+	let centgeometry = Math.sqrt(Math.sqrt((math/51)*(2*(geometry/math))))
+	if (centgeometry > 1) {
+		centgeometry = 1
+	}
+	let centcomprehension = Math.sqrt(Math.sqrt((reading/76)*(2*(comprehension/reading))))
+	if (centcomprehension > 1) {
+		centcomprehension = 1
+	}
+	let centanalyses = Math.sqrt(Math.sqrt((reading/76)*(2*(analyses/reading))))
+	if (centanalyses > 1) {
+		centanalyses = 1
+	}
+	document.querySelector("#compositescore").innerHTML = english + math + reading
+	document.querySelector("#grammar").style = "background: linear-gradient(90deg, black "+100*centgrammar+"%, gray "+100*centgrammar+"%);"
+	document.querySelector("#spelling").style = "background: linear-gradient(90deg, black "+100*centspelling+"%, gray "+100*centspelling+"%);"
+	document.querySelector("#algebra").style = "background: linear-gradient(90deg, black "+100*centalgebra+"%, gray "+100*centalgebra+"%);"
+	document.querySelector("#geometry").style = "background: linear-gradient(90deg, black "+100*centgeometry+"%, gray "+100*centgeometry+"%);"
+	document.querySelector("#comprehension").style = "background: linear-gradient(90deg, black "+100*centcomprehension+"%, gray "+100*centcomprehension+"%);"
+	document.querySelector("#analyses").style = "background: linear-gradient(90deg, black "+100*centanalyses+"%, gray "+100*centanalyses+"%);"
+	
+	document.querySelector("#grammars").innerHTML = grammar*115 + rateperform(centgrammar)
+	document.querySelector("#spellings").innerHTML = spelling*75 + rateperform(centspelling)
+	document.querySelector("#algebras").innerHTML = algebra*205 + rateperform(centalgebra)
+	document.querySelector("#geometrys").innerHTML = geometry*215 + rateperform(centgeometry)
+	document.querySelector("#comprehensions").innerHTML = comprehension*345 + rateperform(centcomprehension)
+	document.querySelector("#analysess").innerHTML = analyses*355 + rateperform(centanalyses)
 }

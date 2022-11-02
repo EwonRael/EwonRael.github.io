@@ -98,11 +98,12 @@ a {
 }
 
 .coll {
-	width: 50%;
+	width: calc(50% - 30px);
 	font-family: "BSerif", serif;
 	font-size: 20px;
 	line-height: 2em;
 	float: left;
+	margin-right: 30px;
 }
 
 .coll p {
@@ -125,6 +126,17 @@ a {
 ol {
 	font-weight: bold;
 	width: 90%;
+}
+
+ol p {
+	font-weight: 400;
+}
+
+ol ul li {
+	font-weight: 400;
+	list-style: inside;
+	text-indent: -20px;
+	margin-left: 35px;
 }
 
 ol ol {
@@ -177,4 +189,41 @@ hr {
 
 img {
 	width: 100%;
+}
+
+#readingtest {
+	font-family: "BSerif", serif;
+	font-size: 20px;
+	line-height: 2em;
+	text-indent: 60px;
+}
+
+#results p {
+	font-size: 20px;
+}
+
+.bargraph {
+	margin-top: 20px;
+	margin-bottom: -20px;
+	background-color: gray;
+	color: white;
+	font-weight: bold;
+	padding-left: 7px;
+	font-size: 20px;
+}
+
+#composite {
+	font-size: 30px;
+	color: white;
+	background-color: black;
+	float: left;
+	outline: 7px black solid;
+}
+
+#composite span {
+	color: black;
+	font-weight: bold;
+	background-color: white;
+	padding-left: 5px;
+	padding-right: 5px;
 }
