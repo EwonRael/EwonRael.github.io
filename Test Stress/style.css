@@ -205,6 +205,10 @@ img {
 	font-size: 20px;
 }
 
+#results p#copyright {
+	font-size: 14px;
+}
+
 .bargraph {
 	margin-top: 20px;
 	margin-bottom: -20px;

@@ -87,7 +87,7 @@ function rateperform(i) {
 	if (i > 0){
 		return ": Well Below Average"
 	}
-	if (i == 0){
+	else {
 		return ": Utter Failure"
 	}
 }
