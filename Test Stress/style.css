@@ -103,7 +103,10 @@ a {
 	font-size: 20px;
 	line-height: 2em;
 	float: left;
-	margin-right: 30px;
+}
+
+.coll:nth-child(2n) {
+	margin-left: 60px;
 }
 
 .coll p {
