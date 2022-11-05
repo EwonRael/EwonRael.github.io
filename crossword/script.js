@@ -40,6 +40,12 @@ function select(n) {
 		}
 	}
 	changeSelect(n)
+	if (document.getElementById(currentselect).innerHTML == "&emsp;") {
+		document.getElementById("dummyinput").value = " "
+	}
+	else {
+		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
+	}
 }
 
 function changeSelect(n) {
@@ -242,7 +248,7 @@ function dummyinput(i) {
 	if (canedit && inVal == "") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
 		decline()
-		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
+		document.getElementById("dummyinput").value = " "
 	}
 	else if (canedit && letters.includes(inVal.toLowerCase())) {
 		document.getElementById(currentselect).innerHTML = inVal.toLowerCase()
@@ -252,6 +258,6 @@ function dummyinput(i) {
 	if (canedit && inVal == " ") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
 		advance()
-		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
+		document.getElementById("dummyinput").value = " "
 	}
 }
