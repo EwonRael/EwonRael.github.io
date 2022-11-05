@@ -215,6 +215,7 @@ function checkCrossword() {
 				document.getElementById("across").children[i].classList.add("solved")
 				document.getElementById("down").children[i].classList.add("solved")
 			}
+			deselect()
 			document.getElementById("solved").classList.remove("invisable")
 			mastersolved[crossnum] = true
 			console.log(mastersolved)
