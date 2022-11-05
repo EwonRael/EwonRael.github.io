@@ -122,18 +122,6 @@ function decline() {
 }
 
 document.addEventListener('keydown', function(e) {
-	if (canedit && letters.includes(e.key.toLowerCase())) {
-		document.getElementById(currentselect).innerHTML = e.key.toLowerCase()
-		advance()
-	}
-	if (canedit && e.key == " ") {
-		document.getElementById(currentselect).innerHTML = "&emsp;"
-		advance()
-	}
-	if ((canedit && e.key == "Delete") || (canedit && e.key == "Backspace")) {
-		document.getElementById(currentselect).innerHTML = "&emsp;"
-		decline()
-	}
 	if (canedit && e.key == "ArrowRight") {
 		deselect()
 		if (currentselect == 25) {
@@ -243,5 +231,26 @@ function checkCrossword() {
 				document.getElementById("timer").innerHTML = "It took you " + Math.floor(seconds/60) + " minutes and " + seconds%60 + " seconds!"
 			}
 		}
+	}
+}
+
+function dummyinput(i) {
+	let inVal = document.getElementById("dummyinput").value
+	inVal = inVal.slice(-1)
+	document.getElementById("dummyinput").value = inVal
+	if (canedit && inVal == "") {
+		document.getElementById(currentselect).innerHTML = "&emsp;"
+		decline()
+		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
+	}
+	else if (canedit && letters.includes(inVal.toLowerCase())) {
+		document.getElementById(currentselect).innerHTML = inVal.toLowerCase()
+		advance()
+		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
+	}
+	if (canedit && inVal == " ") {
+		document.getElementById(currentselect).innerHTML = "&emsp;"
+		advance()
+		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
 	}
 }
