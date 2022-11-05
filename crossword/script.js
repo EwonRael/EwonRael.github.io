@@ -242,8 +242,8 @@ function dummyinput(i) {
 	document.getElementById("dummyinput").value = inVal
 	if (firefoxmobilefix && canedit && inVal == "") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
-		setTimeout(function(){decline(); firefoxmobilefix = true},100)
-		//document.getElementById("dummyinput").value = " "
+		setTimeout(function(){decline(); firefoxmobilefix = true
+		document.getElementById("dummyinput").value = " "},100)
 	}
 	else if (firefoxmobilefix && canedit && inVal == " ") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
