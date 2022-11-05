@@ -5,6 +5,7 @@ let across = true
 let solved = false
 let starttime = 0
 let letters = "abcdefghijklmnopqrstuvwxyz"
+let firefoxmobilefix = true
 
 //Check master list of solved crosswords, if it doesn't exsist make one.
 if (mastersolved) {
@@ -242,6 +243,7 @@ function checkCrossword() {
 }
 
 function dummyinput(i) {
+	if (firefoxmobilefix) {
 	let inVal = document.getElementById("dummyinput").value
 	inVal = inVal.slice(-1)
 	document.getElementById("dummyinput").value = inVal
@@ -255,9 +257,15 @@ function dummyinput(i) {
 		advance()
 		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
 	}
-	if (canedit && inVal == " ") {
+	else if (canedit && inVal == " ") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
 		advance()
 		document.getElementById("dummyinput").value = " "
 	}
+	if (document.getElementById("dummyinput").value == "") {
+		document.getElementById("dummyinput").value = " "
+	}
+	setInterval(function(){firefoxmobilefix = true},100)
+	}
+	firefoxmobilefix = false
 }
