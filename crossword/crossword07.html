@@ -14,58 +14,59 @@
 	</head>
 	<body>
 		<h1><a href="index.html">square crosswords</a></h1>
+		<input id="dummyinput" onfocusout="deselect()"></input>
 		<table id="crossword">
 			<tr>
-				<td contenteditable="true" id="1" onclick="toggle(1)" onfocus="clicked(1)" onfocusout="declicked(1)" oninput="change(1)">&emsp;</td>
-				<td contenteditable="true" id="2" onclick="toggle(2)" onfocus="clicked(2)" onfocusout="declicked(2)" oninput="change(2)">&emsp;</td>
-				<td contenteditable="true" id="3" onclick="toggle(3)" onfocus="clicked(3)" onfocusout="declicked(3)" oninput="change(3)">&emsp;</td>
-				<td contenteditable="true" id="4" onclick="toggle(4)" onfocus="clicked(4)" onfocusout="declicked(4)" oninput="change(4)">&emsp;</td>
-				<td contenteditable="true" id="5" onclick="toggle(5)" onfocus="clicked(5)" onfocusout="declicked(5)" oninput="change(5)">&emsp;</td>
+				<td onclick="select(1)" id="1">&emsp;</td>
+				<td onclick="select(2)" id="2">&emsp;</td>
+				<td onclick="select(3)" id="3">&emsp;</td>
+				<td onclick="select(4)" id="4">&emsp;</td>
+				<td onclick="select(5)" id="5">&emsp;</td>
 			</tr>
 			<tr>
-				<td contenteditable="true" id="6" onclick="toggle(6)" onfocus="clicked(6)" onfocusout="declicked(6)" oninput="change(6)">&emsp;</td>
-				<td contenteditable="true" id="7" onclick="toggle(7)" onfocus="clicked(7)" onfocusout="declicked(7)" oninput="change(7)">&emsp;</td>
-				<td contenteditable="true" id="8" onclick="toggle(8)" onfocus="clicked(8)" onfocusout="declicked(8)" oninput="change(8)">&emsp;</td>
-				<td contenteditable="true" id="9" onclick="toggle(9)" onfocus="clicked(9)" onfocusout="declicked(9)" oninput="change(9)">&emsp;</td>
-				<td contenteditable="true" id="10" onclick="toggle(10)" onfocus="clicked(10)" onfocusout="declicked(10)" oninput="change(10)">&emsp;</td>
+				<td onclick="select(6)" id="6">&emsp;</td>
+				<td onclick="select(7)" id="7">&emsp;</td>
+				<td onclick="select(8)" id="8">&emsp;</td>
+				<td onclick="select(9)" id="9">&emsp;</td>
+				<td onclick="select(10)" id="10">&emsp;</td>
 			</tr>
 			<tr>
-				<td contenteditable="true" id="11" onclick="toggle(11)" onfocus="clicked(11)" onfocusout="declicked(11)" oninput="change(11)">&emsp;</td>
-				<td contenteditable="true" id="12" onclick="toggle(12)" onfocus="clicked(12)" onfocusout="declicked(12)" oninput="change(12)">&emsp;</td>
-				<td contenteditable="true" id="13" onclick="toggle(13)" onfocus="clicked(13)" onfocusout="declicked(13)" oninput="change(13)">&emsp;</td>
-				<td contenteditable="true" id="14" onclick="toggle(14)" onfocus="clicked(14)" onfocusout="declicked(14)" oninput="change(14)">&emsp;</td>
-				<td contenteditable="true" id="15" onclick="toggle(15)" onfocus="clicked(15)" onfocusout="declicked(15)" oninput="change(15)">&emsp;</td>
+				<td onclick="select(11)" id="11">&emsp;</td>
+				<td onclick="select(12)" id="12">&emsp;</td>
+				<td onclick="select(13)" id="13">&emsp;</td>
+				<td onclick="select(14)" id="14">&emsp;</td>
+				<td onclick="select(15)" id="15">&emsp;</td>
 			</tr>
 			<tr>
-				<td contenteditable="true" id="16" onclick="toggle(16)" onfocus="clicked(16)" onfocusout="declicked(16)" oninput="change(16)">&emsp;</td>
-				<td contenteditable="true" id="17" onclick="toggle(17)" onfocus="clicked(17)" onfocusout="declicked(17)" oninput="change(17)">&emsp;</td>
-				<td contenteditable="true" id="18" onclick="toggle(18)" onfocus="clicked(18)" onfocusout="declicked(18)" oninput="change(18)">&emsp;</td>
-				<td contenteditable="true" id="19" onclick="toggle(19)" onfocus="clicked(19)" onfocusout="declicked(19)" oninput="change(19)">&emsp;</td>
-				<td contenteditable="true" id="20" onclick="toggle(20)" onfocus="clicked(20)" onfocusout="declicked(20)" oninput="change(20)">&emsp;</td>
+				<td onclick="select(16)" id="16">&emsp;</td>
+				<td onclick="select(17)" id="17">&emsp;</td>
+				<td onclick="select(18)" id="18">&emsp;</td>
+				<td onclick="select(19)" id="19">&emsp;</td>
+				<td onclick="select(20)" id="20">&emsp;</td>
 			</tr>
 			<tr>
-				<td contenteditable="true" id="21" onclick="toggle(21)" onfocus="clicked(21)" onfocusout="declicked(21)" oninput="change(21)">&emsp;</td>
-				<td contenteditable="true" id="22" onclick="toggle(22)" onfocus="clicked(22)" onfocusout="declicked(22)" oninput="change(22)">&emsp;</td>
-				<td contenteditable="true" id="23" onclick="toggle(23)" onfocus="clicked(23)" onfocusout="declicked(23)" oninput="change(23)">&emsp;</td>
-				<td contenteditable="true" id="24" onclick="toggle(24)" onfocus="clicked(24)" onfocusout="declicked(24)" oninput="change(24)">&emsp;</td>
-				<td contenteditable="true" id="25" onclick="toggle(25)" onfocus="clicked(25)" onfocusout="declicked(25)" oninput="change(25)">&emsp;</td>
+				<td onclick="select(21)" id="21">&emsp;</td>
+				<td onclick="select(22)" id="22">&emsp;</td>
+				<td onclick="select(23)" id="23">&emsp;</td>
+				<td onclick="select(24)" id="24">&emsp;</td>
+				<td onclick="select(25)" id="25">&emsp;</td>
 			</tr>
 		</table>
 		<div id="across">
 			<p><b>&emsp;&emsp;&emsp;Across</b></p>
-			<p onclick="pclick(1, true)">1.&emsp;Often taken</p>
-			<p onclick="pclick(6, true)">6.&emsp;Serious crime convict</p>
-			<p onclick="pclick(11, true)">7.&emsp;Open wide</p>
-			<p onclick="pclick(16, true)">8.&emsp;One dollar will fetch you 82</p>
-			<p onclick="pclick(21, true)">9.&emsp;Could mean tangled hair or visible teeth</p>
+			<p onclick="clue(1, true)">1.&emsp;Often taken</p>
+			<p onclick="clue(6, true)">6.&emsp;Serious crime convict</p>
+			<p onclick="clue(11, true)">7.&emsp;Open wide</p>
+			<p onclick="clue(16, true)" id="clue8">8.&emsp;Indian dollar</p>
+			<p onclick="clue(21, true)">9.&emsp;Could mean tangled hair or visible teeth</p>
 		</div>
 		<div id="down">
 			<p><b>&emsp;&emsp;&emsp;Down</b></p>
-			<p onclick="pclick(1, false)">1.&emsp;Several great distances</p>
-			<p onclick="pclick(2, false)">2.&emsp;Started</p>
-			<p onclick="pclick(3, false)">3.&emsp;Improvised raga preludes</p>
-			<p onclick="pclick(4, false)">4.&emsp;A horse dealer, especially a dishonest one</p>
-			<p onclick="pclick(5, false)">5.&emsp;Wedding proposal or housework?</p>
+			<p onclick="clue(1, false)">1.&emsp;Several great distances</p>
+			<p onclick="clue(2, false)">2.&emsp;Started</p>
+			<p onclick="clue(3, false)">3.&emsp;Improvised raga preludes</p>
+			<p onclick="clue(4, false)">4.&emsp;A horse dealer, especially a dishonest one</p>
+			<p onclick="clue(5, false)">5.&emsp;Wedding proposal or housework?</p>
 		</div>
 		<div id="solved" class="invisable">
 			<div>
@@ -76,5 +77,14 @@
 			</div>
 		</div>
 	</body>
+	<script>
+		fetch("https://api.exchangerate-api.com/v4/latest/USD")
+			.then((response) => {
+				return response.json()
+			})
+			.then((data) => {
+				document.getElementById("clue8").innerHTML = "8.&emsp;One dollar will fetch you " + Math.round(data.rates.INR)
+		  	})
+	</script>
 </html>
 

@@ -42,6 +42,7 @@ table#crossword td {
 	font-weight: 350;
 	width: 20%;
 	height: 20%;
+	cursor: text;
 }
 
 table#crossword td:nth-child(1n).solved {
@@ -56,7 +57,7 @@ td::-moz-selection {
 	background: none;
 }
 
-#crossword td:focus, #crossword.down1 td:nth-child(1n):focus, #crossword.down2 td:nth-child(1n):focus, #crossword.down3 td:nth-child(1n):focus, #crossword.down4 td:nth-child(1n):focus, #crossword.down0 td:nth-child(1n):focus {
+#crossword td.focus, #crossword.down1 td:nth-child(1n).focus, #crossword.down2 td:nth-child(1n).focus, #crossword.down3 td:nth-child(1n).focus, #crossword.down4 td:nth-child(1n).focus, #crossword.down0 td:nth-child(1n).focus {
 	background-color: #fff5b1;
 	outline: none;
 }
@@ -306,4 +307,12 @@ button:active {
 	#solved div {
 		width: 70vw;
 	}
+}
+
+#dummyinput {
+	width: 0;
+	height: 0;
+	position: absolute;
+	cursor: default;
+	opacity: 0;
 }

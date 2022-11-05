@@ -1,167 +1,213 @@
 let mastersolved = localStorage.getItem("crossword-mastersolved")
-let lastselect = 0
 let currentselect = 0
+let canedit = false
 let across = true
-let progress = true
 let solved = false
 let starttime = 0
+let letters = "abcdefghijklmnopqrstuvwxyz"
 
+//Check master list of solved crosswords, if it doesn't exsist make one.
 if (mastersolved) {
 	mastersolved = JSON.parse(mastersolved)
 }
+
 else {
 	mastersolved = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 }
 
-console.log(mastersolved[crossnum])
+//Functions related to gameplay
 
-function toggle(i) {
-	if (lastselect == i){
+function deselect() {
+	canedit = false
+	for (let i = 1; i < 26; i++) {
+		document.getElementById(i).classList.remove("focus")
+	}
+	for (let i = 1; i < 6; i++) {
+		document.getElementById("crossword").classList.remove("across" + i)
+		document.getElementById("crossword").classList.remove("down" + (i - 1))
+		document.getElementById("across").classList.remove("across" + i)
+		document.getElementById("down").classList.remove("down" + (i - 1))
+	}
+}
+
+function select(n) {
+	if (currentselect == n) {
 		if (across) {
 			across = false
-			declicked(i)
-			clicked(i)
 		}
 		else {
 			across = true
-			declicked(i)
-			clicked(i)
 		}
 	}
-	lastselect = currentselect
+	changeSelect(n)
 }
 
-function clicked(i){
-	if (across) {
-		document.getElementById("crossword").classList.add("across" + (Math.trunc((i-1)/5)+1))
-		document.getElementById("across").classList.add("across" + (Math.trunc((i-1)/5)+1))
-	}
-	else {
-		document.getElementById("crossword").classList.add("down" + (i%5))
-		document.getElementById("down").classList.add("down" + (i%5))
-	}
-	square = document.getElementById(i)
-	window.setTimeout(function() {
-		var sel, range;
-		if (window.getSelection && document.createRange) {
-			range = document.createRange();
-			range.selectNodeContents(square);
-			sel = window.getSelection();
-			sel.removeAllRanges();
-			sel.addRange(range);
-		} else if (document.body.createTextRange) {
-			range = document.body.createTextRange();
-			range.moveToElementText(square);
-			range.select();
-		}
-	}, 1);
-	lastselect = currentselect
-	currentselect = i
+function changeSelect(n) {
+	//do this to bring up keyboard on mobile
+	document.getElementById("dummyinput").focus()
+	//Start the timer if it's not already started!
 	if (starttime == 0) {
 		starttime = new Date().getTime()
-		console.log(starttime)
+	}
+	//Highligh row or colum
+	if (across) {
+		document.getElementById("crossword").classList.add("across" + (Math.trunc((n-1)/5)+1))
+		document.getElementById("across").classList.add("across" + (Math.trunc((n-1)/5)+1))
+	}
+	else {
+		document.getElementById("crossword").classList.add("down" + (n%5))
+		document.getElementById("down").classList.add("down" + (n%5))
+	}
+	//Highlight Square
+	document.getElementById(n).classList.add("focus")
+	currentselect = n
+	canedit = true
+	checkCrossword()
+}
+
+function clue(a,b) {
+	across = b
+	changeSelect(a)
+}
+
+function advance() {
+	if (across) {
+		deselect()
+		if (currentselect == 25) {
+			changeSelect(1)
+		}
+		else {
+			changeSelect(currentselect + 1)
+		}
+	}
+	else {
+		deselect()
+		if (currentselect == 25) {
+			changeSelect(1)
+		}
+		else if (currentselect > 20) {
+			changeSelect(currentselect - 19)
+		}
+		else {
+			changeSelect(currentselect + 5)
+		}
+	}
+}
+
+function decline() {
+	if (across) {
+		deselect()
+		if (currentselect == 1) {
+			changeSelect(1)
+		}
+		if (currentselect%5 == 1) {
+			changeSelect(currentselect)
+		}
+		else {
+			changeSelect(currentselect - 1)
+		}
+	}
+	else {
+		deselect()
+		if (currentselect == 1) {
+			changeSelect(1)
+		}
+		if (currentselect < 6) {
+			changeSelect(currentselect)
+		}
+		else {
+			changeSelect(currentselect - 5)
+		}
 	}
 }
 
 document.addEventListener('keydown', function(e) {
-	window.setTimeout(function() {
-	var code = e.which || e.keyCode;
-	if (code == '38') {
-		if (currentselect < 6) {
-			currentselect = currentselect + 20
-			clicked(currentselect)
-		}
-		else {
-			currentselect = currentselect - 5
-			clicked(currentselect)
-		}
+	if (canedit && letters.includes(e.key.toLowerCase())) {
+		document.getElementById(currentselect).innerHTML = e.key.toLowerCase()
+		advance()
 	}
-	else if (code == '40') {
-		if (currentselect > 20) {
-			currentselect = currentselect - 20
-			clicked(currentselect)
-		}
-		else {
-			currentselect = currentselect + 5
-			clicked(currentselect)
-		}
+	if (canedit && e.key == " ") {
+		document.getElementById(currentselect).innerHTML = "&emsp;"
+		advance()
 	}
-	else if (code == '37') {
-		if (currentselect == 1) {
-			currentselect = 25
-			clicked(currentselect)
-		}
-		else {
-			currentselect = currentselect - 1
-			clicked(currentselect)
-		}
+	if ((canedit && e.key == "Delete") || (canedit && e.key == "Backspace")) {
+		document.getElementById(currentselect).innerHTML = "&emsp;"
+		decline()
 	}
-	else if (code == '39') {
+	if (canedit && e.key == "ArrowRight") {
+		deselect()
 		if (currentselect == 25) {
-			currentselect = 1
-			clicked(currentselect)
+			changeSelect(1)
 		}
 		else {
-			currentselect = currentselect + 1
-			clicked(currentselect)
+			changeSelect(currentselect + 1)
 		}
 	}
-	else if (code == 8) {
-			declicked(currentselect)
-			if (across) {
-				if (currentselect == 1) {
-					currentselect = 25
-					clicked(currentselect)
-				}
-				else {
-					currentselect = currentselect - 1
-					clicked(currentselect)
-				}
-			}
-			else {
-				if (currentselect < 6) {
-					currentselect = currentselect + 20
-					clicked(currentselect)
-				}
-				else {
-					currentselect = currentselect - 5
-					clicked(currentselect)
-				}
-			}
+	if (canedit && e.key == "ArrowDown") {
+		deselect()
+		if (currentselect == 25) {
+			changeSelect(1)
+		}
+		else if (currentselect > 20) {
+			changeSelect(currentselect - 19)
+		}
+		else {
+			changeSelect(currentselect + 5)
+		}
 	}
-	else {
-		progress = true
+	if (canedit && e.key == "ArrowLeft") {
+		deselect()
+		if (currentselect == 1) {
+			changeSelect(25)
+		}
+		else {
+			changeSelect(currentselect - 1)
+		}
 	}
-	},2)
+	if (canedit && e.key == "ArrowUp") {
+		deselect()
+		if (currentselect == 1) {
+			changeSelect(25)
+		}
+		else if (currentselect < 6) {
+			changeSelect(currentselect + 19)
+		}
+		else {
+			changeSelect(currentselect - 5)
+		}
+	}
 })
 
-function declicked(i) {
-	window.focus()
-	document.getElementById("crossword").classList.remove("across" + (Math.trunc((i-1)/5)+1))
-	document.getElementById("across").classList.remove("across" + (Math.trunc((i-1)/5)+1))
-	document.getElementById("crossword").classList.remove("down" + (i%5))
-	document.getElementById("down").classList.remove("down" + (i%5))
+window.onload = function() {
+	if (mastersolved[crossnum]) {
+		for (let i = 1; i < 26; i++) {
+			let square = document.getElementById(i)
+			square.contentEditable = false
+			square.innerHTML = goal[i-1]
+			square.classList.add("solved")
+		}
+		for (let i = 1; i < 6; i++) {
+			document.getElementById("across").children[i].classList.add("solved")
+			document.getElementById("down").children[i].classList.add("solved")
+		}
+		document.getElementById("solved").classList.remove("invisable")
+	}
 }
 
-function change(i) {
-	square = document.getElementById(i)
-	square.innerHTML = square.innerHTML.replace("<br>","").replace("&nbsp;"," ").slice(0, 1).toLowerCase()
-	if (square.innerHTML == "") {
-		progress = false
+function redo() {
+	starttime = 0
+	for (let i = 1; i < 6; i++) {
+		document.getElementById("across").children[i].classList.remove("solved")
+		document.getElementById("down").children[i].classList.remove("solved")
+	}
+	for (let i = 1; i < 26; i++) {
+		let square = document.getElementById(i)
 		square.innerHTML = "&emsp;"
+		square.classList.remove("solved")
 	}
-	else if (square.innerHTML == " ") {
-		square.innerHTML = "&emsp;"
-	}
-	else if (square.innerHTML == "&lt;") {
-		square.innerHTML = "&emsp;"
-	}
-	else if (progress) {
-		progressByOne()
-		progress = false
-	}
-	checkCrossword()
-	clicked(currentselect)
+	document.getElementById("solved").classList.add("invisable")
+	mastersolved[crossnum] = false
+	localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 }
 
 function checkCrossword() {
@@ -198,75 +244,4 @@ function checkCrossword() {
 			}
 		}
 	}
-}
-
-function pclick(i, acr) {
-	if (acr) {
-		across = true
-		clicked(i)
-	}
-	else {
-		across = false
-		clicked(i)
-	}
-}
-
-function progressByOne() {
-	if (across) {
-		if (currentselect == 25) {
-			currentselect = 1
-			clicked(currentselect)
-		}
-		else {
-			currentselect = currentselect + 1
-			clicked(currentselect)
-		}
-	}
-	else {
-		if (currentselect == 25) {
-			currentselect = 1
-			clicked(currentselect)				
-		}
-		else if (currentselect > 20) {
-			currentselect = currentselect - 19
-			clicked(currentselect)
-		}
-		else {
-			currentselect = currentselect + 5
-			clicked(currentselect)
-		}
-	}
-}
-
-window.onload = function() {
-	if (mastersolved[crossnum]) {
-		for (let i = 1; i < 26; i++) {
-			let square = document.getElementById(i)
-			square.contentEditable = false
-			square.innerHTML = goal[i-1]
-			square.classList.add("solved")
-		}
-		for (let i = 1; i < 6; i++) {
-			document.getElementById("across").children[i].classList.add("solved")
-			document.getElementById("down").children[i].classList.add("solved")
-		}
-		document.getElementById("solved").classList.remove("invisable")
-	}
-}
-
-function redo() {
-	starttime = 0
-	for (let i = 1; i < 6; i++) {
-		document.getElementById("across").children[i].classList.remove("solved")
-		document.getElementById("down").children[i].classList.remove("solved")
-	}
-	for (let i = 1; i < 26; i++) {
-		let square = document.getElementById(i)
-		square.contentEditable = true
-		square.innerHTML = "&emsp;"
-		square.classList.remove("solved")
-	}
-	document.getElementById("solved").classList.add("invisable")
-	mastersolved[crossnum] = false
-	localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 }
