@@ -5,6 +5,7 @@ let across = true
 let solved = false
 let starttime = 0
 let letters = "abcdefghijklmnopqrstuvwxyz"
+let firefoxmobilefix = true
 
 //Check master list of solved crosswords, if it doesn't exsist make one.
 if (mastersolved) {
@@ -40,12 +41,6 @@ function select(n) {
 		}
 	}
 	changeSelect(n)
-	if (document.getElementById(currentselect).innerHTML == "&emsp;") {
-		document.getElementById("dummyinput").value = " "
-	}
-	else {
-		document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
-	}
 }
 
 function changeSelect(n) {
@@ -245,22 +240,23 @@ function dummyinput(i) {
 	let inVal = document.getElementById("dummyinput").value
 	inVal = inVal.slice(-1)
 	document.getElementById("dummyinput").value = inVal
-	if (canedit && inVal == "") {
+	if (firefoxmobilefix && canedit && inVal == "") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
-		decline()
+		setTimeout(function(){decline(); firefoxmobilefix = true},100)
 		//document.getElementById("dummyinput").value = " "
 	}
-	else if (canedit && inVal == " ") {
+	else if (firefoxmobilefix && canedit && inVal == " ") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
-		advance()
+		setTimeout(function(){advance(); firefoxmobilefix = true},100)
 		//document.getElementById("dummyinput").value = " "
 	}
-	else if (canedit && letters.includes(inVal.toLowerCase())) {
+	else if (firefoxmobilefix && canedit && letters.includes(inVal.toLowerCase())) {
 		document.getElementById(currentselect).innerHTML = inVal.toLowerCase()
-		advance()
+		setTimeout(function(){advance(); firefoxmobilefix = true},100)
 		//document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
 	}
 	if (document.getElementById("dummyinput").value == "") {
 		document.getElementById("dummyinput").value = " "
 	}
+	firefoxmobilefix = false
 }
