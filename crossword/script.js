@@ -265,7 +265,7 @@ function dummyinput(i) {
 	if (document.getElementById("dummyinput").value == "") {
 		document.getElementById("dummyinput").value = " "
 	}
-	setInterval(function(){firefoxmobilefix = true},100)
+	setInterval(function(){firefoxmobilefix = true},1000)
 	}
 	firefoxmobilefix = false
 }
