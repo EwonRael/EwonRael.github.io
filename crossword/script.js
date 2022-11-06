@@ -20,6 +20,7 @@ else {
 
 function deselect() {
 	canedit = false
+	document.getElementById("mobilePreview").classList.add("invisable")
 	for (let i = 1; i < 26; i++) {
 		document.getElementById(i).classList.remove("focus")
 	}
@@ -47,6 +48,7 @@ function select(n) {
 
 function changeSelect(n) {
 	//do this to bring up keyboard on mobile
+	document.getElementById("dummyinput").value = " "
 	document.getElementById("dummyinput").focus()
 	//Start the timer if it's not already started!
 	if (starttime == 0) {
@@ -56,13 +58,21 @@ function changeSelect(n) {
 	if (across) {
 		document.getElementById("crossword").classList.add("across" + (Math.trunc((n-1)/5)+1))
 		document.getElementById("across").classList.add("across" + (Math.trunc((n-1)/5)+1))
+		document.getElementById("previewBox").innerHTML  = document.querySelector("#across :nth-child("+(Math.trunc((n-1)/5)+2)+")").innerHTML
 	}
 	else {
 		document.getElementById("crossword").classList.add("down" + (n%5))
 		document.getElementById("down").classList.add("down" + (n%5))
+		if (n%5 == 0) {
+			document.getElementById("previewBox").innerHTML = document.querySelector("#down :nth-child("+6+")").innerHTML
+		}
+		else {
+			document.getElementById("previewBox").innerHTML = document.querySelector("#down :nth-child("+(n%5 + 1)+")").innerHTML
+		}
 	}
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
+	document.getElementById("mobilePreview").classList.remove("invisable")
 	currentselect = n
 	canedit = true
 	checkCrossword()
@@ -257,13 +267,12 @@ function dummyinput(i) {
 		setTimeout(function(){advance(); firefoxmobilefix = true},100)
 		//document.getElementById("dummyinput").value = " "
 	}
-	else if (firefoxmobilefix && canedit && letters.includes(inVal.toLowerCase())) {
+	else if (firefoxmobilefix && canedit && letters.includes(inVal.slice(-1).toLowerCase())) {
 		document.getElementById(currentselect).innerHTML = inVal.toLowerCase()
 		setTimeout(function(){advance(); firefoxmobilefix = true},100)
-		//document.getElementById("dummyinput").value = document.getElementById(currentselect).innerHTML
 	}
-	if (document.getElementById("dummyinput").value == "") {
-		document.getElementById("dummyinput").value = " "
+	else {
+		setTimeout(function(){firefoxmobilefix = true},100)
 	}
 	firefoxmobilefix = false
 }

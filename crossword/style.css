@@ -274,6 +274,10 @@ button:active {
 	transition: box-shadow 0s;
 }
 
+#mobilePreview {
+	display: none;
+}
+
 @media only screen and (max-width: 750px) {
 	#across, #explain {
 		margin-left: 1em;
@@ -306,6 +310,28 @@ button:active {
 	}
 	#solved div {
 		width: 70vw;
+	}
+	#mobilePreview {
+		display: block;
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		background-color: #fffcf7;
+		border-top: solid #15141e 2px;
+		width: 100vw;
+	}
+	#mobilePreview.invisable {
+	display: none;
+	}
+	#mobilePreview p {
+		margin: 15px 15px 15px 56px;
+		text-indent: -36px;
+		font-size: 20px;
+		background-color: #cce5ff;
+		box-shadow: -5px 0 #cce5ff, -43px 30px #fffcf7, -43px 0 #fff5b1;
+	}
+	#down {
+		margin-bottom: 5em;
 	}
 }
 
