@@ -289,28 +289,6 @@ button:active {
 		width: inherit;
 		min-width: calc(100vw - 90px);
 	}
-}
-
-@media only screen and (max-width: 550px) {
-	table#crosswordPicker {
-		width: calc(100vw - 90px);
-		height: calc(100vw - 90px);
-	}
-	table#crosswordPicker td:nth-child(n) {
-		font-size: 8vw;
-	}
-	table#crossword:nth-child(n) {
-		width: calc(100vw - 90px);
-		height: calc(100vw - 90px);
-	}
-	#crossword tr:nth-child(n) :nth-child(n)::before{
-		margin-left: calc(-10vw + 33px);
-		margin-top: calc(-4.5vw + 19px);
-		font-size: 30px;
-	}
-	#solved div {
-		width: 70vw;
-	}
 	#mobilePreview {
 		display: block;
 		position: fixed;
@@ -332,6 +310,28 @@ button:active {
 	}
 	#down {
 		margin-bottom: 5em;
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	table#crosswordPicker {
+		width: calc(100vw - 90px);
+		height: calc(100vw - 90px);
+	}
+	table#crosswordPicker td:nth-child(n) {
+		font-size: 8vw;
+	}
+	table#crossword:nth-child(n) {
+		width: calc(100vw - 90px);
+		height: calc(100vw - 90px);
+	}
+	#crossword tr:nth-child(n) :nth-child(n)::before{
+		margin-left: calc(-10vw + 33px);
+		margin-top: calc(-4.5vw + 19px);
+		font-size: 30px;
+	}
+	#solved div {
+		width: 70vw;
 	}
 }
 

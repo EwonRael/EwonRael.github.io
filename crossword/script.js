@@ -50,6 +50,7 @@ function changeSelect(n) {
 	//do this to bring up keyboard on mobile
 	document.getElementById("dummyinput").value = " "
 	document.getElementById("dummyinput").focus()
+	document.getElementById("dummyinput").setSelectionRange(1,1)
 	//Start the timer if it's not already started!
 	if (starttime == 0) {
 		starttime = new Date().getTime()
