@@ -32,15 +32,17 @@ function deselect() {
 }
 
 function select(n) {
-	if (currentselect == n) {
-		if (across) {
-			across = false
+	if (solved == false) {
+		if (currentselect == n) {
+			if (across) {
+				across = false
+			}
+			else {
+				across = true
+			}
 		}
-		else {
-			across = true
-		}
+		changeSelect(n)
 	}
-	changeSelect(n)
 }
 
 function changeSelect(n) {
@@ -67,8 +69,10 @@ function changeSelect(n) {
 }
 
 function clue(a,b) {
-	across = b
-	changeSelect(a)
+	if (solved == false) {
+		across = b
+		changeSelect(a)
+	}
 }
 
 function advance() {
@@ -169,6 +173,7 @@ document.addEventListener('keydown', function(e) {
 
 window.onload = function() {
 	if (mastersolved[crossnum]) {
+		solved = true
 		for (let i = 1; i < 26; i++) {
 			let square = document.getElementById(i)
 			square.contentEditable = false
@@ -185,6 +190,7 @@ window.onload = function() {
 
 function redo() {
 	starttime = 0
+	solved = false
 	for (let i = 1; i < 6; i++) {
 		document.getElementById("across").children[i].classList.remove("solved")
 		document.getElementById("down").children[i].classList.remove("solved")
@@ -219,6 +225,7 @@ function checkCrossword() {
 			deselect()
 			document.getElementById("solved").classList.remove("invisable")
 			mastersolved[crossnum] = true
+			solved = true
 			console.log(mastersolved)
 			localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 			let seconds = Math.round((new Date().getTime() - starttime) / 1000)
