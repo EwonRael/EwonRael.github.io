@@ -340,5 +340,6 @@ button:active {
 	height: 0;
 	position: absolute;
 	cursor: default;
+	top: 100px;
 	opacity: 0;
 }
