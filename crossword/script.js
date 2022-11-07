@@ -167,6 +167,7 @@ document.addEventListener('keydown', function(e) {
 		else {
 			changeSelect(currentselect - 1)
 		}
+		setTimeout(function(){document.getElementById("dummyinput").setSelectionRange(1,1)},1)
 	}
 	if (canedit && e.key == "ArrowUp") {
 		deselect()
@@ -259,21 +260,28 @@ function dummyinput(i) {
 	inVal = inVal.slice(-1)
 	document.getElementById("dummyinput").value = inVal
 	if (firefoxmobilefix && canedit && inVal == "") {
-		document.getElementById(currentselect).innerHTML = "&emsp;"
-		setTimeout(function(){decline(); firefoxmobilefix = true
-		document.getElementById("dummyinput").value = " "},100)
+		if (letters.includes(document.getElementById(currentselect).innerHTML)) {
+			document.getElementById(currentselect).innerHTML = "&emsp;"
+			setTimeout(function(){firefoxmobilefix = true
+			document.getElementById("dummyinput").value = " "},10)
+		}
+		else {
+			setTimeout(function(){decline(); firefoxmobilefix = true
+			document.getElementById("dummyinput").value = " "
+			document.getElementById(currentselect).innerHTML = "&emsp;"},10)
+		}
 	}
 	else if (firefoxmobilefix && canedit && inVal == " ") {
 		document.getElementById(currentselect).innerHTML = "&emsp;"
-		setTimeout(function(){advance(); firefoxmobilefix = true},100)
+		setTimeout(function(){advance(); firefoxmobilefix = true},10)
 		//document.getElementById("dummyinput").value = " "
 	}
 	else if (firefoxmobilefix && canedit && letters.includes(inVal.slice(-1).toLowerCase())) {
 		document.getElementById(currentselect).innerHTML = inVal.toLowerCase()
-		setTimeout(function(){advance(); firefoxmobilefix = true},100)
+		setTimeout(function(){advance(); firefoxmobilefix = true},10)
 	}
 	else {
-		setTimeout(function(){firefoxmobilefix = true},100)
+		setTimeout(function(){firefoxmobilefix = true},10)
 	}
 	firefoxmobilefix = false
 }
