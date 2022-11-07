@@ -59,7 +59,6 @@ td::-moz-selection {
 
 #crossword td.focus, #crossword.down1 td:nth-child(1n).focus, #crossword.down2 td:nth-child(1n).focus, #crossword.down3 td:nth-child(1n).focus, #crossword.down4 td:nth-child(1n).focus, #crossword.down0 td:nth-child(1n).focus {
 	background-color: #fff5b1;
-	outline: none;
 }
 
 #crossword.across1 tr:nth-child(1), #crossword.across2 tr:nth-child(2), #crossword.across3 tr:nth-child(3), #crossword.across4 tr:nth-child(4), #crossword.across5 tr:nth-child(5), #crossword.down1 td:nth-child(1), #crossword.down2 td:nth-child(2), #crossword.down3 td:nth-child(3), #crossword.down4 td:nth-child(4), #crossword.down0 td:nth-child(5) {
@@ -226,7 +225,7 @@ table#crosswordPicker td:hover {
 	margin-bottom: 0;
 }
 
-#solved {
+#solved, #settingbox {
 	background-color: rgba(255,252,247,0.5);
 	position: fixed;
 	top: 0;
@@ -235,7 +234,7 @@ table#crosswordPicker td:hover {
 	height: 100vh;
 }
 
-#solved div {
+#solved div, #settingbox div {
 	background-color: #fffcf7;
 	box-shadow: 6px 6px #15141e;
 	border: 2px solid #15141e;
@@ -245,6 +244,18 @@ table#crosswordPicker td:hover {
 	width: 400px;
 	margin: auto;
 	margin-top: 30vh;
+}
+
+#settingbox div p {
+	text-align: left;
+	margin-bottom: -20px;
+	margin-left: 30px;
+}
+
+#settingbox div p b {
+	margin-left: -30px;
+	display: block;
+	text-align: center;
 }
 
 .invisable {
@@ -342,4 +353,30 @@ button:active {
 	cursor: default;
 	top: 100px;
 	opacity: 0;
+}
+
+#settings {
+	float: right;
+	margin-top: -2px;
+	margin-right: 10px;
+	width: 35px;
+	text-align: right;
+	cursor: pointer;
+}
+
+#backbutton {
+	float: left;
+	margin-top: -5px;
+	margin-left: 10px;
+	width: 35px;
+	text-align: right;
+	transform: rotate(180deg);
+}
+
+#settings:hover, #backbutton:hover {
+	opacity: 1;
+}
+
+.fade {
+	opacity: 0.15;
 }

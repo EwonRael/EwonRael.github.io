@@ -1,4 +1,5 @@
 let mastersolved = localStorage.getItem("crossword-mastersolved")
+let settingsc = localStorage.getItem("crossword-settings")
 let currentselect = 0
 let canedit = false
 let across = true
@@ -16,11 +17,22 @@ else {
 	mastersolved = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
 }
 
+//Check settings, if it doesn't exsist make one.
+if (settingsc) {
+	settingsc = JSON.parse(settingsc)
+}
+
+else {
+	settingsc = [true, false, false]
+}
+
 //Functions related to gameplay
 
 function deselect() {
 	canedit = false
 	document.getElementById("mobilePreview").classList.add("invisable")
+	document.getElementById("backbutton").classList.remove("fade")
+	document.getElementById("settings").classList.remove("fade")
 	for (let i = 1; i < 26; i++) {
 		document.getElementById(i).classList.remove("focus")
 	}
@@ -43,6 +55,9 @@ function select(n) {
 			}
 		}
 		changeSelect(n)
+		if (document.getElementById(n).classList.contains("solved")){
+			advance()
+		}
 	}
 }
 
@@ -74,6 +89,8 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
+	document.getElementById("backbutton").classList.add("fade")
+	document.getElementById("settings").classList.add("fade")
 	currentselect = n
 	canedit = true
 	checkCrossword()
@@ -107,6 +124,29 @@ function advance() {
 		else {
 			changeSelect(currentselect + 5)
 		}
+	}
+	while (document.getElementById(currentselect).classList.contains("solved") && (solved == false)) {
+	if (across) {
+		deselect()
+		if (currentselect == 25) {
+			changeSelect(1)
+		}
+		else {
+			changeSelect(currentselect + 1)
+		}
+	}
+	else {
+		deselect()
+		if (currentselect == 25) {
+			changeSelect(1)
+		}
+		else if (currentselect > 20) {
+			changeSelect(currentselect - 19)
+		}
+		else {
+			changeSelect(currentselect + 5)
+		}
+	}
 	}
 }
 
@@ -241,15 +281,45 @@ function checkCrossword() {
 			console.log(mastersolved)
 			localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
 			let seconds = Math.round((new Date().getTime() - starttime) / 1000)
-			if (seconds < 61) {
-				document.getElementById("timer").innerHTML = "It took you " + seconds + " seconds!"
-			}
-			else if (seconds < 120) {
-				console.log(seconds)
-				document.getElementById("timer").innerHTML = "It took you 1 minute and " + seconds%60 + " seconds!"
+			if (settingsc[0]) {
+				if (seconds < 61) {
+					document.getElementById("timer").innerHTML = "It took you " + seconds + " seconds!"
+				}
+				else if (seconds < 120) {
+					console.log(seconds)
+					document.getElementById("timer").innerHTML = "It took you 1 minute and " + seconds%60 + " seconds!"
+				}
+				else {
+					document.getElementById("timer").innerHTML = "It took you " + Math.floor(seconds/60) + " minutes and " + seconds%60 + " seconds!"
+				}
 			}
 			else {
-				document.getElementById("timer").innerHTML = "It took you " + Math.floor(seconds/60) + " minutes and " + seconds%60 + " seconds!"
+				document.getElementById("timer").innerHTML = ""
+			}
+		}
+		if (settingsc[1] && (solved == false)) {
+			for (let i = 0; i < 5; i++) {
+				if ((current[i] + current[i + 5] + current[i + 10] + current[i + 15] + current[i + 20]) == (goal[i] + goal[i + 5] + goal[i + 10] + goal[i + 15] + goal[i + 20])) {
+					document.getElementById(i + 1).classList.add("solved")
+					document.getElementById(i + 11).classList.add("solved")
+					document.getElementById(i + 16).classList.add("solved")
+					document.getElementById(i + 21).classList.add("solved")
+					document.getElementById(i + 6).classList.add("solved")
+				}
+				if ((current[i*5] + current[i*5 + 1] + current[i*5 + 2] + current[i*5 + 3] + current[i*5 + 4]) == (goal[i*5] + goal[i*5 + 1] + goal[i*5 + 2] + goal[i*5 + 3] + goal[i*5 + 4])) {
+					document.getElementById(i*5 + 1).classList.add("solved")
+					document.getElementById(i*5 + 2).classList.add("solved")
+					document.getElementById(i*5 + 3).classList.add("solved")
+					document.getElementById(i*5 + 4).classList.add("solved")
+					document.getElementById(i*5 + 5).classList.add("solved")
+				}
+			}
+		}
+		if (settingsc[2] && (solved == false)) {
+			for (let i = 0; i < 25; i++) {
+				if (goal[i] == current[i]) {
+					document.getElementById(i + 1).classList.add("solved")
+				}
 			}
 		}
 	}
@@ -284,4 +354,29 @@ function dummyinput(i) {
 		setTimeout(function(){firefoxmobilefix = true},10)
 	}
 	firefoxmobilefix = false
+}
+
+function opensettings() {
+	document.getElementById("settingbox").classList.remove("invisable")
+	if (settingsc[0]) {
+		document.querySelector("#settingbox :nth-child(2)").innerHTML = "&#x2612; timer"
+	}
+	if (settingsc[1]) {
+		document.querySelector("#settingbox :nth-child(3)").innerHTML = "&#x2612; highlight correct words"
+	}
+	if (settingsc[2]) {
+		document.querySelector("#settingbox :nth-child(4)").innerHTML = "&#x2612; highlight correct letters"
+	}
+}
+
+function settings(m,n) {
+	if (settingsc[n]) {
+		settingsc[n] = false
+		m.innerHTML = m.innerHTML.replace("\☒","\☐")
+	} 
+	else {
+		settingsc[n] = true
+		m.innerHTML = m.innerHTML.replace("\☐","\☒")
+	}
+	localStorage.setItem("crossword-settings", JSON.stringify(settingsc))
 }

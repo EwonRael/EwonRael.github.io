@@ -13,7 +13,8 @@
 		<meta property="og:image" content="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/preview.png" />
 	</head>
 	<body>
-		<h1><a href="index.html">square crosswords</a></h1>
+		<h1 id="settings" onclick="opensettings()">&#9881;</h1><h1 id="backbutton"><a href="index.html">&#x279E;</a></h1>
+		<h1>crossword 05</h1>
 		<input id="dummyinput" onfocusout="deselect()" oninput="dummyinput()"></input>
 		<table id="crossword">
 			<tr>
@@ -78,6 +79,15 @@
 		</div>
 		<div id="mobilePreview" class="invisable">
 			<p id="previewBox">1.&emsp;Involuntary muscle contraction</p>
+		</div>
+		<div id="settingbox" class="invisable">
+			<div>
+			<p><b>Settings:</b></p>
+			<p onclick="settings(this,0)">&#x2610; timer</p>
+			<p onclick="settings(this,1)">&#x2610; highlight correct words</p>
+			<p onclick="settings(this,2)">&#x2610; highlight correct letters</p><br>
+			<button onclick='document.getElementById("settingbox").classList.add("invisable")'>done!</button>
+			</div>
 		</div>
 	</body>
 </html>
