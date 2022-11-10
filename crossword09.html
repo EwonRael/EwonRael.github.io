@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>5x5 crossword 09</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script>let goal = "scentalgaelarvasmearaptly"; let crossnum = 8</script>
+		<script src="script.js"></script>
+		<link rel="shortcut icon" href="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/Favicon.png">
+		<link rel="icon" type="../image/png" href="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/Favicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=0.8, user-scalable=no">
+		<meta property="og:title" content="5x5 crossword 09" />
+		<meta property="og:description" content="The ninth five-by-five crossword in a series of twenty-five." />
+		<meta property="og:image" content="https://github.com/EwonRael/EwonRael.github.io/raw/master/crossword/preview.png" />
+	</head>
+	<body>
+		<h1 id="settings" onclick="opensettings()">&#9881;</h1><h1 id="backbutton"><a href="index.html">&#x279E;</a></h1>
+		<h1>crossword 09</h1>
+		<input id="dummyinput" onfocusout="deselect()" oninput="dummyinput()"></input>
+		<table id="crossword">
+			<tr>
+				<td onclick="select(1)" id="1">&emsp;</td>
+				<td onclick="select(2)" id="2">&emsp;</td>
+				<td onclick="select(3)" id="3">&emsp;</td>
+				<td onclick="select(4)" id="4">&emsp;</td>
+				<td onclick="select(5)" id="5">&emsp;</td>
+			</tr>
+			<tr>
+				<td onclick="select(6)" id="6">&emsp;</td>
+				<td onclick="select(7)" id="7">&emsp;</td>
+				<td onclick="select(8)" id="8">&emsp;</td>
+				<td onclick="select(9)" id="9">&emsp;</td>
+				<td onclick="select(10)" id="10">&emsp;</td>
+			</tr>
+			<tr>
+				<td onclick="select(11)" id="11">&emsp;</td>
+				<td onclick="select(12)" id="12">&emsp;</td>
+				<td onclick="select(13)" id="13">&emsp;</td>
+				<td onclick="select(14)" id="14">&emsp;</td>
+				<td onclick="select(15)" id="15">&emsp;</td>
+			</tr>
+			<tr>
+				<td onclick="select(16)" id="16">&emsp;</td>
+				<td onclick="select(17)" id="17">&emsp;</td>
+				<td onclick="select(18)" id="18">&emsp;</td>
+				<td onclick="select(19)" id="19">&emsp;</td>
+				<td onclick="select(20)" id="20">&emsp;</td>
+			</tr>
+			<tr>
+				<td onclick="select(21)" id="21">&emsp;</td>
+				<td onclick="select(22)" id="22">&emsp;</td>
+				<td onclick="select(23)" id="23">&emsp;</td>
+				<td onclick="select(24)" id="24">&emsp;</td>
+				<td onclick="select(25)" id="25">&emsp;</td>
+			</tr>
+		</table>
+		<div id="across">
+			<p><b>&emsp;&emsp;&emsp;Across</b></p>
+			<p onclick="clue(1, true)">1.&emsp;Due to the pandemic, candles have been lacking this a lot more recently... </p>
+			<p onclick="clue(6, true)">6.&emsp;Vegetarian fish food</p>
+			<p onclick="clue(11, true)">7.&emsp;A more meaty fish food option</p>
+			<p onclick="clue(16, true)">8.&emsp;To spread grease or rumors</p>
+			<p onclick="clue(21, true)">9.&emsp;In a fitting or appropriate kind of way</p>
+		</div>
+		<div id="down">
+			<p><b>&emsp;&emsp;&emsp;Down</b></p>
+			<p onclick="clue(1, false)">1.&emsp;In Mexico a food, in Puerto Rico a dance?</p>
+			<p onclick="clue(2, false)">2.&emsp;I can only keep everything together temporarily!</p>
+			<p onclick="clue(3, false)">3.&emsp;I regret mistaking it for a heron!</p>
+			<p onclick="clue(4, false)">4.&emsp;Sounds like a type of gazing, but it's a bit more wet...</p>
+			<p onclick="clue(5, false)">5.&emsp;Someone is cutting onions!</p>
+		</div>
+		<div id="solved" class="invisable">
+			<div>
+			<p><b>You solved the crossword!</b></p>
+			<p id="timer"></p>
+			<button onclick='document.getElementById("solved").classList.add("invisable")'>admire</button>
+			<button onclick="redo()">redo</button>
+			</div>
+		</div>
+		<div id="mobilePreview" class="invisable">
+			<p id="previewBox">1.&emsp;Involuntary muscle contraction</p>
+		</div>
+		<div id="settingbox" class="invisable">
+			<div>
+			<p><b>Settings:</b></p>
+			<p onclick="settings(this,0)">&#x2610; timer</p>
+			<p onclick="settings(this,1)">&#x2610; highlight correct words</p>
+			<p onclick="settings(this,2)">&#x2610; highlight correct letters</p><br>
+			<button onclick='document.getElementById("settingbox").classList.add("invisable")'>done!</button>
+			</div>
+		</div>
+	</body>
+</html>
+
