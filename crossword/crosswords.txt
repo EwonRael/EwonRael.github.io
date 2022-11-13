@@ -86,17 +86,6 @@ miser
 bolas
 anele
 
-spite
-lemur
-inane
-magic
-elect
-slime
-penal
-image
-tunic
-erect
-
 scent
 algae
 larva
@@ -261,6 +250,17 @@ quran
 utica
 aesop
 dress
+
+spite
+lemur
+inane
+magic
+elect
+slime
+penal
+image
+tunic
+erect
 
 brace
 relax
