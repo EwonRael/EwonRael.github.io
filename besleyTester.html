@@ -2,12 +2,17 @@
 <html>
 	<head>
 		<title>Besley* Testing</title>
-    <link rel="stylesheet" href='https://indestructibletype.com/fonts/Besley.css' type="text/css" charset="utf-8" />
     <style>
+@font-face {
+	font-family: "Besley";
+	src: url("Besley-Regular.woff2") format("woff2");
+	font-style: normal;
+}
       body {
         font-family: "Besley";
       }
       h1 {
+	
         font-weight: inherit;
         font-size: 55px;
         line-height: 1.2;
@@ -16,20 +21,5 @@
 </head>
   <body>
     <span id="size"><span id="italic"><h1 contenteditable="true" id="edit">This is to test things out.</h1></span></span>
-    <div>
-    <p style="float: left; margin-top: 0">WEIGHT: &nbsp;</p>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 400';">Book</button>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 500';">Medium</button>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 600';">Semi</button>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 700';">Bold</button>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 800';">Heavy</button>
-    <button type="button" name="button" onclick="document.getElementById('size').style = 'font-weight: 900';">Fatface</button>
-    </div><br><div>
-    <p style="float: left; margin-top: 0">ITALIC: &nbsp;</p>
-    <button type="button" name="button" onclick="document.getElementById('italic').style = 'font-style: normal';">Roman</button>
-    <button type="button" name="button" onclick="document.getElementById('italic').style = 'font-style: italic';">Italic</button>
-  </div><br><div>
-    <button type="button" name="button" onClick="location.href='https://indestructibletype.com/Besley.zip'">Download the Font</button>
-    </div>
 	</body>
 </html>
