@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Songs of the Detective</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<div id="song_picker">
+			<img src="cover.jpg"/>
+		</div>
+		<div id="playbutton">
+			<button onclick="playsound()" id="play">&#x25B6;</button>
+		</div>
+		<audio id="bass" src="music/bass.ogg"></audio>
+		<audio id="clarinet" src="music/clarinet.ogg"></audio>
+		<audio id="narration" src="music/narration.ogg"></audio>
+		<audio id="piano" src="music/piano.ogg"></audio>
+		<audio id="snaps" src="music/snaps.ogg"></audio>
+		<input id="timeline" type="range" min="0" max="2168" value="0" oninput="setAudio(this.value)">
+		<div id="volume_sliders">
+			<h2>Volume Control:</h2>
+			<p> Narration: <input type="range" min="0" max="100" value="90" oninput="narration.volume = this.value/100" id="vol_narration"> </p>
+			<p> Bass: <input type="range" min="0" max="100" value="90" oninput="bass.volume = this.value/100" id="vol_bass"> </p>
+			<p> Clarinet: <input type="range" min="0" max="100" value="90" oninput="clarinet.volume = this.value/100" id="vol_clarinet"> </p>
+			<p> Piano: <input type="range" min="0" max="100" value="90" oninput="piano.volume = this.value/100" id="vol_piano"> </p>
+			<p> Hand Sounds: <input type="range" min="0" max="100" value="90" oninput="snaps.volume = this.value/100" id="vol_snaps"> </p>
+		</div>
+	</body>
+</html>
+

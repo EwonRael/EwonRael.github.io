@@ -1,0 +1,112 @@
+@font-face {
+	font-family: "Heros";
+	src: url("Heros.woff2") format("woff2");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Heros";
+	src: url("SansBold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: bold;
+}
+
+body {
+	font-family: "Heros";
+	margin: 0;
+	padding: 0;
+	background-color: #4f1717;
+	color: white;
+}
+
+#song_picker img {
+	max-width: 80vw;
+	width: 80vh;
+	margin: 50px auto 50px;
+	display: block;
+	box-shadow: 15px 15px 30px rgba(0,0,0,0.5), -5px -5px 30px rgba(0,0,0,0.2);
+	z-index: 1;
+}
+
+#volume_sliders {
+	padding: 20px 5vw 20px;
+	background-color: black;
+}
+
+#volume_sliders input {
+	float: right;
+	width: 80%;
+}
+
+#play {
+	width: 70px;
+	height: 70px;
+	text-align: center;
+	font-family: "Heros";
+	border-radius: 10px;
+	border: 3px solid white;
+	background-color: black;
+	color: white;
+	float: right;
+	z-index: 2;
+	position: relative;
+	margin: 20px;
+	font-size: 40px;
+	line-height: 0;
+	opacity: 0.5;
+}
+
+#play:hover {
+	opacity: 0.8;
+}
+
+#playbutton {
+	max-width: 80vw;
+	width: 80vh;
+	height: 70px;
+	display: block;
+	margin: auto;
+	margin-top: -157px;
+	margin-bottom: 90px;
+}
+
+#timeline {
+	width: 100vw;
+	position: absolute;
+	right: 0;
+	margin-top: -2px;
+}
+
+h2 {
+	font-weight: bold;
+}
+
+input {
+	-webkit-appearance: none;
+	background-color: gray;
+	height: 5px;
+}
+
+input::-webkit-slider-thumb, input::-moz-range-thumb {
+	-webkit-appearance: none;
+	appearance: none;
+	width: 10px;
+	height: 25px;
+	border: none;
+	border-radius: 0;
+	background-color: white;
+	border-color: transparent;
+	cursor: pointer;
+}
+
+#timeline::-webkit-slider-thumb, #timeline::-moz-range-thumb {
+	width: 25px;
+	height: 25px;
+	border-radius: 25px;
+	box-shadow: -3px 3px 15px rgba(0,0,0,0.5);
+}
+
+#volume_sliders input {
+	width: calc(90vw - 130px);
+	transform: translate(0, 7px);
+}
