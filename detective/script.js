@@ -21,7 +21,12 @@ function playsound() {
 		clarinet.pause()
 		narration.pause()
 		piano.pause()
-		snaps.pause()	
+		snaps.pause()
+		bass.currentTime = (bass.currentTime.toFixed(1) - 0.4)
+		clarinet.currentTime = bass.currentTime
+		narration.currentTime = bass.currentTime
+		piano.currentTime = bass.currentTime
+		snaps.currentTime = bass.currentTime
 		document.getElementById("play").innerHTML = "&#x25B6;"
 	}
 	else {
