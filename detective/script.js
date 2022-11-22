@@ -51,7 +51,7 @@ function setAudio(when) {
 
 let timeupdate = window.setInterval(function() {
 	let time = bass.currentTime.toFixed(1)
-	if (clarinet.currentTime.toFixed(1) != time) {
+	if (clarinet.currentTime.toFixed(1) != time || narration.currentTime.toFixed(1) != time || piano.currentTime.toFixed(1) != time || snaps.currentTime.toFixed(1) != time ) {
 		bass.pause()
 		clarinet.pause()
 		narration.pause()
