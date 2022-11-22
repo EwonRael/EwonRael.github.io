@@ -57,7 +57,7 @@ let timeupdate = window.setInterval(function() {
 		narration.pause()
 		piano.pause()
 		snaps.pause()
-		bass.currentTime = (bass.currentTime.toFixed(1) - 0.4)
+		bass.currentTime = (bass.currentTime.toFixed(1) - 0.2)
 		clarinet.currentTime = bass.currentTime
 		narration.currentTime = bass.currentTime
 		piano.currentTime = bass.currentTime
