@@ -45,6 +45,29 @@ function setAudio(when) {
 }
 
 let timeupdate = window.setInterval(function() {
-	document.getElementById("timeline").value = clarinet.currentTime
-	document.getElementById("timeline").style = "background-image: -webkit-gradient( linear, left top, right top, color-stop(" + clarinet.currentTime/2168 + ", white), color-stop(0" + clarinet.currentTime/2168 + ", gray));"
+	let time = bass.currentTime.toFixed(1)
+	if (clarinet.currentTime.toFixed(1) != time) {
+		bass.pause()
+		clarinet.pause()
+		narration.pause()
+		piano.pause()
+		snaps.pause()
+		bass.currentTime = (bass.currentTime.toFixed(1) - 0.4)
+		clarinet.currentTime = bass.currentTime
+		narration.currentTime = bass.currentTime
+		piano.currentTime = bass.currentTime
+		snaps.currentTime = bass.currentTime
+		console.log("syncing")
+	}
+	else if (audioplay) {
+		console.log("playing")
+		bass.play()
+		clarinet.play()
+		narration.play()
+		piano.play()
+		snaps.play()
+	}
+	document.getElementById("timeline").value = time
+	document.getElementById("timeline").style = "background-image: -webkit-gradient( linear, left top, right top, color-stop(" + time/2168 + ", white), color-stop(0" + time/2168 + ", gray));"
 }, 500)
+

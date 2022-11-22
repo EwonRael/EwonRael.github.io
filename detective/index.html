@@ -12,11 +12,11 @@
 		<div id="playbutton">
 			<button onclick="playsound()" id="play">&#x25B6;</button>
 		</div>
-		<audio id="bass" src="music/bass.ogg"></audio>
-		<audio id="clarinet" src="music/clarinet.ogg"></audio>
-		<audio id="narration" src="music/narration.ogg"></audio>
-		<audio id="piano" src="music/piano.ogg"></audio>
-		<audio id="snaps" src="music/snaps.ogg"></audio>
+		<audio id="bass" mediagroup="music" src="music/bass.ogg"></audio>
+		<audio id="clarinet" mediagroup="music" src="music/clarinet.ogg"></audio>
+		<audio id="narration" mediagroup="music" src="music/narration.ogg"></audio>
+		<audio id="piano" mediagroup="music" src="music/piano.ogg"></audio>
+		<audio id="snaps" mediagroup="music" src="music/snaps.ogg"></audio>
 		<input id="timeline" type="range" min="0" max="2168" value="0" oninput="setAudio(this.value)">
 		<div id="volume_sliders">
 			<h2>Volume Control:</h2>
@@ -28,4 +28,5 @@
 		</div>
 	</body>
 </html>
+
 
