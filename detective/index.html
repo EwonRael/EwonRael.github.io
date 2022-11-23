@@ -23,7 +23,7 @@
 		<audio id="narration" mediagroup="music" preload="auto" src="music/narration.ogg"></audio>
 		<audio id="piano" mediagroup="music" preload="auto" src="music/piano.ogg"></audio>
 		<audio id="snaps" mediagroup="music" preload="auto" src="music/snaps.ogg"></audio>
-		<input id="timeline" type="range" min="0" max="2168" value="0" oninput="setAudio(this.value)">
+		<input id="timeline" type="range" min="0" max="21680" value="0" oninput="setAudio(this.value)" onchange="startAudio(this.value)">
 		<div id="volume_sliders">
 			<h2>Volume Control:</h2>
 			<p> Narration: <input type="range" min="0" max="100" value="90" oninput="narration.volume = this.value/100" id="vol_narration"> </p>

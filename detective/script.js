@@ -17,6 +17,7 @@ window.onload = function() {
 function playsound() {
 	if (audioplay) {
 		audioplay = false
+		document.getElementById("play").innerHTML = "&#x25B6;"
 		bass.pause()
 		clarinet.pause()
 		narration.pause()
@@ -27,52 +28,45 @@ function playsound() {
 		narration.currentTime = bass.currentTime
 		piano.currentTime = bass.currentTime
 		snaps.currentTime = bass.currentTime
-		document.getElementById("play").innerHTML = "&#x25B6;"
 	}
 	else {
 		audioplay = true
-		bass.play()
-		clarinet.play()
-		narration.play()
-		piano.play()
-		snaps.play()
 		document.getElementById("play").innerHTML = "&#x23F8;"
 	}
 }
 
 function setAudio(when) {
-	bass.currentTime = when
-	clarinet.currentTime = when
-	narration.currentTime = when
-	piano.currentTime = when
-	snaps.currentTime = when
-	document.getElementById("timeline").style = "background-image: -webkit-gradient( linear, left top, right top, color-stop(" + clarinet.currentTime/2168 + ", white), color-stop(0" + clarinet.currentTime/2168 + ", gray));"
+	document.getElementById("timeline").style = "background-image: -webkit-gradient( linear, left top, right top, color-stop(" + when/21680 + ", white), color-stop(0" + when/21680 + ", gray));"
 }
 
 let timeupdate = window.setInterval(function() {
-	let time = bass.currentTime.toFixed(1)
-	if (clarinet.currentTime.toFixed(1) != time || narration.currentTime.toFixed(1) != time || piano.currentTime.toFixed(1) != time || snaps.currentTime.toFixed(1) != time ) {
+	let time = document.getElementById("timeline")
+	if (audioplay) {
+		if (bass.readyState + clarinet.readyState + narration.readyState + piano.readyState + snaps.readyState == 20 ) {
+			bass.play()
+			clarinet.play()
+			narration.play()
+			piano.play()
+			snaps.play()
+			time.value = Number(time.value) + 1
+			setAudio(time.value)
+		}
+		else {
+			console.log("LOADING")
+		}
+	}
+}, 100)
+
+function startAudio(when) {
 		bass.pause()
 		clarinet.pause()
 		narration.pause()
 		piano.pause()
 		snaps.pause()
-		bass.currentTime = (bass.currentTime.toFixed(1) - 0.2)
+		bass.currentTime = when/10
 		clarinet.currentTime = bass.currentTime
 		narration.currentTime = bass.currentTime
 		piano.currentTime = bass.currentTime
 		snaps.currentTime = bass.currentTime
-		console.log("syncing")
-	}
-	else if (audioplay) {
-		console.log("playing")
-		bass.play()
-		clarinet.play()
-		narration.play()
-		piano.play()
-		snaps.play()
-	}
-	document.getElementById("timeline").value = time
-	document.getElementById("timeline").style = "background-image: -webkit-gradient( linear, left top, right top, color-stop(" + time/2168 + ", white), color-stop(0" + time/2168 + ", gray));"
-}, 500)
+}
 
