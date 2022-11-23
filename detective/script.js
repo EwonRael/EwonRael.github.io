@@ -48,14 +48,27 @@ let timeupdate = window.setInterval(function() {
 			narration.play()
 			piano.play()
 			snaps.play()
-			time.value = Number(time.value) + 1
+			time.value = bass.currentTime * 10
 			setAudio(time.value)
 		}
 		else {
 			console.log("LOADING")
 		}
+		if (Math.round(bass.currentTime) != Math.round(clarinet.currentTime) || Math.round(bass.currentTime) != Math.round(piano.currentTime) || Math.round(bass.currentTime) != Math.round(snaps.currentTime)) {
+			bass.pause()
+			clarinet.pause()
+			narration.pause()
+			piano.pause()
+			snaps.pause()
+			bass.currentTime = bass.currentTime.toFixed(1)
+			clarinet.currentTime = bass.currentTime
+			narration.currentTime = bass.currentTime
+			piano.currentTime = bass.currentTime
+			snaps.currentTime = bass.currentTime
+			console.log("FIXING TIME")
+		}
 	}
-}, 100)
+}, 500)
 
 function startAudio(when) {
 		bass.pause()
