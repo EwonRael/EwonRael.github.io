@@ -60,6 +60,11 @@ body {
 	opacity: 0.8;
 }
 
+#play img {
+	width: 70%;
+	height: 70%;
+}
+
 #playbutton {
 	max-width: 80vw;
 	width: 80vh;
@@ -110,3 +115,37 @@ input::-webkit-slider-thumb, input::-moz-range-thumb {
 	width: calc(90vw - 130px);
 	transform: translate(0, 7px);
 }
+
+#flexcontain {
+	display: flex;
+	width: 100%;
+}
+
+#track-title {
+	flex: 3;
+	text-align: center;
+	margin: 30px;
+	font-size: 20px;
+	margin-bottom: 50px;
+	text-shadow: 3px 3px 5px rgba(0,0,0,0.2);
+	
+}
+
+#backtrack {
+	text-align: right;
+	flex: 1;
+	font-size: 30px;
+	float: left;
+	font-weight: 400;
+	cursor: pointer;
+}
+
+#forwardtrack {
+	text-align: left;
+	flex: 1;
+	font-size: 30px;
+	float: right;
+	font-weight: 400;
+	cursor: pointer;
+}
+
