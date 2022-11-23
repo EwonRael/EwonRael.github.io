@@ -122,6 +122,7 @@ input::-webkit-slider-thumb, input::-moz-range-thumb {
 }
 
 #track-title {
+	font-weight: bold;
 	flex: 3;
 	text-align: center;
 	margin: 30px;
