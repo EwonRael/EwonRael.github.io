@@ -139,11 +139,14 @@ input::-moz-range-thumb {
 #flexcontain {
 	display: flex;
 	width: 100%;
+	list-style: none;
+	display: flex;
+	align-items: center;
+	justify-content: center;
 }
 
 #track-title {
 	font-weight: bold;
-	flex: 3;
 	text-align: center;
 	margin: 30px;
 	font-size: 20px;
@@ -153,20 +156,24 @@ input::-moz-range-thumb {
 }
 
 #backtrack {
-	text-align: right;
-	flex: 1;
+	text-align: center;
 	font-size: 30px;
 	float: left;
 	font-weight: 400;
 	cursor: pointer;
+	margin-left: 30px;
+	margin-top: 10px;
+	flex: auto;
 }
 
 #forwardtrack {
-	text-align: left;
-	flex: 1;
+	text-align: center;
 	font-size: 30px;
 	float: right;
 	font-weight: 400;
 	cursor: pointer;
+	margin-right: 30px;
+	margin-top: 10px;
+	flex: auto
 }
 
