@@ -1,0 +1,106 @@
+body {
+	margin: 0;
+	padding: 0;
+	font-family: 'IBM Plex Sans', sans-serif;
+}
+
+#head {
+	background-color: #4d8059;
+	height: 80vh;
+	margin-bottom: 200px;
+}
+
+#head img {
+	width: calc(90vw - 150px);
+	height: 80vh;
+	margin: 5vw 5vw;
+	object-fit: cover;
+	object-position: 75% 50%;
+}
+
+#head div {
+	background-color: white;
+	position: absolute;
+	top: calc(80vh - 300px);
+	right: 5vw;
+	padding: 0 1em;
+}
+
+@media only screen and (max-width: 1000px) {
+	#head img {
+		width: 90vw;
+		height: 80vh;
+		margin: 5vw 5vw;
+		object-fit: cover;
+		object-position: 50% 50%;
+	}
+	#head div {
+		top: calc(80vh - 100px);
+		box-shadow: -5px 5px 0 #4d8059;
+		right: 3vw;
+	}
+}
+
+h1 {
+	font-size: 70px;
+	font-weight: 500;
+	font-family: "Bodoni* 16", "Bodoni Moda", serif;
+	line-height: 0.5;
+}
+
+#head div h2 {
+	text-align: right;
+	font-size: 20px;
+}
+
+#body {
+	width: 80vw;
+	max-width: 900px;
+	margin: 1em auto;
+	font-size: 20px;
+	line-height: 2;
+}
+
+#body p {
+	margin: 50px;
+}
+
+#body h1 {
+	margin-top: 100px;
+}
+
+#video {
+	background-color: #4d8059;
+	height: 60vw;
+	max-height: 600px;
+	margin-bottom: 200px;
+	position: absolute;
+	left: 0;
+	width: 100vw;
+	margin-top: 100px;
+}
+
+#video h1 {
+	background-color: white;
+	position: absolute;
+	line-height: 1.5;
+	margin-left: 5vw;
+	margin-top: -50px;
+	padding: 0 10px;
+}
+
+#video iframe {
+	width: 80vw;
+	max-width: 800px;
+	height: 60vw;
+	max-height: 600px;
+	margin: 1em auto;
+	display: block;
+	margin-top: 70px;
+}
+
+#video-break {
+	height: 60vw;
+	max-height: 600px;
+	margin-bottom: 250px;
+}
