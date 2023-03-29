@@ -45,7 +45,8 @@ h1 {
 	font-size: 70px;
 	font-weight: 500;
 	font-family: "Bodoni* 16", "Bodoni Moda", serif;
-	line-height: 0.5;
+	line-height: 1;
+	margin: 15px 0;
 }
 
 #head div h2 {
