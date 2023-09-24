@@ -1,0 +1,51 @@
+<!--
+Made with love by Owen Earl
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Personality Test!</title>
+	<link rel='stylesheet' href='style.css'/>
+	<script src="script.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<div id="finished-text">
+		<h1>My thoughts on <span class="hitler">Adolf Hitler</span>.</h2>
+		<p><span class="hitler">Adolf Hitler</span> was <span class="peronality">a great and terrible man</span>. Many people think of him first when asked to <span class="thing-to-do">name the worst person who ever lived</span>. He <span class="proud">rose to power</span> <span class="way-to-be">in a very undemocratic manor</span>, and <span class="embaressed">held on to power</span> <span class="way-to-not-be">with an iron fist</span>. He <span class="dream">caused a great many deaths</span> in <span class="place">his home country of Germany</span>, and he <span class="review">threw the world into a war that continues to have devastating impact</span>.</p>
+		<p>Many people may find it confusing, therefore, to learn that <span class="hitler">Adolf Hitler</span> was <span class="typeop">a vegetarian</span>. He believed <span class="believed">that animals are innocent</span>, unlike <span class="were">human people</span>, who <span class="who">are capable of great evil</span>.</p>
+		<p>I hope that as a society we remember <span class="hitler">Adolf Hitler</span> as <span class="waytogo">a complex person</span>, not to diminish how he <span class="dider">evil he was</span>, but to keep him <span class="describe">multidimensional</span>. To prevent him from <span class="people">being reduced to a caricature</span>. As more and more time passes, an increasing number of people seem to <span class="peopless">loose sight of this important goal</span>.</p>
+	</div>
+	
+	<div id="Questions">
+		<h1>Personality Test</h2>
+		<p><b>DIRECTIONS:</b> Below are a series of 20 incomplete statements. Please read each statement carefully, before completing it by filling in the blank. Try and complete the statements honestly and concisely. Make sure that each statement is a proper sentence. Please note that your answers to these questions will not be anonymous. <b>DO NOT</b> click continue until instructed to do so!<p>
+		<ol>
+			<p><b>Section 01: How I See Myself</p></b>
+			<li>Generally, I would describe myself as <input type="text" placeholder="how I am..." onchange="change('describe', value)"></li>
+			<li>If I had to compare myself to a <b>woman</b>, living or dead, fictional or real, I'd compare myself to <input type="text" placeholder="woman's name..."></li>
+			<li>If I had to compare myself to a <b>man</b>, living or dead, fictional or real, I'd compare myself to <input type="text" placeholder="man's name..." onchange="change('hitler', value)"></li>
+			<li>I worry that the people I love see me as <input type="text" placeholder="way I might be seen..." onchange="change('peronality', value)"></li>
+			<li>I hope that the people I love see me as <input type="text" placeholder="way I might be seen..." onchange="change('waytogo', value)"></li>
+			<li>I am proud of myself, because this week I <input type="text" placeholder="thing I did this week" onchange="change('proud', value)"></li>
+			<li>I am embarrassed, because this week I <input type="text" placeholder="thing I did this week" onchange="change('embaressed', value)"></li>
+			<li>Somewhere that I think would challenge me is in <input type="text" placeholder="place" onchange="change('place', value)"></li>
+			<p><b>Section 02: My Childhood</p></b>
+			<li>As a child, I often acted <input type="text" placeholder="how I acted" onchange="change('way-to-be', value)"></li>
+			<li>Looking back, I wish that I acted <input type="text" placeholder="how I wish I acted" onchange="change('way-to-not-be', value)"></li>
+			<li>As a child, I dreamed that I <input type="text" placeholder="thing I dreamed" onchange="change('dream', value)"></li>
+			<li>As a child, I wanted to be <input type="text" placeholder="thing I wanted to be" onchange="change('typeop', value)"></li>
+			<li>When I misbehaved, my parent(s) <input type="text" placeholder="thing they did" onchange="change('review', value)"></li>
+			<li>My best friend growing up sometimes <input type="text" placeholder="thing my friend did" onchange="change('dider', value)"></li>
+			<p><b>Section 03: How I Society</p></b>
+			<li>I think strangers too often <input type="text" placeholder="thing they do..." onchange="change('thing-to-do', value)"></li>
+			<li>I wish more people believed <input type="text" placeholder="thing I wish they believed" onchange="change('believed', value)"></li>
+			<li>The world needs more <input type="text" placeholder="people we need more of" onchange="change('were', value)"></li>
+			<li>I trust people who <input type="text" placeholder="thing they do" onchange="change('who', value)"></li>
+			<li>People need to stop <input type="text" placeholder="thing should stop doing" onchange="change('people', value)"></li>
+			<li>I'm glad that people <input type="text" placeholder="thing that's good" onchange="change('peopless', value)"></li>
+		</ol>
+		<button onclick="nextB()">CONTINUE</button>
+	</div>
+</body>
+</html>

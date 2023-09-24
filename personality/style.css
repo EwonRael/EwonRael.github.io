@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "MFEK";
+    src: url("MFEK-Sans[TRMA,wght,wdth].ttf") format("truetype");
+}
+
+body {
+	font-family: "MFEK", sans-serif;
+}
+
+div {
+	width: 80vw;
+	margin: auto;
+	max-width: 800px;
+	margin-top: 50px;
+}
+
+h1 {
+	font-size: 40px;
+	margin: 0;
+}
+
+p {
+	font-size: 20px;
+}
+
+li {
+	font-size: 20px;
+	margin-bottom: 1em;
+}
+
+input {
+	font-family: "MFEK", sans-serif;
+	font-size: 20px;
+	border: 0;
+	border-bottom: 2px black solid;
+	background-color: inherit;
+}
+
+#finished-text {
+	display: none;
+}
+
+button {
+	background-color: inherit;
+	border: 2px solid black;
+	border-radius: 0;
+	font-family: "MFEK", sans-serif;
+	font-size: 20px;
+	font-weight: 800;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin: 30px;
+}
