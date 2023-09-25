@@ -1,0 +1,112 @@
+#crossword {
+	border-collapse: collapse;
+}
+
+#crossword td {
+	border: 1px solid black;
+	width: 30px;
+	height: 30px;
+	text-align: center;
+	text-transform: uppercase;
+}
+
+#previewBox {
+	height: 1em;
+}
+
+.highlight {
+	background-color: lightblue;
+}
+
+.focus {
+	background-color: lightyellow;
+}
+
+.solved {
+	background-color: lightgreen;
+}
+
+.black {
+	background-color: black;
+}
+
+td::before {
+	float: left;
+	width: 30px;
+	height: 30px;
+	margin-top: -7px;
+	margin-bottom: -23px;
+	text-align: left;
+}
+
+#crossword-square-1::before {
+	content: "\00B9";
+}
+
+#crossword-square-2::before {
+	content: "\00B2";
+}
+
+#crossword-square-3::before {
+	content: "\00B3";
+}
+
+#crossword-square-5::before {
+	content: "\2074";
+}
+
+#crossword-square-6::before {
+	content: "\2075";
+}
+
+#crossword-square-7::before {
+	content: "\2076";
+}
+
+#crossword-square-8::before {
+	content: "\2077";
+}
+
+#crossword-square-12::before {
+	content: "\2078";
+}
+
+#crossword-square-15::before {
+	content: "\2079";
+}
+
+#crossword-square-18::before {
+	content: "\00B9\2070";
+}
+
+#crossword-square-24::before {
+	content: "\00B9\00B9";
+}
+
+#crossword-square-26::before {
+	content: "\00B9\00B2";
+}
+
+#crossword-square-27::before {
+	content: "\00B9\00B3";
+}
+
+#crossword-square-34::before {
+	content: "\00B9\2074";
+}
+
+#crossword-square-36::before {
+	content: "\00B9\2075";
+}
+
+#crossword-square-39::before {
+	content: "\00B9\2076";
+}
+
+#crossword-square-40::before {
+	content: "\00B9\2077";
+}
+
+#crossword-square-45::before {
+	content: "\00B9\2078";
+}
