@@ -1,5 +1,5 @@
 let mastersolved = localStorage.getItem("crossword2-mastersolved")
-let settingsc = localStorage.getItem("crossword2-settings")
+let settingsc = localStorage.getItem("crossword-settings")
 let currentselect = 0
 let canedit = false
 let across = true
