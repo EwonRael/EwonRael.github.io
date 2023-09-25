@@ -1,4 +1,4 @@
-let mastersolved = localStorage.getItem("crossword-mastersolved")
+let mastersolved = localStorage.getItem("crossword2-mastersolved")
 
 if (mastersolved) {
 	mastersolved = JSON.parse(mastersolved)

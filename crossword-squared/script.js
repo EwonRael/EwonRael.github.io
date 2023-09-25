@@ -1,5 +1,5 @@
-let mastersolved = localStorage.getItem("crossword-mastersolved")
-let settingsc = localStorage.getItem("crossword-settings")
+let mastersolved = localStorage.getItem("crossword2-mastersolved")
+let settingsc = localStorage.getItem("crossword2-settings")
 let currentselect = 0
 let canedit = false
 let across = true
@@ -254,7 +254,7 @@ function redo() {
 	}
 	document.getElementById("solved").classList.add("invisable")
 	mastersolved[crossnum] = false
-	localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
+	localStorage.setItem("crossword2-mastersolved", JSON.stringify(mastersolved))
 }
 
 function checkCrossword() {
@@ -279,7 +279,7 @@ function checkCrossword() {
 			mastersolved[crossnum] = true
 			solved = true
 			console.log(mastersolved)
-			localStorage.setItem("crossword-mastersolved", JSON.stringify(mastersolved))
+			localStorage.setItem("crossword2-mastersolved", JSON.stringify(mastersolved))
 			let seconds = Math.round((new Date().getTime() - starttime) / 1000)
 			if (settingsc[0]) {
 				if (seconds < 61) {
