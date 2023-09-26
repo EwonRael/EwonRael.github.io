@@ -1,3 +1,15 @@
+iwill
+tibia
+sleek
+image
+names
+
+luigi
+olden
+stint
+ernie
+sager
+
 anais
 metro
 tater
@@ -16,12 +28,6 @@ anvil
 steno
 sires
 
-iwill
-tibia
-sleek
-image
-names
-
 trail
 raise
 adose
@@ -33,12 +39,6 @@ heart
 eerie
 asses
 ttest
-
-luigi
-olden
-stint
-ernie
-sager
 
 morel
 irene
