@@ -263,6 +263,9 @@ function checkCrossword() {
 		for (let i = 1; i < 26; i++) {
 			let square = document.getElementById(i)
 			current = current + square.innerHTML.replace("<br>","").replace("&nbsp;","?").slice(0, 1).toLowerCase()
+			if (square.classList.contains("solved")) {
+				square.innerHTML = goal[i-1]
+			}
 		}
 		if (current == goal) {
 			for (let i = 1; i < 26; i++) {
