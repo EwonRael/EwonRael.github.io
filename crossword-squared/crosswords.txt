@@ -22,6 +22,12 @@ exert
 metoo
 slats
 
+drama
+resat
+atilt
+grata
+sonar
+
 anais
 metro
 tater
@@ -399,12 +405,6 @@ milli
 atein
 shove
 sosad
-
-drama
-resat
-atilt
-grata
-sonar
 
 brags
 roman
