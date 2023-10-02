@@ -40,6 +40,12 @@ oases
 ezine
 dents
 
+mural
+chili
+audit
+trove
+safes
+
 anais
 metro
 tater
@@ -249,12 +255,6 @@ reata
 obits
 mores
 andre
-
-mural
-chili
-audit
-trove
-safes
 
 lisle
 inall
