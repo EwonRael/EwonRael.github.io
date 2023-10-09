@@ -82,6 +82,12 @@ alien
 roses
 swede
 
+atoms
+lilac
+lasso
+arest
+hanes
+
 hagen
 adobe
 rares
