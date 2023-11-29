@@ -1,0 +1,41 @@
+@font-face {
+	font-family: "Fraunces";
+	src: url("fonts/Fraunces[SOFT,WONK,opsz,wght].woff2") format("woff");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Fraunces";
+	src: url("fonts/Fraunces-Italic[SOFT,WONK,opsz,wght].woff2") format("woff");
+	font-style: italic;
+}
+
+body {
+	margin: 0;
+	background-color: #222222;
+	color: #ffffdd;
+}
+
+h1 {
+	font-family: "Fraunces";
+	text-align: center;
+	font-size: 16vw;
+	margin: 0;
+	font-variation-settings: 'SOFT' 100, 'opsz' 40, 'wght' 550;
+	transition: font-variation-settings 1s, letter-spacing -1s;
+	text-shadow: 1vw -1vw 0 #cc3399, 2.1vw -2.1vw 0 #9933ff, 3.3vw -3.3vw 0 #3333cc, 4.6vw -4.6vw 0 #008080, 6vw -6vw 0 #006622, 7.5vw -7.5vw 0 #996633, 9.2vw -9.2vw 0 #cc2900;
+	animation-name: cycle;
+	animation-duration: 20s;
+	animation-iteration-count: infinite;
+	letter-spacing: -1.3vw;
+}
+
+@keyframes cycle {
+	0%  {text-shadow: 1vw -1vw 0 #cc3399, 2.1vw -2.1vw 0 #9933ff, 3.3vw -3.3vw 0 #3333cc, 4.6vw -4.6vw 0 #008080, 6vw -6vw 0 #006622, 7.5vw -7.5vw 0 #996633, 9.2vw -9.2vw 0 #cc2900;}
+	14% {text-shadow: 1vw -1vw 0 #cc2900, 2.1vw -2.1vw 0 #cc3399, 3.3vw -3.3vw 0 #9933ff, 4.6vw -4.6vw 0 #3333cc, 6vw -6vw 0 #008080, 7.5vw -7.5vw 0 #006622, 9.2vw -9.2vw 0 #996633;}
+	29% {text-shadow: 1vw -1vw 0 #996633, 2.1vw -2.1vw 0 #cc2900, 3.3vw -3.3vw 0 #cc3399, 4.6vw -4.6vw 0 #9933ff, 6vw -6vw 0 #3333cc, 7.5vw -7.5vw 0 #008080, 9.2vw -9.2vw 0 #006622;}
+	43% {text-shadow: 1vw -1vw 0 #006622, 2.1vw -2.1vw 0 #996633, 3.3vw -3.3vw 0 #cc2900, 4.6vw -4.6vw 0 #cc3399, 6vw -6vw 0 #9933ff, 7.5vw -7.5vw 0 #3333cc, 9.2vw -9.2vw 0 #008080;}
+	57% {text-shadow: 1vw -1vw 0 #008080, 2.1vw -2.1vw 0 #006622, 3.3vw -3.3vw 0 #996633, 4.6vw -4.6vw 0 #cc2900, 6vw -6vw 0 #cc3399, 7.5vw -7.5vw 0 #9933ff, 9.2vw -9.2vw 0 #3333cc;}
+	71% {text-shadow: 1vw -1vw 0 #3333cc, 2.1vw -2.1vw 0 #008080, 3.3vw -3.3vw 0 #006622, 4.6vw -4.6vw 0 #996633, 6vw -6vw 0 #cc2900, 7.5vw -7.5vw 0 #cc3399, 9.2vw -9.2vw 0 #9933ff;}
+	86% {text-shadow: 1vw -1vw 0 #9933ff, 2.1vw -2.1vw 0 #3333cc, 3.3vw -3.3vw 0 #008080, 4.6vw -4.6vw 0 #006622, 6vw -6vw 0 #996633, 7.5vw -7.5vw 0 #cc2900, 9.2vw -9.2vw 0 #cc3399;}
+}
