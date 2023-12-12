@@ -72,7 +72,17 @@ function right() {
 				else if (words[i][2] == 4) {
 					testingWords.push(i)
 				}
-			}		
+			}	
+			if (testingWords.length > 20) {
+				let numberthing = (testingWords.length - 20)
+				for (let i = 0; i < numberthing; i++) {
+					testingWords = testingWords.filter(function(item) {
+						return item !== testingWords[Math.floor(Math.random() * testingWords.length)]
+					})
+					console.log(testingWords.length)
+				}
+			}
+			console.log(testingWords.length)	
 		}
 	}
 	word = Math.floor(Math.random() * testingWords.length)
@@ -133,7 +143,18 @@ function deleteWord() {
 				if (words[i][2] == 4) {
 					testingWords.push(i)
 				}
-			}		
+			}
+			console.log(testingWords)
+			if (testingWords.length > 20) {
+				let numberthing = (testingWords.length - 20)
+				for (let i = 0; i < numberthing; i++) {
+					testingWords = testingWords.filter(function(item) {
+						return item !== testingWords[Math.floor(Math.random() * testingWords.length)]
+					})
+					console.log(testingWords.length)
+				}
+			}
+			console.log(testingWords.length)
 		}
 	}
 	word = Math.floor(Math.random() * testingWords.length)
