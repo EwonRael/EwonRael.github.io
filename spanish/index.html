@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Spanish</title>
+		<link rel="stylesheet" href="style.css"/>
+		<meta name=viewport content="width=device-width, initial-scale=1">
+		<script src="words.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<!-- words got from here https://en.wiktionary.org/wiki/User:Matthias_Buchmeier/Spanish_frequency_list-1-5000 -->
+		<div id="question" onclick="showAnswer()">
+			<h1 id="es">algo</h1>
+			<div id="wordRank">WORD RANKING: 46</div>
+		</div>
+		<div id="answer">
+			<h1 id="en">something</h1>
+			<div id="left" onclick="left()"></div>
+			<div id="right" onclick="right()"></div>
+			<div id="delete" onclick="deleteWord()">DELETE THIS WORD</div>
+		</div>
+	</body>
+</html>
+

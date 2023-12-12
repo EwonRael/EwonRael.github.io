@@ -1,0 +1,84 @@
+@font-face {
+    font-family: "MFEK";
+    src: url("MFEK-Sans[TRMA,wght,wdth].ttf") format("truetype");
+}
+
+body {
+	font-family: "MFEK", sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+#question {
+	background-color: #fff2e6;
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+}
+
+#question h1 {
+	font-size: 10vw;
+	height: 10vw;
+	line-height: 1;
+	margin-top: calc(40vh - 5vw);
+	text-align: center;
+}
+
+#answer {
+	background: rgb(255,143,143);
+	background: linear-gradient(90deg, rgba(255,143,143,1) 50%, rgba(154,222,123,1) 50%);
+	margin: 0;
+	padding: 0;
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	visibility: hidden;
+}
+
+#answer h1 {
+	font-size: 10vw;
+	height: 10vw;
+	line-height: 1;
+	margin-top: calc(40vh - 5vw);
+	text-align: center;
+}
+
+#left {
+	width: 50vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+}
+
+#right {
+	width: 50vw;
+	height: 100vh;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+
+#delete {
+	background-color: red;
+	font-weight: 800;
+	font-size: 20px;
+	position: absolute;
+	letter-spacing: 1.3px;
+	text-align: center;
+	min-width: 234px;
+	margin-left: -117px;
+	left: 50vw;
+}
+
+#wordRank {
+	font-weight: 800;
+	font-size: 20px;
+	position: absolute;
+	letter-spacing: 1.3px;
+	text-align: center;
+	min-width: 254px;
+	margin-left: -127px;
+	left: 50vw;
+}
