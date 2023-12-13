@@ -1,6 +1,6 @@
 let words = []
 
-if (localStorage.getItem("wordlist") === "null me up") {
+if (localStorage.getItem("wordlist") !== null) {
 	words = loadingWords
 }
 else {
