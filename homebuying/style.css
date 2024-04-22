@@ -10,7 +10,8 @@ h1 {
 }
 
 .question {
-	width: 800px;
+	width: 80%;
+	max-width: 800px;
 	margin: auto;
 	padding-bottom: 30px;
 }
@@ -33,7 +34,8 @@ h1 {
 }
 
 #find {
-	width: 800px;
+	width: 80%;
+	max-width: 800px;
 	margin: auto;
 	padding-bottom: 30px;
 }
