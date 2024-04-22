@@ -1,0 +1,46 @@
+body {
+	font-family: "IBM Plex Sans", "Sans";
+	font-size: 16px;
+}
+
+h1 {
+	font-size: 5vw;
+	text-align: center;
+	line-height: 1;
+}
+
+.question {
+	width: 800px;
+	margin: auto;
+	padding-bottom: 30px;
+}
+
+.question select {
+	font-family: "IBM Plex Sans", "Sans";
+	font-size: 16px;
+	border: solid black 1px;
+	min-width: 100px;
+}
+
+.question input {
+	font-family: "IBM Plex Sans", "Sans";
+	font-size: 16px;
+	border: solid black 1px;
+}
+
+#howLong {
+	display: none;
+}
+
+#find {
+	width: 800px;
+	margin: auto;
+	padding-bottom: 30px;
+}
+
+button {
+	font-family: "IBM Plex Sans", "Sans";
+	font-size: 16px;
+	border: solid black 1px;
+	min-width: 100px;
+}
