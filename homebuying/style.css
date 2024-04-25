@@ -1,12 +1,36 @@
 body {
-	font-family: "IBM Plex Sans", "Sans";
+	font-family: "Helvetica", "Ariel", "Sans";
 	font-size: 16px;
+	color: #121212;
+	margin: 0;
+	padding: 0;
+}
+
+#header {
+	background-color: #002D56;
+	width: 100vw;
+	padding: 0;
+	padding-top: 20px;
 }
 
 h1 {
-	font-size: 5vw;
+	font-size: 40px;
 	text-align: center;
 	line-height: 1;
+	font-family: "Besley";
+	font-weight: 600;
+	margin: 0;
+	padding: 0;
+	padding-left: 20px;
+	padding-right: 20px;
+	padding-bottom: 25px;
+	color: white;
+	margin-bottom: 30px;
+	
+}
+
+h2 {
+	font-size: 20px;
 }
 
 .question {
@@ -17,7 +41,7 @@ h1 {
 }
 
 .question select {
-	font-family: "IBM Plex Sans", "Sans";
+	font-family: "Helvetica", "Ariel", "Sans";
 	font-size: 16px;
 	border: solid black 1px;
 	min-width: 100px;
@@ -33,6 +57,10 @@ h1 {
 	display: none;
 }
 
+#howMuch {
+	display: none;
+}
+
 #find {
 	width: 80%;
 	max-width: 800px;
@@ -41,8 +69,24 @@ h1 {
 }
 
 button {
-	font-family: "IBM Plex Sans", "Sans";
+	font-family: "Helvetica", "Ariel", "Sans";
 	font-size: 16px;
 	border: solid black 1px;
 	min-width: 100px;
+}
+
+.program {
+	width: 80%;
+	max-width: 800px;
+	margin: auto;
+	padding-bottom: 30px;
+}
+
+.program h2 {
+	margin: 0;
+	line-height: 1.2;
+}
+
+#programs {
+	display: none;
 }
