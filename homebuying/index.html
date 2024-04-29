@@ -9,195 +9,27 @@
 	</head>
 	<body>
 		<div id="header"><h1>Homebuying Help for Colorado</h1></div>
-		<div id="questions">
-			<div class="question">
-				<h2>1. What is your age?</h2>
-				<select name="age" id="age">
-					<option value="1">18-25</option>
-					<option value="2">26-40</option>
-					<option value="3">41-55</option>
-					<option value="4">55+</option>
-				</select>
+		<div id="photo">
+			<div id="takeQuiz" onclick="location.href = 'quiz.html'">Take the Questionnaire</div>
+			<div id="leftInfo">
+				<h2>You might be surprised at the amount of help available for home buying in our state.</h2> 
+				<p>Whether you are a first time buyer trying to come up with a down payment or someone looking for financial counseling to find your path to home buying, there are resources available!</p>
+				<p>Take this short questionnaire to find resources selected just for you.</p>
 			</div>
-			<div class="question">
-				<h2>2. What is your race/ethnic background?</h2>
-				<select name="race" id="race">
-					<option value="1">Black</option>
-					<option value="2">Latine/Hispanic</option>
-					<option value="3">Other</option>
-					<option value="4">Prefer not to say</option>
-				</select>
-			</div>
-			<div class="question">
-				<h2>3. What region are you interested in buying a home?</h2>
-				<select name="race" id="race">
-					<option value="1">Broomfield</option>
-					<option value="2">Adams</option>
-					<option value="3">Arapahoe</option>
-					<option value="4">Denver</option>
-					<option value="4">Douglas</option>
-					<option value="4">Jefferson</option>
-				</select>
-			</div>
-			<div class="question">
-				<h2>4. What is your annual income?</h2>
-				$ <input name="income" id="income" oninput="makeNumber(this.value)">
-			</div>
-			<div class="question">
-				<h2>5. Have you purchased a home before?</h2>
-				<input type="radio" id="boughtY" name="bought" value="Y">
-				<label for="boughtY">Yes</label>
-				<input type="radio" id="boughtN" name="bought" value="N">
-				<label for="boughtN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>6. What is your current credit score?</h2>
-				<input name="credit" id="credit" oninput="makeCredit(this.value)">
-			</div>
-			<div class="question">
-				<h2>7. Are you currently employed?</h2>
-				<input type="radio" id="employedY" name="employed" value="Y" onclick="document.getElementById('howLong').style = 'display: block'">
-				<label for="employedY" onclick="document.getElementById('howLong').style = 'display: block'">Yes</label>
-				<input type="radio" id="employedN" name="employed" value="N" onclick="document.getElementById('howLong').style = 'display: none'">
-				<label for="employedN" onclick="document.getElementById('howLong').style = 'display: none'">No</label><br>
-				</select>
-				<div id="howLong">
-					<h2>How long have you been employed?</h2>
-					<input name="month" id="month" oninput="makeMonth(this.value)"> months. (should this be in moths or years or what?)
-				</div>
-			</div>
-			<div class="question">
-				<h2>8. How large is the family that intends to live at the residence?</h2>
-				<input name="familySize" id="familySize" oninput="familySize(this.value)" type="number">
-			</div>
-			<div class="question">
-				<h2>9. Are you or have you been an active member of the military?</h2>
-				<input type="radio" id="militaryY" name="military" value="Y">
-				<label for="boughtY">Yes</label>
-				<input type="radio" id="militaryN" name="military" value="N">
-				<label for="boughtN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>10. Are you a teacher, healthcare worker or government sector employee?</h2>
-				<input type="radio" id="governmentY" name="government" value="Y">
-				<label for="governmentY">Yes</label>
-				<input type="radio" id="governmentN" name="government" value="N">
-				<label for="governmentN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>11. Would you participate in community service in exchange for down payment assistance?</h2>
-				<input type="radio" id="serviceY" name="service" value="Y">
-				<label for="serviceY">Yes</label>
-				<input type="radio" id="serviceN" name="service" value="N">
-				<label for="serviceN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>12. Do you have money saved for a down payment?</h2>
-				<input type="radio" id="downY" name="down" value="Y" onclick="document.getElementById('howMuch').style = 'display: block'">
-				<label for="downY" onclick="document.getElementById('howMuch').style = 'display: block'">Yes</label>
-				<input type="radio" id="downN" name="down" value="N" onclick="document.getElementById('howMuch').style = 'display: none'">
-				<label for="downN" onclick="document.getElementById('howMuch').style = 'display: none'">No</label><br>
-				</select>
-				<div id="howMuch">
-					<h2>How much money do you have saved?</h2>
-					$ <input name="downpayment" id="downpayment" oninput="makeNumberTwo(this.value)">
-				</div>
-			</div>
-			<div class="question">
-				<h2>13. If you don't qualify would you be interested in classes?</h2>
-				<input type="radio" id="classesY" name="classes" value="Y">
-				<label for="classesY">Yes</label>
-				<input type="radio" id="classesN" name="classes" value="N">
-				<label for="classesN">No</label><br>
-				</select>
-			</div>
-			<div id="find"><button onclick="showPrograms()">Find me programs!</button></div>
 		</div>
-		<div id="programs">
-			<div class="program" id="coldwell">
-				<h2><a target="_blank" href="https://firsttimehomebuyersdenverco.com/home-loans-down-payments/first-time-home-buyers-programs/">Coldwell Banker</a></h2>
-				<p>This is a description of the tool, and an explanation as to why it was recommended.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.elevationclt.org/">Elevation Community Land Trust</a></h2>
-				<p>deed-restricted low-cost homes</p>
-			</div>
-			<div class="program" id="cclt">
-				<h2><a target="_blank" href="https://habitatmetrodenver.org/home-programs/cclt/">Colorado Community Land Trust</a></h2>
-				<p>community land trust through Habitat for Humanity</p>
-			</div>
-			<div class="program" id="chfa">
-				<h2><a target="_blank" href="https://www.chfainfo.com/">Colorado Housing Finance Authority (CHFA)</a></h2>
-				<p>down payment assistance program, this is the big down payment assistance provider in the state of CO</p>
-			</div>
-			<div class="program" id="denverhousing">
-				<h2><a target="_blank" href="https://www.denverhousing.org/live-at-dha/">Denver Housing Authority</a></h2>
-				<p>Denver Housing Authority provides quality and safe rental housing for families and individuals. We offer a variety of housing opportunities.</p>
-			</div>
-			<div class="program" id="cornerstone">
-				<h2><a target="_blank" href="https://www.houseloan.com/about/">Cornerstone Lending</a></h2>
-				<p>Over three decades and nearly 500,000 satisfied families later, Cornerstone was approved as a state savings bank in October 2022. We are humbled to be a premier national lender with the highest ratings for customer service and team member satisfaction. Through helping our Team Members build individual legacies of service and kindness, our positive impact on others will continue to grow.</p>
-			</div>
-			<div class="program" id="start2">
-				<h2><a target="_blank" href="https://longmont.start2home.com/for-employers/">Start 2 Home</a></h2>
-				<p>Designed to help you and your employees happily settle in your town! Start 2 Home is a direct benefit of your investment in your local Economic Development Organization and can help you with employee retention and attraction. Through a partnership between your local Economic Development Organization and Cornerstone Home Lending Inc., you and your employees can enjoy a smooth, stress-free move with Start 2 Home.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://chaconline.org/borrowers/">Colorado Housing Assistance Corporation</a></h2>
-				<p>CHAC provides low interest, flexible loans to low and moderate income households for down payment and closing cost assistance throughout Colorado. CHAC received certification from the US Department of the Treasury as a Certified Community Development Financial Institution, (CDFI) CHAC is a designated HUD Certified Housing Counseling Agency.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.elevationclt.org/application-process/">Elevation Community Land Trust</a></h2>
-				<p>Elevation CLT makes homeownership more accessible for Colorado families through the community land trust model, a proven tool for creating and preserving accessible, inclusive communities for generations. Elevation CLT is focused on acquiring or developing 700 permanently affordable homes and serving approximately 2,000 residents in its first five years—making it one of the largest CLTs in Colorado and the country.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.chfainfo.com/homeownership/how-to-get-a-chfa-program-loan">CFHA down payment loans</a></h2>
-				<p>"Colorado Housing and Finace Authority CHFA believes in responsible, affordable homeownership. Through our statewide network of Participating Lenders, we offer:Home purchase loan programs, Grants and second mortgage loans for down payment and/or closing cost assistance</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://landed.com/">Landed</a></h2>
-				<p>In 2015, Alex Lofton, Jonathan Asmis and Jesse Vaughan founded Landed to uphold those who uphold us: our educators, healthcare workers, and public sector employees. As a homebuying partner, Landed has worked with employers, governments and investors to equip aspiring homebuyers across the U.S. with the tools and financial support needed to purchase $1B worth of residential real estate and make homeownership a reality for these hardworking, essential community members.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.dearfieldfund.com/">Dearfield Fund</a></h2>
-				<p>BUILDING BLACK WEALTH THROUGH HOMEOWNERSHIP The Dearfield Fund for Black Wealth provides up to $40,000 in down-payment assistance to first-time Black and African American homebuyers to help build generational wealth. The down-payment assistance is like a loan, but homeowners do not make monthly payments and pay no interest. Instead, when homeowners sell or refinance they repay the down-payment amount plus 5% of their home’s appreciation, which allows the Dearfield Fund to serve more Black homeowners.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.cohomegrant.com/the-colorado-home-grant">Colorado Home Grant Program</a></h2>
-				<p>ASSISTANCE FOR FIRST-TIME AND REPEAT HOME BUYERS IN COLORADO Welcome to the Colorado Home Grant, a home buying assistance program. This grant was established to provide financial assistance to individuals and families who may not be able to afford a down payment or closing costs on their first home.  ABOUT OUR HOME BUYING GRANT Our home buying assistance program process is fast, secure, and easy to use. The Colorado Home Grant is open to anyone in Colorado who is looking to purchase a primary residence. We believe that everyone should have the opportunity to own a home, and we are committed to helping you achieve that goal. Residents in the following counties are welcome to apply:</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.fhaloans.com/lp/?utm_campaign=oregon&utm_term=og&utm_source=google&utm_medium=cpc&cmp=ss&src=adw&adg=fhahtcount&desc=eligibility&ad_campaign_id=12377769775&ad_adgroup_id=118499787739&gad_source=1&gclid=Cj0KCQjwlZixBhCoARIsAIC745Bf80FackRPN8yRs0VFqTpSiPu9lXOuAfjbGwD3p3QyrspvQkP8EHQaArEDEALw_wcB&abt=vproof&mrasn=1197225.1483967.NDtgaELk">FHA Loans</a></h2>
-				<p>An FHA loan is a mortgage loan option for U.S. home buyers. It is guaranteed by the Federal Housing Administration, an agency of the Department of Housing and Urban Development, and issued by FHA-approved lenders across the country. FHA loans are well known for their affordability – namely their 3.5% percent down payment and relatively lenient credit requirements. According to HUD, the FHA has insured more than 47 million mortgage loans since its inception in 1934.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://nahrepdenver.org/who-we-are/">NAHREP- National Association of Hispanic Real Estate Professionals </a></h2>
-				<p>We are The Voice for Hispanic Real Estate® and proud champions of homeownership for the Hispanic community in and around Denver, Colorado. Our NAHREP&reg; Denver Chapter provides community outreach, industry educational and business networking events thanks to the gracious contributions of our Denver Chapter Board of Directors, members and NAHREP&reg; Denver sponsors.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.chfainfo.com/mi-hogar">Mi Hogar- CHAFA</a></h2>
-				<p>CFHA website all in Spanish Colorado Housing and Finace Authority CHFA believes in responsible, affordable homeownership. Through our statewide network of Participating Lenders, we offer:Home purchase loan programs, Grants and second mortgage loans for down payment and/or closing cost assistance</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.newamericanfunding.com/buy-a-home/pathway-to-homeownership/">New American Funding</a></h2>
-				<p>The Pathway to Homeownership offers qualified borrowers in select areas up to $8,000 in assistance. These funds are not a loan that needs to be repaid and are available to first-time homebuyers in designated areas. This program can also potentially be combined with other down payment assistance programs to offer you even more support as you build the life of your dreams. No income limitations: No minimum or maximum income limitations</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://unidosus.org/housing-equity/">Unidos US</a></h2>
-				<p>UnidosUS aims to support Latino families in their homeownership journeys by creating pathways for Latino homebuyers to build credit, afford a down payment, and get approved for a sustainable mortgage loan. We are uniquely positioned to achieve this goal by combining our reputation and expertise across programs, policy, community outreach, and national partnerships.Wells Fargo is an anchor funder and champion of the UnidosUS housing initiative.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://habitatmetrodenver.org/homeownership/">Habitat for Humantity Metro Denver</a></h2>
-				<p>Our homeownership program partners with working individuals and families to buy their own homes with affordable mortgages. Our future homeowners are involved in every step of the home buying process – volunteering with Habitat, getting to know our staff, and attending classes to become successful homeowners.</p>
-			</div>
-			<div class="program" id="elevation">
-				<h2><a target="_blank" href="https://www.chfainfo.com/getattachment/0d14dd17-fdaa-4cc8-8cb1-b1407d7beca9/CHFA_Income_Limits.pdf">PDF about CHFA incomelimits</a></h2>
-				<p>This is a PDF</p>
-			</div>
+		<div id="housePic"></div>
+		<div id="programList">
+			<h2>Special programs include:</h2>
+			<ul>
+				<li>Low income buyers</li>
+				<li>Veterans</li>
+				<li>Black families</li>
+				<li>Latino Families</li>
+				<li>First time buyers</li>
+			</ul>
+		</div>
+		<div id="conclusion">
+			<p>Owning a home is one of the most important ways to build intergenerational wealth.  Find help now to help you take the next step into your future as a Colorado homeowner.</p>
 		</div>
 	</body>
 </html>
