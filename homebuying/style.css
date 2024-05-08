@@ -181,7 +181,7 @@ button {
 }
 
 .slide ul {
-	width: 40vw;
+	width: auto;
 	font-size: 26px;
 	margin: 20px;
 }
