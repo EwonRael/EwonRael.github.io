@@ -91,105 +91,169 @@ button {
 	display: none;
 }
 
-#photo {
+#homeContain {
 	width: 100vw;
-	height: 80vh;
-	background-image: url("pexels-photo-1128318.jpg");
-	background-size: cover;
-	background-position: 80% 30%;
-	margin-top: -30px;
+	height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
-#takeQuiz {
+#homeContain #header h1 {
+	margin-bottom: 0;
+}
+
+#slideshow {
+	width: 100vw;
+	height: 100%;
+	overflow: scroll;
+	scroll-snap-type: x mandatory;
+	scroll-behavior: smooth;
+}
+
+#holder {
+	height: 100%;
+	width: 300vw;
+}
+
+.slide {
+	scroll-snap-align: none center;
+	width: 100vw;
+	float: left;
+	background-size: cover;
+	background-position: 50% 50%;
+	height: 100%;
+	color: white;
+	text-shadow: 0 0 10px black, 0 0 4px black, 0 0 4px black;
+}
+
+#slide1 {
+	background-image: url("pexels-photo-1128318.jpg");
+	background-position: 80% 40%;
+}
+
+#slide2 {
+	background-image: url("pexels-photo-4044784.jpg");
+	background-position: 20% 50%;
+}
+
+#slide3 {
+	background-image: url("pexels-19773969.jpg");
+	background-position: 70% 15%;
+}
+
+#button {
+	position: absolute;
 	background-color: #D9531E;
-	width: 200px;
+	right: 0;
+	bottom: 50px;
+	width: 300px;
 	color: white;
 	cursor: pointer;
 	font-size: 25px;
 	text-align: center;
 	font-weight: bold;
-	border-radius: 10px;
-	padding: 10px;
-	position: absolute;
-	left: 20px;
-	bottom: 20vh;
-	box-shadow: 10px 10px 50px black;
+	padding: 20px 10px;
 }
 
-@media screen and (max-width: 800px) {
-	#takeQuiz {
-		right: 20px;
-		left: inherit;
-	}
+#button span {
+	display: inline-block;
+	transform: translateX(0);
+	transition: transform 0.3s;
 }
 
-@media screen and (max-height: 800px) {
-	#takeQuiz {
-		right: 20px;
-		left: inherit;
-	}
+#button:hover span {
+	transform: translateX(15px);
 }
 
+.slide h2 {
+	width: 50vw;
+	min-width: 400px;
+	font-size: 26px;
+	margin: 20px;
+	margin-top: 2em;
+}
 
-#leftInfo {
-	color: white;
+.slide p {
 	width: 40vw;
-	padding-top: 100px;
-	margin-left: 20px;
-	text-shadow: 0 0 10px black, 0 0 4px black;
-}
-
-#leftInfo h2 {
-	font-size: 26px;
-}
-
-#leftInfo p {
-	margin-top: 3vw;
-}
-
-#housePic {
-	background-image: url("pexels-photo-4044784.jpg");
-	background-size: cover;
-	background-position: 30% 30%;
-	width: calc(100vw - 450px);
-	float: left;
-	height: 360px;
-	text-shadow: 0 0 10px white, 0 0 3px white;
-}
-
-#programList {
-	width: 450px;
-	height: 360px;
-	float: left;
-}
-
-#programList h2 {
-	font-size: 26px;
-	margin-left: 50px;
-	margin-top: 0;
-	padding-top: 50px;
-}
-
-ul {
-	font-size: 26px;
-	margin-left: 50px;
-	line-height: 1.5;
-}
-
-#conclusion {
-	background-image: url("pexels-19773969.jpg");
-	background-size: cover;
-	background-position: center;
-	width: 100vw;
-	float: left;
-	height: 80vh;
-}
-
-#conclusion p {
-	color: black;
-	background-color: white;
-	padding: 30px;
-	max-width: 500px;
+	min-width: 400px;
 	font-size: 20px;
-	margin-top: calc(80vh - 160px);
+	margin: 20px;
+}
+
+.slide ul {
+	width: 40vw;
+	min-width: 400px;
+	font-size: 26px;
+	margin: 20px;
+}
+
+.slide a {
+	color: white;
+}
+
+#slide3 h2 {
+	margin-top: 30vh;
+}
+
+#goRight {
+	position: absolute;
+	right: 10px;
+	top: 50vh;
+	height: 30px;
+	width: 30px;
+	margin-top: -15px;
+	background-image: url("right-arrow.svg");
+	background-size: cover;
+	cursor: pointer;
+}
+
+#goRight:hover {
+	background-image: url("right-arrow-hover.svg");
+}
+
+#countdown {
+	width: 0;
+	height: 5px;
+	background-color: white;
+	position: absolute;
+	float: left;
+	left: 0;
+	bottom: 0;
+	animation-name: countdown;
+	animation-duration: 15s;
+	animation-timing-function: linear;
+}
+
+@keyframes countdown {
+  from {width: 0;}
+  to {width: 100vw;}
+}
+
+#return {
+	background-color: #D9531E;
+	right: 0;
+	bottom: 50px;
+	width: 300px;
+	color: white;
+	cursor: pointer;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+	padding: 20px 10px;
+	margin: 20px auto;
+}
+
+button {
+	background-color: #D9531E;
+	right: 0;
+	bottom: 50px;
+	width: 300px;
+	color: white;
+	cursor: pointer;
+	font-size: 25px;
+	text-align: center;
+	font-weight: bold;
+	padding: 20px 10px;
+	margin: 20px auto;
+	border: none;
 }

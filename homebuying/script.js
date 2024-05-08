@@ -55,3 +55,21 @@ function showPrograms() {
 	document.getElementById("programs").style = "display: block;"
 	window.scrollTo(0, 0);
 }
+
+function goRight() {
+	let scrollNum = document.getElementById("slideshow").scrollLeft / window.innerWidth
+	if (scrollNum == 2) {
+		document.getElementById("slideshow").scrollLeft = 0
+	}
+	else {
+		document.getElementById("slideshow").scrollLeft = (scrollNum + 1) * window.innerWidth
+	}
+	document.getElementById("countdown").style.animation = 'none';
+	document.getElementById("countdown").offsetHeight; /* trigger reflow */
+	document.getElementById("countdown").style.animation = null; 
+	clearTimeout(counter);
+	counter = setTimeout(func, 15000);
+	function func() {
+	    goRight()
+	}
+}

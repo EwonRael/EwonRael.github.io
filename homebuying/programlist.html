@@ -9,115 +9,7 @@
 	</head>
 	<body>
 		<div id="header"><h1>Homebuying Help for Colorado</h1></div>
-		<div id="questions">
-			<div class="question">
-				<h2>1. What is your age?</h2>
-				<select name="age" id="age">
-					<option value="1">18-25</option>
-					<option value="2">26-40</option>
-					<option value="3">41-55</option>
-					<option value="4">55+</option>
-				</select>
-			</div>
-			<div class="question">
-				<h2>2. What is your race/ethnic background?</h2>
-				<select name="race" id="race">
-					<option value="1">Black</option>
-					<option value="2">Latine/Hispanic</option>
-					<option value="3">Other</option>
-					<option value="4">Prefer not to say</option>
-				</select>
-			</div>
-			<div class="question">
-				<h2>3. What region are you interested in buying a home?</h2>
-				<select name="race" id="race">
-					<option value="1">Broomfield</option>
-					<option value="2">Adams</option>
-					<option value="3">Arapahoe</option>
-					<option value="4">Denver</option>
-					<option value="4">Douglas</option>
-					<option value="4">Jefferson</option>
-				</select>
-			</div>
-			<div class="question">
-				<h2>4. What is your annual income?</h2>
-				$ <input name="income" id="income" oninput="makeNumber(this.value)">
-			</div>
-			<div class="question">
-				<h2>5. Have you purchased a home before?</h2>
-				<input type="radio" id="boughtY" name="bought" value="Y">
-				<label for="boughtY">Yes</label>
-				<input type="radio" id="boughtN" name="bought" value="N">
-				<label for="boughtN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>6. What is your current credit score?</h2>
-				<input name="credit" id="credit" oninput="makeCredit(this.value)">
-			</div>
-			<div class="question">
-				<h2>7. Are you currently employed?</h2>
-				<input type="radio" id="employedY" name="employed" value="Y" onclick="document.getElementById('howLong').style = 'display: block'">
-				<label for="employedY" onclick="document.getElementById('howLong').style = 'display: block'">Yes</label>
-				<input type="radio" id="employedN" name="employed" value="N" onclick="document.getElementById('howLong').style = 'display: none'">
-				<label for="employedN" onclick="document.getElementById('howLong').style = 'display: none'">No</label><br>
-				</select>
-				<div id="howLong">
-					<h2>How long have you been employed?</h2>
-					<input name="month" id="month" oninput="makeMonth(this.value)"> months. (should this be in moths or years or what?)
-				</div>
-			</div>
-			<div class="question">
-				<h2>8. How large is the family that intends to live at the residence?</h2>
-				<input name="familySize" id="familySize" oninput="familySize(this.value)" type="number">
-			</div>
-			<div class="question">
-				<h2>9. Are you or have you been an active member of the military?</h2>
-				<input type="radio" id="militaryY" name="military" value="Y">
-				<label for="boughtY">Yes</label>
-				<input type="radio" id="militaryN" name="military" value="N">
-				<label for="boughtN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>10. Are you a teacher, healthcare worker or government sector employee?</h2>
-				<input type="radio" id="governmentY" name="government" value="Y">
-				<label for="governmentY">Yes</label>
-				<input type="radio" id="governmentN" name="government" value="N">
-				<label for="governmentN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>11. Would you participate in community service in exchange for down payment assistance?</h2>
-				<input type="radio" id="serviceY" name="service" value="Y">
-				<label for="serviceY">Yes</label>
-				<input type="radio" id="serviceN" name="service" value="N">
-				<label for="serviceN">No</label><br>
-				</select>
-			</div>
-			<div class="question">
-				<h2>12. Do you have money saved for a down payment?</h2>
-				<input type="radio" id="downY" name="down" value="Y" onclick="document.getElementById('howMuch').style = 'display: block'">
-				<label for="downY" onclick="document.getElementById('howMuch').style = 'display: block'">Yes</label>
-				<input type="radio" id="downN" name="down" value="N" onclick="document.getElementById('howMuch').style = 'display: none'">
-				<label for="downN" onclick="document.getElementById('howMuch').style = 'display: none'">No</label><br>
-				</select>
-				<div id="howMuch">
-					<h2>How much money do you have saved?</h2>
-					$ <input name="downpayment" id="downpayment" oninput="makeNumberTwo(this.value)">
-				</div>
-			</div>
-			<div class="question">
-				<h2>13. If you don't qualify would you be interested in classes?</h2>
-				<input type="radio" id="classesY" name="classes" value="Y">
-				<label for="classesY">Yes</label>
-				<input type="radio" id="classesN" name="classes" value="N">
-				<label for="classesN">No</label><br>
-				</select>
-			</div>
-			<div id="find"><button onclick="showPrograms()">Find me programs!</button></div>
-		</div>
-		<div id="programs">
+		<div id="programsList">
 			<div class="program" id="coldwell">
 				<h2><a target="_blank" href="https://firsttimehomebuyersdenverco.com/home-loans-down-payments/first-time-home-buyers-programs/">Coldwell Banker</a></h2>
 				<p>This is a description of the tool, and an explanation as to why it was recommended.</p>
@@ -194,9 +86,9 @@
 				<h2><a target="_blank" href="https://www.chfainfo.com/getattachment/0d14dd17-fdaa-4cc8-8cb1-b1407d7beca9/CHFA_Income_Limits.pdf">PDF about CHFA incomelimits</a></h2>
 				<p>This is a PDF</p>
 			</div>
-			<div id="return" onclick="location.href = 'index.html'">
-				Return to home page
-			</div>
+		</div>
+		<div id="return" onclick="location.href = 'index.html'">
+			Return to home page
 		</div>
 	</body>
 </html>

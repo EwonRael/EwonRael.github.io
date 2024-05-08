@@ -8,28 +8,41 @@
 		<script src="script.js"></script>
 	</head>
 	<body>
-		<div id="header"><h1>Homebuying Help for Colorado</h1></div>
-		<div id="photo">
-			<div id="takeQuiz" onclick="location.href = 'quiz.html'">Take the Questionnaire</div>
-			<div id="leftInfo">
-				<h2>You might be surprised at the amount of help available for home buying in our state.</h2> 
-				<p>Whether you are a first time buyer trying to come up with a down payment or someone looking for financial counseling to find your path to home buying, there are resources available!</p>
-				<p>Take this short questionnaire to find resources selected just for you.</p>
+		<div id="homeContain">
+			<div id="header"><h1>Homebuying Help for Colorado</h1></div>
+			<div id="slideshow">
+				<div id="holder">
+					<div id="slide1" class="slide">
+						<h2>You might be surprised at the amount of help available for home buying in our state.</h2>
+						<p>Whether you are a first time buyer trying to come up with a down payment or someone looking for financial counseling to find your path to home buying, there are resources available!</p>
+						<p>Take this short questionnaire to find resources selected just for you.</p>
+					</div>
+					<div id="slide2" class="slide">
+						<h2>Special programs include:</h2>
+						<ul>
+							<li>Low income buyers</li>
+							<li>Veterans</li>
+							<li>Black families</li>
+							<li>Latino Families</li>
+							<li>First time buyers</li>
+						</ul>
+						<h2><a href="programlist.html">See full list of programs &#8594;</a></h2>
+					</div>
+					<div id="slide3" class="slide">
+						<h2>Build intergenerational wealth</h2>
+						<p>Owning a home is one of the most important ways to build intergenerational wealth. Find help now to help you take the next step into your future as a Colorado homeowner.</p>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div id="housePic"></div>
-		<div id="programList">
-			<h2>Special programs include:</h2>
-			<ul>
-				<li>Low income buyers</li>
-				<li>Veterans</li>
-				<li>Black families</li>
-				<li>Latino Families</li>
-				<li>First time buyers</li>
-			</ul>
-		</div>
-		<div id="conclusion">
-			<p>Owning a home is one of the most important ways to build intergenerational wealth.  Find help now to help you take the next step into your future as a Colorado homeowner.</p>
+			<div id="button" onclick="location.href = 'quiz.html'">Take the home-buying questionnaire <span>&#8594;</span></div>
+			<div id="goRight" onclick="goRight()"></div>
+			<div id="countdown"></div>
+			<script>
+				counter = setTimeout(func, 15000);
+				function func() {
+				    goRight()
+				}
+			</script>
 		</div>
 	</body>
 </html>
