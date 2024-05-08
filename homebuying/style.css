@@ -182,7 +182,6 @@ button {
 
 .slide ul {
 	width: 40vw;
-	min-width: 400px;
 	font-size: 26px;
 	margin: 20px;
 }
@@ -256,4 +255,22 @@ button {
 	padding: 20px 10px;
 	margin: 20px auto;
 	border: none;
+}
+
+@media only screen and (max-width: 500px) {
+	.slide h2 {
+		width: auto;
+		min-width: 10px;
+		font-size: 26px;
+	}
+
+	.slide p {
+		width: auto;
+		min-width: 10px;
+		font-size: 20px;
+	}
+}
+
+.hide {
+	display: none;
 }
