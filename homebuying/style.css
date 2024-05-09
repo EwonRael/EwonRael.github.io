@@ -274,3 +274,9 @@ button {
 .hide {
 	display: none;
 }
+
+@media only screen and (max-height: 700px) {
+	#slide3 h2 {
+		margin-top: 2em;
+	}
+}
