@@ -20,13 +20,21 @@
 				</select>
 			</div>
 			<div class="question">
-				<h2>2. What is your race/ethnic background?</h2>
-				<select name="race" id="race">
-					<option value="1">Black</option>
-					<option value="2">Latine/Hispanic</option>
-					<option value="3">Other</option>
-					<option value="4">Prefer not to say</option>
-				</select>
+				<h2>2. What is your race/ethnic background? Select all that apply.</h2>
+					<input type="checkbox" id="Native" value="Native">
+					<label for="Native"> American Indian or Alaska Native</label><br>
+					<input type="checkbox" id="Asian" value="Asian">
+					<label for="Asian"> Asian</label><br>
+					<input type="checkbox" id="Black" value="Black">
+					<label for="Native"> Black or African American</label><br>
+					<input type="checkbox" id="Latino" value="Latino">
+					<label for="Native"> Hispanic or Latino</label><br>
+					<input type="checkbox" id="Eastern" value="Eastern">
+					<label for="Native"> Middle Eastern or North African</label><br>
+					<input type="checkbox" id="Hawaiian" value="Hawaiian">
+					<label for="Native"> Native Hawaiian or Pacific Islander</label><br>
+					<input type="checkbox" id="White" value="White">
+					<label for="Native"> White</label>
 			</div>
 			<div class="question">
 				<h2>3. What region are you interested in buying a home?</h2>
@@ -64,12 +72,13 @@
 				</select>
 				<div id="howLong">
 					<h2>How long have you been employed?</h2>
-					<input name="month" id="month" oninput="makeMonth(this.value)"> months. (should this be in moths or years or what?)
+					<input name="year" id="year" oninput="makeYear(this.value)"> years and <input name="month" id="month" oninput="makeMonth(this.value)"> months.
 				</div>
 			</div>
 			<div class="question">
-				<h2>8. How large is the family that intends to live at the residence?</h2>
-				<input name="familySize" id="familySize" oninput="familySize(this.value)" type="number">
+				<h2>8. What is the size of your household?</h2>
+				<input name="familySize" id="familySize" oninput="familySize(this.value)" type="number"> Adults<br><br>
+				<input name="childrenSize" id="childrenSize" oninput="childrenSize(this.value)" type="number"> Children
 			</div>
 			<div class="question">
 				<h2>9. Are you or have you been an active member of the military?</h2>
@@ -80,7 +89,7 @@
 				</select>
 			</div>
 			<div class="question">
-				<h2>10. Are you a teacher, healthcare worker or government sector employee?</h2>
+				<h2>10. Are you a teacher, healthcare worker, or government sector employee?</h2>
 				<input type="radio" id="governmentY" name="government" value="Y">
 				<label for="governmentY">Yes</label>
 				<input type="radio" id="governmentN" name="government" value="N">
@@ -88,7 +97,7 @@
 				</select>
 			</div>
 			<div class="question">
-				<h2>11. Would you participate in community service in exchange for down payment assistance?</h2>
+				<h2>11. Would you participate in a program (e.g., help build your home) that offers downpayment assistance?</h2>
 				<input type="radio" id="serviceY" name="service" value="Y">
 				<label for="serviceY">Yes</label>
 				<input type="radio" id="serviceN" name="service" value="N">
@@ -96,14 +105,14 @@
 				</select>
 			</div>
 			<div class="question">
-				<h2>12. Do you have money saved for a down payment?</h2>
+				<h2>12. Do you have a down payment?</h2>
 				<input type="radio" id="downY" name="down" value="Y" onclick="document.getElementById('howMuch').style = 'display: block'">
 				<label for="downY" onclick="document.getElementById('howMuch').style = 'display: block'">Yes</label>
 				<input type="radio" id="downN" name="down" value="N" onclick="document.getElementById('howMuch').style = 'display: none'">
 				<label for="downN" onclick="document.getElementById('howMuch').style = 'display: none'">No</label><br>
 				</select>
 				<div id="howMuch">
-					<h2>How much money do you have saved?</h2>
+					<h2>How much?</h2>
 					$ <input name="downpayment" id="downpayment" oninput="makeNumberTwo(this.value)">
 				</div>
 			</div>
@@ -119,7 +128,7 @@
 		</div>
 		<div id="programs">
 			<div class="program">
-				<p><i>Based on your responses to the questions, we believe you qualify for the following programs: </i><p>
+				<p><i>Based on your responses to the questions, it appears that you may qualify for the following programs: </i><p>
 			</div>
 			<div class="program hide" id="coldwell">
 				<h2><a target="_blank" href="https://firsttimehomebuyersdenverco.com/home-loans-down-payments/first-time-home-buyers-programs/">Coldwell Banker</a></h2>

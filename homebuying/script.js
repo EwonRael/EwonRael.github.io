@@ -20,6 +20,14 @@ function makeCredit(x) {
 
 function makeMonth(x) {
 	x = x.replace(/\D/g, "")
+	if (x > 11) {
+		x = 11
+	}
+	document.getElementById("month").value = x
+}
+
+function makeYear(x) {
+	x = x.replace(/\D/g, "")
 	if (x > 999999) {
 		x = [x.slice(0, -3), ",", x.slice(-3)].join('')
 		x = [x.slice(0, -7), ",", x.slice(-7)].join('')
@@ -27,7 +35,7 @@ function makeMonth(x) {
 	else if (x > 999) {
 		x = [x.slice(0, -3), ",", x.slice(-3)].join('')
 	}
-	document.getElementById("month").value = x
+	document.getElementById("year").value = x
 }
 
 function familySize(x) {
@@ -36,6 +44,14 @@ function familySize(x) {
 		x = 850
 	}
 	document.getElementById("familySize").value = x
+}
+
+function childrenSize(x) {
+	x = x.replace(/\D/g, "")
+	if (x > 850) {
+		x = 850
+	}
+	document.getElementById("childrenSize").value = x
 }
 
 function makeNumberTwo(x) {
