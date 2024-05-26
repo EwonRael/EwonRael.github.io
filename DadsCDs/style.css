@@ -1,0 +1,29 @@
+body {
+	margin: 0;
+	padding: 0;
+	overflow: hidden;
+}
+
+#container {
+	background-color: black;
+	width: 100vh;
+	height: 100vw;
+	overflow: scroll;
+	transform-origin: top left;
+	transform: rotate(-90deg) translate(-100vh, 0);
+	-ms-overflow-style: none;  /* IE and Edge */
+	scrollbar-width: none;  /* Firefox */
+}
+
+#container::-webkit-scrollbar {
+	display: none;
+}
+
+img {
+	width: 100vh;
+	display:block;
+}
+
+img:hover {
+	opacity: 50%;
+}
