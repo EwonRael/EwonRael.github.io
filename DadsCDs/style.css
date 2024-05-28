@@ -2,6 +2,7 @@ body {
 	margin: 0;
 	padding: 0;
 	overflow: hidden;
+	font-family: "DejaVuSans", Sans;
 }
 
 #container {
@@ -26,4 +27,55 @@ img {
 
 img:hover {
 	opacity: 50%;
+}
+
+h1 {
+	color: white;
+	position: absolute;
+	top: 30px;
+	left: 10px;
+	font-size: 50px;
+	line-height: 1;
+	margin: 0;
+	text-shadow: 2px 2px 30px black;
+}
+
+#infoBox {
+	position: absolute;
+	top: 100px;
+	left: 10px;
+	background-color: white;
+	width: 480px;
+	border: solid black 2px;
+	padding: 20px;
+}
+
+#infoBox img {
+	float: left;
+	height: 200px;
+	width: 200px;
+	margin: 0 20px 15px 0;
+	border: solid black 1px;	
+}
+
+h2 {
+	line-height: 1;
+	margin: 0;
+	font-weight: 400;
+}
+
+#artist {
+	font-weight: 700;
+	line-height: 1;
+	margin: 13px;
+}
+
+#info {
+	margin: 0;
+}
+
+#cover {
+	background-image: url("load.gif");
+	background-repeat: no-repeat;
+	background-position: center center;
 }
