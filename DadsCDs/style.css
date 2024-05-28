@@ -43,11 +43,14 @@ h1 {
 #infoBox {
 	position: absolute;
 	top: 100px;
-	left: 10px;
+	left: -600px;
 	background-color: white;
 	width: 480px;
+	max-width: 70vw;
+	max-height: 70vh;
 	border: solid black 2px;
 	padding: 20px;
+	overflow: scroll;
 }
 
 #infoBox img {
