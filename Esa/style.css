@@ -10,32 +10,132 @@
 	font-style: italic;
 }
 
+@font-face {
+	font-family: "Cooper";
+	src: url("fonts/Cooper[wght].woff2") format("woff");
+	font-style: normal;
+}
+
+@font-face {
+	font-family: "Cooper";
+	src: url("fonts/Cooper-Italic[wght].woff2") format("woff");
+	font-style: italic;
+}
+
 body {
 	margin: 0;
-	background-color: #222222;
+	background-color: #504130;
 	color: #ffffdd;
+}
+
+h2{
+	font-family: "Cooper";
+	text-align: center;
+	font-size: 50px;
+	font-weight: 550;
+	line-height: 1;
+	margin-bottom: 0;
+	color: #53c698;
 }
 
 h1 {
 	font-family: "Fraunces";
 	text-align: center;
-	font-size: 16vw;
+	font-size: 10vw;
 	margin: 0;
-	font-variation-settings: 'SOFT' 100, 'opsz' 40, 'wght' 550;
+	line-height: 1;
+	font-variation-settings: 'SOFT' 100, 'opsz' 40, 'wght' 300;
 	transition: font-variation-settings 1s, letter-spacing -1s;
-	text-shadow: 1vw -1vw 0 #cc3399, 2.1vw -2.1vw 0 #9933ff, 3.3vw -3.3vw 0 #3333cc, 4.6vw -4.6vw 0 #008080, 6vw -6vw 0 #006622, 7.5vw -7.5vw 0 #996633, 9.2vw -9.2vw 0 #cc2900;
-	animation-name: cycle;
-	animation-duration: 20s;
-	animation-iteration-count: infinite;
-	letter-spacing: -1.3vw;
 }
 
-@keyframes cycle {
-	0%  {text-shadow: 1vw -1vw 0 #cc3399, 2.1vw -2.1vw 0 #9933ff, 3.3vw -3.3vw 0 #3333cc, 4.6vw -4.6vw 0 #008080, 6vw -6vw 0 #006622, 7.5vw -7.5vw 0 #996633, 9.2vw -9.2vw 0 #cc2900;}
-	14% {text-shadow: 1vw -1vw 0 #cc2900, 2.1vw -2.1vw 0 #cc3399, 3.3vw -3.3vw 0 #9933ff, 4.6vw -4.6vw 0 #3333cc, 6vw -6vw 0 #008080, 7.5vw -7.5vw 0 #006622, 9.2vw -9.2vw 0 #996633;}
-	29% {text-shadow: 1vw -1vw 0 #996633, 2.1vw -2.1vw 0 #cc2900, 3.3vw -3.3vw 0 #cc3399, 4.6vw -4.6vw 0 #9933ff, 6vw -6vw 0 #3333cc, 7.5vw -7.5vw 0 #008080, 9.2vw -9.2vw 0 #006622;}
-	43% {text-shadow: 1vw -1vw 0 #006622, 2.1vw -2.1vw 0 #996633, 3.3vw -3.3vw 0 #cc2900, 4.6vw -4.6vw 0 #cc3399, 6vw -6vw 0 #9933ff, 7.5vw -7.5vw 0 #3333cc, 9.2vw -9.2vw 0 #008080;}
-	57% {text-shadow: 1vw -1vw 0 #008080, 2.1vw -2.1vw 0 #006622, 3.3vw -3.3vw 0 #996633, 4.6vw -4.6vw 0 #cc2900, 6vw -6vw 0 #cc3399, 7.5vw -7.5vw 0 #9933ff, 9.2vw -9.2vw 0 #3333cc;}
-	71% {text-shadow: 1vw -1vw 0 #3333cc, 2.1vw -2.1vw 0 #008080, 3.3vw -3.3vw 0 #006622, 4.6vw -4.6vw 0 #996633, 6vw -6vw 0 #cc2900, 7.5vw -7.5vw 0 #cc3399, 9.2vw -9.2vw 0 #9933ff;}
-	86% {text-shadow: 1vw -1vw 0 #9933ff, 2.1vw -2.1vw 0 #3333cc, 3.3vw -3.3vw 0 #008080, 4.6vw -4.6vw 0 #006622, 6vw -6vw 0 #996633, 7.5vw -7.5vw 0 #cc2900, 9.2vw -9.2vw 0 #cc3399;}
+.shroom {
+	width: 100%;
+	height: 80px;
+	background-image: url("shroom1.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin-top: 40px;
+	animation-name: shroom;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes shroom {
+  0%   {background-image: url("shroom1.svg");}
+  33%  {background-image: url("shroom2.svg");}
+  67%  {background-image: url("shroom3.svg");}
+}
+
+#body {
+	background-color: #ffffdd;
+	color: #504130;
+	border: 5px solid #39ac7e;
+	width: 90vw;
+	margin: auto;
+	max-width: 1000px;
+	border-radius: 50px;
+}
+
+#body h2 {
+	text-align: left;
+	padding-top: 0.3em;
+	padding-left: 30px;
+	font-weight: 600;
+	color: #39ac7e;
+	margin-top: -0px;
+	padding-right: 30px;
+}
+
+#body p {
+	font-family: "Cooper";
+	padding-left: 30px;
+	padding-right: 30px;
+	font-size: 26px;
+}
+
+a {
+	color: #39ac7e;
+}
+
+.brownshroom {
+	width: 100%;
+	height: 80px;
+	background-image: url("brownshroom1.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	background-position: center;
+	margin-top: 40px;
+	animation-name: brownshroom;
+	animation-duration: 0.5s;
+	animation-iteration-count: infinite;
+}
+
+@keyframes brownshroom {
+  0%   {background-image: url("brownshroom1.svg");}
+  33%  {background-image: url("brownshroom2.svg");}
+  67%  {background-image: url("brownshroom3.svg");}
+}
+
+ul {
+	font-family: "Cooper";
+	padding-left: 60px;
+	padding-right: 30px;
+	font-size: 26px;	
+}
+
+img {
+	width: calc(100% - 70px);
+	margin: 30px;
+	border: 5px solid #39ac7e;
+	border-radius: 30px;
+}
+
+@media only screen and (max-width: 550px) {
+	h1 {
+		font-size: 15vw;
+	}
+	h2 {
+		font-size: 8vw;
+	}
 }
