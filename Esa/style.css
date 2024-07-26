@@ -24,8 +24,83 @@
 
 body {
 	margin: 0;
-	background-color: #504130;
+	background-color: #403426;
 	color: #ffffdd;
+	background-image: url("animation/01.svg");
+	background-position: center;
+	background-size: 400px;
+	animation-name: kaleidoscope;
+	animation-duration: 10s;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes kaleidoscope {
+  0%      {background-image: url("animation/01.svg");background-color: #403426;}
+  1.67%   {background-image: url("animation/02.svg");}
+  3.33%   {background-image: url("animation/03.svg");}
+  5%      {background-image: url("animation/04.svg");}
+  6.67%   {background-image: url("animation/05.svg");}
+  8.33%   {background-image: url("animation/06.svg");}
+  10%     {background-image: url("animation/07.svg");}
+  11.67%  {background-image: url("animation/08.svg");}
+  13.33%  {background-image: url("animation/09.svg");}
+  15%     {background-image: url("animation/10.svg");}
+  16.67%  {background-image: url("animation/11.svg");}
+  18.33%  {background-image: url("animation/12.svg");}
+  20%     {background-image: url("animation/01.svg");}
+  21.67%  {background-image: url("animation/02.svg");}
+  23.33%  {background-image: url("animation/03.svg");}
+  25%     {background-image: url("animation/04.svg");background-size: 400px;}
+  26.67%  {background-image: url("animation/05.svg");}
+  28.33%  {background-image: url("animation/06.svg");}
+  30%     {background-image: url("animation/07.svg");}
+  31.67%  {background-image: url("animation/08.svg");}
+  33.33%  {background-image: url("animation/09.svg");}
+  35%     {background-image: url("animation/10.svg");}
+  36.67%  {background-image: url("animation/11.svg");}
+  38.33%  {background-image: url("animation/12.svg");}
+  40%     {background-image: url("animation/01.svg");}
+  41.67%  {background-image: url("animation/02.svg");}
+  43.33%  {background-image: url("animation/03.svg");}
+  45%     {background-image: url("animation/04.svg");}
+  46.67%  {background-image: url("animation/05.svg");}
+  48.33%  {background-image: url("animation/06.svg");}
+  50%     {background-image: url("animation/07.svg"); background-color: #504130;}
+  51.67%  {background-image: url("animation/08.svg");}
+  53.33%  {background-image: url("animation/09.svg");}
+  55%     {background-image: url("animation/10.svg");}
+  56.67%  {background-image: url("animation/11.svg");}
+  58.33%  {background-image: url("animation/12.svg");}
+  60%     {background-image: url("animation/01.svg");}
+  61.67%  {background-image: url("animation/02.svg");}
+  63.33%  {background-image: url("animation/03.svg");}
+  65%     {background-image: url("animation/04.svg");}
+  66.67%  {background-image: url("animation/05.svg");}
+  68.33%  {background-image: url("animation/06.svg");}
+  70%     {background-image: url("animation/07.svg");}
+  71.67%  {background-image: url("animation/08.svg");}
+  73.33%  {background-image: url("animation/09.svg");}
+  75%     {background-image: url("animation/10.svg");background-size: 420px;}
+  76.67%  {background-image: url("animation/11.svg");}
+  78.33%  {background-image: url("animation/12.svg");}
+  80%     {background-image: url("animation/01.svg");}
+  81.67%  {background-image: url("animation/02.svg");}
+  83.33%  {background-image: url("animation/03.svg");}
+  85%     {background-image: url("animation/04.svg");}
+  86.67%  {background-image: url("animation/05.svg");}
+  88.33%  {background-image: url("animation/06.svg");}
+  90%     {background-image: url("animation/07.svg");}
+  91.67%  {background-image: url("animation/08.svg");}
+  93.33%  {background-image: url("animation/09.svg");}
+  95%     {background-image: url("animation/10.svg");}
+  96.67%  {background-image: url("animation/11.svg");}
+  98.33%  {background-image: url("animation/12.svg");}
+}
+
+@keyframes browns {
+  0%   {background-color: #403426;}
+  50%  {background-color: #504130;}
 }
 
 h2{
