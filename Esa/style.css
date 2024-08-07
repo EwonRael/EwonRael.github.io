@@ -225,14 +225,27 @@ ul {
 	font-size: 30px;
 	margin-top: 1em;
 	margin-bottom: 3em;
+	padding-left: 0;
 }
 
 li {
 	list-style: none;
+	float: left;
+	width: calc(33% - 37px);
+	line-height: 1;
+	margin-bottom: 0.5em;
+	text-indent: -37px;
+	margin-left: 37px;
 }
 
 li::before {
 	content: "⚘ ";
+}
+
+@media only screen and (max-width: 850px) {
+	li {
+		width: calc(50% - 37px);
+	}
 }
 
 @media only screen and (max-width: 550px) {
@@ -241,5 +254,8 @@ li::before {
 	}
 	#small-title {
 		font-size: 5vw;
+	}
+	li {
+		width: calc(100% - 37px);
 	}
 }
