@@ -113,10 +113,28 @@ h2{
 	color: #53c698;
 }
 
+#subhead {
+	font-size: 26px;
+	color: #ffffdd;
+}
+
+#subhead a {
+	color: #53c698;
+	font-style: italic;
+}
+
+#small-title {
+	font-size: 35px;
+}
+
+#title {
+	margin-top: 1em;
+}
+
 h1 {
 	font-family: "Fraunces";
 	text-align: center;
-	font-size: 10vw;
+	font-size: calc(50px + 7vw);
 	margin: 0;
 	line-height: 1;
 	font-variation-settings: 'SOFT' 100, 'opsz' 40, 'wght' 300;
@@ -192,13 +210,6 @@ a {
   67%  {background-image: url("brownshroom3.svg");}
 }
 
-ul {
-	font-family: "Cooper";
-	padding-left: 60px;
-	padding-right: 30px;
-	font-size: 26px;	
-}
-
 img {
 	width: calc(100% - 70px);
 	margin: 30px;
@@ -206,11 +217,29 @@ img {
 	border-radius: 30px;
 }
 
+ul {
+	width: 90vw;
+	margin: auto;
+	max-width: 1000px;
+	font-family: "Cooper";
+	font-size: 30px;
+	margin-top: 1em;
+	margin-bottom: 3em;
+}
+
+li {
+	list-style: none;
+}
+
+li::before {
+	content: "⚘ ";
+}
+
 @media only screen and (max-width: 550px) {
 	h1 {
 		font-size: 15vw;
 	}
 	#small-title {
-		font-size: 8vw;
+		font-size: 5vw;
 	}
 }
