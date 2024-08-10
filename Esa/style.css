@@ -33,6 +33,7 @@ body {
 	animation-duration: 10s;
 	animation-iteration-count: infinite;
 	animation-timing-function: linear;
+	cursor: url("mouse.svg"), auto;
 }
 
 @keyframes kaleidoscope {
@@ -139,6 +140,7 @@ h1 {
 	line-height: 1;
 	font-variation-settings: 'SOFT' 100, 'opsz' 40, 'wght' 300;
 	transition: font-variation-settings 1s, letter-spacing -1s;
+	text-shadow: 5px 5px #341c00;
 }
 
 .shroom {
@@ -168,6 +170,7 @@ h1 {
 	margin: auto;
 	max-width: 1000px;
 	border-radius: 50px;
+	box-shadow: 5px 5px #341c00;
 }
 
 #body h2 {
@@ -185,10 +188,15 @@ h1 {
 	padding-left: 30px;
 	padding-right: 30px;
 	font-size: 26px;
+	width: auto;
+	margin: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }
 
 a {
 	color: #39ac7e;
+	cursor: url("point.svg") 10 0, auto;
 }
 
 .brownshroom {
@@ -240,6 +248,17 @@ li {
 
 li::before {
 	content: "⚘ ";
+}
+
+p {
+	width: 90vw;
+	margin: auto;
+	max-width: 1000px;
+	font-family: "Cooper";
+	font-size: 30px;
+	margin-top: 1em;
+	margin-bottom: 3em;
+	padding-left: 0;
 }
 
 @media only screen and (max-width: 850px) {
