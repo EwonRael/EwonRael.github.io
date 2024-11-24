@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Musical Jeopardy!</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<h1>Musical Jeopardy!</h1>
+		<div id="DadScore" contenteditable="true" onblur="updateDad()">TEAM A: 0</div>
+		<div id="FamilyScore" contenteditable="true" onblur="updateFam()">TEAM B: 0</div>
+		<table>
+			<tr>
+				<th onclick="this.style.opacity = 1">One Hit Wonders</th>
+				<th onclick="this.style.opacity = 1">Old School</th>
+				<th onclick="this.style.opacity = 1">gay girl icons</th>
+				<th onclick="this.style.opacity = 1">Disney Movie Music</th>
+				<th onclick="this.style.opacity = 1">Classical Music</th>
+				<th onclick="this.style.opacity = 1">Rap</th>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 100, this)">100</td>
+				<td class="unknown" onclick="playSong(2, 100, this)">100</td>
+				<td class="unknown" onclick="playSong(3, 100, this)">100</td>
+				<td class="unknown" onclick="playSong(4, 100, this)">100</td>
+				<td class="unknown" onclick="playSong(5, 100, this)">100</td>
+				<td class="unknown" onclick="playSong(6, 100, this)">100</td>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 200, this)">200</td>
+				<td class="unknown" onclick="playSong(2, 200, this)">200</td>
+				<td class="unknown" onclick="playSong(3, 200, this)">200</td>
+				<td class="unknown" onclick="playSong(4, 200, this)">200</td>
+				<td class="unknown" onclick="playSong(5, 200, this)">200</td>
+				<td class="unknown" onclick="playSong(6, 200, this)">200</td>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 300, this)">300</td>
+				<td class="unknown" onclick="playSong(2, 300, this)">300</td>
+				<td class="unknown" onclick="playSong(3, 300, this)">300</td>
+				<td class="unknown" onclick="playSong(4, 300, this)">300</td>
+				<td class="unknown" onclick="playSong(5, 300, this)">300</td>
+				<td class="unknown" onclick="playSong(6, 300, this)">300</td>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 400, this)">400</td>
+				<td class="unknown" onclick="playSong(2, 400, this)">400</td>
+				<td class="unknown" onclick="playSong(3, 400, this)">400</td>
+				<td class="unknown" onclick="playSong(4, 400, this)">400</td>
+				<td class="unknown" onclick="playSong(5, 400, this)">400</td>
+				<td class="unknown" onclick="playSong(6, 400, this)">400</td>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 500, this)">500</td>
+				<td class="unknown" onclick="playSong(2, 500, this)">500</td>
+				<td class="unknown" onclick="playSong(3, 500, this)">500</td>
+				<td class="unknown" onclick="playSong(4, 500, this)">500</td>
+				<td class="unknown" onclick="playSong(5, 500, this)">500</td>
+				<td class="unknown" onclick="playSong(6, 500, this)">500</td>
+			</tr>
+			<tr>
+				<td class="unknown" onclick="playSong(1, 600, this)">600</td>
+				<td class="unknown" onclick="playSong(2, 600, this)">600</td>
+				<td class="unknown" onclick="playSong(3, 600, this)">600</td>
+				<td class="unknown" onclick="playSong(4, 600, this)">600</td>
+				<td class="unknown" onclick="playSong(5, 600, this)">600</td>
+				<td class="unknown" onclick="playSong(6, 600, this)">600</td>
+			</tr>
+		</table>
+		<div id="popup">
+			<div id="floater">
+				<h1 id="titleCard">What's the Song?</h1>
+				<div id="exit" onclick="document.getElementById('popup').style.display = 'none';">&times;</div>
+					<audio controls id="music">
+						<source src="music/01-100.mp3" type="audio/mp3">
+					</audio>
+					<h2 id="artist">Artist: <span onclick="dadPoints()">TEAM A</span> | <span onclick="famPoints()">TEAM B</span></h2>
+					<h2 id="song">Song Title: <span onclick="dadPoints()">TEAM A</span> | <span onclick="famPoints()">TEAM B</span></h2>
+			</div>
+		</div>
+	</body>
+</html>
+
