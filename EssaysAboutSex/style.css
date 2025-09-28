@@ -1,0 +1,118 @@
+@font-face {
+	font-family: "Drafting";
+	src: url("https://indestructibletype.com/Drafting/Drafting[wght].ttf") format("truetype");
+}
+
+body {
+	font-family: "Drafting", mono;
+	font-size: 20px;
+	margin: 0;
+	padding: 0;
+	min-height: 100vh;
+}
+
+#body {
+	max-width: 800px;
+	margin: auto;
+	padding: 15px;
+}
+
+h1 {
+	font-size: inherit;
+	margin: 2em 0 0 0;
+}
+
+h1 a:hover {
+	margin: -24px;
+}
+
+h1 a:hover::before {
+	content: "< ";
+}
+
+h2 {
+	font-size: inherit;
+	margin: 0 0 2em 0;
+	font-weight: 400;
+	font-variant-caps: small-caps;
+}
+
+h2 a:hover {
+	text-decoration: underline;
+}
+
+p {
+	padding: 0.5em 36px;
+	margin: 0;
+	text-indent: -36px
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+#aa:hover {
+	background-color: #e3dbdb;
+	color: #483737;
+}
+
+#ab:hover {
+	background-color: #e5daf1;
+	color: #c02d19;
+}
+
+#ac:hover {
+	background-color: #b3d9e9;
+	color: #483737ff;
+}
+
+#ad:hover {
+	background-color: #ffeeb0;
+	color: #673a1d;
+}
+
+#ae:hover {
+	background-color: #fffaf0;
+	color: #db0000;
+}
+
+#af:hover {
+	background-color: #ff3d3d;
+	color: #2b0000;
+}
+
+#ag:hover {
+	background-color: #a7c2d9;
+	color: #0f0068;
+}
+
+#ah:hover {
+	background-color: #e14a4a;
+	color: #ffcf66;
+	font-weight: 500;
+}
+
+#ai:hover {
+	background-color: #f5d6ec;
+	color: #138388;
+}
+
+#aj:hover {
+	background-color: #ffa66b;
+	color: #000c2b;
+}
+
+#ba:hover {
+	background-color: #252525;
+	color: #eccea9;
+	font-weight: 500;
+}
+
+iframe {
+	width: calc(100vw - 30px);
+	max-width: 800px;
+	height: calc(70.6vw - 20px);
+	max-height: 565.5px;
+	margin-bottom: 2em;
+}
