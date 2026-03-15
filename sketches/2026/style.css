@@ -50,3 +50,9 @@ p {
 	width: 900px;
 	margin-bottom: 2.5em;
 }
+
+.link {
+	margin: auto;
+	max-width: calc(100vw - 60px);
+	width: 400px;
+}
