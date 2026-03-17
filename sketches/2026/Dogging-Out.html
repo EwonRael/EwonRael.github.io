@@ -8,7 +8,7 @@
 		function highlightByRomanNumeral() {const hash = window.location.hash.substring(1); const number = parseInt(hash); const romanMap = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]; const romanClass = romanMap[number]; if (romanClass) { const elements = document.querySelectorAll(`p.${romanClass}`); elements.forEach(el => { el.classList.add('highlight');});}} window.addEventListener('load', highlightByRomanNumeral); window.addEventListener('hashchange', highlightByRomanNumeral);
 	</script>
 	</head>
-	<body>
+	<body class="big">
 		<p class="name i">DOG 1</p>
 		<p class="speech">What's up, dog?</p>
 		<p class="name ii">DOG 2</p>
