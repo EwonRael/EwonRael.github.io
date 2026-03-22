@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Learning English</title>
+		<link rel="stylesheet" href="style.css"/>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		function highlightByRomanNumeral() {const hash = window.location.hash.substring(1); const number = parseInt(hash); const romanMap = ["", "i", "ii", "iii", "iv", "v", "vi", "vii", "viii", "ix", "x"]; const romanClass = romanMap[number]; if (romanClass) { const elements = document.querySelectorAll(`p.${romanClass}`); elements.forEach(el => { el.classList.add('highlight');});}} window.addEventListener('load', highlightByRomanNumeral); window.addEventListener('hashchange', highlightByRomanNumeral);
+	</script>
+	</head>
+	<body>
+		<p class="name i iv">INSTRUCTOR</p>
+		<p class="speech">Hola, y enhorabuena por empezar su aventura de aprendizaje del idioma inglés. Durante los próximos tres meses, aprenderá a desenvolverse en conversaciones básicas. Aquí tiene un ejemplo del tipo de conversación que podrá mantener al finalizar este curso:</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Excuse me sir... Where is the bathroom?</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">The bathroom is over there, ma’am.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Thank you sir… And the sandwich? Where is the sandwich?</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Here it is miss. I understand. You are Spanish. And you have no time.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Thank you sir. You are very friendly. I like to ski, and I have two sisters and one brother.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">You have many siblings, ma’am.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">That is correct sir. The restaurant, does it have drinks? I like to drink at restaurants with my sandwich.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Yes ma’am. We have beer, and we have lemonade. </p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Beer is good, but I don’t like lemonade. Is the beer cold or is it hot?</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">The beer is cold ma’am. The beer is in the kitchen, and it is very cold. </p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">One time I saw a cat, and it was a mother cat. It makes me feel sad.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Why did the cat make you sad?</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">I don’t know. Maybe I want to be a mother, but the world is very bad. At this moment, I don’t believe I can have children because the world is very bad and sad and it is not a good place to have children.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Is the world a bad place for cats to have children?</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">I don’t know. Maybe it is true. Maybe I am sad for the small cat who will live in the world, or maybe the world is good for cats. Cats are very stupid. They don’t know how to ski. I like to ski. In the future I want to ski, but the weather is hot. The weather is too hot to ski. </p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">I understand. The world is very sad. I will bring you a beer. The price is zero. It is free.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Thank you sir. You are very friendly, and you work at the restaurant.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">No problem ma’am. I like to work at the restaurant. I wear a white shirt and blue pants.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">My name is Maria. It is very nice to meet you.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Likewise. My name is José.</p>
+		<p class="name ii iv">MARIA</p>
+		<p class="speech">Have a good day, José.</p>
+		<p class="name i iii">JOSÉ</p>
+		<p class="speech">Thank you. Have a good day, Maria.</p>
+	</body>
+</html>
