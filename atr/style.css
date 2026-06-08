@@ -1,0 +1,514 @@
+@font-face {
+	font-family: "EBGaramond";
+	src: url("EBGaramond-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "EBGaramond";
+	src: url("EBGaramond-Italic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "EBGaramond";
+	src: url("EBGaramond-Bold.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "EBGaramond";
+	src: url("EBGaramond-BoldItalic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 700;
+}
+
+@font-feature-values "EBGaramond" {
+	@swash {
+		swsh: 1;
+	}
+}
+
+@font-face {
+	font-family: "SilkRemingtonTypewriter";
+	src: url("SilkRemingtonTypewriter.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: white;
+	font-family: "EBGaramond";
+}
+
+#logo {
+	height: 300px;
+	width: 300px;
+	background-image: url("logo-hover.svg");
+	background-size: 300px;
+	position: fixed;
+	left: calc(50% - 700px);
+	top: 40px;
+	z-index: 1;
+	border-radius: 190px;
+	mix-blend-mode: multiply;
+	opacity: 70%;
+	transition: opacity 0.2s, left 0.2s;
+}
+
+#logo:hover {
+  height: 410px;
+	width: 300px;
+	border-radius: 0;
+	mix-blend-mode: normal;
+	opacity: 100%;
+}
+
+@media only screen and (max-width: 1410px) {
+  #logo:hover {
+	  left: 10px;
+  }
+}
+
+#specimens {
+	width: 990px;
+	margin: auto;
+}
+
+#specimens div {
+	height: 1210px;
+	width: 328px;
+	background-color: white;
+	background-repeat: no-repeat;
+	background-position: center;
+	float: left;
+	border: white solid 1px;
+	background-image: url("load.gif");
+	margin-bottom: 100px;
+	transition: border 0.2s, width 0.5s;
+}
+
+#specimens div:hover {
+	border: black solid 1px;
+}
+
+#header {
+	width: 940px;
+	margin: auto;
+	position: relative;
+}
+
+#header h1 {
+	margin: 0;
+	padding: 0;
+	text-align: right;
+	font-weight: 400;
+	font-size: 80px;
+	font-style: italic;
+	font-variant-alternates: swash(swsh);
+	padding-top: 100px;
+}
+
+#header #subhead {
+  position: absolute;
+  font-weight: 400;
+  right: 0;
+  font-family: "SilkRemingtonTypewriter";
+
+}
+
+.monospaced {
+  font-family: "SilkRemingtonTypewriter";
+  font-size: 0.8em;
+  background-color: #c4d7ed;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 20px;
+  border: solid 1px black;
+  width: calc(100% - 20px);
+}
+
+td {
+  border-left: solid black 1px;
+  padding-left: 7px;
+}
+
+th {
+  border-left: solid black 1px;
+  border-bottom: solid black 1px;
+  padding-left: 7px;
+}
+
+tr:nth-child(even) {
+  background-color: #ebf2f9;
+}
+
+td.monospaced {
+  background-color: inherit;
+}
+
+#filters {
+	margin-top: 100px;
+	margin-left: 20px;
+	border-top: 1px solid black;
+	height: 50px;
+}
+
+#filters p {
+	font-size: 16px;
+	text-align: left;
+	line-height: 2;
+	font-family: "SilkRemingtonTypewriter";
+	margin-top: 0;
+	float: left;
+}
+
+strong {
+  position: relative;
+}
+
+strong:hover::before {
+  content: "\261E";
+  font-weight: 400;
+  position: absolute;
+  right: 100%;
+  margin-right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8ba4c0;
+}
+
+.dropbtn {
+	background-color: none;
+	color: inherit;
+	border: none;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 2;
+	text-decoration: underline;
+	padding: 0 5px;
+	margin: 0 -5px;
+	mix-blend-mode: multiply;
+	cursor: default;
+}
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	float: left;
+	margin: 0;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 2;
+	cursor: pointer;
+}
+
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: white;
+	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+	padding: 0 5px;
+	margin: 0 -5px;
+}
+
+.dropdown-content a {
+	color: black;
+	text-decoration: none;
+	display: block;
+	padding: 0 5px;
+	margin: 0 -5px;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.dropdown:hover .dropbtn {background-color: #627894;}
+
+#specimens div.familyHide {
+	width: 0;
+	outline: none;
+	border: none;
+	transition: border 0.2s, width 0.5s;
+}
+
+#specimens div.statusHide {
+	width: 0;
+	outline: none;
+	border: none;
+	transition: border 0.2s, width 0.5s;
+}
+
+#specimens div.orderHide {
+	width: 0;
+	outline: none;
+	border: none;
+	transition: border 0.2s, width 0.5s;
+}
+
+#infoBox {
+	position: fixed;
+	top: 100px;
+	left: 600px;
+	background-color: white;
+	max-width: 70vw;
+	max-height: 70vh;
+	border: solid black 1px;
+	padding: 5px 20px;
+	overflow: scroll;
+	display: none;
+	z-index: 1;
+}
+
+#infoBox p {
+	margin: 10px;
+	font-size: 18px;
+	font-weight: bold;
+}
+
+#infoBox p span {
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	font-weight: 400;
+}
+
+#infoBox::-webkit-scrollbar {
+    display: none;
+}
+
+#infoBox {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+#body {
+	margin-top: 100px;
+	margin-left: 20px;
+	border-top: 1px solid black;
+	height: 50px;
+}
+
+#body img.divide {
+  padding: 100px 0;
+  width: 150px;
+}
+
+#body h2 {
+  margin: 10px 0;
+  font-size: 45px;
+  font-weight: 400;
+  line-height: 1.3;
+}
+
+#body p.caption {
+  font-family: "SilkRemingtonTypewriter";
+  margin: 30px auto;
+  font-size: 16px;
+  max-width: 600px;
+}
+
+.super {
+    font-variant-position: super;
+}
+
+.small-caps {
+    font-feature-settings: "smcp" 1, "c2sc" 1;
+}
+
+#body p {
+  font-size: 25px;
+  line-height: 1.5;
+  margin-top: 2em;
+}
+
+#body a {
+  color: inherit;
+  text-decoration: underline;
+  position: relative;
+  top: 0;
+  transition: top 0.3s, opacity 0.3s;
+}
+
+#body h2 a {  
+  font-style: italic;
+}
+
+#body a:hover {
+  color: #1f3f66;
+  opacity: 0.80;
+  top: -3px;
+}
+
+#body p.end-flower {
+  text-align: center;
+  font-size: 32px;
+  margin-top: 25px;
+  margin-bottom: 200px;
+}
+
+.line {
+  border-top: 1px solid black;
+  width: 100%;
+}
+
+#body img {
+  width: 500px;
+  display: block;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#TOC a {
+  text-decoration: none;
+}
+
+#TOC p, #TOC a {
+  position: relative;
+}
+
+#TOC a:hover::before {
+  content: "\261E";
+  font-weight: 400;
+  position: absolute;
+  right: 100%;
+  margin-right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #1f3f66;
+  opacity: 0.6;
+}
+
+ul {
+  font-size: 25px;
+}
+
+@media only screen and (max-width: 1050px) {
+
+    #header, #specimens {
+        width: 660px;
+    }
+
+    #header h1 {
+        font-size: 60px;
+        padding-top: 80px;
+        margin-bottom: -30px;
+    }
+
+    #filters {
+        height: 100px;
+    }
+
+    #logo {
+        left: -200px;
+    }
+    
+    .dropdown-content {
+      z-index: 1;
+    }
+    #header #subhead {
+      margin-top: 40px;
+    }
+}
+@media only screen and (max-width: 700px) {
+    #header, #specimens {
+        width: 330px;
+    }
+
+    #header h1 {
+        display: none;
+    }
+    
+    #header #subhead {
+      margin-top: -30px;
+    }
+
+    #filters {
+        height: auto;
+        padding-bottom: 20px;
+    }
+
+    #logo, #logo:hover {
+        position: relative;
+        left: 0;
+        top: 0;
+        margin: 20px auto;
+        display: block;
+        height: 410px;
+	      width: 300px;
+	      background-size: 300px;
+        opacity: 1;
+        border-radius: 0;
+        margin-bottom: -50px;
+    }
+    
+    #infoBox {
+        max-width: 90vw;
+        left: 5vw !important;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+
+    #logo, #logo:hover {
+        height: 119vw;
+	      width: 90vw;
+	      background-size: 90vw;
+    }
+    
+    #header, #specimens {
+        width: 100%;
+    }
+    
+    #header #subhead {
+      margin-top: -30px;
+      font-size: 6.5vw;
+      margin-right: 3vw;
+    }
+
+    #specimens div {
+        float: none;
+        margin: 0 auto 60px auto;
+        width: 90vw;
+        height: 392vw;
+        background-size: 90vw auto;
+    }
+
+    #specimens div.familyHide, 
+    #specimens div.statusHide, 
+    #specimens div.orderHide {
+        height: 0;
+        margin: 0;
+        border: none;
+        overflow: hidden;
+    }
+
+    #filters {
+        margin-left: 5vw;
+        width: 90vw;
+        height: 150px;
+    }
+
+    #infoBox {
+        font-size: 14px; 
+    }
+}
+
+#infoBox img {
+    max-width: 100%;
+    height: auto;
+}

@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>American Type Revival</title>
+        <link rel="stylesheet" href="style.css"/>
+        <link rel="shortcut icon" href="Favicon.png">
+        <link rel="icon" type="image/png" href="Favicon.png">
+        <script>
+            onmousemove = function(e) {
+                const infoBox = document.getElementById("infoBox")
+                infoBox.style.top = (e.clientY + 20) + "px"
+                infoBox.style.left = (e.clientX + 10) + "px"
+            }
+        </script>
+        <meta name="viewport" content="width=device-width, initial-scale=0.75">
+        <meta property="og:title" content="American Type Revival" />
+        <meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
+    </head>
+    <body>
+        <div id="logo" onmouseover="document.getElementById('infoBox').style.display = 'block'" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="location.href = '..'"></div>
+        
+        <div id="infoBox">
+            <div id="about-info">
+                <p>Return to main page.</p>
+            </div>
+        </div>
+        
+        <div id="header">
+            <h1>American Type Revival</h1>
+            <h2 id="subhead">Technical Information</h2>
+            
+            <div id="body">
+                <h2 id="Overview">Overview</h2>
+                <p>The goal of ATR is to make high quality digital reproductions of analogue type. This page documents the standards and procedures that should be followed in making these digital fonts. The goal is to provide consistency within the ATR font library, as well as provide the highest quality font files possible. Having standardized procedures helps accomplish both these goals.</p>
+                <p>Digital fonts and analogue type are two fundamentally different mediums with unique advantages and limitations. Digital revivals should aim to both accurately represent their source material, while also providing a practical and usable digital typeface. These two goals are often in direct conflict with each other. This document is, in part, an explanation of how to navigate making this compromise.</p>
+                
+                <br><br>
+                <div class="line"></div>
+                
+                <div id="TOC">
+                    <h2 id="TableofContents">Table of Contents</h2>
+                    <p><b><a href="#Overview">Overview</a></b></p>
+                    <p><b><a href="#TableofContents">Table of Contents</a></b></p>
+                    <p>
+                        <b><a href="#ChoosingSourceMaterial">Choosing Source Material</a></b><br>
+                        <a href="#Choosingaprimarysource">Choosing a primary source</a><br>
+                        <a href="#Makingsureitspublicdomain">Making sure it's public domain</a>
+                    </p>
+                    <p>
+                        <b><a href="#Metadata">Metadata</a></b><br>
+                        <a href="#WhatComputersWant">What do computers want?</a><br>
+                        <a href="#SortIntoBuckets">Sort everything into buckets</a><br>
+                        <a href="#GroundedFamilies"><q>Ground</q> families using type specimens</a><br>
+                        <a href="#SeriesMeansRegular"><q>Series</q> means Regular</a><br>
+                        <a href="#TheFontName">The font name: computers and people</a><br>
+                        <a href="#NotAllComputersStupid">Not all computers are stupid</a><br>
+                        <a href="#AvoidingMonotype">Avoiding getting sued by Monotype</a><br>
+                        <a href="#FoundryInitials">Including the foundry initials</a><br>
+                        <a href="#MetadataExample">Example</a>
+                    </p>
+                    <p>
+                        <b><a href="#Metrics">Metrics</a></b><br>
+                        <a href="#BasicFontMetrics">Basic Font Metrics</a><br>
+                        <a href="#Theinvisiblegrid">The invisible grid: subunits for widths</a><br>
+                        <a href="#Dealingwithalackofinfo">Dealing with a lack of info</a><br>
+                        <a href="#Letterwidthlookuptable">Letter width lookup table</a><br>
+                        <a href="#Whentonotusesubunitsforwidths">When to not use subunits for widths</a>
+                    </p>
+                </div>
+                
+                <br><br>
+                <div class="line"></div>
+                
+                <h2 id="ChoosingSourceMaterial">Choosing Source Material</h2>
+                <p>
+                    <strong id="Choosingaprimarysource">Choosing a primary source</strong><br>
+                    The primary source for each font is a specimen from an antique type catalog. This provides not only references for what the glyphs look like, but information such as the name of the font style. Supplementary material can and should be used, such as other type specimens or reference books, but for each font there should be a specific type specimen book that can be cited as the <q>primary source.</q> This is because type foundries changed information about individual typefaces (such as the name of the typeface) year to year. As much as possible the <q>primary source</q> for a font family should be the same.
+                </p>
+                <p>When choosing a primary source, it's important to not only consider the quality (scan resolution, completeness), but also the needs and expectations of digital fonts. Digital fonts expect a font family with Regular, Italic, Bold, and Bold Italic versions. If two sources for the same typeface are of equal quality in terms of their ability to be digitizes, but one is named in such a way that it lends itself better to digital typography, go with the source that's better suited in terms of naming conventions</p>
+                <p>In fact, it's perhaps sometimes desirable to choose a <i>worse</i> quality source as the primary source if it's better suited in terms of naming conventions.</p>
+                <p>
+                    <strong id="Makingsureitspublicdomain">Making sure it's public domain</strong><br>
+                    Legally speaking it's basically impossible to run afoul when it comes to choosing source material. This is because in the US, letterforms are ineligible for copyright protection. As long as you are using analogue source material (literally the entire point of the project) no one can sue.
+                </p>
+                <p>That being said, it is possible to commit faux pas in the design world. You don't want to come off like you're actively competing with anyone. For this reason it's better to use public domain sources. These are sources from before <span><script>document.currentScript.parentElement.textContent = new Date().getFullYear() - 95;</script></span>. It's also better to use sources from the <i>American Type Founder</i> because they've gone defunct in 1993 and no longer exist as a company to be competing with. Try and have source material be at least one of those two things if not both.</p>
+                <p>Unfortunately there are ghouls (Monotype) that maintain trademark protection on certain font names, meaning fonts sometimes have to be misnamed in the metadata to comply with trademark law. This doesn't affect what can be used as source material, but it does effect <a href="#AvoidingMonotype">naming conventions in the metadata.</a></p>
+
+                <br><br>
+                <div class="line"></div>
+                
+                <h2 id="Metadata">Metadata</h2>
+                <p>One of the surprisingly difficult and frustrating aspects of this project is getting the naming convention of historical typefaces to play well with modern digital font metadata needs. Metal type designers had no knowledge of the frustration that computers would bring, and those making the digital font standards had no respect for older naming conventions.</p>
+                <p>The compromise is to make the metadata that is most likely to be read by computers as <q>normal</q> as possible, even if it's not historically accurate, and to make the metadata most likely to be read by humans as historically accurate as possible, even if it will confuse people.</p>
+
+                <p>
+                    <strong id="WhatComputersWant">What do computers want?</strong><br>
+                    Computers really only expect a font family to consist of a maximum of four specific styles: <span class="monospaced">Regular</span>, <span class="monospaced">Italic</span>, <span class="monospaced">Bold</span>, and <span class="monospaced">Bold Italic</span>. The computer doesn't understand the idea of a <q>Light,</q> <q>Medium,</q> or <q>Black</q> weight. The computer doesn't get what <q>condensed</q> or <q>expanded</q> is. And the computer sure as hell doesn't know what <q>cursive</q> or <q>inline</q> or <q>old-style</q> is. I know it seems like the computer might understand some of these things because there's ways of tagging the metadata to indicate if a font is <q>medium</q> weight, or <q>condensed,</q> but the computer is much stupider than you think and you will confuse it if you don't treat it like it's stupid.
+                </p>
+                <p>This means that, to accommodate for the stupidness of the computer, the basic metadata should only ever report that a font is <span class="monospaced">Regular</span>, <span class="monospaced">Italic</span>, <span class="monospaced">Bold</span>, or <span class="monospaced">Bold Italic</span>.</p>
+                
+                <p>
+                    <strong id="SortIntoBuckets">Sort everything into buckets, and look for groups of four.</strong><br>
+                    When going through a type specimen, sort everything into those four buckets, defaulting to <span class="monospaced">Regular</span>. Only put fonts into <span class="monospaced">Bold</span> or <span class="monospaced">Italic</span> buckets if they are <i>explicitly</i> named those things in the source material. If something is <i>close</i> to being <span class="monospaced">Bold</span> or <span class="monospaced">Italic</span> but not <i>explicitly</i> those things, they are <span class="monospaced">Regular</span>.
+                </p>
+                <p>
+                    <q>Fatface</q> &rarr; <span class="monospaced">Regular</span><br>
+                    <q>Heavy</q> &rarr; <span class="monospaced">Regular</span><br>
+                    <q>Cursive</q> &rarr; <span class="monospaced">Regular</span>
+                </p>
+                
+                <p>The computer also gets really really confused if there's more than one <span class="monospaced">Regular</span> font in the same font family. Therefore, each style gets a new font family in the metadata. <q>Cloister Cursive</q> is obviously part of the <q>Cloister</q> family, but in the metadata it's a separate font-family called <span class="monospaced">Cloister Cursive</span> and it gets a style of <span class="monospaced">Regular</span> of course.</p>
+                
+                <p>This means from a metadata perspective some fonts that are clearly part of the same family will be categorized as separate families. However, when possible, groups of the four styles computers understand should be made. This also means that sometimes fonts that might seem like they should belong to separate font families should be grouped together</p>
+                <p>In old type catalogs sometimes the regular weight version of fonts are given a modifier word like <q>Commercial</q> or <q>Expanded</q> which don't appear in the bold counterparts. It is preferable to create the groups of expected four, therefore regular style fonts with modifier words should be put into families without the modifier words if this allows for the inclusion of bold counterpart. Only drop the modifier words in the family name if it helps to create a group of four.</p>
+                <p>The dropping of modifier words is <i>only</i> to make the font family metadata play nice. Retain the modifier words in the font name metadata.</p>
+                <p>It's also important that the created group of four feel as though they belong together. <i>American Type Founders</i> acquired many smaller type companies over the years, and in in doing so acquired an eclectic group of typefaces that sometimes share a name (especially in the case of typefaces named after historical designers) but that don't share underlying design logic. It is possible often through research to ascertain if two different fonts were designed as part of the same family or just happen to share a name, but there is also a subjective element to it. When creating groups of four ask yourself, do these <i>really</i> feel like the same font family? If the answer is <q>no</q> then don't group them together, even if this creates an unruly number of unique font families.</p>
+                
+                <p>
+                    <strong id="GroundedFamilies"><q>Ground</q> families using the type specimens as a reference.</strong><br>
+                    Which version of a font is <q>normal?</q> There are going to be instances where it's tempting to make the normal version of a font something different from what the source material gestures towards. For example, the typeface <i>Hobo</i> has two styles in ATF catalogs: <q>Series</q> and <q>Light.</q> It's very tempting to make the <q>Light</q> version the <span class="monospaced">Regular</span> version in the metadata and to make the <q>Series</q> version the <span class="monospaced">Bold</span> in the metadata, because then you don't have to have two separate font families.
+                </p>
+                <p>However, as tempting as this is, it's clear in the source material that the <q>Series</q> version is the default, and the <q>Light</q> version is a deviation, therefore we must make the <q>Series</q> version the <span class="monospaced">Regular</span> in the metadata.</p>
+                <p>What does this even mean if both have to be separate font families, and both have to be labeled as <span class="monospaced">Regular</span> in the metadata? It means that the <q>grounded</q> font has a font family name that doesn't include the specific style. In the case of <q>Hobo Series</q> this will just be given the font family of <span class="monospaced">Hobo</span> in the metadata.</p>
+                
+                <p>
+                    <strong id="SeriesMeansRegular"><q>Series</q> means Regular</strong><br>
+                    In old type catalogs the word <q>Series</q> is often used to mean what <q>font family</q> means today. This means two things: first, if a font is labeled <q>Series</q> it's <i>always</i> the normal version of the font, no matter what. Secondly, it means that the word <q>Series</q> can (and should) be dropped from the metadata because it's not the name of the specific style. This is the one and only case where dropping words from the name of a font is acceptable.
+                </p>
+                
+                <p>
+                    <strong id="TheFontName">The font name: computers and people</strong><br>
+                    In digital fonts there are two font names: one for computers, and one for humans. The name for humans provides us with the perfect opportunity to make the metadata reflect the source material. The <span class="monospaced">postscriptFullName</span> is the name for humans, and this should, as much as possible, preserve the font name in the source material. This includes preserving the order information is given in, even if it goes against contemporary convention. For example, in the ATF catalog the light version of <i>Hobo</i> is called <q>Light Hobo</q> so the <span class="monospaced">postscriptFullName</span> should be <span class="monospaced">Light Hobo</span> despite the fact that today it is more common to put the family name first and the style second, making <q>Hobo Light</q> more normal.
+                </p>
+                <p>The name for computer is the <span class="monospaced">postscriptFontName</span>. Most of the time this isn't going to be seen by people. The name for computers should always start with the family name with spaces removed, followed by a hyphen, followed only by the style information with spaces removed. The reason the family name goes first is so that when sorted alphabetically fonts of the same family will be grouped together.</p>
+                
+                <p>
+                    <strong id="NotAllComputersStupid">Not all computers are stupid</strong><br>
+                    Font metadata, like a lot of things in this world, is an imperfect system with little patches and fixes added to it. At some point people realized that it would be nice if, for example, lighter weight styles, or condensed versions of fonts, could be grouped into the same font family as the regular counterpart, instead of having them all be separate families.
+                </p>
+                <p>This can't be reflected in the existing metadata, because a lot of programs would have a conniption, but new metadata fields were added to explain to programs that aren't so pathetically stupid that an individual style is part of a larger family. The relevant fields are called <span class="monospaced">openTypeNamePreferredFamilyName</span> and <span class="monospaced">openTypeNamePreferredSubfamilyName</span> respectively.</p>
+                <p>These programs are smart enough to understand that different weights and widths (condensed or expanded versions) are still part of the same font family, but they aren't smart enough to understand things like <q>inline</q> or <q>cursive</q> variants. Therefore, if and only if the font variant is either a different weight or condensed/expanded use <span class="monospaced">openTypeNamePreferredFamilyName</span> to indicated which family it belongs to. Otherwise (as would be the case for a <q>Cursive</q> or <q>Outline</q> variant) keep it as a separate family.</p>
+                <p>Make sure the width and weight are properly tagged in the metadata, otherwise these stupid programs will still get confused.</p>
+                
+                <p>
+                    <strong id="AvoidingMonotype">Avoiding getting sued by Monotype</strong><br>
+                    Even though the design of fonts in impossible to copyright, and stuff from 1923 is public domain, there's still the annoying issue of <i>Trademark</i>. When ATF went defunct their trademarks got scooped up and most (maybe all?) of them ended up with Monotype, which is known for being a bit litigious when it comes to enforcing their intellectual property.
+                </p>
+                <p>Monotype keeps <a href="https://www.monotype.com/legal/trademarks" target="_blank">a handy spreadsheet of all their trademarks</a>. If a font name appears on the list, it must be renamed to something similar, but legally distinct. For example, Monotype owns <q>Engravers,</q> so in the font is renamed <q>Engraving.</q></p> 
+                <p>It sucks because it's not historically accurate. Notes can and should be made both on the site and also in the about section of the metadata indicating the name of the original typeface.</p>
+                
+                <p>
+                    <strong id="FoundryInitials">Including the foundry initials.</strong><br>
+                    Finally, the font metadata should include <q>ATR</q> at the end to indicate it a <i>American Type Revival</i> release. This should always appear at the end of anything that includes the name of the typeface. It appears at the end so as to not disrupt alphabetizing.
+                </p>
+                
+                <p><strong id="MetadataExample">Example</strong><br>
+                All of this is very confusing, so here is an example of a font family, and its metadata.</p>
+                <p>In the American Type Founder's 1923 catalog we have the following font family styles:</p>
+                <ul>
+                    <li>Century Oldstyle</li>
+                    <li>Century Oldstyle Italic</li>
+                    <li>Century Oldstyle Bold</li>
+                    <li>Century Oldstyle Bold Italic</li>
+                    <li>Century Oldstyle Bold Condensed</li>
+                    <li>Century Schoolbook</li>
+                    <li>Century Schoolbook Italic</li>
+                    <li>Century Expanded</li>
+                    <li>Century Expanded Italic</li>
+                    <li>Century Bold</li>
+                    <li>Century Bold Italic</li>
+                </ul>
+                <p>Below is a complete breakdown of the metadata for each of these fonts styles:</p>
+
+                <p><b>Century Oldstyle</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Oldstyle Regular ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryOldstyleATR-Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Oldstyle Italic</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Oldstyle Italic ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryOldstyleATR-Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Oldstyle Bold</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Oldstyle Bold ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryOldstyleATR-Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">700 (Bold)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Bold</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Oldstyle Bold Italic</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Oldstyle Bold Italic ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryOldstyleATR-BoldItalic</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">700 (Bold)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Bold Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Bold Italic</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Oldstyle Bold Condensed</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Oldstyle Bold Condensed ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryOldstyleBoldCondensedATR-BoldCondensed</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Oldstyle Bold Condensed ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">700 (Bold)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">3 (Condensed)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Oldstyle ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Bold Condensed</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Schoolbook</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Schoolbook Regular ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenarySchoolbookATR-Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Schoolbook ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Schoolbook ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Schoolbook Italic</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Schoolbook Italic ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenarySchoolbookATR-Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary Schoolbook ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary Schoolbook ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                </table>
+                
+                <p><b>Century Expanded</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Expanded Regular ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryExpandedATR-Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Regular</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Expanded Italic</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Expanded Italic ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryExpandedATR-Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">400 (Regular)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Italic</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Bold</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Bold ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryATR-Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">700 (Bold)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Bold</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Bold</td>
+                    </tr>
+                </table>
+
+                <p><b>Century Bold Italic</b></p>
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Humans</td>
+                        <td class="monospaced">Centenary Bold Italic ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Font Name for Computers</td>
+                        <td class="monospaced">CentenaryATR-BoldItalic</td>
+                    </tr>
+                    <tr>
+                        <td>Family Name</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Weight</td>
+                        <td class="monospaced">700 (Bold)</td>
+                    </tr>
+                    <tr>
+                        <td>Width</td>
+                        <td class="monospaced">5 (Medium)</td>
+                    </tr>
+                    <tr>
+                        <td>Style</td>
+                        <td class="monospaced">Bold Italic</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Family</td>
+                        <td class="monospaced">Centenary ATR</td>
+                    </tr>
+                    <tr>
+                        <td>Preferred Style</td>
+                        <td class="monospaced">Bold Italic</td>
+                    </tr>
+                </table>
+                
+                <p>Observe how Century has been renamed Centenary to avoid Monotype's Trademark. Observe how both <i>Century Oldstyle</i> and <i>Century Expanded</i> have been put into groups of four, with the latter dropping the modifier word in the metadata. Also observe how <i>Century Oldstyle Bold Condensed</i> gets its own font family, and is connected to the <i>Century Oldstyle</i> family through the <span class="monospaced">openTypeNamePreferredFamilyName</span> metadata tag.</p>
+                
+                <br><br>
+                <div class="line"></div>
+                
+                <h2 id="Metrics">Metrics</h2>
+                <p><strong id="BasicFontMetrics">Basic Font Metrics</strong><br>
+                The following things are standardized for all ATR fonts:</p>
+                
+                <table>
+                    <tr>
+                        <th>Metadata Field</th>
+                        <th>Content</th>
+                    </tr>
+                    <tr>
+                        <td>Em Size</td>
+                        <td class="monospaced">2000</td>
+                    </tr>
+                    <tr>
+                        <td>Ascent</td>
+                        <td class="monospaced">1600</td>
+                    </tr>
+                    <tr>
+                        <td>Descent</td>
+                        <td class="monospaced">400</td>
+                    </tr>
+                    <tr>
+                        <td>Capital Height</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                </table>
+                
+                <p>The reference material should be scaled in such a way that the capital height of the actual drawn letters matches the reported capital height in the metadata.</p>
+                <p>The <span class="monospaced">X Height</span> in the metadata should reflect the x-height of the drawn letters, which will change on a font by font basis. Not all the source material shares the same x-height.</p>
+                <p>This is <i>not</i> true, however, for the <span class="monospaced">Descent</span> metadata field, which will remain the same regardless of the drawn descender height.</p>
+                
+                <p><strong id="Theinvisiblegrid">The invisible grid: subunits for widths</strong><br>
+                Historically speaking, the widths of metal type letters were limited. Letter could not be any width ever, but instead were always chosen from a preset collection of potential widths. The potential widths letters could be all shared a fractional relationship to each other. For example, a lowercase <span class="monospaced">m</span> might be twice the width of a lowercase <span class="monospaced">s</span>. Or a <span class="monospaced">r</span> might be 2/3rds the width of a <span class="monospaced">u</span>.</p>
+                
+                <br><br>
+                <img src="resource/width-examples-1.svg" />
+                <p class="caption">You're very smart, and you already understand this intuitively.</p>
+                <p>Because all these widths are fractionally related to each other, we can derive a sort of sub-unit that makes them up. In the case of <i>Times</i> (shown above), the <span class="monospaced">r</span> is 6 <q>sub units</q> wide and the <span class="monospaced">u</span> is 9 wide.</p>
+                <p>In the case of text fonts, it is highly advantageous for this sort of subunits to be reverse engineered, and reproduced in the digital font. <b>Especially for roman </b>(upright)<b> book </b>(not bold)<b> fonts.</b> This is both to preserve historical accuracy, a digital font with this sort of sub unit width system will more accurately reflect the metal type its based on, but it also aids in legibility.</p>
+                
+                <p><strong id="Dealingwithalackofinfo">Dealing with a lack of info</strong><br>
+                However, determining the underlying system from photo copies of type specimens is difficult if not outright impossible. This is because, like most of elements of the font, the spacing varies from one point size to the next. Many letters are printed outside of the context of words, so there is literally no information to go off of.</p>
+                <p>To accommodate for this information deficit, calculations have been made to determine the <i>mostly likely</i> scenario. A collection of over 100 fonts where the sub-unit size was known were analyzed, and the most common widths for each letter were calculated.</p>
+                <p>When digitizing a new font, start by using the following widths. If a letter width appears too small, increase its size by one subwidth unit. If it appears too big decrease its size. Guess and check.</p>
+                <p><b>Please note: the following table shows what is most common in roman, book, serif fonts.</b> These are the most important to get right when it comes to legibility. When digitizing a family start with the upright book weight. </p>
+                
+                <p><strong id="Letterwidthlookuptable">Letter width lookup table</strong></p>
+                <table>
+                    <tr>
+                        <th>Glyph</th>
+                        <th>Number of units</th>
+                        <th>Calculated Width</th>
+                    </tr>
+                    <tr>
+                        <td>A</td>
+                        <td class="monospaced">14</td>
+                        <td class="monospaced">1400</td>
+                    </tr>
+                    <tr>
+                        <td>B</td>
+                        <td class="monospaced">12</td>
+                        <td class="monospaced">1200</td>
+                    </tr>
+                    <tr>
+                        <td>C</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>D</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>E</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>F</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>G</td>
+                        <td class="monospaced">14</td>
+                        <td class="monospaced">1400</td>
+                    </tr>
+                    <tr>
+                        <td>H</td>
+                        <td class="monospaced">15</td>
+                        <td class="monospaced">1500</td>
+                    </tr>
+                    <tr>
+                        <td>I</td>
+                        <td class="monospaced">7</td>
+                        <td class="monospaced">700</td>
+                    </tr>
+                    <tr>
+                        <td>J</td>
+                        <td class="monospaced">7</td>
+                        <td class="monospaced">700</td>
+                    </tr>
+                    <tr>
+                        <td>K</td>
+                        <td class="monospaced">14</td>
+                        <td class="monospaced">1400</td>
+                    </tr>
+                    <tr>
+                        <td>L</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>M</td>
+                        <td class="monospaced">17</td>
+                        <td class="monospaced">1700</td>
+                    </tr>
+                    <tr>
+                        <td>N</td>
+                        <td class="monospaced">14</td>
+                        <td class="monospaced">1400</td>
+                    </tr>
+                    <tr>
+                        <td>O</td>
+                        <td class="monospaced">15</td>
+                        <td class="monospaced">1500</td>
+                    </tr>
+                    <tr>
+                        <td>P</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>Q</td>
+                        <td class="monospaced">15</td>
+                        <td class="monospaced">1500</td>
+                    </tr>
+                    <tr>
+                        <td>R</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>S</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>T</td>
+                        <td class="monospaced">12</td>
+                        <td class="monospaced">1200</td>
+                    </tr>
+                    <tr>
+                        <td>U</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>V</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>W</td>
+                        <td class="monospaced">18</td>
+                        <td class="monospaced">1800</td>
+                    </tr>
+                    <tr>
+                        <td>X</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>Y</td>
+                        <td class="monospaced">13</td>
+                        <td class="monospaced">1300</td>
+                    </tr>
+                    <tr>
+                        <td>Z</td>
+                        <td class="monospaced">12</td>
+                        <td class="monospaced">1200</td>
+                    </tr>
+                    <tr>
+                        <td>a</td>
+                        <td class="monospaced">9</td>
+                        <td class="monospaced">900</td>
+                    </tr>
+                    <tr>
+                        <td>b</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>c</td>
+                        <td class="monospaced">8</td>
+                        <td class="monospaced">800</td>
+                    </tr>
+                    <tr>
+                        <td>d</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>e</td>
+                        <td class="monospaced">9</td>
+                        <td class="monospaced">900</td>
+                    </tr>
+                    <tr>
+                        <td>f</td>
+                        <td class="monospaced">6</td>
+                        <td class="monospaced">600</td>
+                    </tr>
+                    <tr>
+                        <td>g</td>
+                        <td class="monospaced">9</td>
+                        <td class="monospaced">900</td>
+                    </tr>
+                    <tr>
+                        <td>h</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>i</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>j</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>k</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>l</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>m</td>
+                        <td class="monospaced">15</td>
+                        <td class="monospaced">1500</td>
+                    </tr>
+                    <tr>
+                        <td>n</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>o</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>p</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>q</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>r</td>
+                        <td class="monospaced">7</td>
+                        <td class="monospaced">700</td>
+                    </tr>
+                    <tr>
+                        <td>s</td>
+                        <td class="monospaced">7</td>
+                        <td class="monospaced">700</td>
+                    </tr>
+                    <tr>
+                        <td>t</td>
+                        <td class="monospaced">6</td>
+                        <td class="monospaced">600</td>
+                    </tr>
+                    <tr>
+                        <td>u</td>
+                        <td class="monospaced">11</td>
+                        <td class="monospaced">1100</td>
+                    </tr>
+                    <tr>
+                        <td>v</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>w</td>
+                        <td class="monospaced">15</td>
+                        <td class="monospaced">1500</td>
+                    </tr>
+                    <tr>
+                        <td>x</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>y</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>z</td>
+                        <td class="monospaced">8</td>
+                        <td class="monospaced">800</td>
+                    </tr>
+                    <tr>
+                        <td>space</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>all digits (0-9)</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>period</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>single quotes</td>
+                        <td class="monospaced">5</td>
+                        <td class="monospaced">500</td>
+                    </tr>
+                    <tr>
+                        <td>double quotes</td>
+                        <td class="monospaced">10</td>
+                        <td class="monospaced">1000</td>
+                    </tr>
+                    <tr>
+                        <td>question mark</td>
+                        <td class="monospaced">8</td>
+                        <td class="monospaced">800</td>
+                    </tr>
+                    <tr>
+                        <td>hyphen</td>
+                        <td class="monospaced">6</td>
+                        <td class="monospaced">600</td>
+                    </tr>
+                    <tr>
+                        <td>ampersand</td>
+                        <td class="monospaced">14</td>
+                        <td class="monospaced">1400</td>
+                    </tr>
+                </table>
+                <p>This table shows only the most common glyphs, but calculations have been made for many more. <a href="resource/glyph-width-unit-average.csv" target="_blank"> The full spreadsheet can be downloaded here.</a></p>
+                <p>You will notice that the subwidth unit used is 100. This makes things easy. This subunit width was chosen to work well with a capital height of 1300. The subwidth unit being 100 is not random, and it should not be changed.</p>
+                <p>For weights that will be used in laying out text, tabular digits should be the default, with lining digits being offered as a stylistic alternative if desired.</p>
+                
+                <p><strong id="Whentonotusesubunitsforwidths">When to not use subunits for widths</strong><br>
+                The point of the subunit system is to reveal the underlying logic that's already there. It is to make the font more beautiful and legible. When applying the system, it should feel like the letters want to go in their respective boxes. In cases where you feel like applying the system is forcing letters to conform to space they don't want to occupy, it is always better to abandon the system.</p>
+                <p>The system should either be applied for all letters, or be abandoned entirely, but it should not be partially applied. If one or two letters are unhappy with the system, but the others work quite well, consider adjusting the widths of the unhappy letters (in terms of what's drawn).</p>
+                <p>Remember that with analog type there is variation between point sizes, and different point sizes have different relative widths and spacing. The digital font is always a compromise between what are essentially different alphabets. Realistically, different letters are going to be drawn using different point size material, and the end result is going to be an eclectic mix of widths.</p>
+                <p>This reminder serves both to explain why the system might not apply well, but also allow for the widening or narrowing of specific glyphs guilt free.</p>
+                <p>Because this system aids in legibility it is less important in display fonts. Always try to apply the system first, but try a bit harder to apply it in fonts that might be used to layout large paragraphs of text.<p>
+                <br><br>
+                <div class="line"></div>
+                
+                <h2 id="DrawingtheLetters">Drawing the Letters</h2>
+                <p>Now that we've done the difficult work of identifying our source material and preparing our workspace, so to speak, we can get down to the actual meat and potatoes of drawing the letters. In theory we could start by tracing the highest quality (i.e. largest point size) letter available and work to harmonize the alphabet second, but it's actually better to make some modifications to the source material first.</p>
+                <p><strong id="Understandingdifferentpointsizes">Understanding different point sizes (and preparing the source material)</strong><br>
+                There are some obvious, and some not so obvious, differences between different point sizes. Understanding how the alphabet changes at different sizes is crucial.</p>
+                <p>Below are three digitizations of the <i>Century Expanded</i> typeface based off of different point size material.</p>
+                <img src="resource/Century Expanded 72.svg" />
+                <p class="caption">Century Expanded at 72 points</p>
+                <img src="resource/Century Expanded 12.svg" />
+                <p class="caption">Century Expanded at 12 points</p>
+                <img src="resource/Century Expanded 6.svg" />
+                <p class="caption">Century Expanded at 6 points</p>
+                <p>All three are from the same page of the same catalog. Looking at this, it's immediately obvious that the letters are getting bolder. Ink spreads, and at smaller printing sizes this has a bigger effect on the look of the letters.</p>
+                <p>Ink spreading is a limitation of the technology of analogue type. It's actually a limitation that still exists today as presumably someone might print out documents using a ATR font at some point. Because this is a flaw and not representative of the intent of the designer it should be accounted for and undone in the digital font.</p>
+                <p>Depending on your workflow you might prefer to account for this inside the font making program, but it's also possible to <q>unbold</q> text in a photo editor (like Gimp). In either case, measure the stroke width from a large (72?) point size and compare that to same stroke from a smaller point size. Subtract from the smaller sources until it matches the larger source.</p>
+                <p>What is less obvious, but actually much more important, is how the letters get wider at smaller point sizes. This is not due to ink spread. This was an intentional design decision. Comparing the 72 and 12 point fonts the difference in wideness is so subtle that it might seem unimportant. But it adds up.</p>
+                <img src="resource/Century Expanded overlay.svg" />
+                <p class="caption">With in only four letters the 12 point (blue) is an entire stroke width wider than the 72 point (brown) font. Imagine how much this compounds over paragraphs.</p>
+                <p>The reason this is <i>so very important</i> is because <a href="#Theinvisiblegrid">we are trying to reverse engineer the subunits for the width.</a> The entire subunit system is thrown off if the width of letter doesn't match what it's expecting, so pulling from different point sizes without accounting for this is devastating.</p>
+                <p>Intuitively, one might assume that the widths of the letters printed at larger point sizes are superior to those printed at smaller point sizes. After all, the larger point sizes are higher quality in almost every regard. Maybe we should shrink the widths of the smaller printed letters to match the larger ones?</p>
+                <p>However, unlike most differences between the smaller sizes and larger sizes, the widths of letters is not a result of the limitations of the technology. This is an intentional design decision. The slight increase in letter widths at the smaller text sizes give them more breathing room, and aid in legibility.</p>
+                <p>This means that in the case of fonts that are display faces and would never be used to lay out long paragraphs of text it is okay and appropriate to squish the smaller point size letters to match the larger point size, but in the case of fonts that might be used to lay out text, it is preferable to go with the widths of smaller point sizes.</p>
+                <p>This is one of those moments where digital font design is a compromise. It's impossible to simultaneously represent what letters look like at large and small point sizes, so one has to be chosen over the other, and it is better to sacrifice a small amount of beauty at display sizes to maintain maximum legibility at text sizes. </p>
+                <p>For this reason, the subunit system is designed to work with the widths found in 12 point fonts. 100 being the width of one subunit is a calculation made for the letter widths found at 12 points. If you are working on a display typeface and you want to use a subunit width suited for 72 point sources, use a subunit width of 95. I know earlier I said that it's always 100, but I lied.</p>
+                <img src="resource/Century Expanded subunits.svg" />
+                <p class="caption">When the subunit system is applied, 72 points has too much space between letter, 12 points looks perfect, and 6 points is bleeding outside the edge.</p>
+                <p>The number of subunits making up each of the letters in the <i>Century</i> typeface is known and applied in the above example. The 72 point source appears too roomy, and the 6 point source appears too cramped. If the number of subunits was unknown and was being based off of the <q>guess and check</q> method we would guess the wrong number of subunits if using the unmodified 72 point size source material.</p>
+                <p>All of this means that none of the source material should be seen as authoritative. The smaller point size material should be seen as too bold and too low fidelity, and the larger point size material should be seen as too thin.</p>
+                <p>Increase the width of the larger point size material to match the widths of the 12 point letters.</p>
+                
+                <p><strong id="Asystemofcompromises">A system of compromises</strong><br>
+                Drawing the letters is where the art of type revival comes into play. There are many possible decisions and routs that can be taken, and the <i>right</i> decision depends on individual preference, and also changes on a font-by-font basis. Here are a couple things to keep in mind:</p>
+                <ul>
+                    <li>The logic and system of interpretation should be internally consistent within fonts and font families</li>
+                    <li>Having a nice looking font should be the top priority</li>
+                    <li>Expressing the intention of the designer should be a top priority</li>
+                    <li>More fidelity is better</li>
+                    <li>Fonts should reflect their source material</li>
+                </ul>
+                <p>These are listed in order of most important to least important. Ideally font revivals can satisfy all to a very high degree, but there are circumstances where these priorities may come into conflict.</p>
+                <p>Obviously if we went with the highest quality source material and made no efforts to harmonize it we would have some letters based on smaller point sizes that end up bolder and wider than the letters based on larger point size material. But there's also less obvious ways these priorities come into conflict.</p>
+                <p>Sometimes designers made design decisions knowing they will get rounded off or muddled by the analog type process (for example having a sharp acute point). If we literally interpret what the designer was doing it would look bad. In these moments it's better to go against what the designer did in service of nice looking letters</p>
+                <p>There are different ways of dealing with these circumstances. One method, which can be very effective, is to round off all sharp edges. Another method is to cut the tips off of sharp points off. What looks best depends on the individual font style. The important thing is that there should be some kind of consistent logic in the font.</p>
+                <img src="resource/Tiffany literal.svg" />
+                <p class="caption">This is a close up of the typeface "Tiffany Gothic," later renamed "Typo." If we interpret the sharp points literally it creates a sort of dazzling effect that looks bad. This is the most literal interpretation of the design. </p>
+                <img src="resource/Tiffany cut-tips.svg" />
+                <p class="caption">One option might be to cup the tips of sharp points off.</p>
+                <img src="resource/Tiffany rounded.svg" />
+                <p class="caption">Another option might be to round off all sharp points.</p>
+                <p>It's not important than how these sorts of situations are handled is consistent between the entire ATR catalog. What's important is that there is consistency inside a font family, and that whatever decision is made it's in service of the font.</p>
+                <p>Try and identify potential issues early and come up with a system so you don't have to go through after already drawing letters rounding off corners to make them harmonize with a problem letter.</p>
+                <p>The specific example given of sharp points is not the only sort of problem that can arise with literally interpreting the design. It is an illustrative example. It is impossible to anticipate every sort of problem, but when problems arise think about what sorts of compromises can and should be made.</p>
+                <p><strong id="Dealingwithlowfidelitysources">Dealing with low fidelity sources</strong><br>
+                Small point sizes have less fidelity than larger point sizes. This means some of the details are going to be lost. It's best to retain as much detail as possible, so finding the best quality source possible is a must. Consult different type catalogs as well as any printed material you can find in the typeface you're working on. It's possible to sometimes find/create more source material. Public libraries sometimes have books that aren't digitized. Sometimes people working at museums will email you scans of source material. Buying a rare book is expensive, but emailing someone that works at a British museum is free.</p>
+                <p>It feels unethical, and maybe it's not the sort of thing you'd want to admit in public, but it's possible to use other digitizations as reference material. Big type foundries often have digitized their entire type catalog and they have resources you can only dream of.</p>
+                <p>However, when using various sources, it's always super important to try and investigate how those sources differ from the source you've chosen to be the <q>primary</q> source. Many typefaces have been adapted to many different technologies over the years, and often type foundries use a more recent adaptation, or have themselves made modifications to the text.</p>
+                <img src="resource/Century ATF.svg" />
+                <p class="caption">Here we see "Century Expanded" as it appears in a 1923 American Type Founders catalog.</p>
+                <img src="resource/Century LT.svg" />
+                <p class="caption">Here is a digital font called "Century Expanded" as sold by Linotype. It is bolder and the angles of the serifs is steeper.</p>
+                <img src="resource/Century overlay.svg" />
+                <p class="caption">Overlaying the two we can see that the digital font (blue) has both shorter ascenders and longer decenders.</p>
+                <p>Figuring out the exact provenance of these changes is not super important or relevant (or even always possible), but it's clear that the underlying design logic is different. If you were to, for whatever reason, use the modern digital font as a reference for the letter <span class="monospaced">g</span> without taking into account the fact that the descenders are different, you're going to end up with a letter that uses different design logic than the rest of the alphabet.</p>
+                <p>I don't care if you copy modern fonts. It's legal as long as you're only looking at the shape of the letters and not looking at the font software. Maybe it's unethical or frowned upon but I don't care. The issue is that these fonts don't preserve the original designs well. They are poor sources when it comes to historicity.</p>
+                <p>Often times they are just very poor quality. The letters are lumpy or weird looking. Large foundries have a lot of resources and in theory (and sometimes do) make incredibly well researched and executed revivals. But more often than not it's some freshman designer with little experience or pay going through a chunk of 600 fonts to digitize by Monday and the source material is photocopies of photocopies.</p>
+                <img src="resource/Hobo-Digital.svg" />
+	              <p class="caption">What brilliant design logic governs the shape of the curves of this digital Hobo revival? Is there some kind of genius logic at play that makes the "p" stick out funny?</p>
+	              <img src="resource/Hobo-ATR.svg" />
+	              <p class="caption">No, when we consult the original the letters are much more harmonious. The digital font is just poorly done.</p>
+	              <p>Maybe it's judge-worthy to use modern sources as reference material. Who am I to say? But you will definitely look like an idiot if you copy the mistakes of modern digital fonts. Be very careful and discerning.</p>
+	              <p><strong id="Drawingwhatsnotthere">Drawing what's not there</strong><br>
+                Modern fonts require symbols that were either rare in the past, or didn't exist at all. For example, euros as a currency only went into circulation after the turn of the millennium. It's one of the most important currencies on earth, and any digital font without a euro sign is incomplete, but there is also definitely no historical euro signs to drawn on.</p>
+                <p>Not only are there many modern signs that didn't exist back in the day, the ethos when it came to symbols was different in the era of movable type. A digital font can include hundreds of symbols and the expense and difficulty of installing it remains unchanged, but if you are working with literal pieces of lead, including hundreds of symbols that almost never get used in the off chance that you'll need an at symbol at some point would be insanity.</p>
+                <p>The attitude back then was to sell generic versions of rare symbols (like the at sign, which did exist before emails) and customers could buy and use only what they needed.</p>
+                <p>The result is many of the symbols that today are considered necessary either didn't exist at all, or didn't have a typeface specific version.</p>
+                <p>The most historically accurate thing to do (and in some cases the preferable thing) would be to design generic versions of symbols, or to not include certain symbols at all. However, there are moments where a generic version of a symbol is going to be very distracting and disruptive to the flow of the text. In these cases it is better to design new symbols to match the design language of the original font.</p>
+                <p>A copyright symbol (&#169;) is always a bit disruptive, and users don't typically expect that they will blend in with text. A generic copyright symbol is fine.</p>
+                <p>On the other hand a generic euro symbol (&euro;) would stand out a bit more. More importantly, designers almost always drew font-specific dollar (&#36;) and cents (&cent;) signs, so if we extrapolate the logic than font-specific currency signs are a must.</p> 
+                
+                <p><b>Should I draw a font-specific symbol?</b></p>
+                <table>
+                    <tr>
+                        <th>Symbol</th>
+                        <th>What to do?</th>
+                    </tr>
+                    <tr>
+                        <td>At sign (@)</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Agnostic quotation marks (")</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Number Sign (#)</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Parenthesis (([{}]))</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Asterisk (*)</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>All currency Symbols</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Copyright, registered, and trademark signs</td>
+                        <td class="monospaced">Generic</td>
+                    </tr>
+                    <tr>
+                        <td>Math symbols</td>
+                        <td class="monospaced">Optional</td>
+                    </tr>
+                    <tr>
+                        <td>Pilcrow</td>
+                        <td class="monospaced">font-specific design</td>
+                    </tr>
+                    <tr>
+                        <td>Daggers</td>
+                        <td class="monospaced">Optional</td>
+                    </tr>
+                    <tr>
+                        <td>Minute, Second</td>
+                        <td class="monospaced">Optional</td>
+                    </tr>
+                </table>
+                <p>I don't know why I made this table. If it's not mandatorily font-specific it's realistically optional.</p>
+                <p>The important thing is to try and keep track of what is based on historical designs, so when the font gets published we can make it clear what's invented and what's historical</p>
+                
+                <p><strong id="agnosticquotes">The agnostic quotes</strong><br>
+                This is not at all important, but boy-howdy do I hate those quotes that aren't left or right but just neutral. It's a problem introduced by computers that was unheard of before, and it creates an impossible situation as a designer. Upright quotes that aren't at an angle always look weird and stupid, but tilting them also sucks as an option. There's no way to make them good, and there's no way to avoid making them entirely, so the only thing to do is make peace.</p>
+                
+            </div>
+        </div>
+    </body>
+</html>

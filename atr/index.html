@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>American Type Revival</title>
+		<link rel="stylesheet" href="style.css"/>
+		<link rel="shortcut icon" href="Favicon.png">
+		<link rel="icon" type="../image/png" href="Favicon.png">
+		<script src="script.js" type="module"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=0.75">
+		<meta property="og:title" content="American Type Revival" />
+		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
+	</head>
+	<body>
+		<div id="logo" onclick="location.href = 'about.html'"></div>
+		<div id="infoBox">
+		  <div id="all-font-info">
+        <img id="info-title" src="Bodoni/Bodoni Series hover.png"/>
+			  <p>Font Family: <span id="info-family">Bodoni</span></p>
+			  <p>Status: <span id="info-status">Finished</span></p>
+			</div>
+			<div id="font-group-info">
+			</div>
+			<div id="about-info">
+			  <p>Learn about <i>American Type Revival</i></p>
+			</div>
+		</div>
+		<div id="header">
+			<h1>American Type Revival</h1>
+			<div id="filters">
+				<p>Displaying&nbsp;</p>
+				<div class="dropdown">
+					<div class="dropbtn" id="displaying">all fonts</div>
+					<div class="dropdown-content">
+						<a onclick="display(0)">all fonts</a>
+						<a onclick="display(1)">finished&nbsp;fonts</a>
+						<a onclick="display(2)">free fonts</a>
+					</div>
+				</div>
+				<p>, sorted&nbsp;</p>
+				<div class="dropdown">
+					<div class="dropbtn" id="sorting">alphabetically</div>
+					<div class="dropdown-content">
+						<a onclick="sort(0)">alphabetically</a>
+            <a onclick="sort(1)">by date</a>
+						<a onclick="sort(2)">by popularity</a>
+					</div>
+				</div>
+				<p>, and&nbsp;</p>
+				<div class="dropdown">
+					<div class="dropbtn" id="grouping">grouped by family</div>
+					<div class="dropdown-content">
+						<a onclick="group(true)">grouped by family</a>
+						<a onclick="group(false)">displaying&nbsp;all&nbsp;styles</a>
+					</div>
+				</div>
+				<p>.</p>
+			</div>
+		</div>
+		<div id="specimens">
+			<div class="familyHide" aria-label="Bodoni Bold" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Bodoni Bold Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Bodoni Book" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Bodoni Book Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Bodoni Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div id="Bodoni" aria-label="Bodoni Series" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Card Bodoni" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Card Bodoni Bold" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
+			<div class="familyHide" aria-label="Cloister Bold" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Cloister Bold Condensed" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Cloister Bold Title" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Cloister Cursive" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Cloister Italic" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div id="Cloister" aria-label="Cloister Oldstyle" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Cloister Title" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
+			<div class="familyHide" aria-label="Garamond Bold" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
+			<div class="familyHide" aria-label="Garamond Italic" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
+			<div id="Garamond" aria-label="Garamond Series" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
+			<div class="familyHide" aria-label="Goudy Bold" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Bold Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Catalogue" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Catalogue Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Cursive" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Handtooled" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Handtooled Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div id="Goudy" aria-label="Goudy Oldstyle" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div class="familyHide" aria-label="Goudy Title" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+		</div>
+	</body>
+</html>

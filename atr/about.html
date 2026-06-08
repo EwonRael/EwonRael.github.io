@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>American Type Revival</title>
+		<link rel="stylesheet" href="style.css"/>
+		<link rel="shortcut icon" href="Favicon.png">
+		<link rel="icon" type="../image/png" href="Favicon.png">
+		<script>
+		  onmousemove = function(e) {
+          const infoBox = document.getElementById("infoBox")
+          infoBox.style.top = (e.clientY + 20) + "px"
+          infoBox.style.left = (e.clientX + 10) + "px"
+      }
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=0.75">
+		<meta property="og:title" content="American Type Revival" />
+		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
+	</head>
+	<body>
+		<div id="logo" onmouseover="document.getElementById('infoBox').style.display = 'block'" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="location.href = '..'"></div>
+		<div id="infoBox">
+			<div id="about-info">
+			  <p>Return to main page.</p>
+			</div>
+		</div>
+		<div id="header">
+			<h1>American Type Revival</h1>
+	    <div id="body">
+	      <h2><span class="small-caps">ATR</span> is an independent type foundry dedicated to making <a href="#model">accessible</a>, <a href="#research">historically accurate</a> revivals of late 19<span class="super">th</span> and early 20<span class="super">th</span> century American typefaces.</h2>
+	      <img class="divide" src="ordament.svg"/>
+	      <p>The history of type design spans hundreds of years. In that time it has constantly been changing and developing, both as a technology and art form. However, for most of its history these changes have been mostly refinements and improvements on the same underlying technology. The printing presses used to produce books and newspapers in the 1920s would have been impressive in their industrial scale and precision to someone like Johannes Gutenberg, but the underlying technology would still be recognizable.</p>
+	      <p>That all began to change in the 20<span class="super">th</span> century, as fundamentally new technologies, such as phototypesetting and computers radically redefined what was possible when it came to printed text. These technologies have expanded the possibilities of type setting, and made publication accessible to millions of people, but they have also permanently ruptured the history, development, and refinement of movable type. We are no longer iterating on and improving upon a tradition that dates back hundreds of years, we are working with a new and different medium.</p>
+	      <p>I am a digital font designer. I grew up with these technologies. I love the power of this new technology, and I love how democratic and accessible it is. Anyone with a computer and an internet connection can make digital fonts. The world of type design is so much more expressive, inclusive, and exciting than it was a hundred years ago. However, there is something to be said about the typefaces made and sold in the late 19<span class="super">th</span> and early 20<span class="super">th</span> centuries. Those fonts represent the result of hundreds of years of the refinement and honing of a very specific craft. They are marvelous and beautiful in a way that few digital fonts today fully capture or replicate. </p>
+	      <p><i>American Type Revival</i> is an attempt to digitize these historical typefaces in a way that honors and celebrates their legacy as the final result of centuries of refinement, as the end of an era. It is as much an historical archive as it is a font foundry.</p>
+	      <p id="model" class="end-flower">&#x2767;</p>
+	      <div class="line"></div>
+	      <h2><span class="small-caps">ATR</span> aims to make fonts that are accessible.</h2>
+	      <p><i>American Type Revival&#8217;s</i> business model is unique. The goal is to make the font library available to as many people possible, both to use as tools of graphic design, but also as objects of study and historical documentation. This is only truly possible if the catalog is made free and public domain.</p>
+	      <p>However, the amount of skill, time, and expertise needed to build a high quality digital font, especially one that prioritizes historical accuracy, is immense. Building out a robust catalog is untenable without serious financial investment.<p>
+	      <h2>Therefore, <span class="small-caps">ATR</span> uses a crowd-funding model.</h2>
+	      <p>The goal is to raise enough money to cover the cost of developing the font. Completed fonts on the <i>American Type Revival</i> website each have a public tally, showing how much the font cost to develop, and how much money has been raised through font sales so far. Once the amount of money raised reaches the cost of developing the font, it becomes free and public domain. Until that point is reached, the font costs money to download and use, priced similarly to fonts on other platforms. The more popular and in-demand a font is, the more quickly it becomes free.</p>
+	      <p>This also means that fonts which have already met their funding goal can be download today for free. This model ensures that the ATR catalog is made accessible to as many people as possible, while remaining sustainable.</p>
+	      <p id="research" class="end-flower">&#x2767;</p>
+	      <div class="line"></div>
+	      <h2><span class="small-caps">ATR</span> prioritizes historical accuracy.</h2>
+        <p>It would probably not occur to most people that a font like <i>Cooper Black</i> at one point had a <a href="https://indestructibletype.com/Cooper/rant.html" target="_blank">non-bold counterpoint</a>, or that a font like <i>Hobo</i> was originally released with Light version. This is because despite being massively popular fonts, practically household names for graphic designers, parts of the original font families never made the leap from metal type to computers. The way people learn about these fonts is though using them, and seeing them used. Unless you cross reference hundred-year-old type catalogs, you wouldn&#8217;t realize that the picture painted by digital font marketplaces is often wrong or incomplete.</p>
+	      <p>For the fonts that do get digitized, the digital versions are often very poor quality representations of the metal type they&#8217re based on. Early into the era of digital fonts many large foundries worked to quickly make their catalog available digitally, but the people doing this work had to prioritize quantity over quality, were often working with poor quality or incomplete source material, and were using tools that were state-of-the-art in the early 90s, but today would be seen as crude. The result is fonts that, if you squint, look like their pre-digital counterparts, but upon closer inspection are clearly rough approximations.</p>
+	      <br><img src="resource/Hobo-Origonal.webp" />
+	      <p class="caption">Here is a photocopy of Hobo as seen in a historical type catalog.</p>
+	      <br><br><img src="resource/Hobo-Digital.svg" />
+	      <p class="caption">Here is a commonly used Hobo digitization that was made in the 90s.</p>
+	      <br><br><img src="resource/Hobo-ATR.svg" />
+	      <p class="caption">Here is the version of Hobo made by American Type Revival.</p>
+	      <p>At first blush all three appear to be the same font. But upon closer inspection we can see many of the nuances of the original are lost in the 90s digitization. In the original the top of the <q>p</q> appears flat enough that we could imagine placing a ball on it and not have it roll off. However in the 90s version the slope is much steeper much faster. We can also see the curve of the <q>r</q> is a lot sharper. In general letters appear lumpier in the 90s version.</p>
+	      <p>This isn&#8217;t necessarily malicious. Most designers in the 90s were doing the best they could, with the tools and resources they had. But today with better tools, resources, and techniques, digital fonts can more faithfully capture the original metal type version. This is hopefully made clear by the ATR version of <i>Hobo</i>.</p>
+	      <p id="lost" class="end-flower">&#x2767;</p>
+	      <div class="line"></div>
+	      <h2>What we lose</h2>
+	      <p>A missing light version of a font, or a lumpy <q>r</q> are both small issues. But small issues that go unaddressed and unacknowledged compound to create big issues down the line. This is especially true when it comes to type design.</p>
+	      <p>Take for instance what happened in the case of <a href="https://indestructibletype.com/Cooper/rant.html" target="_blank"><i>Cooper Black</i></a>. There&#8217;s a reason I keep bringing that font up. The <i>Cooper</i> font family was first released over a hundred years ago with both a regular, non bold version, and <i>Cooper Black</i> which is the bolder, more popular, enduring version.</p>
+	      <p>For a variety of reasons (almost certainly cost-cutting) the regular version stopped getting included in type catalogs. This led people to forgot that there ever was a regular version to begin with. But now there&#8217;s a very obvious hole in the typographic catalog. That hole gets plugged by someone who created a brand-new, regular version of <i>Cooper</i>, unaware that they&#8217;re reinventing the wheel. Now we have a complete family, but the regular version is more boring and arguably lower quality that the black version. Somebody else notices and goes about trying to fix and harmonize the regular version. <a href="https://indestructibletype.com/Cooper/rant.html" target="_blank">You can read more about the entire situation here</a>.</p>
+	      <p>Decades ago someone decided it wasn&#8217;t worth the effort or expense to include the regular version of <i>Cooper</i>. Not only has that decision caused a tremendous amount of unnecessarily work, trying to invent a font that already exists, it created a ton of misinformation. Some font foundries are claiming there never was a regular version of <i>Cooper</i>, while others are misidentifying the 80s version as the original.</p>  
+	      <p>
+	    </div>
+		</div>
+	</body>
+</html>
