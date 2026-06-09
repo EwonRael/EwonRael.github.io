@@ -1,0 +1,93 @@
+.matrix-container {
+    max-width: 100%;
+    max-height: 500px;
+    overflow: auto;
+    border: 1px solid black;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.matrix-container::-webkit-scrollbar {
+    display: none;
+}
+
+.matrix-table {
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 0;
+    border: none;
+}
+
+.matrix-table th {
+    text-align: center;
+    min-width: 30px;
+}
+
+.matrix-table td {
+    text-align: right;
+    font-family: "SilkRemingtonTypewriter";
+    font-size: 0.8em;
+    min-width: 40px;
+    padding: 0 5px;
+}
+
+.matrix-table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    border-top: none;
+}
+
+.matrix-table tbody th {
+    position: sticky;
+    left: 0;
+    border-right: 1px solid black;
+    border-left: none;
+    border-bottom: none;
+}
+
+.matrix-table thead th:first-child {
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    background-color: white;
+    border-right: 1px solid black;
+    border-left: none;
+    border-bottom: 1px solid black;
+    border-top: none;
+}
+
+.matrix-table tr > :nth-child(2) {
+    border-left: none;
+}
+
+.matrix-table tbody tr:nth-child(even) td,
+.matrix-table tbody tr:nth-child(even) th {
+    background-color: white;
+}
+
+.matrix-table tbody tr:nth-child(odd) td,
+.matrix-table tbody tr:nth-child(odd) th {
+    background-color: #ebf2f9;
+}
+
+.matrix-table tbody tr:hover td,
+.matrix-table tbody tr:hover th {
+    background-color: #c4d7ed;
+}
+
+.matrix-table .col-hover {
+    background-color: #c4d7ed !important;
+}
+
+.matrix-table tbody tr td.col-hover:not(:first-child),
+.matrix-table tbody tr th.col-hover:not(:first-child) {
+    border-bottom: 1px solid #ebf2f9 !important;
+}
+
+.matrix-table tbody td:hover:not(:first-child),
+.matrix-table tbody th:hover:not(:first-child) {
+    background-color: #486b95 !important;
+    color: white;
+}
