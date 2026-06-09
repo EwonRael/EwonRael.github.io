@@ -130,6 +130,8 @@ body {
   font-family: "SilkRemingtonTypewriter";
   font-size: 0.8em;
   background-color: #c4d7ed;
+  overflow-wrap: break-word;
+  word-break: break-word;
 }
 
 table {
