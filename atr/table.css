@@ -67,8 +67,7 @@
     background-color: white;
 }
 
-.matrix-table tbody tr:nth-child(odd) td,
-.matrix-table tbody tr:nth-child(odd) th {
+.matrix-table tbody tr:nth-child(odd) td {
     background-color: #ebf2f9;
 }
 
