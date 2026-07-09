@@ -10,6 +10,7 @@ let gameId = null
 let rosterRef = null
 let statusRef = null
 let galleryRef = null
+let priorConnRef = null
 let presenceUnsub = null
 let markedSynced = false
 let sessionKey = "drawing-games-captioner-session"
@@ -226,10 +227,31 @@ function waitForRound(slot, field, onReady) {
 function beginWaiting(slot, verb, field, onReady) {
 	document.querySelector("#waitingNote").innerHTML = "Waiting for " + players[slot][0] + " to finish " + verb + "..."
 	document.querySelector("#waiting").style.display = "inherit"
+	watchWaitingPartner(slot, verb)
 	waitForRound(slot, field, function (content) {
+		stopWatchingPartner()
 		document.querySelector("#waiting").style.display = "none"
 		onReady(content)
 	})
+}
+
+// Swaps the waiting message over to "waiting for X to reconnect" while
+// the player being waited on is disconnected, and back once they're
+// not.
+function watchWaitingPartner(slot, verb) {
+	stopWatchingPartner()
+	priorConnRef = gameRef("roster/" + slot + "/connected")
+	priorConnRef.on("value", function (snap) {
+		let note = document.querySelector("#waitingNote")
+		if (!note) return
+		note.innerHTML = snap.val() === false
+			? "Waiting for " + players[slot][0] + " to reconnect..."
+			: "Waiting for " + players[slot][0] + " to finish " + verb + "..."
+	})
+}
+
+function stopWatchingPartner() {
+	if (priorConnRef) { priorConnRef.off(); priorConnRef = null }
 }
 
 // Figures out the first step this player hasn't completed yet. Used
@@ -379,6 +401,7 @@ function teardownSync() {
 	if (statusRef) { statusRef.off(); statusRef = null }
 	if (presenceUnsub) { presenceUnsub(); presenceUnsub = null }
 	stopGalleryLive()
+	stopWatchingPartner()
 	markedSynced = false
 	clearSession()
 }

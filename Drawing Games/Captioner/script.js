@@ -275,31 +275,8 @@ function captionB(m) {
 	pageChange()
 }
 
-// Mousemove fires far more often than a drawing visibly changes, so a
-// slow careful drawing can pile up thousands of near-duplicate tiny
-// segments. This collapses runs of them into one right before the
-// result gets saved/sent -- purely a data-size cut, the live canvas
-// while actually drawing is untouched.
-function simplifyDrawing(segments) {
-	if (segments.length <= 1) return segments
-	let minDist = 0.35
-	let simplified = []
-	let lastKept = [segments[0][2], segments[0][3]]
-	for (let i = 0; i < segments.length; i++) {
-		let seg = segments[i]
-		let dx = seg[0] - lastKept[0]
-		let dy = seg[1] - lastKept[1]
-		let isLast = i === segments.length - 1
-		if (isLast || Math.sqrt(dx * dx + dy * dy) >= minDist) {
-			simplified.push([seg[0], seg[1], lastKept[0], lastKept[1]])
-			lastKept = [seg[0], seg[1]]
-		}
-	}
-	return simplified
-}
-
 function drawingB(m) {
-	let content = simplifyDrawing(drawing)
+	let content = drawing
 	writeRound(playerNumber, "drawing" + m, content)
 	eraceSVG()
 	if (players[playerPrior][1]["drawing" + m] != null) {
@@ -317,7 +294,7 @@ function drawingB(m) {
 }
 
 function drawing4B() {
-	let content = simplifyDrawing(drawing)
+	let content = drawing
 	writeRound(playerNumber, "drawing4", content)
 	eraceSVG()
 	location.href = page + "#gallery"
