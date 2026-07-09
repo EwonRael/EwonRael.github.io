@@ -1,10 +1,42 @@
 let page = location.href.split('#')[0]
 let players = []
-let oldGames = []
+let gameSummaries = []
+let summariesLoaded = false
 
-let oldlist = JSON.parse(localStorage.getItem("drawing-games-list"))
-for (let i = 0; i < 26; oldlist.length) {
-	oldGames.push(localStorage.getItem(oldlist[i]))
+// The list view only ever needs a date + final caption per game, not
+// the full drawing data -- new saves (see finishGame() in script.js)
+// already store just that summary in drawing-games-list, so loading
+// the list itself is cheap regardless of how much drawing data exists.
+// Any leftover entries from before that change are just a bare key
+// string; those get upgraded to the summary format the first time
+// they're seen (a one-time full parse, then never again) instead of
+// paying that cost on every visit.
+function loadSummaries() {
+	if (summariesLoaded) return
+	summariesLoaded = true
+	let list = JSON.parse(localStorage.getItem("drawing-games-list")) || []
+	let upgraded = false
+	let valid = []
+	for (let i = 0; i < list.length; i++) {
+		let entry = list[i]
+		if (typeof entry === "string") {
+			let raw = localStorage.getItem(entry)
+			let saved = raw ? JSON.parse(raw) : null
+			let savedPlayers = saved && saved[1]
+			let caption4 = savedPlayers && savedPlayers[0] && savedPlayers[0][1] && savedPlayers[0][1].caption4
+			// Skip corrupted saves from an earlier bug where `players` (or
+			// an individual round within it) could end up wiped/empty right
+			// before being saved -- there's nothing meaningful to show for
+			// those, so leave them out instead of rendering a blank card.
+			if (!caption4) continue
+			entry = {key: entry, date: saved[0], caption4: caption4}
+			list[i] = entry
+			upgraded = true
+		}
+		if (entry && entry.caption4) valid.push(entry)
+	}
+	if (upgraded) localStorage.setItem("drawing-games-list", JSON.stringify(list))
+	gameSummaries = valid.slice(-26)
 }
 
 function pageChange() {
@@ -29,25 +61,31 @@ function pageChange() {
 }
 
 window.addEventListener("hashchange", function () {pageChange()})
+window.addEventListener("DOMContentLoaded", function () {pageChange()})
 
 function loadOldGames() {
+	loadSummaries()
 	let oldGamesDiv = document.querySelector("#oldGames")
 	oldGamesDiv.innerHTML = ""
-	for (let i = 0; i < oldGames.length; i++) {
+	for (let i = 0; i < gameSummaries.length; i++) {
 		let date = document.createElement("p")
-		date.innerHTML = oldGames[i][0]
+		date.innerHTML = gameSummaries[i].date
 		date.setAttribute("class", "date")
 		date.setAttribute("onclick", "loadGalleryi(" + i + ")")
 		let caption = document.createElement("p")
-		caption.innerHTML = oldGames[i][1][0][1]["caption4"]
+		caption.innerHTML = gameSummaries[i].caption4
 		caption.setAttribute("onclick", "loadGalleryi(" + i + ")")
 		oldGamesDiv.append(date)
 		oldGamesDiv.append(caption)
 	}
 }
 
+// Only pulled from storage now, once a specific game is actually opened
+// -- the list itself (loadOldGames) never touches this full data.
 function loadGalleryi(m) {
-	players = oldGames[m][1]
+	let raw = localStorage.getItem(gameSummaries[m].key)
+	if (!raw) return
+	players = JSON.parse(raw)[1]
 	console.log(players)
 	let galleryBox = document.querySelector("#galleryBox")
 	galleryBox.innerHTML = ""

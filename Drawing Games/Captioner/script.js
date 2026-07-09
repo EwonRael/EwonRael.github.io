@@ -1,10 +1,6 @@
 let name = localStorage.getItem("drawing-games-name")
 let hostName = null
-let peerID = null
 let hostID = null
-let peer = null
-let conn = null
-let hostConn = []
 let players = []
 let isHost = false
 let playerNumber = 0
@@ -15,16 +11,18 @@ let posX = 0
 let posXold = 0
 let posYold = 0
 let drawing = []
-let waiting = null
-let writeTo = null
 let screenshot = null
+let captionSuggestions = []
+let suggestionIndex = 0
+let suggestTimer = null
+let suggestButtonShown = false
 
 if (name) {console.log("my name is " + name)} else {location.href = "../index.html"}
+if (name) {attemptAutoRejoin()}
 
 function joinButton() {
 	location.href = page + "#hostName"
 	pageChange()
-	peerID = name.toLowerCase().replace(/\s/g, '')
 	initializeGuest()
 }
 
@@ -49,21 +47,13 @@ function hostNameSet() {
 }
 
 function hostButton() {
-	peerID = name.toLowerCase().replace(/\s/g, '')
 	location.href = page + "#lobby"
 	pageChange()
 	initializeHost()
 }
 
 function startGamePlz() {
-	if (isHost) {
-		startGame()
-	}
-	
-	else {
-		conn.send("Let's Play!")
-		console.log("let's play?")
-	}
+	claimGameStart()
 }
 
 function pageChange() {
@@ -77,9 +67,9 @@ function pageChange() {
 
 	if (location.href == page) {
 		document.querySelector("#joinOrHost").classList.remove("hidden")
-		peer.destroy()
+		teardownSync()
 	}
-	
+
 	else {
 		document.querySelector("#" + show).classList.remove("hidden")
 		if (show.includes("drawing")){
@@ -93,6 +83,19 @@ function pageChange() {
 		}
 		else {
 			document.querySelector("#drawLoad").classList.add("hidden")
+		}
+		if (show == "gallery") {
+			listenGalleryLive()
+		}
+		else {
+			stopGalleryLive()
+		}
+		if (show == "caption1") {
+			buildCaptionSuggestions()
+			resetCaptionSuggestState()
+		}
+		else {
+			stopCaptionSuggestTimer()
 		}
 	}
 }
@@ -174,61 +177,148 @@ function loadDrawing(m) {
 	}
 }
 
+function shuffleArray(arr) {
+	let a = arr.slice()
+	for (let i = a.length - 1; i > 0; i--) {
+		let j = Math.floor(Math.random() * (i + 1))
+		let tmp = a[i]
+		a[i] = a[j]
+		a[j] = tmp
+	}
+	return a
+}
+
+// The funniest captions tend to be whatever a caption4 mutated into by
+// the end of a chain, so those make good fresh caption1 prompts for a
+// new game. Collected from every player in every locally-saved game.
+function collectSavedCaptions() {
+	let list = JSON.parse(localStorage.getItem("drawing-games-list")) || []
+	let captions = []
+	for (let i = 0; i < list.length; i++) {
+		let raw = localStorage.getItem(list[i])
+		if (!raw) continue
+		let savedPlayers = JSON.parse(raw)[1]
+		for (let j = 0; j < savedPlayers.length; j++) {
+			let data = savedPlayers[j][1]
+			if (data && data.caption4) captions.push(data.caption4)
+		}
+	}
+	return captions
+}
+
+// Saved-game captions come first (shuffled among themselves), and the
+// hand-written ones in suggested-captions.js only get used once those
+// run out (also shuffled among themselves).
+function buildCaptionSuggestions() {
+	captionSuggestions = shuffleArray(collectSavedCaptions()).concat(shuffleArray(suggestedCaptions))
+	suggestionIndex = 0
+}
+
+function suggestCaption() {
+	if (captionSuggestions.length === 0) return
+	if (suggestionIndex >= captionSuggestions.length) buildCaptionSuggestions()
+
+	let box = document.querySelector("#caption1C")
+	box.innerHTML = captionSuggestions[suggestionIndex]
+	suggestionIndex++
+	buttonEnable(box)
+}
+
+// Called once when the caption1 screen is first shown -- box is always
+// empty at that point, so this starts the "have they written nothing
+// for 3 seconds" countdown from scratch.
+function resetCaptionSuggestState() {
+	suggestButtonShown = false
+	document.querySelector("#suggestCaptionButton").classList.add("hidden")
+	startCaptionSuggestTimer()
+}
+
+function startCaptionSuggestTimer() {
+	if (suggestTimer) clearTimeout(suggestTimer)
+	suggestTimer = setTimeout(function () {
+		suggestButtonShown = true
+		document.querySelector("#suggestCaptionButton").classList.remove("hidden")
+	}, 3000)
+}
+
+function stopCaptionSuggestTimer() {
+	if (suggestTimer) { clearTimeout(suggestTimer); suggestTimer = null }
+}
+
+// The button only ever appears while the box is empty; once it's shown
+// it stays put for good, so typing afterwards doesn't need to touch it.
+function onCaption1Typing() {
+	if (suggestButtonShown) return
+	let box = document.querySelector("#caption1C")
+	let isEmpty = box.innerHTML == "" || box.innerHTML == "<br>"
+	if (isEmpty) {
+		startCaptionSuggestTimer()
+	} else {
+		stopCaptionSuggestTimer()
+	}
+}
+
 function captionB(m) {
 	let content = document.querySelector("#caption" + m + "C").innerHTML
-	if (isHost) {
-		players[0][1]["caption" + m] = content
-		updateGroup([playerNumber, "caption" + m, content])
+	writeRound(playerNumber, "caption" + m, content)
+	if (players[playerPrior][1]["caption" + m] != null) {
+		document.querySelector("#drawing" + m + "C").innerHTML = players[playerPrior][1]["caption" + m]
 	}
 	else {
-		conn.send([playerNumber, "caption" + m, content])
-	}
-	document.querySelector("#drawing" + m + "C").innerHTML = players[playerPrior][1]["caption" + m]
-	if (players[playerPrior][1]["caption" + m] == null) {
-		document.querySelector("#waitingNote").innerHTML = "Waiting for " + players[playerPrior][0] + " to finish captioning..."
-		document.querySelector("#waiting").style.display = "inherit"
-		waiting = "caption" + m
-		writeTo = "drawing" + m + "C"
+		let target = document.querySelector("#drawing" + m + "C")
+		beginWaiting(playerPrior, "captioning", "caption" + m, function (waitedContent) {
+			target.innerHTML = waitedContent
+		})
 	}
 	drawing = []
 	location.href = page + "#drawing" + m
 	pageChange()
 }
 
+// Mousemove fires far more often than a drawing visibly changes, so a
+// slow careful drawing can pile up thousands of near-duplicate tiny
+// segments. This collapses runs of them into one right before the
+// result gets saved/sent -- purely a data-size cut, the live canvas
+// while actually drawing is untouched.
+function simplifyDrawing(segments) {
+	if (segments.length <= 1) return segments
+	let minDist = 0.35
+	let simplified = []
+	let lastKept = [segments[0][2], segments[0][3]]
+	for (let i = 0; i < segments.length; i++) {
+		let seg = segments[i]
+		let dx = seg[0] - lastKept[0]
+		let dy = seg[1] - lastKept[1]
+		let isLast = i === segments.length - 1
+		if (isLast || Math.sqrt(dx * dx + dy * dy) >= minDist) {
+			simplified.push([seg[0], seg[1], lastKept[0], lastKept[1]])
+			lastKept = [seg[0], seg[1]]
+		}
+	}
+	return simplified
+}
+
 function drawingB(m) {
-	let content = drawing
-	if (isHost) {
-		players[0][1]["drawing" + m] = content
-		updateGroup([playerNumber, "drawing" + m, content])
-	}
-	
-	else {
-		conn.send([playerNumber, "drawing" + m, content])
-	}
+	let content = simplifyDrawing(drawing)
+	writeRound(playerNumber, "drawing" + m, content)
 	eraceSVG()
-	drawing = players[playerPrior][1]["drawing" + m]
-	if (players[playerPrior][1]["drawing" + m] == null) {
-		document.querySelector("#waitingNote").innerHTML = "Waiting for " + players[playerPrior][0] + " to finish drawing..."
-		document.querySelector("#waiting").style.display = "inherit"
-		waiting = "drawing" + m
+	if (players[playerPrior][1]["drawing" + m] != null) {
+		drawing = players[playerPrior][1]["drawing" + m]
+		loadDrawing("load")
 	}
 	else {
-		loadDrawing("load")
+		beginWaiting(playerPrior, "drawing", "drawing" + m, function (waitedContent) {
+			drawing = waitedContent
+			loadDrawing("load")
+		})
 	}
 	location.href = page + "#caption" + (m + 1)
 	pageChange()
 }
 
 function drawing4B() {
-	let content = drawing
-	if (isHost) {
-		players[0][1]["drawing4"] = content
-		updateGroup([playerNumber, "drawing4", content])
-	}
-	
-	else {
-		conn.send([playerNumber, "drawing4", content])
-	}
+	let content = simplifyDrawing(drawing)
+	writeRound(playerNumber, "drawing4", content)
 	eraceSVG()
 	location.href = page + "#gallery"
 	pageChange()
@@ -278,35 +368,30 @@ function getDate() {
 }
 
 function finishGame() {
+	let datestamp = new Date().getTime()
+	let key = "drawing-games-" + datestamp
+	localStorage.setItem(key, JSON.stringify([getDate(), players]))
+
+	// drawing-games-list stores just the lightweight bit the past-games
+	// list actually displays (date + final caption), not the full game --
+	// the full drawings only get pulled from `key` on demand when someone
+	// actually opens this specific game (see loadGalleryi in thanks.js).
+	let summary = {key: key, date: getDate(), caption4: players[0][1].caption4}
 	let oldGames = localStorage.getItem("drawing-games-list")
-	
-	if (oldGames) {
-		let datestamp = new Date().getTime()
-		let oldlist = JSON.parse(oldGames)
-		let parced = []
-		for (let i = 0; i < 26; oldlist.length) {
-			parced.push(localStorage.getItem(oldlist[i]))
-		}
-		localStorage.setItem("drawing-games-" + datestamp, JSON.stringify([getDate(),players]))
-		oldlist.push("drawing-games-" + datestamp)
-		localStorage.setItem("drawing-games-list", JSON.stringify(oldlist))
-	}
-	
-	else {
-		let datestamp = new Date().getTime()
-		localStorage.setItem("drawing-games-" + datestamp, JSON.stringify([getDate(),players]))
-		localStorage.setItem("drawing-games-list", JSON.stringify(["drawing-games-" + datestamp]))
-	}
-	
+	let list = oldGames ? JSON.parse(oldGames) : []
+	list.push(summary)
+	localStorage.setItem("drawing-games-list", JSON.stringify(list))
+
+	clearSession()
 	location.href = "thanks.html"
 }
 
 function buttonEnable(m) {
 	if (m.innerHTML == "<br>") {
-		m.parentNode.querySelector("button").disabled = true
+		m.parentNode.querySelector("button.right").disabled = true
 	}
 	else {
-		m.parentNode.querySelector("button").disabled = false
+		m.parentNode.querySelector("button.right").disabled = false
 	}
 }
 

@@ -4,10 +4,16 @@ Made with love by Owen Earl
 <!DOCTYPE html>
 <html>
 <head>
+	<meta charset="utf-8">
 	<title>Captioner</title>
 	<link rel='stylesheet' href='style.css'/>
 	<link rel='stylesheet' href='../fonts/fonts.css'/>
-	<script src="https://unpkg.com/peerjs@1.3.1/dist/peerjs.min.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
+	<script src="firebase-config.js"></script>
+	<script src="suggested-captions.js"></script>
+	<script src="sync.js"></script>
 	<script src="script.js"></script>
 	<script src="host.js"></script>
 	<script src="guest.js"></script>
@@ -30,7 +36,8 @@ Made with love by Owen Earl
 	</div>
 	<div id="caption1" class="hidden hide">
 		<h2>Write a caption for the next player to draw:</h2>
-		<h3 id="caption1C" onkeyup="buttonEnable(this)" contenteditable="true"></h3>
+		<h3 id="caption1C" onkeyup="buttonEnable(this); onCaption1Typing()" contenteditable="true"></h3>
+		<button id="suggestCaptionButton" class="hidden" onclick="suggestCaption()">Suggest a caption</button>
 		<button class="right" disabled onclick="captionB(1)">Next</button>
 	</div>
 	<div id="drawing1" class="hidden hide">
@@ -93,7 +100,7 @@ Made with love by Owen Earl
 		<h2>Gallery</h2>
 		<div id="galleryBox"></div>
 		<div style="width: 40vw;">&nbsp;</div>
-		<button class="right" onclick="finishGame()">Finished!</button>
+		<button id="finishButton" class="right" disabled onclick="finishGame()">Finished!</button>
 	</div>
 	<div id="galleryItem" class="hidden hide">
 		<div class="drawOutline">
