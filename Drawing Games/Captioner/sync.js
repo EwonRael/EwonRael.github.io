@@ -383,9 +383,10 @@ function teardownSync() {
 	clearSession()
 }
 
-// Called once on page load. If we were mid-game when the tab closed
-// (or wifi dropped), silently rejoin and resume right where we left
-// off instead of showing the join/host menu.
+// Called once on page load. If we were in a game (lobby or mid-play)
+// when the tab closed or reloaded, silently rejoin and pick up right
+// where we left off -- no need to remember or retype the host's name,
+// since it comes from the saved session, not from anything typed.
 function attemptAutoRejoin() {
 	let saved = localStorage.getItem(sessionKey)
 	if (!saved || location.href.split('#')[1]) return
@@ -399,13 +400,18 @@ function attemptAutoRejoin() {
 		return gameRef("meta").once("value")
 	}).then(function (snap) {
 		let meta = snap.val()
-		if (!meta || meta.status !== "playing") {
+		if (!meta) {
 			clearSession()
 			return
 		}
 		return joinRoster(name, isHost).then(function (slot) {
 			playerNumber = slot
-			return resumeGame(meta.totalPlayers)
+			if (meta.status === "playing") {
+				return resumeGame(meta.totalPlayers)
+			}
+			location.href = page + "#lobby"
+			pageChange()
+			listenStatus()
 		})
 	}).catch(function (err) {
 		console.log("Couldn't auto-rejoin: " + err)
