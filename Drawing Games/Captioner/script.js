@@ -56,6 +56,23 @@ function startGamePlz() {
 	claimGameStart()
 }
 
+// The "GO HOME" link is a normal exit for everyone except the host of
+// an active game, where leaving quietly would strand the other players
+// mid-game forever (nothing else ends a game early). Confirmed, it ends
+// the game for everyone and deletes it before navigating away.
+function handleGoHome() {
+	if (isHost && gameId) {
+		if (!confirm("This will end the game for everyone and delete it. Are you sure?")) {
+			return false
+		}
+		endGameForEveryone().then(function () {
+			location.href = ".."
+		})
+		return false
+	}
+	return true
+}
+
 function pageChange() {
 	let hide = document.querySelectorAll(".hide")
 	let show = location.href.split('#')[1]

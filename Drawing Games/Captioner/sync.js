@@ -201,6 +201,29 @@ function listenStatus() {
 		if (meta && meta.status === "playing") {
 			resumeGame(meta.totalPlayers)
 		}
+		if (meta && meta.status === "ended") {
+			handleGameEnded()
+		}
+	})
+}
+
+function handleGameEnded() {
+	teardownSync()
+	alert("The host ended this game.")
+	location.href = page
+	pageChange()
+}
+
+// Detaching our own status listener first means the host doesn't get
+// their own "ended" write bounced back at them as a kick-out -- they
+// already confirmed via the dialog that triggered this.
+function endGameForEveryone() {
+	if (statusRef) { statusRef.off(); statusRef = null }
+	clearSession()
+	return gameRef("meta/status").set("ended").then(function () {
+		return gameRef().remove()
+	}).catch(function (err) {
+		console.log("Couldn't end game: " + err)
 	})
 }
 
