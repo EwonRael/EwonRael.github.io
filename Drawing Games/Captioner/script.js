@@ -275,8 +275,47 @@ function captionB(m) {
 	pageChange()
 }
 
+// Mousemove fires far more often than a drawing visibly changes, so a
+// slow careful drawing can pile up thousands of near-duplicate tiny
+// segments. This collapses runs of them into one right before the
+// result gets saved/sent -- purely a data-size cut, the live canvas
+// while actually drawing is untouched.
+//
+// `drawing` is actually several separate strokes concatenated together
+// (every pen-up/pen-down creates a new one, with no explicit marker
+// between them) -- within one continuous stroke, each segment's start
+// point exactly equals the previous segment's end point (same variable
+// copied forward event to event), so a mismatch there is how a stroke
+// boundary is detected. Tracking resets from that segment's own true
+// start whenever this happens, so a gap between two strokes never gets
+// bridged with a connecting line.
+function simplifyDrawing(segments) {
+	if (segments.length <= 1) return segments
+	let minDist = 0.35
+	let simplified = []
+	let lastKept = [segments[0][2], segments[0][3]]
+
+	for (let i = 0; i < segments.length; i++) {
+		let seg = segments[i]
+		let prev = i > 0 ? segments[i - 1] : null
+		let newStroke = prev !== null && (seg[2] !== prev[0] || seg[3] !== prev[1])
+		if (newStroke) lastKept = [seg[2], seg[3]]
+
+		let dx = seg[0] - lastKept[0]
+		let dy = seg[1] - lastKept[1]
+		let isLast = i === segments.length - 1
+		let nextIsNewStroke = !isLast && (segments[i + 1][2] !== seg[0] || segments[i + 1][3] !== seg[1])
+
+		if (newStroke || isLast || nextIsNewStroke || Math.sqrt(dx * dx + dy * dy) >= minDist) {
+			simplified.push([seg[0], seg[1], lastKept[0], lastKept[1]])
+			lastKept = [seg[0], seg[1]]
+		}
+	}
+	return simplified
+}
+
 function drawingB(m) {
-	let content = drawing
+	let content = simplifyDrawing(drawing)
 	writeRound(playerNumber, "drawing" + m, content)
 	eraceSVG()
 	if (players[playerPrior][1]["drawing" + m] != null) {
@@ -294,7 +333,7 @@ function drawingB(m) {
 }
 
 function drawing4B() {
-	let content = drawing
+	let content = simplifyDrawing(drawing)
 	writeRound(playerNumber, "drawing4", content)
 	eraceSVG()
 	location.href = page + "#gallery"
