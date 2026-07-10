@@ -1,0 +1,45 @@
+<!--
+Made with love by Owen Earl
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Imposter</title>
+	<link rel='stylesheet' href='style.css'/>
+	<link rel='stylesheet' href='../fonts/fonts.css'/>
+	<script src="thanks.js"></script>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1><a href="..">Imposter</a></h1>
+	<div id="end" class="hide">
+		<h2>Select one:</h2>
+		<h2 class="button"><a href=".">Play Again</a></h2>
+		<h2 class="button"><a href="#pastGames">View Past Games</a></h2>
+		<h2 class="button"><a href="https://www.patreon.com/EwonRael">support my patreon</a></h2>
+		<h2 class="button"><a href="https://ewonrael.github.io/">visit my website</a></h2>
+	</div>
+	<div id="pastGames" class="hidden hide">
+		<h2>Past Games:</h2>
+		<div id="oldGames"></div>
+		<button class="right" onclick="location.href = 'thanks.html'">Done</button>
+	</div>
+	<div id="gallery" class="hidden hide">
+		<h2>Final Scores</h2>
+		<h2 id="finalScores"></h2>
+		<h2>Round 1 Drawings</h2>
+		<div id="galleryBox"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+		<button class="right" onclick="history.back()">Back</button>
+	</div>
+	<div id="galleryItem" class="hidden hide">
+		<div class="drawOutline">
+			<svg id="galleryD" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryName"></h3>
+
+		<button class="right" onclick="history.back()">Back to Gallery</button>
+	</div>
+</body>
+</html>

@@ -1,11 +1,5 @@
 {
   "rules": {
-    "games": {
-      "$gameId": {
-        ".read": "auth != null",
-        ".write": "auth != null"
-      }
-    },
     "imposterGames": {
       "$gameId": {
         ".read": "auth != null",

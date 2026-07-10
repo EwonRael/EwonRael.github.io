@@ -1,0 +1,150 @@
+<!--
+Made with love by Owen Earl
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Imposter</title>
+	<link rel='stylesheet' href='style.css'/>
+	<link rel='stylesheet' href='../fonts/fonts.css'/>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-app-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-auth-compat.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/12.16.0/firebase-database-compat.js"></script>
+	<script src="firebase-config.js"></script>
+	<script src="suggested-prompts.js"></script>
+	<script src="sync.js"></script>
+	<script src="script.js"></script>
+	<script src="host.js"></script>
+	<script src="guest.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+	<h1><a href=".." onclick="return handleGoHome()">Imposter</a></h1>
+	<div id="joinOrHost" class="hide">
+		<h2>Would you like to join an exsisting game or host your own?</h2>
+		<button id="joinButton" onclick="joinButton()">Join</button><button id="hostButton" class="right" onclick="hostButton()">Host</button>
+	</div>
+	<div id="hostName" class="hidden hide">
+		<h2>Name of Host:
+		<input id="hostNameInput" type="text" autofocus="autofocus" onkeyup="hostNameInputType(event)"></input></h2>
+		<button id="hostNameInputButton" disabled onclick="hostNameSet()">Continue</button>
+	</div>
+	<div id="lobby" class="hidden hide">
+		<h2>Players:</h2><h2 id="playerList">...connecting...</h2>
+		<button id="hostNameInputButton" class="right" onclick="startGamePlz()">Let&rsquo;s Play!</button>
+	</div>
+	<div id="draw1" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="draw1Prompt"></h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" disabled onclick="drawSubmit(1)">Next</button>
+	</div>
+	<div id="draw2" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="draw2Prompt"></h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" disabled onclick="drawSubmit(2)">Next</button>
+	</div>
+	<div id="draw3" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="draw3Prompt"></h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" disabled onclick="drawSubmit(3)">Next</button>
+	</div>
+	<div id="draw4" class="hidden hide">
+		<h2>Draw:</h2>
+		<div class="drawOutline"></div>
+		<h3 id="draw4Prompt"></h3>
+		<button onclick="eraceSVG()">Clear</button>
+		<button class="right draw" disabled onclick="drawSubmit(4)">Next</button>
+	</div>
+	<div id="drawSpace" class="hidden" onmousedown="drawMousedown = true">
+		<div id="rightblocker"></div><div id="leftblocker"></div>
+		<svg id="drawSVG" viewBox="0 0 100 53"></svg>
+	</div>
+	<div id="waiting">
+		<h2 id="waitingNote">Waiting for everyone to finish drawing...</h2>
+	</div>
+	<div id="gallery1" class="hidden hide">
+		<h2>Round 1 Drawings</h2>
+		<div id="galleryBox1"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+	</div>
+	<div id="gallery2" class="hidden hide">
+		<h2>Round 2 Drawings</h2>
+		<div id="galleryBox2"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+	</div>
+	<div id="gallery3" class="hidden hide">
+		<h2>Round 3 Drawings</h2>
+		<div id="galleryBox3"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+	</div>
+	<div id="gallery4" class="hidden hide">
+		<h2>Round 4 Drawings</h2>
+		<div id="galleryBox4"></div>
+		<div style="width: 40vw;">&nbsp;</div>
+	</div>
+	<div id="galleryItem" class="hidden hide">
+		<div class="drawOutline">
+			<svg id="galleryD" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3 id="galleryName"></h3>
+		<button id="voteButton" class="right">Vote</button>
+		<button id="galleryBack" class="right" onclick="history.back()">Back to Gallery</button>
+	</div>
+	<div id="reveal1" class="hidden hide">
+		<h2>Round 1 Reveal</h2>
+		<div class="drawOutline">
+			<svg id="reveal1Drawing" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3>The imposter was: <span id="reveal1Imposter"></span></h3>
+		<h3>Real prompt: <span id="reveal1Real"></span></h3>
+		<h3>Fake prompt: <span id="reveal1Fake"></span></h3>
+		<h3>Correctly guessed by: <span id="reveal1Correct"></span></h3>
+		<button class="right" onclick="continueToNextRound(1)">Continue</button>
+	</div>
+	<div id="reveal2" class="hidden hide">
+		<h2>Round 2 Reveal</h2>
+		<div class="drawOutline">
+			<svg id="reveal2Drawing" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3>The imposter was: <span id="reveal2Imposter"></span></h3>
+		<h3>Real prompt: <span id="reveal2Real"></span></h3>
+		<h3>Fake prompt: <span id="reveal2Fake"></span></h3>
+		<h3>Correctly guessed by: <span id="reveal2Correct"></span></h3>
+		<button class="right" onclick="continueToNextRound(2)">Continue</button>
+	</div>
+	<div id="reveal3" class="hidden hide">
+		<h2>Round 3 Reveal</h2>
+		<div class="drawOutline">
+			<svg id="reveal3Drawing" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3>The imposter was: <span id="reveal3Imposter"></span></h3>
+		<h3>Real prompt: <span id="reveal3Real"></span></h3>
+		<h3>Fake prompt: <span id="reveal3Fake"></span></h3>
+		<h3>Correctly guessed by: <span id="reveal3Correct"></span></h3>
+		<button class="right" onclick="continueToNextRound(3)">Continue</button>
+	</div>
+	<div id="reveal4" class="hidden hide">
+		<h2>Round 4 Reveal</h2>
+		<div class="drawOutline">
+			<svg id="reveal4Drawing" viewBox="0 0 100 53"></svg>
+		</div>
+		<h3>The imposter was: <span id="reveal4Imposter"></span></h3>
+		<h3>Real prompt: <span id="reveal4Real"></span></h3>
+		<h3>Fake prompt: <span id="reveal4Fake"></span></h3>
+		<h3>Correctly guessed by: <span id="reveal4Correct"></span></h3>
+		<button class="right" onclick="continueToNextRound(4)">Continue</button>
+	</div>
+	<div id="finalResults" class="hidden hide">
+		<h2>Final Scores</h2>
+		<h2 id="finalScores"></h2>
+		<button id="finishButton" class="right" disabled onclick="finishGame()">Finished!</button>
+	</div>
+</body>
+</html>
