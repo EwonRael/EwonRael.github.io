@@ -28,17 +28,24 @@ else {
 
 //Functions related to gameplay
 
-//Mobile browsers (notably Firefox Android) anchor position:fixed to the layout
-//viewport, not the visible area, so bottom:0 can end up behind the keyboard or
-//leave a gap when the address bar hides/shows. window.innerHeight doesn't track
-//the address bar reliably, so instead of computing a bottom offset from it, pin
-//the element with an explicit top equal to the visual viewport's own bottom edge.
+//Mobile browsers (notably Firefox Android) don't keep position:fixed reliably
+//pinned to the visible area once the keyboard or address bar changes the
+//visual viewport -- computing a manual top/bottom pixel offset off the box's
+//own offsetHeight can go stale mid-animation and get clipped. Instead, wrap
+//#mobilePreview in a fixed container sized exactly to the current visual
+//viewport and let flexbox bottom-align the (variable-height) content, so no
+//manual height math is needed at all.
+let mobilePreviewEl = document.getElementById("mobilePreview")
+let mobilePreviewWrap = document.createElement("div")
+mobilePreviewWrap.id = "mobilePreviewWrap"
+mobilePreviewEl.parentNode.insertBefore(mobilePreviewWrap, mobilePreviewEl)
+mobilePreviewWrap.appendChild(mobilePreviewEl)
+
 function positionMobilePreview() {
 	if (!window.visualViewport) return
-	let preview = document.getElementById("mobilePreview")
 	let vv = window.visualViewport
-	preview.style.bottom = "auto"
-	preview.style.top = (vv.height + vv.offsetTop - preview.offsetHeight) + "px"
+	mobilePreviewWrap.style.height = vv.height + "px"
+	mobilePreviewWrap.style.top = vv.offsetTop + "px"
 }
 
 if (window.visualViewport) {
