@@ -28,6 +28,22 @@ else {
 
 //Functions related to gameplay
 
+//Mobile browsers (notably Firefox Android) anchor position:fixed to the layout
+//viewport, not the visible area, so when the on-screen keyboard opens, bottom:0
+//ends up behind the keyboard. Push the element up by however much the visual
+//viewport has shrunk.
+function positionMobilePreview() {
+	if (!window.visualViewport) return
+	let preview = document.getElementById("mobilePreview")
+	let keyboardOffset = window.innerHeight - (window.visualViewport.height + window.visualViewport.offsetTop)
+	preview.style.bottom = Math.max(keyboardOffset, 0) + "px"
+}
+
+if (window.visualViewport) {
+	window.visualViewport.addEventListener("resize", positionMobilePreview)
+	window.visualViewport.addEventListener("scroll", positionMobilePreview)
+}
+
 function deselect() {
 	canedit = false
 	document.getElementById("mobilePreview").classList.add("invisable")
@@ -89,6 +105,7 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
+	positionMobilePreview()
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
 	currentselect = n
