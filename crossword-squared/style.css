@@ -300,14 +300,25 @@ button:active {
 		width: inherit;
 		min-width: calc(100vw - 90px);
 	}
+	#mobilePreviewWrap {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100vw;
+		height: 100vh;
+		display: flex;
+		flex-direction: column;
+		justify-content: flex-end;
+		pointer-events: none;
+		transform: translateZ(0);
+		will-change: transform;
+	}
 	#mobilePreview {
 		display: block;
-		clear: both;
-		position: sticky;
-		bottom: 0;
 		background-color: #fffcf7;
 		border-top: solid #15141e 2px;
 		width: 100%;
+		pointer-events: auto;
 	}
 	#mobilePreview.invisable {
 	display: none;

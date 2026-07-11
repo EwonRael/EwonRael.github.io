@@ -28,6 +28,39 @@ else {
 
 //Functions related to gameplay
 
+//Mobile browsers (notably Firefox Android) don't keep position:fixed reliably
+//pinned to the visible area once the keyboard or address bar changes the
+//visual viewport -- computing a manual top/bottom pixel offset off the box's
+//own offsetHeight can go stale mid-animation and get clipped. Instead, wrap
+//#mobilePreview in a fixed container sized exactly to the current visual
+//viewport and let flexbox bottom-align the (variable-height) content, so no
+//manual height math is needed at all.
+//This runs lazily (on first use) rather than at script load, since script.js
+//is loaded from <head> before <body> exists.
+let mobilePreviewWrap = null
+function getMobilePreviewWrap() {
+	if (mobilePreviewWrap) return mobilePreviewWrap
+	let mobilePreviewEl = document.getElementById("mobilePreview")
+	mobilePreviewWrap = document.createElement("div")
+	mobilePreviewWrap.id = "mobilePreviewWrap"
+	mobilePreviewEl.parentNode.insertBefore(mobilePreviewWrap, mobilePreviewEl)
+	mobilePreviewWrap.appendChild(mobilePreviewEl)
+	return mobilePreviewWrap
+}
+
+function positionMobilePreview() {
+	if (!window.visualViewport) return
+	let wrap = getMobilePreviewWrap()
+	let vv = window.visualViewport
+	wrap.style.height = vv.height + "px"
+	wrap.style.top = vv.offsetTop + "px"
+}
+
+if (window.visualViewport) {
+	window.visualViewport.addEventListener("resize", positionMobilePreview)
+	window.visualViewport.addEventListener("scroll", positionMobilePreview)
+}
+
 function deselect() {
 	canedit = false
 	document.getElementById("mobilePreview").classList.add("invisable")
@@ -89,6 +122,7 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
+	positionMobilePreview()
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
 	currentselect = n
