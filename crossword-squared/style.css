@@ -302,6 +302,7 @@ button:active {
 	}
 	#mobilePreview {
 		display: block;
+		clear: both;
 		position: sticky;
 		bottom: 0;
 		background-color: #fffcf7;
