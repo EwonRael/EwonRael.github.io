@@ -35,17 +35,25 @@ else {
 //#mobilePreview in a fixed container sized exactly to the current visual
 //viewport and let flexbox bottom-align the (variable-height) content, so no
 //manual height math is needed at all.
-let mobilePreviewEl = document.getElementById("mobilePreview")
-let mobilePreviewWrap = document.createElement("div")
-mobilePreviewWrap.id = "mobilePreviewWrap"
-mobilePreviewEl.parentNode.insertBefore(mobilePreviewWrap, mobilePreviewEl)
-mobilePreviewWrap.appendChild(mobilePreviewEl)
+//This runs lazily (on first use) rather than at script load, since script.js
+//is loaded from <head> before <body> exists.
+let mobilePreviewWrap = null
+function getMobilePreviewWrap() {
+	if (mobilePreviewWrap) return mobilePreviewWrap
+	let mobilePreviewEl = document.getElementById("mobilePreview")
+	mobilePreviewWrap = document.createElement("div")
+	mobilePreviewWrap.id = "mobilePreviewWrap"
+	mobilePreviewEl.parentNode.insertBefore(mobilePreviewWrap, mobilePreviewEl)
+	mobilePreviewWrap.appendChild(mobilePreviewEl)
+	return mobilePreviewWrap
+}
 
 function positionMobilePreview() {
 	if (!window.visualViewport) return
+	let wrap = getMobilePreviewWrap()
 	let vv = window.visualViewport
-	mobilePreviewWrap.style.height = vv.height + "px"
-	mobilePreviewWrap.style.top = vv.offsetTop + "px"
+	wrap.style.height = vv.height + "px"
+	wrap.style.top = vv.offsetTop + "px"
 }
 
 if (window.visualViewport) {
