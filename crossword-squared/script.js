@@ -29,14 +29,16 @@ else {
 //Functions related to gameplay
 
 //Mobile browsers (notably Firefox Android) anchor position:fixed to the layout
-//viewport, not the visible area, so when the on-screen keyboard opens, bottom:0
-//ends up behind the keyboard. Push the element up by however much the visual
-//viewport has shrunk.
+//viewport, not the visible area, so bottom:0 can end up behind the keyboard or
+//leave a gap when the address bar hides/shows. window.innerHeight doesn't track
+//the address bar reliably, so instead of computing a bottom offset from it, pin
+//the element with an explicit top equal to the visual viewport's own bottom edge.
 function positionMobilePreview() {
 	if (!window.visualViewport) return
 	let preview = document.getElementById("mobilePreview")
-	let keyboardOffset = window.innerHeight - (window.visualViewport.height + window.visualViewport.offsetTop)
-	preview.style.bottom = Math.max(keyboardOffset, 0) + "px"
+	let vv = window.visualViewport
+	preview.style.bottom = "auto"
+	preview.style.top = (vv.height + vv.offsetTop - preview.offsetHeight) + "px"
 }
 
 if (window.visualViewport) {
