@@ -363,7 +363,7 @@ button:active {
 #dummyinput {
 	width: 0;
 	height: 0;
-	position: absolute;
+	position: fixed;
 	cursor: default;
 	top: 100px;
 	opacity: 0;
