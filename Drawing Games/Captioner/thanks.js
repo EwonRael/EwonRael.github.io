@@ -1,5 +1,7 @@
 let page = location.href.split('#')[0]
 let players = []
+let stories = {}
+let legacyMode = false
 let gameSummaries = []
 let summariesLoaded = false
 
@@ -51,7 +53,7 @@ function pageChange() {
 	if (location.href == page) {
 		document.querySelector("#end").classList.remove("hidden")
 	}
-	
+
 	else {
 		document.querySelector("#" + show).classList.remove("hidden")
 		if (show == "pastGames") {
@@ -80,37 +82,90 @@ function loadOldGames() {
 	}
 }
 
+function appendGalleryThumbnail(galleryBox, drw, key) {
+	let gallery = document.createElement("div")
+	gallery.setAttribute("class", "gallery")
+	gallery.setAttribute("onclick", "loadGallery(" + key + ")")
+	let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+	pic.setAttribute("viewBox", "0 0 100 53")
+	for (let i = 0; i < drw.length; i++) {
+		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+		path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
+		pic.appendChild(path)
+	}
+	gallery.appendChild(pic)
+	galleryBox.appendChild(gallery)
+}
+
 // Only pulled from storage now, once a specific game is actually opened
-// -- the list itself (loadOldGames) never touches this full data.
+// -- the list itself (loadOldGames) never touches this full data. Saves
+// from before the pre-woven story format are a raw `players` array
+// (Array.isArray(parsed[1])); those fall back to the old weave-on-demand
+// path (loadGalleryLegacy) instead of being unreadable.
 function loadGalleryi(m) {
 	let raw = localStorage.getItem(gameSummaries[m].key)
 	if (!raw) return
-	players = JSON.parse(raw)[1]
-	console.log(players)
+	let parsed = JSON.parse(raw)
+	legacyMode = Array.isArray(parsed[1])
+
 	let galleryBox = document.querySelector("#galleryBox")
 	galleryBox.innerHTML = ""
-	for (let i = 0; i < players.length; i++) {
-		if (players[i][1].drawing4) {
-			let drw = players[i][1].drawing4
-			let gallery = document.createElement("div")
-			gallery.setAttribute("class", "gallery")
-			gallery.setAttribute("onclick", "loadGallery("+i+")")
-			let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-			pic.setAttribute("viewBox", "0 0 100 53")
-			for (let i = 0; i < drw.length; i++) {
-				let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-				path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
-				pic.appendChild(path)
+
+	if (legacyMode) {
+		players = parsed[1]
+		for (let i = 0; i < players.length; i++) {
+			if (players[i][1].drawing4) {
+				appendGalleryThumbnail(galleryBox, players[i][1].drawing4, i)
 			}
-			gallery.appendChild(pic)
-			galleryBox.appendChild(gallery)
+		}
+	} else {
+		stories = parsed.stories || {}
+		for (let slot in stories) {
+			appendGalleryThumbnail(galleryBox, stories[slot].panels[0].drawing, slot)
 		}
 	}
+
 	location.href = page + "#gallery"
 	pageChange()
 }
 
+// The panels are already woven into display order by weaveStory()
+// (sync.js, at the moment the game was played), so there's no more
+// slot arithmetic to do here -- just read them straight out.
 function loadGallery(m) {
+	if (legacyMode) {
+		loadGalleryLegacy(m)
+		return
+	}
+
+	let story = stories[m]
+	if (!story) return
+
+	const removeChilds = (parent) => {
+		while (parent.lastChild) {
+			parent.removeChild(parent.lastChild);
+		}
+	}
+
+	for (let j = 0; j < 4; j++) {
+		let target = document.querySelector("#galleryD" + (j + 1))
+		removeChilds(target)
+		let drw = story.panels[j].drawing
+		for (let i = 0; i < drw.length; i++) {
+			let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
+			target.appendChild(path)
+		}
+		document.querySelector("#galleryC" + (j + 1)).innerHTML = story.panels[j].caption
+	}
+
+	location.href = page + "#galleryItem"
+	pageChange()
+}
+
+// Pre-migration saves only have the raw per-slot `players` array, so
+// this weaves the display chain on demand exactly like it always did.
+function loadGalleryLegacy(m) {
 	let total = (players.length - 1)
 	let current = m
 	let drw = null
@@ -131,7 +186,7 @@ function loadGallery(m) {
 	removeChilds(document.querySelector("#galleryD2"))
 	removeChilds(document.querySelector("#galleryD3"))
 	removeChilds(document.querySelector("#galleryD4"))
-	
+
 	for (let j = 1; j < 5; j++) {
 		drw = players[current][1]["drawing" + (5 - j)]
 		for (let i = 0; i < drw.length; i++) {
@@ -139,15 +194,12 @@ function loadGallery(m) {
 			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
 			document.querySelector("#galleryD" + j).appendChild(path)
 		}
-		console.log(current)
 		prior()
-		
+
 		document.querySelector("#galleryC" + j).innerHTML = players[current][1]["caption" + (5 - j)]
-		console.log(current)
 		prior()
 	}
-	
+
 	location.href = page + "#galleryItem"
 	pageChange()
 }
-

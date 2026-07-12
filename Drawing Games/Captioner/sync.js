@@ -9,10 +9,9 @@ let myUid = null
 let gameId = null
 let rosterRef = null
 let statusRef = null
-let galleryRef = null
+let completedStoriesRef = null
 let priorConnRef = null
 let presenceUnsub = null
-let markedSynced = false
 let sessionKey = "drawing-games-captioner-session"
 
 function initSync() {
@@ -59,7 +58,6 @@ function createGame() {
 // same moment can't collide) otherwise. Host is always slot 0.
 function joinRoster(myName, asHost) {
 	rosterRef = gameRef("roster")
-	markedSynced = false
 
 	return rosterRef.once("value").then(function (snap) {
 		let roster = snap.val() || {}
@@ -129,14 +127,6 @@ function applyRosterSnapshot(snap) {
 	let roster = snap.val() || {}
 	let slots = Object.keys(roster).map(Number).sort(function (a, b) { return a - b })
 
-	if (slots.length === 0 && players.length > 0) {
-		// An empty roster after we already had players almost certainly
-		// means the whole game node just got cleaned up (see
-		// maybeCleanupIfAllSynced), not that everyone actually left --
-		// keep the local copy intact instead of wiping it out.
-		return
-	}
-
 	let updated = []
 	for (let i = 0; i < slots.length; i++) {
 		let slot = slots[i]
@@ -145,22 +135,6 @@ function applyRosterSnapshot(snap) {
 	}
 	players = updated
 	renderPlayerList()
-	maybeCleanupIfAllSynced(roster)
-}
-
-// Once every player's own client has confirmed (via updateFinishButton)
-// that it holds a complete local copy of the finished game, nobody
-// still needs the shared copy -- safe to delete it. This runs on every
-// roster change and is a no-op until every slot has synced, so it's
-// harmless to check unconditionally (including during the lobby, before
-// anyone has a "synced" flag at all). remove() on an already-gone node
-// is a no-op too, so it doesn't matter whose check fires it.
-function maybeCleanupIfAllSynced(roster) {
-	let keys = Object.keys(roster)
-	let allSynced = keys.length > 0 && keys.every(function (key) { return roster[key].synced === true })
-	if (allSynced) {
-		gameRef().remove().catch(function (err) { console.log("Cleanup failed: " + err) })
-	}
 }
 
 function listenRoster() {
@@ -383,77 +357,82 @@ function continueResumeGame(total) {
 	pageChange()
 }
 
-function renderGalleryBox() {
-	let galleryBox = document.querySelector("#galleryBox")
-	if (!galleryBox) return
-	galleryBox.innerHTML = ""
-	for (let i = 0; i < players.length; i++) {
-		if (players[i] && players[i][1].drawing4) {
-			let drw = players[i][1].drawing4
-			let gallery = document.createElement("div")
-			gallery.setAttribute("class", "gallery")
-			gallery.setAttribute("onclick", "loadGallery(" + i + ")")
-			let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
-			pic.setAttribute("viewBox", "0 0 100 53")
-			for (let j = 0; j < drw.length; j++) {
-				let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-				path.setAttributeNS(null, 'd', "M " + drw[j][0] + "," + drw[j][1] + " " + drw[j][2] + "," + drw[j][3])
-				pic.appendChild(path)
-			}
-			gallery.appendChild(pic)
-			galleryBox.appendChild(gallery)
-		}
+// Reconstructs the single woven story that ends in `anchorSlot`'s own
+// drawing4 -- the same "exquisite corpse" chain loadGallery() used to
+// walk live, on demand, except this returns plain data (in display
+// order) instead of touching the DOM. Every field this needs is
+// guaranteed to already be in Firebase by the time anchorSlot's own
+// drawing4 exists: each step in the chain was a prerequisite for
+// writing the next one, all the way back to caption1.
+function weaveStory(anchorSlot, totalPlayers, roundsBySlot) {
+	let current = anchorSlot
+	function prior() {
+		current = (current === 0) ? (totalPlayers - 1) : (current - 1)
 	}
-	updateFinishButton()
+	let panels = []
+	for (let j = 1; j < 5; j++) {
+		let drawing = roundsBySlot[current] && roundsBySlot[current]["drawing" + (5 - j)]
+		prior()
+		let caption = roundsBySlot[current] && roundsBySlot[current]["caption" + (5 - j)]
+		prior()
+		panels.push({drawing: drawing, caption: caption})
+	}
+	return panels
 }
 
-// The Finished button only unlocks once every player's last drawing has
-// come in, so nobody saves an incomplete gallery to their local history
-// (or leaves before there's anything left to see). The first time this
-// client sees that, its copy of `players` is provably the complete
-// game (the rounds fetch that satisfies this check pulls the whole tree
-// in one shot) -- so there's nothing left to watch for, and it's safe
-// to tell the other players this client is done downloading.
-function updateFinishButton() {
-	let btn = document.querySelector("#finishButton")
-	let allDone = players.length > 0 && players.every(function (p) {
-		return p && p[1] && p[1].drawing4 != null
-	})
-	if (btn) btn.disabled = !allDone
-
-	if (allDone && !markedSynced && playerNumber != null) {
-		markedSynced = true
-		stopGalleryLive()
-		if (presenceUnsub) { presenceUnsub(); presenceUnsub = null }
-		gameRef("roster/" + playerNumber + "/synced").set(true).catch(function (err) {
-			console.log("Couldn't mark synced: " + err)
+// Called once by the anchor player's own client, right after their
+// drawing4 write completes. Assembles their story into one
+// self-contained object and publishes it -- from this point on nobody
+// needs the raw rounds tree to see this particular story, only this.
+function broadcastCompletedStory(anchorSlot) {
+	let storyRef = gameRef("completedStories/" + anchorSlot)
+	return storyRef.once("value").then(function (existing) {
+		if (existing.exists()) return
+		return gameRef("rounds").once("value").then(function (roundsSnap) {
+			let panels = weaveStory(anchorSlot, players.length, roundsSnap.val() || {})
+			return storyRef.set({panels: panels})
 		})
-	}
-}
-
-// While on the gallery screen, keep it live so thumbnails pop in as
-// stragglers finish their last drawing -- same effect the old
-// broadcast-on-every-drawing4 gave, but as a single subscription
-// instead of the host re-pushing full state to everyone.
-function listenGalleryLive() {
-	galleryRef = gameRef("rounds")
-	galleryRef.on("value", function (snap) {
-		mergeRoundsSnapshot(snap)
-		renderGalleryBox()
 	})
 }
 
-function stopGalleryLive() {
-	if (galleryRef) { galleryRef.off(); galleryRef = null }
+function liveGameKey(id) {
+	return "drawing-games-captioner-live-" + id
+}
+
+// The local copy is the source of truth from here on -- it only ever
+// grows (deduped by anchor slot) and is what both the live #gallery
+// screen and, later, thanks.html#pastGames read from. Never a live
+// Firebase read.
+function saveStoryLocally(id, anchorSlot, story) {
+	let key = liveGameKey(id)
+	let saved = JSON.parse(localStorage.getItem(key)) || {date: getDate(), stories: {}}
+	if (saved.stories[anchorSlot]) return
+	saved.stories[anchorSlot] = story
+	localStorage.setItem(key, JSON.stringify(saved))
+	if (typeof onStoryReceived === "function") onStoryReceived(anchorSlot, story)
+}
+
+// Live for the whole session (started right after joining, not just
+// once this client reaches #gallery) so a slower player keeps picking
+// up faster players' finished stories in the background as they
+// arrive, rather than only catching up once they get there themselves.
+function listenCompletedStories() {
+	completedStoriesRef = gameRef("completedStories")
+	completedStoriesRef.on("child_added", function (snap) {
+		saveStoryLocally(gameId, Number(snap.key), snap.val())
+	})
+}
+
+function stopCompletedStories() {
+	if (completedStoriesRef) { completedStoriesRef.off(); completedStoriesRef = null }
 }
 
 function teardownSync() {
 	if (rosterRef) { rosterRef.off(); rosterRef = null }
 	if (statusRef) { statusRef.off(); statusRef = null }
 	if (presenceUnsub) { presenceUnsub(); presenceUnsub = null }
-	stopGalleryLive()
+	stopCompletedStories()
 	stopWatchingPartner()
-	markedSynced = false
 	clearSession()
 }
 
@@ -480,6 +459,7 @@ function attemptAutoRejoin() {
 		}
 		return joinRoster(name, isHost).then(function (slot) {
 			playerNumber = slot
+			listenCompletedStories()
 			if (meta.status === "playing") {
 				return resumeGame(meta.totalPlayers)
 			}

@@ -9,6 +9,7 @@ function initializeHost() {
 		return joinRoster(name, true)
 	}).then(function (slot) {
 		playerNumber = slot
+		listenCompletedStories()
 		listenStatus()
 	}).catch(function (err) {
 		console.log("Couldn't start hosting: " + err)

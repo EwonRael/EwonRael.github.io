@@ -18,6 +18,7 @@ function joinHost() {
 		return joinRoster(name, false)
 	}).then(function (slot) {
 		playerNumber = slot
+		listenCompletedStories()
 		listenStatus()
 	}).catch(function (err) {
 		console.log("Couldn't join: " + err)

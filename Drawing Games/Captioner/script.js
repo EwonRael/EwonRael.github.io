@@ -102,10 +102,8 @@ function pageChange() {
 			document.querySelector("#drawLoad").classList.add("hidden")
 		}
 		if (show == "gallery") {
-			listenGalleryLive()
-		}
-		else {
-			stopGalleryLive()
+			renderGalleryFromLocal()
+			document.querySelector("#finishButton").disabled = false
 		}
 		if (show == "caption1") {
 			buildCaptionSuggestions()
@@ -363,48 +361,76 @@ function drawingB(m) {
 function drawing4B() {
 	let content = simplifyDrawing(drawing)
 	writeRound(playerNumber, "drawing4", content)
+	broadcastCompletedStory(playerNumber).catch(function (err) {
+		console.log("Couldn't broadcast finished story: " + err)
+	})
 	eraceSVG()
 	location.href = page + "#gallery"
 	pageChange()
 }
 
+// Reads the story straight out of local storage -- the panels are
+// already woven into display order by weaveStory() (sync.js) at
+// broadcast time, so there's no more slot arithmetic to do here.
 function loadGallery(m) {
-	let total = (players.length - 1)
-	let current = m
-	let drw = null
-	function prior() {
-		if (current == 0) {
-			current = total
-		}
-		else {
-			current = (current - 1)
-		}
-	}
+	let saved = JSON.parse(localStorage.getItem(liveGameKey(gameId))) || {stories: {}}
+	let story = saved.stories[m]
+	if (!story) return
+
 	const removeChilds = (parent) => {
 		while (parent.lastChild) {
 			parent.removeChild(parent.lastChild);
 		}
 	}
-	removeChilds(document.querySelector("#galleryD1"))
-	removeChilds(document.querySelector("#galleryD2"))
-	removeChilds(document.querySelector("#galleryD3"))
-	removeChilds(document.querySelector("#galleryD4"))
-	
-	for (let j = 1; j < 5; j++) {
-		drw = players[current][1]["drawing" + (5 - j)]
+
+	for (let j = 0; j < 4; j++) {
+		let target = document.querySelector("#galleryD" + (j + 1))
+		removeChilds(target)
+		let drw = story.panels[j].drawing
 		for (let i = 0; i < drw.length; i++) {
 			let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
 			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3]);
-			document.querySelector("#galleryD" + j).appendChild(path)
+			target.appendChild(path)
 		}
-		prior()
-		
-		document.querySelector("#galleryC" + j).innerHTML = players[current][1]["caption" + (5 - j)]
-		prior()
+		document.querySelector("#galleryC" + (j + 1)).innerHTML = story.panels[j].caption
 	}
-	
+
 	location.href = page + "#galleryItem"
 	pageChange()
+}
+
+// Renders every story received so far (see saveStoryLocally in sync.js)
+// -- local storage only ever grows, so this never needs to remove a
+// thumbnail, only add ones that weren't there on the last render.
+function renderGalleryFromLocal() {
+	let galleryBox = document.querySelector("#galleryBox")
+	if (!galleryBox) return
+	let saved = JSON.parse(localStorage.getItem(liveGameKey(gameId))) || {stories: {}}
+	galleryBox.innerHTML = ""
+	for (let slot in saved.stories) {
+		let drw = saved.stories[slot].panels[0].drawing
+		let gallery = document.createElement("div")
+		gallery.setAttribute("class", "gallery")
+		gallery.setAttribute("onclick", "loadGallery(" + slot + ")")
+		let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
+		pic.setAttribute("viewBox", "0 0 100 53")
+		for (let j = 0; j < drw.length; j++) {
+			let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+			path.setAttributeNS(null, 'd', "M " + drw[j][0] + "," + drw[j][1] + " " + drw[j][2] + "," + drw[j][3])
+			pic.appendChild(path)
+		}
+		gallery.appendChild(pic)
+		galleryBox.appendChild(gallery)
+	}
+}
+
+// Hook called by saveStoryLocally (sync.js) every time a new story
+// arrives, so a thumbnail can pop in live if we're already looking at
+// the gallery when it shows up.
+function onStoryReceived(anchorSlot, story) {
+	if (location.href.split('#')[1] === "gallery") {
+		renderGalleryFromLocal()
+	}
 }
 
 function getDate() {
@@ -412,19 +438,34 @@ function getDate() {
 }
 
 function finishGame() {
-	let datestamp = new Date().getTime()
-	let key = "drawing-games-" + datestamp
-	localStorage.setItem(key, JSON.stringify([getDate(), players]))
+	stopCompletedStories()
 
-	// drawing-games-list stores just the lightweight bit the past-games
-	// list actually displays (date + final caption), not the full game --
-	// the full drawings only get pulled from `key` on demand when someone
-	// actually opens this specific game (see loadGalleryi in thanks.js).
-	let summary = {key: key, date: getDate(), caption4: players[0][1].caption4}
+	// Fold whatever stories arrived locally during this session into the
+	// permanent history -- same shape thanks.js already reads, just with
+	// pre-woven `stories` instead of raw `players`. Leaving without every
+	// story having arrived yet is fine; it's exactly what we have.
+	let saved = JSON.parse(localStorage.getItem(liveGameKey(gameId))) || {date: getDate(), stories: {}}
+	let key = "drawing-games-" + new Date().getTime()
+	localStorage.setItem(key, JSON.stringify({date: saved.date, stories: saved.stories}))
+
+	let representativeCaption = ""
+	for (let slot in saved.stories) {
+		representativeCaption = saved.stories[slot].panels[0].caption
+		break
+	}
+	let summary = {key: key, date: saved.date, caption4: representativeCaption}
 	let oldGames = localStorage.getItem("drawing-games-list")
 	let list = oldGames ? JSON.parse(oldGames) : []
 	list.push(summary)
 	localStorage.setItem("drawing-games-list", JSON.stringify(list))
+	localStorage.removeItem(liveGameKey(gameId))
+
+	// Delete only the story this player is the anchor of -- it's a
+	// self-contained copy nobody else needs from Firebase anymore now
+	// that it (and everything else received so far) is saved locally.
+	gameRef("completedStories/" + playerNumber).remove().catch(function (err) {
+		console.log("Couldn't remove own story: " + err)
+	})
 
 	clearSession()
 	location.href = "thanks.html"
