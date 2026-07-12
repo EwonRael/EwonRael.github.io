@@ -63,6 +63,7 @@ if (window.visualViewport) {
 
 function deselect() {
 	canedit = false
+	document.documentElement.classList.remove("noscroll")
 	document.getElementById("mobilePreview").classList.add("invisable")
 	document.getElementById("backbutton").classList.remove("fade")
 	document.getElementById("settings").classList.remove("fade")
@@ -122,6 +123,11 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
+	//Firefox Android clips fixed-position elements when the page scrolls while
+	//the keyboard is open (a scroll-position-dependent paint/clip bug, not an
+	//actual layout issue -- the element's computed position stays correct).
+	//Blocking scroll during editing sidesteps it since it's scroll-triggered.
+	document.documentElement.classList.add("noscroll")
 	positionMobilePreview()
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
