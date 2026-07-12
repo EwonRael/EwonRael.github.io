@@ -233,12 +233,22 @@ function buildCaptionSuggestions() {
 
 function suggestCaption() {
 	if (captionSuggestions.length === 0) return
-	if (suggestionIndex >= captionSuggestions.length) buildCaptionSuggestions()
+	fetchInUseCaptions().then(function (inUse) {
+		let maxAttempts = captionSuggestions.length
+		let attempts = 0
+		let candidate = null
+		do {
+			if (suggestionIndex >= captionSuggestions.length) buildCaptionSuggestions()
+			candidate = captionSuggestions[suggestionIndex]
+			suggestionIndex++
+			attempts++
+		} while (inUse.indexOf(candidate) !== -1 && attempts < maxAttempts)
 
-	let box = document.querySelector("#caption1C")
-	box.innerHTML = captionSuggestions[suggestionIndex]
-	suggestionIndex++
-	buttonEnable(box)
+		let box = document.querySelector("#caption1C")
+		box.innerHTML = candidate
+		writeLiveCaption(playerNumber, candidate)
+		buttonEnable(box)
+	})
 }
 
 // Called once when the caption1 screen is first shown -- box is always
@@ -278,6 +288,7 @@ function onCaption1Typing() {
 function captionB(m) {
 	let content = document.querySelector("#caption" + m + "C").innerHTML
 	writeRound(playerNumber, "caption" + m, content)
+	if (m === 1) writeLiveCaption(playerNumber, null)
 	if (players[playerPrior][1]["caption" + m] != null) {
 		document.querySelector("#drawing" + m + "C").innerHTML = players[playerPrior][1]["caption" + m]
 	}

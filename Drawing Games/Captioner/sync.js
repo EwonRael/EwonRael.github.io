@@ -232,6 +232,34 @@ function writeRound(slot, field, content) {
 	return gameRef("rounds/" + slot + "/" + field).set(content)
 }
 
+// A suggested caption1 must avoid both what other players currently have
+// showing (suggested but not yet submitted) and what's already been
+// submitted by anyone (hand-typed included) -- otherwise two players can
+// still end up with the exact same final caption1.
+function fetchInUseCaptions() {
+	return Promise.all([
+		gameRef("liveCaptions").once("value"),
+		gameRef("rounds").once("value")
+	]).then(function (results) {
+		let live = results[0].val() || {}
+		let rounds = results[1].val() || {}
+		let inUse = []
+		for (let slot in live) {
+			if (Number(slot) !== playerNumber && live[slot]) inUse.push(live[slot])
+		}
+		for (let slot in rounds) {
+			if (Number(slot) !== playerNumber && rounds[slot] && rounds[slot].caption1) inUse.push(rounds[slot].caption1)
+		}
+		return inUse
+	})
+}
+
+function writeLiveCaption(slot, content) {
+	let ref = gameRef("liveCaptions/" + slot)
+	ref.onDisconnect().remove()
+	return ref.set(content)
+}
+
 function waitForRound(slot, field, onReady) {
 	let ref = gameRef("rounds/" + slot + "/" + field)
 	let handler = ref.on("value", function (snap) {
