@@ -201,6 +201,31 @@ function endGameForEveryone() {
 	})
 }
 
+// Called when a player clicks "Finished!". If every roster slot has
+// committed its drawing4, the whole game is over and nothing further
+// will read this game's Firebase data -- delete the entire node (roster,
+// including the host's own slot) instead of just this player's own
+// leftover story, so a re-host under the same name never has to contend
+// with anything stale. Otherwise, only this player's own story copy is
+// removed (everyone else's is still needed until they get here too).
+function cleanupGameOnFinish(mySlot) {
+	return Promise.all([
+		gameRef("roster").once("value"),
+		gameRef("rounds").once("value")
+	]).then(function (results) {
+		let roster = results[0].val() || {}
+		let rounds = results[1].val() || {}
+		let slots = Object.keys(roster)
+		let allDone = slots.length > 0 && slots.every(function (slot) {
+			return rounds[slot] && rounds[slot].drawing4 != null
+		})
+		if (allDone) {
+			return gameRef().remove()
+		}
+		return gameRef("completedStories/" + mySlot).remove()
+	})
+}
+
 function writeRound(slot, field, content) {
 	players[slot][1][field] = content
 	return gameRef("rounds/" + slot + "/" + field).set(content)

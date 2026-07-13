@@ -210,12 +210,13 @@ function collectSavedCaptions() {
 	let list = JSON.parse(localStorage.getItem("drawing-games-list")) || []
 	let captions = []
 	for (let i = 0; i < list.length; i++) {
-		let raw = localStorage.getItem(list[i])
+		let entry = list[i]
+		let raw = entry && entry.key ? localStorage.getItem(entry.key) : null
 		if (!raw) continue
-		let savedPlayers = JSON.parse(raw)[1]
-		for (let j = 0; j < savedPlayers.length; j++) {
-			let data = savedPlayers[j][1]
-			if (data && data.caption4) captions.push(data.caption4)
+		let stories = JSON.parse(raw).stories || {}
+		for (let slot in stories) {
+			let caption = stories[slot].panels[0] && stories[slot].panels[0].caption
+			if (caption) captions.push(caption)
 		}
 	}
 	return captions
@@ -460,14 +461,16 @@ function finishGame() {
 	localStorage.setItem("drawing-games-list", JSON.stringify(list))
 	localStorage.removeItem(liveGameKey(gameId))
 
-	// Delete only the story this player is the anchor of -- it's a
-	// self-contained copy nobody else needs from Firebase anymore now
-	// that it (and everything else received so far) is saved locally.
-	gameRef("completedStories/" + playerNumber).remove().catch(function (err) {
-		console.log("Couldn't remove own story: " + err)
+	// If every player's drawing4 has landed in Firebase, the game is
+	// fully over and nothing will read this node again -- delete it
+	// entirely (roster included). Otherwise just drop this player's own
+	// story, same as before; it's a self-contained copy nobody else needs
+	// from Firebase anymore now that it's saved locally.
+	cleanupGameOnFinish(playerNumber).catch(function (err) {
+		console.log("Couldn't clean up game in Firebase: " + err)
 	})
 
-	clearSession()
+	teardownSync()
 	location.href = "thanks.html"
 }
 
