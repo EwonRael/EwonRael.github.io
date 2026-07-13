@@ -28,33 +28,22 @@ else {
 
 //Functions related to gameplay
 
-//Keep #mobilePreview pinned above the keyboard: compute top from the visual
-//viewport directly (never window.innerHeight -- that doesn't track address
-//bar changes reliably) so it tracks both the keyboard and the toolbar.
-//
-//Separately: Firefox Android clips the TEXT inside #mobilePreview (not the
-//box itself -- its background/border always render at the full correct
-//size) more and more as the page scrolls while the keyboard is open, and
-//it's worse on the second scroll-away-and-back than the first. That pattern
-//points at stale tile rasterization/paint caching for the text specifically,
-//not a layout position bug -- so on every viewport change, also force the
-//text node to be torn down and repainted fresh rather than trusting the
-//browser to notice it needs to.
-function positionMobilePreview() {
-	if (!window.visualViewport) return
-	let mp = document.getElementById("mobilePreview")
-	let vv = window.visualViewport
-	mp.style.top = (vv.height + vv.offsetTop - mp.offsetHeight) + "px"
-
-	let previewBox = document.getElementById("previewBox")
-	previewBox.style.display = "none"
-	void previewBox.offsetHeight
-	previewBox.style.display = ""
-}
-
-if (window.visualViewport) {
-	window.visualViewport.addEventListener("resize", positionMobilePreview)
-	window.visualViewport.addEventListener("scroll", positionMobilePreview)
+//Firefox Android's compositor doesn't reliably keep position:fixed/sticky
+//elements clipped correctly once the page scrolls while the keyboard is
+//open -- no CSS/JS positioning trick around that held up. So instead of
+//pinning #mobilePreview to the screen, keep it as an ordinary in-flow
+//element (nothing for the browser to get wrong) placed right after the
+//crossword grid, and jump the page to the top on every select so it's
+//always immediately visible without needing to fight scroll position.
+//Runs lazily (on first use) rather than at script load, since script.js is
+//loaded from <head> before <body> exists.
+let mobilePreviewMoved = false
+function placeMobilePreview() {
+	if (mobilePreviewMoved) return
+	let mobilePreviewEl = document.getElementById("mobilePreview")
+	let table = document.getElementById("crossword")
+	table.parentNode.insertBefore(mobilePreviewEl, table.nextSibling)
+	mobilePreviewMoved = true
 }
 
 function deselect() {
@@ -117,8 +106,9 @@ function changeSelect(n) {
 	}
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
+	placeMobilePreview()
 	document.getElementById("mobilePreview").classList.remove("invisable")
-	positionMobilePreview()
+	window.scrollTo(0, 0)
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
 	currentselect = n
