@@ -290,9 +290,6 @@ button:active {
 }
 
 @media only screen and (max-width: 750px) {
-	html.noscroll, html.noscroll body {
-		overflow: hidden;
-	}
 	#across, #explain {
 		margin-left: 1em;
 	}
