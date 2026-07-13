@@ -108,7 +108,6 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
-	window.scrollTo(0, 0)
 	positionMobilePreview()
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
