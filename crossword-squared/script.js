@@ -89,6 +89,9 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
+	if (window.matchMedia("(max-width: 750px)").matches) {
+		window.scrollTo({top: 0, behavior: "smooth"})
+	}
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
 	currentselect = n
