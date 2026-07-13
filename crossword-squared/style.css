@@ -301,10 +301,9 @@ button:active {
 		min-width: calc(100vw - 90px);
 	}
 	#mobilePreview {
-		display: block;
-		position: fixed;
-		top: 0;
-		left: 0;
+		display: block !important;
+		position: fixed !important;
+		left: 0 !important;
 		background-color: #fffcf7;
 		border-top: solid #15141e 2px;
 		width: 100%;
@@ -315,6 +314,9 @@ button:active {
 	#mobilePreview p {
 		margin: 15px 15px 15px 56px;
 		text-indent: -36px;
+		transform: translateZ(0);
+		will-change: transform;
+		backface-visibility: hidden;
 		font-size: 20px;
 		background-color: #cce5ff;
 		box-shadow: -5px 0 #cce5ff, -43px 30px #fffcf7, -43px 0 #fff5b1;

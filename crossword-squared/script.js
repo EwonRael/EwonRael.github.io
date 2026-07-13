@@ -28,18 +28,28 @@ else {
 
 //Functions related to gameplay
 
-//Firefox Android clips position:fixed/sticky elements more and more as the
-//page scrolls further down while the keyboard is open, but a fixed element
-//anchored at top:0 never clips regardless of scroll. So anchor there (safe)
-//and use a CSS transform to visually push it down to the keyboard instead of
-//top/bottom/height -- transform is compositor-only and doesn't go through
-//whatever layout-position-dependent logic is causing the clip.
+//Keep #mobilePreview pinned above the keyboard: compute top from the visual
+//viewport directly (never window.innerHeight -- that doesn't track address
+//bar changes reliably) so it tracks both the keyboard and the toolbar.
+//
+//Separately: Firefox Android clips the TEXT inside #mobilePreview (not the
+//box itself -- its background/border always render at the full correct
+//size) more and more as the page scrolls while the keyboard is open, and
+//it's worse on the second scroll-away-and-back than the first. That pattern
+//points at stale tile rasterization/paint caching for the text specifically,
+//not a layout position bug -- so on every viewport change, also force the
+//text node to be torn down and repainted fresh rather than trusting the
+//browser to notice it needs to.
 function positionMobilePreview() {
 	if (!window.visualViewport) return
 	let mp = document.getElementById("mobilePreview")
 	let vv = window.visualViewport
-	let offset = vv.height + vv.offsetTop - mp.offsetHeight
-	mp.style.transform = "translateY(" + offset + "px)"
+	mp.style.top = (vv.height + vv.offsetTop - mp.offsetHeight) + "px"
+
+	let previewBox = document.getElementById("previewBox")
+	previewBox.style.display = "none"
+	void previewBox.offsetHeight
+	previewBox.style.display = ""
 }
 
 if (window.visualViewport) {
