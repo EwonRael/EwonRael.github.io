@@ -28,40 +28,6 @@ else {
 
 //Functions related to gameplay
 
-//Firefox Android's compositor doesn't reliably keep position:fixed/sticky
-//content correctly clipped once the page scrolls while the keyboard is
-//open. position:absolute content goes through the normal scrolling-content
-//paint path instead of that special fixed/sticky layer path, so it should
-//dodge the bug -- fake sticky-to-the-bottom by hand, recomputing its
-//document-relative top on every scroll/resize so it tracks the current
-//scroll position and keyboard/toolbar height.
-//
-//Firefox's own bug tracker (2013264) describes the keyboard-open viewport
-//height itself being stale/wrong right when it appears, which would poison
-//these numbers no matter how we position the element. So: wait a couple ms
-//for that to settle before reading anything, and force the element's
-//position off and back on first, in case that nudges Firefox into
-//recomputing its layer state fresh instead of reusing something stale.
-let mobilePreviewRepositionTimer = null
-function positionMobilePreview() {
-	if (mobilePreviewRepositionTimer) clearTimeout(mobilePreviewRepositionTimer)
-	mobilePreviewRepositionTimer = setTimeout(function() {
-		let mp = document.getElementById("mobilePreview")
-		mp.style.position = "static"
-		void mp.offsetHeight
-		mp.style.position = "absolute"
-		let vv = window.visualViewport
-		let viewportBottom = vv ? (vv.height + vv.offsetTop) : window.innerHeight
-		mp.style.top = (window.scrollY + viewportBottom - mp.offsetHeight) + "px"
-	}, 2)
-}
-
-window.addEventListener("scroll", positionMobilePreview, { passive: true })
-if (window.visualViewport) {
-	window.visualViewport.addEventListener("resize", positionMobilePreview)
-	window.visualViewport.addEventListener("scroll", positionMobilePreview)
-}
-
 function deselect() {
 	canedit = false
 	document.getElementById("mobilePreview").classList.add("invisable")
@@ -123,8 +89,6 @@ function changeSelect(n) {
 	//Highlight Square
 	document.getElementById(n).classList.add("focus")
 	document.getElementById("mobilePreview").classList.remove("invisable")
-	window.scrollTo(0, 0)
-	positionMobilePreview()
 	document.getElementById("backbutton").classList.add("fade")
 	document.getElementById("settings").classList.add("fade")
 	currentselect = n

@@ -302,11 +302,12 @@ button:active {
 	}
 	#mobilePreview {
 		display: block;
-		position: absolute;
+		position: fixed;
+		bottom: 0;
 		left: 0;
 		background-color: #fffcf7;
 		border-top: solid #15141e 2px;
-		width: 100%;
+		width: 100vw;
 	}
 	#mobilePreview.invisable {
 	display: none;
@@ -348,7 +349,7 @@ button:active {
 #dummyinput {
 	width: 0;
 	height: 0;
-	position: fixed;
+	position: absolute;
 	cursor: default;
 	top: 100px;
 	opacity: 0;
