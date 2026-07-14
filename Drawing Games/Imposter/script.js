@@ -232,10 +232,13 @@ function buildRoundsPlan(total) {
 	let pairs = pickPromptPairs(4)
 	let rounds = []
 	for (let i = 0; i < 4; i++) {
+		// Which side of the pair is "real" vs "fake" is arbitrary --
+		// randomize it per round instead of trusting authored order.
+		let pair = shuffleArray(pairs[i])
 		rounds.push({
 			imposter: Math.floor(Math.random() * total),
-			realPrompt: pairs[i].real,
-			fakePrompt: pairs[i].fake
+			realPrompt: pair[0],
+			fakePrompt: pair[1]
 		})
 	}
 	return rounds

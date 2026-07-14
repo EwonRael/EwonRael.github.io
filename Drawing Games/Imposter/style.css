@@ -191,6 +191,7 @@ h3:focus {
 
 #waiting {
 	position: fixed;
+	z-index: 4;
 	background-color: rgba(255,255,255,0.6);
 	top: 0;
 	left: 0;
