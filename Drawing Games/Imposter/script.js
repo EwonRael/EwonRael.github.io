@@ -356,6 +356,8 @@ function fade(el, opacity) {
 	el.style.opacity = opacity
 }
 
+let revealInProgress = {}
+
 // Walks the reveal through its stages on a timer, each one fading out
 // before the next fades in: the imposter's name and drawing first, then
 // the real prompt, then the fake prompt, then finally the list of players
@@ -363,110 +365,130 @@ function fade(el, opacity) {
 // `title`/`value` are two separate spans (not one nested inside the
 // other) specifically so rewriting the stage label's innerHTML each step
 // never clobbers the value alongside it.
+//
+// Guarded per-round against overlapping calls -- pageChange() actually
+// runs twice per navigation (an explicit call plus the async "hashchange"
+// event the same location.href assignment triggers), which used to attach
+// two independent watchers that each called this once, running two
+// concurrent copies of this whole animation against the same DOM and
+// duplicating whatever they built up incrementally (the correct-guessers
+// list). watchVotingProgress now guards against starting twice in the
+// first place, but this is a second, unconditional line of defense: no
+// matter what triggers a repeat call for a round already mid-animation,
+// it's simply ignored.
 async function showReveal(round) {
-	let plan = roundsPlan[round - 1]
-	let result = computeRoundReveal(round)
-	let imposterSlot = result.imposterSlot
+	if (revealInProgress[round]) return
+	revealInProgress[round] = true
+	try {
+		let plan = roundsPlan[round - 1]
+		let result = computeRoundReveal(round)
+		let imposterSlot = result.imposterSlot
 
-	let title = document.querySelector("#reveal" + round + "Title")
-	let value = document.querySelector("#reveal" + round + "Value")
-	let drawBox = document.querySelector("#reveal" + round + "Box")
-	let svg = document.querySelector("#reveal" + round + "Drawing")
-	let correctBox = document.querySelector("#reveal" + round + "Correct")
-	let continueBtn = document.querySelector("#reveal" + round + "Continue")
+		let title = document.querySelector("#reveal" + round + "Title")
+		let value = document.querySelector("#reveal" + round + "Value")
+		let drawBox = document.querySelector("#reveal" + round + "Box")
+		let svg = document.querySelector("#reveal" + round + "Drawing")
+		let correctBox = document.querySelector("#reveal" + round + "Correct")
+		let continueBtn = document.querySelector("#reveal" + round + "Continue")
 
-	const removeChilds = (parent) => {
-		while (parent.lastChild) {
-			parent.removeChild(parent.lastChild)
+		const removeChilds = (parent) => {
+			while (parent.lastChild) {
+				parent.removeChild(parent.lastChild)
+			}
 		}
+
+		// Reset every animated bit back to its starting state -- also covers
+		// landing here straight from a reload (findResumePoint's "reveal"
+		// stage calls showReveal directly, with nothing primed beforehand).
+		title.style.transition = "none"
+		title.style.opacity = "1"
+		title.innerHTML = "The imposter was:"
+		value.style.transition = "none"
+		value.style.opacity = "0"
+		value.innerHTML = ""
+		drawBox.style.transition = "none"
+		drawBox.style.opacity = "0"
+		continueBtn.style.transition = "none"
+		continueBtn.style.opacity = "0"
+		continueBtn.disabled = true
+		removeChilds(correctBox)
+
+		removeChilds(svg)
+		let drw = players[imposterSlot][1]["drawing" + round]
+		for (let i = 0; i < drw.length; i++) {
+			let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
+			path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3])
+			svg.appendChild(path)
+		}
+
+		location.href = page + "#reveal" + round
+		pageChange()
+
+		await wait(1000)
+		value.innerHTML = players[imposterSlot][0]
+		fade(value, 1)
+		fade(drawBox, 1)
+
+		await wait(3000)
+		fade(title, 0)
+		fade(value, 0)
+		await wait(500)
+		title.innerHTML = "Real prompt:"
+		value.innerHTML = plan.realPrompt
+		fade(title, 1)
+		fade(value, 1)
+
+		await wait(3000)
+		fade(title, 0)
+		fade(value, 0)
+		await wait(500)
+		title.innerHTML = "Fake prompt:"
+		value.innerHTML = plan.fakePrompt
+		fade(title, 1)
+		fade(value, 1)
+
+		await wait(3000)
+		fade(title, 0)
+		fade(value, 0)
+		await wait(500)
+		title.innerHTML = "Correctly guessed by:"
+		value.innerHTML = ""
+		fade(title, 1)
+
+		// De-duped by slot (a Set of the numeric slots, not of display
+		// names) so two different players who happen to share a typed
+		// name both still show up -- only a repeat of the exact same slot
+		// collapses to one line.
+		let uniqueVoters = Array.from(new Set(result.correctVoters))
+		let names = uniqueVoters.map(function (i) { return players[i][0] })
+		if (names.length === 0) names = ["Nobody"]
+		await wait(500)
+		for (let i = 0; i < names.length; i++) {
+			if (i > 0) await wait(200)
+			let line = document.createElement("div")
+			line.innerHTML = names[i]
+			line.style.opacity = "0"
+			correctBox.appendChild(line)
+			line.offsetWidth // force reflow so the opacity:0 above commits before fading in
+			fade(line, 1)
+		}
+
+		await wait(2000)
+		continueBtn.disabled = false
+		fade(continueBtn, 1)
+	} finally {
+		revealInProgress[round] = false
 	}
-
-	// Reset every animated bit back to its starting state -- also covers
-	// landing here straight from a reload (findResumePoint's "reveal"
-	// stage calls showReveal directly, with nothing primed beforehand).
-	title.style.transition = "none"
-	title.style.opacity = "1"
-	title.innerHTML = "The imposter was:"
-	value.style.transition = "none"
-	value.style.opacity = "0"
-	value.innerHTML = ""
-	drawBox.style.transition = "none"
-	drawBox.style.opacity = "0"
-	continueBtn.style.transition = "none"
-	continueBtn.style.opacity = "0"
-	continueBtn.disabled = true
-	removeChilds(correctBox)
-
-	removeChilds(svg)
-	let drw = players[imposterSlot][1]["drawing" + round]
-	for (let i = 0; i < drw.length; i++) {
-		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-		path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3])
-		svg.appendChild(path)
-	}
-
-	location.href = page + "#reveal" + round
-	pageChange()
-
-	await wait(1000)
-	value.innerHTML = players[imposterSlot][0]
-	fade(value, 1)
-	fade(drawBox, 1)
-
-	await wait(3000)
-	fade(title, 0)
-	fade(value, 0)
-	await wait(500)
-	title.innerHTML = "Real prompt:"
-	value.innerHTML = plan.realPrompt
-	fade(title, 1)
-	fade(value, 1)
-
-	await wait(3000)
-	fade(title, 0)
-	fade(value, 0)
-	await wait(500)
-	title.innerHTML = "Fake prompt:"
-	value.innerHTML = plan.fakePrompt
-	fade(title, 1)
-	fade(value, 1)
-
-	await wait(3000)
-	fade(title, 0)
-	fade(value, 0)
-	await wait(500)
-	title.innerHTML = "Correctly guessed by:"
-	value.innerHTML = ""
-	fade(title, 1)
-
-	let names = result.correctVoters.map(function (i) { return players[i][0] })
-	if (names.length === 0) names = ["Nobody"]
-	await wait(500)
-	for (let i = 0; i < names.length; i++) {
-		if (i > 0) await wait(200)
-		let line = document.createElement("div")
-		line.innerHTML = names[i]
-		line.style.opacity = "0"
-		correctBox.appendChild(line)
-		line.offsetWidth // force reflow so the opacity:0 above commits before fading in
-		fade(line, 1)
-	}
-
-	await wait(2000)
-	continueBtn.disabled = false
-	fade(continueBtn, 1)
 }
 
+// Doesn't navigate directly -- whoever clicks writes their own ack and
+// nudges the shared round forward, then every listening client (this one
+// included) reacts to that same broadcast via listenStatus, landing on
+// the next round's draw screen at the same moment so their 20s timers all
+// start together instead of each player pacing their own transition.
 function continueToNextRound(round) {
 	writeRound(playerNumber, "ack" + round, true)
-	if (round < 4) {
-		location.href = page + "#draw" + (round + 1)
-		pageChange()
-	}
-	else {
-		location.href = page + "#finalResults"
-		pageChange()
-	}
+	advanceSharedRound(round)
 }
 
 function renderFinalResults() {

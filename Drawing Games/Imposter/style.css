@@ -254,6 +254,7 @@ button[disabled]{
 }
 
 .gallery.selected {
+	border-width: 6px;
 	animation: waiting linear 3s infinite;
 }
 

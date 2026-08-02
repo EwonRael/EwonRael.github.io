@@ -60,7 +60,7 @@ function clearSession() {
 // moment they click "Host" -- matches the old behaviour where hosting
 // always started a completely fresh game under that name.
 function createGame() {
-	return gameRef().set({meta: {status: "lobby", totalPlayers: 0}, nextSlot: 1, roster: {}, rounds: {}})
+	return gameRef().set({meta: {status: "lobby", totalPlayers: 0, round: 1}, nextSlot: 1, roster: {}, rounds: {}})
 }
 
 // Joins this player into the roster, reusing their existing slot if
@@ -199,12 +199,25 @@ function claimGameStart() {
 		let plan = buildRoundsPlan(total)
 		return gameRef("meta").transaction(function (current) {
 			if (current && current.status === "lobby") {
-				return {status: "playing", totalPlayers: total, rounds: plan}
+				return {status: "playing", totalPlayers: total, rounds: plan, round: 1}
 			}
 			return current
 		})
 	})
 }
+
+// Whoever clicks "Continue" first drags every other player's client along
+// with them, so everyone's next-round draw timer starts at the same
+// moment instead of each player pacing their own transition. The write is
+// idempotent -- the target value is always "the round that just finished,
+// plus one", the same regardless of who writes it -- so unlike
+// claimGameStart this doesn't need a transaction to guard against two
+// people clicking at once.
+function advanceSharedRound(round) {
+	return gameRef("meta/round").set(round + 1)
+}
+
+let lastSeenRound = null
 
 function listenStatus() {
 	statusRef = gameRef("meta")
@@ -212,7 +225,27 @@ function listenStatus() {
 		let meta = snap.val()
 		if (meta && meta.status === "playing") {
 			roundsPlan = meta.rounds
-			resumeGame(meta.totalPlayers)
+			let round = meta.round || 1
+			// The very first time this listener sees "playing" (right after
+			// joining or reloading), fall back to each player's own
+			// completion-based resume point -- that's the only thing that
+			// can correctly place a client who just connected. Every
+			// subsequent tick means someone's Continue click moved the
+			// shared round forward, and every listening client (including
+			// whoever clicked) should jump there together.
+			if (lastSeenRound === null) {
+				lastSeenRound = round
+				resumeGame(meta.totalPlayers, round)
+			} else if (round > lastSeenRound) {
+				lastSeenRound = round
+				if (round > 4) {
+					location.href = page + "#finalResults"
+					pageChange()
+				} else {
+					location.href = page + "#draw" + round
+					pageChange()
+				}
+			}
 		}
 		if (meta && meta.status === "ended") {
 			handleGameEnded()
@@ -280,6 +313,7 @@ function watchAllRoundField(field, onAllDone) {
 
 function stopWatchingAllRoundField() {
 	if (allRoundRef) { allRoundRef.off(); allRoundRef = null }
+	votingWatchRound = null
 }
 
 let waitingPartnersHandler = null
@@ -358,19 +392,42 @@ function findResumePoint(slot) {
 // A fresh page load only ever has roster data (names) locally -- the
 // actual per-round data lives in Firebase and has to be pulled in
 // before we can tell where this player really left off.
-function resumeGame(total) {
+function resumeGame(total, sharedRound) {
 	return gameRef("rounds").once("value").then(function (snap) {
 		mergeRoundsSnapshot(snap)
-		return continueResumeGame(total)
+		return continueResumeGame(total, sharedRound)
 	})
 }
 
-function continueResumeGame(total) {
+function continueResumeGame(total, sharedRound) {
 	let resume = findResumePoint(playerNumber)
 
 	if (resume.stage === "final") {
 		location.href = page + "#finalResults"
 		pageChange()
+		return
+	}
+
+	// If the shared round pointer is already ahead of this player's own
+	// ack chain, they missed one or more "someone else clicked Continue"
+	// broadcasts while disconnected (watchAllRoundField's all-votes-in
+	// requirement means this can only happen while they're on their own
+	// "reveal" stage, never earlier -- the round literally can't have
+	// advanced without their own drawing and vote already being in).
+	// Backfill their own ack for the skipped rounds, so a future resume
+	// keeps computing correctly, and land them on the shared round instead
+	// of a reveal everyone else has already moved past.
+	if (sharedRound && resume.round && sharedRound > resume.round) {
+		for (let r = resume.round; r < sharedRound; r++) {
+			if (players[playerNumber][1]["ack" + r] == null) writeRound(playerNumber, "ack" + r, true)
+		}
+		if (sharedRound > 4) {
+			location.href = page + "#finalResults"
+			pageChange()
+		} else {
+			location.href = page + "#draw" + sharedRound
+			pageChange()
+		}
 		return
 	}
 
@@ -435,8 +492,21 @@ function renderRoundGallery(round) {
 // re-picking until the last straggler votes, at which point this fires the
 // reveal automatically. Uses watchAllRoundField directly (not
 // beginWaitingForAll) specifically to skip its blocking #waiting overlay.
+let votingWatchRound = null
+
+// Guarded against being started twice for the same round: pageChange()
+// actually runs on every hash navigation via two separate paths (an
+// explicit call right after `location.href = ...`, plus the async
+// "hashchange" event that same assignment triggers), so without this
+// guard a single visit to #galleryN would attach two independent
+// watchAllRoundField listeners -- each with its own private "done" flag,
+// each eventually firing showReveal() once, producing two concurrent
+// reveal animations that both append to the same correct-guessers list.
 function watchVotingProgress(round) {
+	if (votingWatchRound === round) return
+	votingWatchRound = round
 	watchAllRoundField("vote" + round, function () {
+		votingWatchRound = null
 		showReveal(round)
 	})
 }
@@ -527,12 +597,16 @@ function attemptAutoRejoin() {
 		}
 		return joinRoster(name, isHost).then(function (slot) {
 			playerNumber = slot
-			if (meta.status === "playing") {
-				roundsPlan = meta.rounds
-				return resumeGame(meta.totalPlayers)
+			if (meta.status !== "playing") {
+				location.href = page + "#lobby"
+				pageChange()
 			}
-			location.href = page + "#lobby"
-			pageChange()
+			// listenStatus's own first tick handles the actual resume (via
+			// resumeGame) when already "playing" -- calling it uniformly
+			// here (rather than resuming directly and skipping the
+			// listener) is what keeps this client subscribed afterward for
+			// both the host-ended-game alert and later shared round
+			// advances, the same as the fresh host/join paths already do.
 			listenStatus()
 		})
 	}).catch(function (err) {
