@@ -11,6 +11,7 @@ let posX = 0
 let posXold = 0
 let posYold = 0
 let drawing = []
+let drawTimerTimeout = null
 
 if (name) {console.log("my name is " + name)} else {location.href = "../index.html"}
 if (name) {attemptAutoRejoin()}
@@ -87,15 +88,19 @@ function pageChange() {
 		if (show.indexOf("draw") === 0) {
 			document.querySelector("#drawSpace").classList.remove("hidden")
 			renderPrompt(Number(show.slice(-1)))
+			startDrawTimer(Number(show.slice(-1)))
 		}
 		else {
 			document.querySelector("#drawSpace").classList.add("hidden")
+			stopDrawTimer()
 		}
-		if (show.indexOf("gallery") === 0 && show !== "galleryItem") {
+		if (show.indexOf("gallery") === 0) {
 			listenRoundGalleryLive(Number(show.slice(-1)))
+			watchVotingProgress(Number(show.slice(-1)))
 		}
 		else {
 			stopRoundGalleryLive()
+			stopWatchingAllRoundField()
 		}
 		if (show === "finalResults") {
 			listenFinalLive()
@@ -263,7 +268,40 @@ function renderPrompt(round) {
 	document.querySelector("#draw" + round + "Prompt").innerHTML = isImposter ? plan.fakePrompt : plan.realPrompt
 }
 
+// Starts a fresh client-local 20s countdown the moment this player's draw
+// screen renders, auto-submitting via the same drawSubmit() path as the
+// "Next" button once it runs out. Guarded against players[playerNumber]
+// already having a value for this round's drawing -- true when pageChange()
+// re-enters this #drawN hash during resumeGame's "waitDraw" stage (this
+// player already submitted and is just watching stragglers behind the
+// #waiting overlay) -- without this guard a stale timer would fire
+// drawSubmit() again with an already-erased/empty `drawing` array and
+// clobber the real submission already on Firebase.
+function startDrawTimer(round) {
+	stopDrawTimer()
+	if (players[playerNumber] && players[playerNumber][1]["drawing" + round] != null) return
+	let bar = document.querySelector("#drawTimerBar")
+	bar.classList.remove("hidden")
+	bar.style.transition = "none"
+	bar.style.width = "0"
+	bar.offsetWidth // force reflow so the width:0 above commits before animating
+	bar.style.transition = "width 20s linear"
+	bar.style.width = "100vw"
+	drawTimerTimeout = setTimeout(function () { drawSubmit(round) }, 20000)
+}
+
+function stopDrawTimer() {
+	if (drawTimerTimeout) { clearTimeout(drawTimerTimeout); drawTimerTimeout = null }
+	let bar = document.querySelector("#drawTimerBar")
+	if (bar) {
+		bar.classList.add("hidden")
+		bar.style.transition = "none"
+		bar.style.width = "0"
+	}
+}
+
 function drawSubmit(round) {
+	stopDrawTimer()
 	let content = simplifyDrawing(drawing)
 	writeRound(playerNumber, "drawing" + round, content)
 	eraceSVG()
@@ -273,41 +311,17 @@ function drawSubmit(round) {
 	})
 }
 
-// Opens the single-drawing detail view for one player's round drawing,
-// with a "Vote for [Name]" button -- this is the voting surface, reusing
-// Captioner's gallery -> galleryItem pattern but simplified from a
-// 4-stack down to just one drawing.
-function openGalleryItem(playerSlot, round) {
-	const removeChilds = (parent) => {
-		while (parent.lastChild) {
-			parent.removeChild(parent.lastChild)
-		}
-	}
-	let svg = document.querySelector("#galleryD")
-	removeChilds(svg)
-	let drw = players[playerSlot][1]["drawing" + round]
-	for (let i = 0; i < drw.length; i++) {
-		let path = document.createElementNS("http://www.w3.org/2000/svg", "path")
-		path.setAttributeNS(null, 'd', "M " + drw[i][0] + "," + drw[i][1] + " " + drw[i][2] + "," + drw[i][3])
-		svg.appendChild(path)
-	}
-	document.querySelector("#galleryName").innerHTML = players[playerSlot][0]
-	let voteButton = document.querySelector("#voteButton")
-	voteButton.innerHTML = "Vote for " + players[playerSlot][0]
-	voteButton.setAttribute("onclick", "castVote(" + playerSlot + ", " + round + ")")
-
-	location.href = page + "#galleryItem"
-	pageChange()
-}
-
-// Casting a vote is allowed to be a self-vote -- no special-casing --
-// since a player has no reliable way to know they were the imposter
-// until the reveal anyway.
-function castVote(votedSlot, round) {
+// Selecting a drawing writes this player's vote immediately and moves the
+// highlight to it -- no confirmation step, and no self-vote restriction
+// (a player has no reliable way to know they were the imposter until the
+// reveal anyway). Re-rendering right away gives instant feedback instead of
+// waiting on a network round trip; the live gallery listener will harmlessly
+// re-render the same state again once Firebase echoes the write back. The
+// reveal itself is triggered separately, by watchVotingProgress once every
+// player has picked -- voting stays open and changeable until then.
+function selectVote(votedSlot, round) {
 	writeRound(playerNumber, "vote" + round, votedSlot)
-	beginWaitingForAll("voting", "vote" + round, function () {
-		showReveal(round)
-	})
+	renderRoundGallery(round)
 }
 
 function computeRoundReveal(round) {
@@ -333,24 +347,56 @@ function computeScore(slot) {
 	return score
 }
 
-function showReveal(round) {
+function wait(ms) {
+	return new Promise(function (resolve) { setTimeout(resolve, ms) })
+}
+
+function fade(el, opacity) {
+	el.style.transition = "opacity 0.5s"
+	el.style.opacity = opacity
+}
+
+// Walks the reveal through its stages on a timer, each one fading out
+// before the next fades in: the imposter's name and drawing first, then
+// the real prompt, then the fake prompt, then finally the list of players
+// who guessed right, overlaid on the drawing itself one name at a time.
+// `title`/`value` are two separate spans (not one nested inside the
+// other) specifically so rewriting the stage label's innerHTML each step
+// never clobbers the value alongside it.
+async function showReveal(round) {
 	let plan = roundsPlan[round - 1]
 	let result = computeRoundReveal(round)
 	let imposterSlot = result.imposterSlot
 
-	document.querySelector("#reveal" + round + "Imposter").innerHTML = players[imposterSlot][0]
-	document.querySelector("#reveal" + round + "Real").innerHTML = plan.realPrompt
-	document.querySelector("#reveal" + round + "Fake").innerHTML = plan.fakePrompt
-
-	let names = result.correctVoters.map(function (i) { return players[i][0] }).join(", ") || "Nobody"
-	document.querySelector("#reveal" + round + "Correct").innerHTML = names
+	let title = document.querySelector("#reveal" + round + "Title")
+	let value = document.querySelector("#reveal" + round + "Value")
+	let drawBox = document.querySelector("#reveal" + round + "Box")
+	let svg = document.querySelector("#reveal" + round + "Drawing")
+	let correctBox = document.querySelector("#reveal" + round + "Correct")
+	let continueBtn = document.querySelector("#reveal" + round + "Continue")
 
 	const removeChilds = (parent) => {
 		while (parent.lastChild) {
 			parent.removeChild(parent.lastChild)
 		}
 	}
-	let svg = document.querySelector("#reveal" + round + "Drawing")
+
+	// Reset every animated bit back to its starting state -- also covers
+	// landing here straight from a reload (findResumePoint's "reveal"
+	// stage calls showReveal directly, with nothing primed beforehand).
+	title.style.transition = "none"
+	title.style.opacity = "1"
+	title.innerHTML = "The imposter was:"
+	value.style.transition = "none"
+	value.style.opacity = "0"
+	value.innerHTML = ""
+	drawBox.style.transition = "none"
+	drawBox.style.opacity = "0"
+	continueBtn.style.transition = "none"
+	continueBtn.style.opacity = "0"
+	continueBtn.disabled = true
+	removeChilds(correctBox)
+
 	removeChilds(svg)
 	let drw = players[imposterSlot][1]["drawing" + round]
 	for (let i = 0; i < drw.length; i++) {
@@ -361,6 +407,54 @@ function showReveal(round) {
 
 	location.href = page + "#reveal" + round
 	pageChange()
+
+	await wait(1000)
+	value.innerHTML = players[imposterSlot][0]
+	fade(value, 1)
+	fade(drawBox, 1)
+
+	await wait(3000)
+	fade(title, 0)
+	fade(value, 0)
+	await wait(500)
+	title.innerHTML = "Real prompt:"
+	value.innerHTML = plan.realPrompt
+	fade(title, 1)
+	fade(value, 1)
+
+	await wait(3000)
+	fade(title, 0)
+	fade(value, 0)
+	await wait(500)
+	title.innerHTML = "Fake prompt:"
+	value.innerHTML = plan.fakePrompt
+	fade(title, 1)
+	fade(value, 1)
+
+	await wait(3000)
+	fade(title, 0)
+	fade(value, 0)
+	await wait(500)
+	title.innerHTML = "Correctly guessed by:"
+	value.innerHTML = ""
+	fade(title, 1)
+
+	let names = result.correctVoters.map(function (i) { return players[i][0] })
+	if (names.length === 0) names = ["Nobody"]
+	await wait(500)
+	for (let i = 0; i < names.length; i++) {
+		if (i > 0) await wait(200)
+		let line = document.createElement("div")
+		line.innerHTML = names[i]
+		line.style.opacity = "0"
+		correctBox.appendChild(line)
+		line.offsetWidth // force reflow so the opacity:0 above commits before fading in
+		fade(line, 1)
+	}
+
+	await wait(2000)
+	continueBtn.disabled = false
+	fade(continueBtn, 1)
 }
 
 function continueToNextRound(round) {
@@ -385,25 +479,7 @@ function renderFinalResults() {
 	el.innerHTML = html
 }
 
-function getDate() {
-	return new Date().getDate() + "/" + (new Date().getMonth() + 1) + "/" + new Date().getFullYear()
-}
-
 function finishGame() {
-	let datestamp = new Date().getTime()
-	let key = "imposter-games-" + datestamp
-	localStorage.setItem(key, JSON.stringify([getDate(), players, roundsPlan]))
-
-	// imposter-games-list stores just the lightweight bit the past-games
-	// list actually displays, not the full game -- the full drawings only
-	// get pulled from `key` on demand when someone actually opens this
-	// specific game.
-	let summary = {key: key, date: getDate(), totalPlayers: players.length}
-	let oldGames = localStorage.getItem("imposter-games-list")
-	let list = oldGames ? JSON.parse(oldGames) : []
-	list.push(summary)
-	localStorage.setItem("imposter-games-list", JSON.stringify(list))
-
 	clearSession()
 	location.href = "thanks.html"
 }

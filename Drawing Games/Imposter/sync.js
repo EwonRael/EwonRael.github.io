@@ -258,12 +258,20 @@ function mergeRoundsSnapshot(snap) {
 // a single slot.
 function watchAllRoundField(field, onAllDone) {
 	allRoundRef = gameRef("rounds")
+	let done = false
 	allRoundRef.on("value", function (snap) {
 		mergeRoundsSnapshot(snap)
 		let allDone = players.length > 0 && players.every(function (p) {
 			return p && p[1] && p[1][field] != null
 		})
-		if (allDone) {
+		// Firebase can fire "value" twice in quick succession for the same
+		// write (once from local cache, once from the server ack) -- the
+		// `done` guard makes sure onAllDone (showReveal, for the voting
+		// case) only ever actually runs once, since a second concurrent run
+		// would duplicate anything it builds up incrementally, like the
+		// correct-guessers list.
+		if (allDone && !done) {
+			done = true
 			stopWatchingAllRoundField()
 			onAllDone()
 		}
@@ -274,10 +282,55 @@ function stopWatchingAllRoundField() {
 	if (allRoundRef) { allRoundRef.off(); allRoundRef = null }
 }
 
+let waitingPartnersHandler = null
+
+// Swaps the waiting message over to naming whichever still-incomplete
+// player(s) are currently disconnected, so someone stuck on this screen
+// can tell a dropped player -- not just a slow one -- is why, same idea as
+// Captioner's watchWaitingPartner. Adapted for Imposter's "wait for
+// everyone" model (there's no single "the next player" here the way
+// Captioner's relay chain has one) -- this re-checks roster connectivity
+// against whichever slots still haven't filled in `field` every time the
+// roster changes, rather than watching one fixed slot.
+//
+// Registers on the already-listened-to `rosterRef` (rather than a fresh
+// gameRef("roster")) and detaches by exact callback reference, not a bare
+// .off() -- Firebase tracks listeners by path, so an unqualified .off()
+// on that path would also tear down applyRosterSnapshot's listener
+// (listenRoster), which has to stay alive for the whole game.
+function watchWaitingPartners(verb, field) {
+	stopWatchingWaitingPartners()
+	waitingPartnersHandler = function (snap) {
+		let roster = snap.val() || {}
+		let note = document.querySelector("#waitingNote")
+		if (!note) return
+		let disconnectedNames = []
+		for (let slot in roster) {
+			let p = players[slot]
+			if (p && p[1][field] == null && roster[slot].connected === false) {
+				disconnectedNames.push(roster[slot].name)
+			}
+		}
+		note.innerHTML = disconnectedNames.length > 0
+			? "Waiting for " + disconnectedNames.join(", ") + " to reconnect..."
+			: "Waiting for everyone to finish " + verb + "..."
+	}
+	rosterRef.on("value", waitingPartnersHandler)
+}
+
+function stopWatchingWaitingPartners() {
+	if (waitingPartnersHandler) {
+		rosterRef.off("value", waitingPartnersHandler)
+		waitingPartnersHandler = null
+	}
+}
+
 function beginWaitingForAll(verb, field, onReady) {
 	document.querySelector("#waitingNote").innerHTML = "Waiting for everyone to finish " + verb + "..."
 	document.querySelector("#waiting").style.display = "inherit"
+	watchWaitingPartners(verb, field)
 	watchAllRoundField(field, function () {
+		stopWatchingWaitingPartners()
 		document.querySelector("#waiting").style.display = "none"
 		onReady()
 	})
@@ -335,16 +388,9 @@ function continueResumeGame(total) {
 			pageChange()
 		})
 	}
-	else if (resume.stage === "gallery") {
+	else if (resume.stage === "gallery" || resume.stage === "waitVote") {
 		location.href = page + "#gallery" + round
 		pageChange()
-	}
-	else if (resume.stage === "waitVote") {
-		location.href = page + "#gallery" + round
-		pageChange()
-		beginWaitingForAll("voting", "vote" + round, function () {
-			showReveal(round)
-		})
 	}
 	else if (resume.stage === "reveal") {
 		showReveal(round)
@@ -353,17 +399,23 @@ function continueResumeGame(total) {
 
 // Builds one round's gallery tiles (one per player who's submitted a
 // drawing" + round" so far) into that round's own gallery box, wired to
-// open the single-drawing detail/vote view.
+// select that player as this player's imposter guess directly on click.
+// Highlighting the current player's own pick is recomputed from `players`
+// data on every call (rather than tracked as separate DOM state) since this
+// function fully rebuilds the gallery's innerHTML each time it's called,
+// including on every tick of the live listener as stragglers' drawings
+// pop in -- a manually-added class would otherwise get wiped out.
 function renderRoundGallery(round) {
 	let galleryBox = document.querySelector("#galleryBox" + round)
 	if (!galleryBox) return
 	galleryBox.innerHTML = ""
+	let myVote = players[playerNumber] && players[playerNumber][1]["vote" + round]
 	for (let i = 0; i < players.length; i++) {
 		if (players[i] && players[i][1]["drawing" + round]) {
 			let drw = players[i][1]["drawing" + round]
 			let gallery = document.createElement("div")
-			gallery.setAttribute("class", "gallery")
-			gallery.setAttribute("onclick", "openGalleryItem(" + i + ", " + round + ")")
+			gallery.setAttribute("class", "gallery" + (myVote === i ? " selected" : ""))
+			gallery.setAttribute("onclick", "selectVote(" + i + ", " + round + ")")
 			let pic = document.createElementNS("http://www.w3.org/2000/svg", "svg")
 			pic.setAttribute("viewBox", "0 0 100 53")
 			for (let j = 0; j < drw.length; j++) {
@@ -375,6 +427,18 @@ function renderRoundGallery(round) {
 			galleryBox.appendChild(gallery)
 		}
 	}
+}
+
+// Like listenRoundGalleryLive, stays active for the whole time the player
+// is on a round's gallery screen, not a one-shot wait -- unlike drawing's
+// wait-for-all, voting doesn't block the UI, so a player can keep
+// re-picking until the last straggler votes, at which point this fires the
+// reveal automatically. Uses watchAllRoundField directly (not
+// beginWaitingForAll) specifically to skip its blocking #waiting overlay.
+function watchVotingProgress(round) {
+	watchAllRoundField("vote" + round, function () {
+		showReveal(round)
+	})
 }
 
 // While on a round's gallery screen, keep it live so thumbnails pop in
@@ -429,6 +493,7 @@ function stopFinalLive() {
 }
 
 function teardownSync() {
+	stopWatchingWaitingPartners()
 	if (rosterRef) { rosterRef.off(); rosterRef = null }
 	if (statusRef) { statusRef.off(); statusRef = null }
 	if (presenceUnsub) { presenceUnsub(); presenceUnsub = null }

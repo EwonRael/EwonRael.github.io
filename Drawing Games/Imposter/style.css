@@ -136,23 +136,26 @@ button[disabled]{
 	text-align: center;
 }
 
-h3 {
+.promptText {
 	color: #555;
-	font-size: 30px;
-	min-height: 3.6em;
-	font-weight: 400;
-	line-height: 1.2em;
-	background: repeating-linear-gradient(0deg, #fff, #fff 0.2em, #7588a3 0.2em, #7588a3 0.3em, #fff 0.3em, #fff 1.2em)
-}
-
-h3:focus {
-	outline: none;
 }
 
 .drawOutline {
+	position: relative;
 	border: solid #7588a3 3px;
 	height: 49.44vw;
 	width: calc(80vw - 6px);
+}
+
+.correctOverlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	z-index: 1;
+	padding: 0.5em;
+	text-align: left;
+	color: #555;
+	font-size: 30px;
 }
 
 #drawSpace {
@@ -164,10 +167,21 @@ h3:focus {
 
 #drawSpace svg {
 	stroke: #555;
-	stroke-width: 0.3; 
+	stroke-width: 0.6;
 	stroke-linecap: round;
 	width: 100vw;
 	filter: blur(0.05vw) contrast(2);
+}
+
+#drawTimerBar {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 6px;
+	width: 0;
+	background-color: #7588a3;
+	z-index: 5;
+	filter: blur(0.7px) contrast(2);
 }
 
 #drawLoad {
@@ -239,6 +253,10 @@ h3:focus {
 	transition: box-shadow 0s;
 }
 
+.gallery.selected {
+	animation: waiting linear 3s infinite;
+}
+
 .gallery:nth-child(odd) {
 	margin-right: 4vw;
 }
@@ -251,7 +269,6 @@ h3:focus {
 	margin: -1vw -4.8vw 0 -4.7vw;
 }
 
-#galleryItem div svg,
 #reveal1 div svg,
 #reveal2 div svg,
 #reveal3 div svg,
@@ -288,23 +305,10 @@ h3:focus {
 	transform: rotate(-1deg);
 }
 
-.button:nth-child(4):hover {
+.button:nth-child(3):hover {
 	color: rgb(213, 109, 114);
 }
 
-.button:nth-child(5):hover {
+.button:nth-child(4):hover {
 	color: gray;
-}
-
-#pastGames p {
-	font-size: 20px;
-	padding-left: 150px;
-	cursor: pointer;
-}
-
-#pastGames p.date {
-	font-size: 20px;
-	padding: 0;
-	margin: 0;
-	float: left;
 }
