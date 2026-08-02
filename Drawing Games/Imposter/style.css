@@ -254,7 +254,7 @@ button[disabled]{
 }
 
 .gallery.selected {
-	border-width: 6px;
+	outline: solid #7588a3 3px;
 	animation: waiting linear 3s infinite;
 }
 
