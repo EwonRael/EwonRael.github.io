@@ -1,0 +1,130 @@
+body {
+	font-family: "FreeSerif";
+	margin: 0;
+	padding: 0;
+	font-size: 25px;
+}
+
+h1 {
+	text-align: center;
+	font-size: 60px;
+	margin: 0;
+	padding: 0;
+}
+
+table {
+	width: 90vw;
+	margin-left: 5vw;
+	margin-top: 2em;
+	border: 1px solid black;
+}
+
+th {
+	width: 20%;
+	text-align: center;
+	height: calc(16vh - 30px);
+	opacity: 0;
+	transition: opacity 2s;
+}
+
+td {
+	text-align: center;
+	border: 1px solid black;
+	height: calc(16.6vh - 30px);
+}
+
+.unknown {
+	color: blue;
+	text-decoration: underline;
+}
+
+#DadScore {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+}
+
+#FamilyScore {
+	position: absolute;
+	top: 1em;
+	right: 1em;
+}
+
+#popup {
+	position: absolute;
+	top:0;
+	left:0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(256,256,256,0.7);
+	display: none;
+}
+
+#floater {
+	position: relative;
+	border: solid black 2px;
+	width: 90vw;
+	height: 80vh;
+	margin-left: 5vw;
+	margin-top: 5vw;
+	background-color: white;
+}
+
+#clue {
+	position: absolute;
+	top: 30%;
+	left: 5%;
+	width: 90%;
+	text-align: center;
+}
+
+#exit {
+	position: absolute;
+	right: 1em;
+	top: 0.7em;
+}
+
+#question {
+	position: absolute;
+	top: 70%;
+	left: 5%;
+	width: 90%;
+	height: 2.5em;
+	text-align: center;
+}
+
+#questionPrompt, #questionAnswer {
+	position: absolute;
+	left: 0;
+	right: 0;
+}
+
+#questionPrompt {
+	top: 0;
+	color: blue;
+	text-decoration: underline;
+	cursor: pointer;
+}
+
+#questionAnswer {
+	top: -1.5em;
+	opacity: 0;
+	transition: opacity 2s;
+}
+
+#scoreButtons {
+	position: absolute;
+	bottom: 1em;
+	left: 5%;
+	width: 90%;
+	margin: 0;
+	text-align: center;
+}
+
+.hidden {
+	display: none;
+}
+
+h2 span:hover {
+	color: blue;
+}

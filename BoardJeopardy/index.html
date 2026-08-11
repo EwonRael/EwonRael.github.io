@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Board Jeopardy!</title>
+		<link rel="stylesheet" href="style.css"/>
+		<script src="data.js"></script>
+		<script src="script.js"></script>
+	</head>
+	<body>
+		<h1>Board Jeopardy!</h1>
+		<div id="DadScore" contenteditable="true" onblur="updateDad()">TEAM A: 0</div>
+		<div id="FamilyScore" contenteditable="true" onblur="updateFam()">TEAM B: 0</div>
+			<table>
+				<tr>
+					<th onclick="this.style.opacity = 1">Financial Transparency</th>
+					<th onclick="this.style.opacity = 1">Open Meeting Law</th>
+					<th onclick="this.style.opacity = 1">ADA and IDEA</th>
+					<th onclick="this.style.opacity = 1">Title IX or  CO Discrimination?</th>
+					<th onclick="this.style.opacity = 1">Top Reasons Charter Schools Close</th>
+				</tr>
+				<tr>
+					<td class="unknown" onclick="showClue(0, 0, this)">100</td>
+					<td class="unknown" onclick="showClue(1, 0, this)">100</td>
+					<td class="unknown" onclick="showClue(2, 0, this)">100</td>
+					<td class="unknown" onclick="showClue(3, 0, this)">100</td>
+					<td class="unknown" onclick="showClue(4, 0, this)">100</td>
+				</tr>
+				<tr>
+					<td class="unknown" onclick="showClue(0, 1, this)">200</td>
+					<td class="unknown" onclick="showClue(1, 1, this)">200</td>
+					<td class="unknown" onclick="showClue(2, 1, this)">200</td>
+					<td class="unknown" onclick="showClue(3, 1, this)">200</td>
+					<td class="unknown" onclick="showClue(4, 1, this)">200</td>
+				</tr>
+				<tr>
+					<td class="unknown" onclick="showClue(0, 2, this)">300</td>
+					<td class="unknown" onclick="showClue(1, 2, this)">300</td>
+					<td class="unknown" onclick="showClue(2, 2, this)">300</td>
+					<td class="unknown" onclick="showClue(3, 2, this)">300</td>
+					<td class="unknown" onclick="showClue(4, 2, this)">300</td>
+				</tr>
+				<tr>
+					<td class="unknown" onclick="showClue(0, 3, this)">400</td>
+					<td class="unknown" onclick="showClue(1, 3, this)">400</td>
+					<td class="unknown" onclick="showClue(2, 3, this)">400</td>
+					<td class="unknown" onclick="showClue(3, 3, this)">400</td>
+					<td class="unknown" onclick="showClue(4, 3, this)">400</td>
+				</tr>
+				<tr>
+					<td class="unknown" onclick="showClue(0, 4, this)">500</td>
+					<td class="unknown" onclick="showClue(1, 4, this)">500</td>
+					<td class="unknown" onclick="showClue(2, 4, this)">500</td>
+					<td class="unknown" onclick="showClue(3, 4, this)">500</td>
+					<td class="unknown" onclick="showClue(4, 4, this)">500</td>
+				</tr>
+			</table>
+		<div id="popup">
+			<div id="floater">
+				<h1 id="titleCard">Category for Value</h1>
+				<div id="exit" onclick="document.getElementById('popup').style.display = 'none';">&times;</div>
+				<div id="clue">Clue</div>
+				<div id="question">
+					<span id="questionPrompt" onclick="revealQuestion()">Click to Reveal</span>
+					<span id="questionAnswer" onclick="revealQuestion()"></span>
+				</div>
+				<h2 id="scoreButtons">
+					<span onclick="dadPoints()">TEAM A</span> | <span onclick="famPoints()">TEAM B</span>
+				</h2>
+			</div>
+		</div>
+	</body>
+</html>
