@@ -22,8 +22,9 @@
         <div id="header">
             <h1>American Type Revival</h1>
             <h2 id="subhead">Technical Information</h2>
-            
-            <div id="body">
+        </div>
+
+        <div id="body">
                 <h2 id="Overview">Overview</h2>
                 <p>The goal of ATR is to make high quality digital reproductions of analogue type. This page documents the standards and procedures that should be followed in making these digital fonts. The goal is to provide consistency within the ATR font library, as well as provide the highest quality font files possible. Having standardized procedures helps accomplish both these goals.</p>
                 <p>Digital fonts and analogue type are two fundamentally different mediums with unique advantages and limitations. Digital revivals should aim to both accurately represent their source material, while also providing a practical and usable digital typeface. These two goals are often in direct conflict with each other. This document is, in part, an explanation of how to navigate making this compromise.</p>
@@ -59,7 +60,18 @@
         <a href="#BasicFontMetrics">Basic Font Metrics</a><br>
         <a href="#Theinvisiblegrid">The invisible grid: subunits for widths</a><br>
         <a href="#Dealingwithalackofinfo">Dealing with a lack of info</a><br>
-        <a href="#Letterwidthlookuptable">Letter width lookup table</a>
+        <a href="#Letterwidthlookuptable">Letter width lookup table</a><br>
+        <a href="#Whentonotusesubunitsforwidths">When to not use subunits for widths</a>
+    </p>
+
+    <p>
+        <b><a href="#DrawingtheLetters">Drawing the Letters</a></b><br>
+        <a href="#Understandingdifferentpointsizes">Understanding different point sizes (and preparing the source material)</a><br>
+        <a href="#Asystemofcompromises">A system of compromises</a><br>
+        <a href="#Dealingwithlowfidelitysources">Dealing with low fidelity sources</a><br>
+        <a href="#Drawingwhatsnotthere">Drawing what's not there</a><br>
+        <a href="#agnosticquotes">The agnostic quotes</a><br>
+        <a href="#HowdoIknowwhenitsdone">How do I know when it's "done?"</a>
     </p>
 
     <p>
@@ -5665,6 +5677,5 @@
                 <p>As was the case with the average letter widths, this data is based on upright book weight serif fonts. The data can be <a href="resource/kerning-lookup-table.csv">downloaded as a spreadsheet</a>, but is also <a href="resource/kerning-reference.otf">available as a otf file</a>. The idea with the otf file is that you can open it in your font editor of choice and copy-paste the kerning lookup table.</p>
                 <p><b>Please note:</b> the lookup table doesn't include accented glyphs. Each lookup only has one item in it, the letter. If you are using this in your workflow you will need to add the accented glyphs manually.</p>
             </div>
-        </div>
     </body>
 </html>

@@ -39,6 +39,65 @@
 	font-weight: 400;
 }
 
+@font-face {
+	font-family: "NewsGothic";
+	src: url("News Gothic/NewsGothic-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "HoboATR";
+	src: url("Hobo/HoboATR-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "HoboATR";
+	src: url("Hobo/HoboATR-Light.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 300;
+}
+
+@font-face {
+	font-family: "TiffanyGothicATR";
+	src: url("Tiffany Gothic/TiffanyGothicATR-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+#info-title {
+	font-size: 48px;
+	margin: 10px;
+	line-height: 1.1;
+}
+
+.font-name {
+	font-size: 36px;
+	display: block;
+	margin-bottom: 10px;
+}
+
+.specimen-live {
+	overflow: hidden;
+	box-sizing: border-box;
+	line-height: 1.1;
+	text-align: left;
+	background-image: none !important;
+}
+
+.specimen-live span {
+	display: block;
+	cursor: pointer;
+	/* Keep the inner layout steady while the card animates to/from zero. */
+	width: 326px;
+	white-space: nowrap;
+	padding: 0 15px;
+	box-sizing: border-box;
+	margin-bottom: 15px;
+}
+
 html {
   scroll-behavior: smooth;
 }
@@ -71,6 +130,7 @@ body {
 	border-radius: 0;
 	mix-blend-mode: normal;
 	opacity: 100%;
+	cursor: help;
 }
 
 @media only screen and (max-width: 1410px) {
@@ -226,6 +286,7 @@ strong:hover::before {
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
 	padding: 0 5px;
 	margin: 0 -5px;
+	width: max-content;
 }
 
 .dropdown-content a {
@@ -274,7 +335,7 @@ strong:hover::before {
 	padding: 5px 20px;
 	overflow: scroll;
 	display: none;
-	z-index: 1;
+	z-index: 10;
 }
 
 #infoBox p {
@@ -287,7 +348,9 @@ strong:hover::before {
 	font-family: "SilkRemingtonTypewriter";
 	font-size: 16px;
 	font-weight: 400;
+	display: block;
 }
+
 
 #infoBox::-webkit-scrollbar {
     display: none;
@@ -299,8 +362,9 @@ strong:hover::before {
 }
 
 #body {
+	width: 920px;
 	margin-top: 100px;
-	margin-left: 20px;
+	margin-left: calc(50% - 450px);
 	border-top: 1px solid black;
 	height: 50px;
 }
@@ -405,6 +469,11 @@ ul {
         width: 660px;
     }
 
+    #body {
+        width: 640px;
+        margin-left: calc(50% - 310px);
+    }
+
     #header h1 {
         font-size: 60px;
         padding-top: 80px;
@@ -459,8 +528,10 @@ ul {
     }
     
     #infoBox {
-        max-width: 90vw;
-        left: 5vw !important;
+        width: max-content;
+        max-width: calc(90vw - 42px);
+        left: 50% !important;
+        transform: translateX(-50%);
     }
     #body {
         width: calc(100vw -40px);
@@ -519,4 +590,40 @@ ul {
 #infoBox img {
     max-width: 100%;
     height: auto;
+}
+
+#specimens div.specimen-live {
+    height: auto;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.specimen-live span:last-child {
+    margin-bottom: 0;
+}
+
+@font-face {
+    font-family: "TiffanyGothicAlternateG";
+    src: url("Tiffany Gothic/TiffanyGothicATR-Regular.woff2") format("woff2");
+    font-style: normal;
+    font-weight: 400;
+    unicode-range: U+0067;
+    font-feature-settings: "salt" 1;
+}
+
+.specimen-live[data-font="TiffanyGothicATR"] span:is([data-size="24"], [data-size="18"], [data-size="14"], [data-size="12"]) {
+    font-family: "TiffanyGothicAlternateG", "TiffanyGothicATR";
+}
+
+@media only screen and (max-width: 400px) {
+    #specimens div.specimen-live.familyHide,
+    #specimens div.specimen-live.statusHide,
+    #specimens div.specimen-live.orderHide {
+        height: 0;
+        padding-bottom: 0;
+    }
+
+    .specimen-live span {
+        width: calc(90vw - 2px);
+    }
 }

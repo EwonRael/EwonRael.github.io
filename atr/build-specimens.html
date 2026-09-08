@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Build specimen lines</title>
+		<link rel="stylesheet" href="style.css"/>
+	</head>
+	<body style="font-family: monospace; padding: 20px">
+		<h1>Specimen line builder</h1>
+		<p id="status">loading word bank…</p>
+		<script>
+const SIZES = [96, 72, 60, 48, 36, 30, 24, 18, 14, 12]
+const FONTS = [
+    { key: "HoboATR",        family: "HoboATR",        weight: 400 },
+    { key: "HoboATR-300",    family: "HoboATR",        weight: 300 },
+    { key: "NewsGothic",     family: "NewsGothic",     weight: 400 },
+    { key: "TiffanyGothicATR", family: "TiffanyGothicATR", weight: 400 },
+]
+const TARGET = 328 - 2 - 30  // border-box card minus borders and span padding
+const KEEP = 10
+
+function shuffle(arr) {
+    const a = [...arr]
+    for (let i = a.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [a[i], a[j]] = [a[j], a[i]]
+    }
+    return a
+}
+
+async function main() {
+    const status = document.getElementById("status")
+    const bank = await (await fetch("specimen-words.json")).json()
+    // force-load each font/weight before measuring, or canvas falls back silently
+    for (const font of FONTS) {
+        for (const size of SIZES) {
+            await document.fonts.load(`${font.weight} ${size}px "${font.family}"`, "Hamburgefonstiv")
+        }
+    }
+    const ctx = document.createElement("canvas").getContext("2d")
+    const result = {}
+
+    for (const font of FONTS) {
+        result[font.key] = {}
+        for (const size of SIZES) {
+            status.textContent = `${font.key} @ ${size}px…`
+            await new Promise(r => setTimeout(r))  // let status paint
+            const measure = text => {
+                ctx.font = `${font.weight} ${size}px "${font.family}"`
+                return ctx.measureText(text).width
+            }
+            const fitting = []
+            for (const word of bank) {
+                const w = measure(word)
+                if (w <= TARGET && w >= TARGET * 0.94 && /^[A-Z][A-Za-z ,&'’.-]+$/.test(word) && !/\b(?:Point|Series|font|fonts)\b/i.test(word)) fitting.push([word, w])
+            }
+            const candidates = fitting
+                .sort((a, b) => b[1] - a[1])
+                .slice(0, 40)
+            result[font.key][size] = candidates.slice(0, KEEP)
+                .map(([line]) => line)
+        }
+    }
+
+    const blob = new Blob([JSON.stringify(result, null, 1)], { type: "application/json" })
+    const a = document.createElement("a")
+    a.href = URL.createObjectURL(blob)
+    a.download = "specimen-lines.json"
+    a.textContent = "Download specimen-lines.json"
+    status.textContent = "done! "
+    status.appendChild(a)
+}
+main().catch(e => document.getElementById("status").textContent = "ERROR: " + e.message)
+		</script>
+	</body>
+</html>

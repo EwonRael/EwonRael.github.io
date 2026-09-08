@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
+		<meta charset="utf-8">
 		<title>American Type Revival</title>
 		<link rel="stylesheet" href="style.css"/>
 		<link rel="shortcut icon" href="Favicon.png">
 		<link rel="icon" type="../image/png" href="Favicon.png">
 		<script src="script.js" type="module"></script>
+		<script src="specimen.js" defer></script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
 		<meta property="og:title" content="American Type Revival" />
 		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
@@ -14,9 +16,9 @@
 		<div id="logo" onclick="location.href = 'about.html'"></div>
 		<div id="infoBox">
 		  <div id="all-font-info">
-        <img id="info-title" src="Bodoni/Bodoni Series hover.png"/>
-			  <p>Font Family: <span id="info-family">Bodoni</span></p>
-			  <p>Status: <span id="info-status">Finished</span></p>
+        <div id="info-title"></div>
+			  <p id="info-family-line">Font Family: <span id="info-family"></span></p>
+			  <p>Status: <span id="info-status"></span></p>
 			</div>
 			<div id="font-group-info">
 			</div>
@@ -32,8 +34,7 @@
 					<div class="dropbtn" id="displaying">all fonts</div>
 					<div class="dropdown-content">
 						<a onclick="display(0)">all fonts</a>
-						<a onclick="display(1)">finished&nbsp;fonts</a>
-						<a onclick="display(2)">free fonts</a>
+						<a onclick="display(1)">free fonts</a>
 					</div>
 				</div>
 				<p>, sorted&nbsp;</p>
@@ -57,34 +58,10 @@
 			</div>
 		</div>
 		<div id="specimens">
-			<div class="familyHide" aria-label="Bodoni Bold" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Bodoni Bold Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Bodoni Book" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Bodoni Book Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Bodoni Italic" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div id="Bodoni" aria-label="Bodoni Series" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Card Bodoni" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Card Bodoni Bold" data-date="26-02-22" data-status="unfinished" data-family="Bodoni"></div>
-			<div class="familyHide" aria-label="Cloister Bold" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Cloister Bold Condensed" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Cloister Bold Title" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Cloister Cursive" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Cloister Italic" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div id="Cloister" aria-label="Cloister Oldstyle" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Cloister Title" data-date="26-02-22" data-status="unfinished" data-family="Cloister"></div>
-			<div class="familyHide" aria-label="Garamond Bold" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
-			<div class="familyHide" aria-label="Garamond Italic" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
-			<div id="Garamond" aria-label="Garamond Series" data-date="26-02-22" data-status="unfinished" data-family="Garamond"></div>
-			<div class="familyHide" aria-label="Goudy Bold" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Bold Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Catalogue" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Catalogue Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Cursive" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Handtooled" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Handtooled Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Italic" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div id="Goudy" aria-label="Goudy Oldstyle" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
-			<div class="familyHide" aria-label="Goudy Title" data-date="26-02-22" data-status="unfinished" data-family="Goudy"></div>
+			<div id="Hobo" class="specimen-live" style="font-family: 'HoboATR'" data-font="HoboATR" aria-label="Hobo" data-date="26-09-07" data-status="free" data-family="Hobo"><span style="font-size: 96px">Mend</span><span style="font-size: 72px">Woven</span><span style="font-size: 60px">Fabric</span><span style="font-size: 48px">Threadbare</span><span style="font-size: 36px">Satin &amp; Linen</span><span style="font-size: 30px">Woven Woolens</span><span style="font-size: 24px">Handmade Textiles</span><span style="font-size: 18px">Fine Cloth &amp; Upholstery</span><span style="font-size: 14px">Draperies, Curtains &amp; Fabrics</span><span style="font-size: 12px">The American Type Revival Collection</span></div>
+			<div class="familyHide specimen-live" style="font-family: 'HoboATR'; font-weight: 300" data-font="HoboATR" aria-label="Hobo Light" data-date="26-09-07" data-status="free" data-family="Hobo"><span style="font-size: 96px">Mend</span><span style="font-size: 72px">Woven</span><span style="font-size: 60px">Fabric</span><span style="font-size: 48px">Threadbare</span><span style="font-size: 36px">Satin &amp; Linen</span><span style="font-size: 30px">Woven Woolens</span><span style="font-size: 24px">Handmade Textiles</span><span style="font-size: 18px">Fine Cloth &amp; Upholstery</span><span style="font-size: 14px">Draperies, Curtains &amp; Fabrics</span><span style="font-size: 12px">The American Type Revival Collection</span></div>
+			<div id="News Gothic" class="specimen-live" style="font-family: 'NewsGothic'" data-font="NewsGothic" aria-label="News Gothic" data-date="26-09-07" data-status="paid" data-funding="10000" data-family="News Gothic"><span style="font-size: 96px">Mend</span><span style="font-size: 72px">Woven</span><span style="font-size: 60px">Fabric</span><span style="font-size: 48px">Threadbare</span><span style="font-size: 36px">Satin &amp; Linen</span><span style="font-size: 30px">Woven Woolens</span><span style="font-size: 24px">Handmade Textiles</span><span style="font-size: 18px">Fine Cloth &amp; Upholstery</span><span style="font-size: 14px">Draperies, Curtains &amp; Fabrics</span><span style="font-size: 12px">The American Type Revival Collection</span></div>
+			<div id="Tiffany Gothic" class="specimen-live" style="font-family: 'TiffanyGothicATR'" data-font="TiffanyGothicATR" aria-label="Tiffany Gothic" data-date="26-09-07" data-status="free" data-family="Tiffany Gothic"><span style="font-size: 96px">Mend</span><span style="font-size: 72px">Woven</span><span style="font-size: 60px">Fabric</span><span style="font-size: 48px">Threadbare</span><span style="font-size: 36px">Satin &amp; Linen</span><span style="font-size: 30px">Woven Woolens</span><span style="font-size: 24px">Handmade Textiles</span><span style="font-size: 18px">Fine Cloth &amp; Upholstery</span><span style="font-size: 14px">Draperies, Curtains &amp; Fabrics</span><span style="font-size: 12px">The American Type Revival Collection</span></div>
 		</div>
 	</body>
 </html>
