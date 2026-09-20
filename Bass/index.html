@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Name That Bass Line</title>
+<style>
+  body { font-family: sans-serif; text-align: center; }
+  audio { width: 100%; }
+  #guess { width: 100%; font-size: 1.5em; box-sizing: border-box; }
+  button { font-size: 1.2em; padding: 0.5em 1em; margin: 0.5em; }
+</style>
+</head>
+<body>
+
+<h1>Name That Bass Line</h1>
+<p>Listen to the bass line and type the song title. Stuck? Ask for the artist.</p>
+
+<p id="progress"></p>
+
+<audio id="player" controls></audio>
+
+<p>
+  <input type="text" id="guess" placeholder="song title..." autocomplete="off">
+</p>
+<p>
+  <button id="submitBtn">Guess</button>
+  <button id="hintBtn">Hint (artist)</button>
+  <button id="skipBtn">Skip</button>
+</p>
+
+<p id="feedback"></p>
+<p id="hint"></p>
+
+<button id="nextBtn" style="display:none">Next song</button>
+
+<hr>
+<p id="final" style="display:none"></p>
+
+<script src="script.js"></script>
+</body>
+</html>
