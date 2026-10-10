@@ -1,0 +1,55 @@
+body {
+    font-family: Helvetica, Ariel, Sans;
+    width: 80vw;
+    max-width: 1000px;
+    margin: auto;
+}
+
+img {
+    display: block;
+    margin: 0 auto;
+    max-width: calc(100% - 120px);
+    text-align: center;
+    border: 1px grey solid;
+    margin-top: 5em;
+}
+
+.caption {
+    font-family: monospace;
+    max-width: calc(100% - 120px);
+    margin-left: 60px;
+    margin-bottom: 5em;
+}
+
+h2 {
+    margin-top: 2em;
+}
+
+.photoslop-list {
+    list-style: none;
+    padding: 0;
+}
+
+.photoslop-list li {
+    margin-bottom: 2em;
+    text-align: center;
+}
+
+img.photoslop {
+    display: block;
+    width: 400px;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+    border: 1px grey solid;
+    margin: 0.5em auto 0 auto;
+}
+
+.photoslop-list li a {
+    display: inline-block;
+}
+
+#end {
+    border: none;
+    margin-bottom: 6em;
+}
