@@ -52,6 +52,7 @@ async function pageLoad() {
         const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_');
         window.fontlist[docId] = {
             name: specimen.getAttribute('aria-label'),
+            fontName: specimen.dataset.fontName,
             family: specimen.dataset.family,
             status: specimen.dataset.status,
             date: specimen.dataset.date,
@@ -61,6 +62,8 @@ async function pageLoad() {
         };
     }
     window.setupHoverListeners();
+    if (location.hash === "#free") window.display(1)
+    if (location.hash === "#paid") window.display(2)
     // sync with Firebase in the background; failures are non-fatal
     try {
         const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js")
@@ -92,7 +95,12 @@ async function pageLoad() {
                         funding: data.funding
                     })
                 }
-                window.fontlist[docId] = data
+                window.fontlist[docId] = {
+                    ...data,
+                    // The specimen metadata is authoritative because each style
+                    // can have a different human-readable font name.
+                    fontName: specimen.dataset.fontName || data.fontName
+                }
             } else {
                 await setDoc(doc(db, "fonts", docId), window.fontlist[docId])
             }
@@ -122,6 +130,13 @@ window.display = function(a) {
 			}
 		}
 		document.getElementById("displaying").innerHTML = "free fonts"
+	}
+	if (a == 2) {
+		for (const specimen of specimens) {
+			let status = window.fontlist[specimen.getAttribute('aria-label').replace(/\s+/g, '_')]["status"]
+			specimen.classList.toggle("statusHide", status != "paid")
+		}
+		document.getElementById("displaying").innerHTML = "paid fonts"
 	}
 }
 
@@ -216,7 +231,23 @@ window.group = function(a) {
 	}
 }
 
+const familyPages = new Set(["Hobo", "News Gothic", "Tiffany Gothic"])
+
 window.setupHoverListeners = function() {
+    document.getElementById("specimens").addEventListener("click", (e) => {
+        const card = e.target.closest("#specimens > div")
+        if (!card) return
+        const family = card.dataset.family
+        if (!familyPages.has(family)) return
+        const folder = `family/${family.toLowerCase().replace(/\s+/g, "-")}/`
+        if (document.getElementById("grouping").textContent.includes("grouped by family")) {
+            window.goTo(folder + "index.html")
+        } else {
+            const style = card.getAttribute("aria-label").endsWith("Light") ? "light" : "regular"
+            window.goTo(folder + style + ".html")
+        }
+    })
+
     const specimens = document.querySelectorAll("#specimens > div")
     const infoBox = document.getElementById("infoBox")
     const infoTitle = document.getElementById("info-title")
@@ -226,6 +257,8 @@ window.setupHoverListeners = function() {
     const fontGroupInfo = document.getElementById("font-group-info")
     const aboutInfo = document.getElementById("about-info")
     const logo = document.getElementById("logo")
+    const getFontName = (specimen, data) =>
+        specimen.dataset.fontName || data.fontName || data.family || "Unknown"
     logo.addEventListener('mouseenter', () => {
         allFontInfo.style.display = "none"
         fontGroupInfo.style.display = "none"
@@ -240,14 +273,14 @@ window.setupHoverListeners = function() {
         fontGroupInfo.style.display = "none"
         allFontInfo.style.display = "block"
         document.getElementById("info-family-line").childNodes[0].textContent = "Font Family: "
-        infoFamily.textContent = data.family || "Unknown"
+        infoFamily.textContent = getFontName(specimen, data)
         infoStatus.textContent = data.status || "Unknown"
         if (infoStatus.textContent === "free") {
             infoStatus.textContent = "funded"
         } else if (data.funding) {
             infoStatus.textContent = `${Math.round(data.income ?? 0).toLocaleString("en-US")} / ${Number(data.funding).toLocaleString("en-US")} USD`
         }
-        infoTitle.textContent = specimen.getAttribute('aria-label')
+        infoTitle.textContent = specimen.dataset.displayName || specimen.getAttribute('aria-label')
         infoTitle.style.fontFamily = `"${faceName}"`
         infoTitle.style.fontWeight = faceWeight
     }
@@ -270,7 +303,7 @@ window.setupHoverListeners = function() {
                     infoTitle.style.fontWeight = faceWeight
                     document.getElementById("info-family-line").childNodes[0].textContent = "Fonts in Family: "
                     infoFamily.innerHTML = members.map(el =>
-                        `<span class="family-member">${el.getAttribute('aria-label')}</span>`
+                        `<span class="family-member">${getFontName(el, window.fontlist[el.getAttribute('aria-label').replace(/\s+/g, '_')] || {})}</span>`
                     ).join("")
                     const isFunded = (el) => {
                         const d = window.fontlist[el.getAttribute('aria-label').replace(/\s+/g, '_')]

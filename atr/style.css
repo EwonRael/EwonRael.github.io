@@ -133,6 +133,10 @@ body {
 	cursor: help;
 }
 
+#logo.home-link:hover {
+	cursor: pointer;
+}
+
 @media only screen and (max-width: 1410px) {
   #logo:hover {
 	  left: 10px;
@@ -157,14 +161,436 @@ body {
 	transition: border 0.2s, width 0.5s;
 }
 
+body.series-page #filters p {
+	width: 100%;
+}
+
+#series-info {
+	width: calc(100% - 40px);
+	margin: 40px auto 0;
+}
+
+#series-title {
+	margin: -100px 0 0;
+	padding: 0;
+	font-size: 96px;
+	font-weight: 400;
+	line-height: 1;
+	text-align: left;
+}
+
+#funding-bar {
+	position: relative;
+	width: 100%;
+	height: 20px;
+	margin-top: 20px;
+	box-sizing: border-box;
+	border: 1px solid black;
+	padding: 2px;
+}
+
+#funding-fill {
+	height: 100%;
+	width: var(--funded);
+	background: #c4d7ed;
+	animation: fundingFill 1s linear;
+}
+
+#funding-label {
+	position: absolute;
+	right: 8px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+}
+
+@keyframes fundingFill {
+	from { width: 0; }
+}
+
+#funding-bar {
+	cursor: pointer;
+}
+
+#funding-breakdown {
+	display: grid;
+	grid-template-rows: 0fr;
+	transition: grid-template-rows 0.3s ease;
+}
+
+#funding-breakdown.open {
+	grid-template-rows: 1fr;
+}
+
+#funding-breakdown-inner {
+	overflow: hidden;
+}
+
+.funding-row {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+	margin-top: 14px;
+}
+
+.funding-row:first-child {
+	margin-top: 20px;
+}
+
+.funding-row-name {
+	flex: 0 0 auto;
+	white-space: nowrap;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+}
+
+.funding-row-percent {
+	flex: 0 0 auto;
+	min-width: 4ch;
+	text-align: right;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+}
+
+.funding-row-track {
+	flex: 1;
+	height: 5px;
+	background: #ebf2f9;
+}
+
+.funding-row-fill {
+	height: 100%;
+	width: var(--funded);
+	background: #1f3f66;
+	opacity: 75%;
+	transition: opacity 0.2s;
+}
+
+.funding-row:hover .funding-row-fill {
+	opacity: 100%;
+}
+
+#funding-breakdown.open .funding-row-fill {
+	animation: fundingFill 1s linear;
+}
+
+.series-buttons {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: flex-end;
+	gap: 12px 20px;
+	margin-top: 20px;
+}
+
+.button-group {
+	display: flex;
+	gap: 20px;
+}
+
+.style-info {
+	margin-right: auto;
+	align-self: center;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+	position: relative;
+	top: -1px;
+}
+
+#series-styles h2 + .style-sample {
+	margin-top: 40px;
+}
+
+.style-sample + .series-buttons {
+	margin-top: 5px;
+	margin-bottom: 40px;
+}
+
+.download-button,
+.buy-button {
+	padding: 0 14px;
+	border: 1px solid black;
+	background: white;
+	color: inherit;
+	font-family: "EBGaramond";
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.35;
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+
+#series-styles {
+	margin-top: 150px;
+	position: relative;
+}
+
+#series-about {
+	margin-top: 150px;
+	margin-bottom: 0;
+}
+
+#series-about h2,
+#series-cards h2 {
+	margin: 10px 0;
+	font-size: 45px;
+	font-weight: 400;
+	line-height: 1.3;
+}
+
+#series-about p {
+	font-size: 25px;
+	line-height: 1.5;
+	margin-top: 1em;
+}
+
+#series-about img {
+	width: 500px;
+	display: block;
+	margin: 0 auto;
+	max-width: 100%;
+}
+
+#series-about p.caption {
+	font-family: "SilkRemingtonTypewriter";
+	margin: 30px auto;
+	font-size: 16px;
+	max-width: 600px;
+}
+
+#series-cards {
+	margin-top: 150px;
+	margin-bottom: 100px;
+}
+
+#series-cards h2 {
+	margin-bottom: 40px;
+}
+
+#series-end .series-buttons {
+	flex-wrap: nowrap;
+	margin-top: 20px;
+}
+
+.series-buttons .view-family {
+	margin-right: auto;
+}
+
+#series-end .series-buttons:has(.view-family) {
+	flex-wrap: wrap;
+	gap: 20px;
+	container-type: inline-size;
+}
+
+@container (max-width: 580px) {
+	.series-buttons .view-family {
+		flex-basis: 100%;
+	}
+}
+
+#series-end img.end-ornament {
+	display: block;
+	width: 150px;
+	max-width: 100%;
+	margin: 0 auto;
+	padding: 100px 0;
+}
+
+.size-label {
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+	margin: 30px 0 0;
+	text-align: right;
+	position: relative;
+}
+
+.size-label.style-start {
+	margin-top: 100px;
+}
+
+.size-name {
+	display: block;
+	position: relative;
+	top: -3px;
+	text-align: center;
+	font-family: "EBGaramond";
+	font-feature-settings: "smcp" 1;
+	letter-spacing: 1px;
+	font-size: 25px;
+	line-height: 1;
+}
+
+.size-sample {
+	box-sizing: border-box;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	text-align: center;
+	margin-top: -0.3em;
+	font-family: "HoboATR";
+	font-weight: 400;
+	line-height: 1.2;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: none;
+	outline: none;
+	cursor: text;
+}
+
+.size-sample::-webkit-scrollbar {
+	display: none;
+}
+
+#series-ornament {
+	position: absolute;
+	right: 0;
+	bottom: calc(100% + 10px);
+	font-family: "EBGaramond";
+	font-size: 32px;
+	line-height: 1;
+	color: #627894;
+}
+
+#body.has-breadcrumb {
+	margin-top: 40px;
+	border-top: none;
+}
+
+#series-styles h2 {
+	margin: 10px 0;
+	font-size: 20px;
+	font-weight: 700;
+	line-height: 1.3;
+}
+
+.buy-button:hover::before,
+.download-button:hover::after,
+.view-family:hover::before {
+	font-weight: 400;
+	font-size: max(25px, 1em);
+	line-height: 1;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #1f3f66;
+	opacity: 0.6;
+}
+
+.buy-button:hover::before {
+	content: "\261E";
+	right: 100%;
+	margin-right: 10px;
+}
+
+.download-button:hover::after {
+	content: "\261C";
+	left: 100%;
+	margin-left: 10px;
+}
+
+.view-family:hover::before {
+	content: "\261E";
+	right: 100%;
+	margin-right: 10px;
+}
+
+.view-family:hover::after {
+	content: none;
+}
+
+.style-info b {
+	font-family: "EBGaramond";
+	font-size: 20px;
+	font-weight: 700;
+	position: relative;
+	top: 1px;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+.style-info b:hover {
+	color: #1f3f66;
+	opacity: 0.80;
+	top: -2px;
+}
+
+.style-info b:hover::before {
+	content: "\261E";
+	font-weight: 400;
+	font-size: max(25px, 1em);
+	position: absolute;
+	right: 100%;
+	margin-right: 6px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #1f3f66;
+	opacity: 0.6;
+}
+
+.style-sample {
+	box-sizing: border-box;
+	width: 100vw;
+	margin-left: calc(50% - 50vw);
+	font-size: 96px;
+	line-height: 1;
+	padding-bottom: 10px;
+	white-space: nowrap;
+	overflow-x: auto;
+	overflow-y: hidden;
+	scrollbar-width: none;
+	outline: none;
+	cursor: text;
+}
+
+.style-sample::-webkit-scrollbar {
+	display: none;
+}
+
+body.series-page {
+	overflow-x: hidden;
+}
+
+@keyframes pageFadeIn {
+	from { opacity: 0; }
+	to { opacity: 1; }
+}
+
+#specimens, #filters > *, #series-info, #body {
+	animation: pageFadeIn 0.3s ease;
+}
+
+body.leaving #specimens,
+body.leaving #filters > *,
+body.leaving #series-info,
+body.leaving #body {
+	opacity: 0;
+	transition: opacity 0.3s ease;
+}
+
 #specimens div:hover {
 	border: black solid 1px;
+}
+
+#specimens div[data-family="Hobo"] {
+	cursor: pointer;
 }
 
 #header {
 	width: 940px;
 	margin: auto;
 	position: relative;
+}
+
+#header h1 a {
+	color: inherit;
+	text-decoration: none;
 }
 
 #header h1 {
@@ -233,10 +659,20 @@ td.monospaced {
 #filters p {
 	font-size: 16px;
 	text-align: left;
-	line-height: 2;
+	line-height: 1.2;
 	font-family: "SilkRemingtonTypewriter";
 	margin-top: 0;
+	padding: 8px 0;
 	float: left;
+}
+
+#filters p a {
+	color: inherit;
+	text-decoration: underline;
+}
+
+#filters p a:hover {
+	color: #1f3f66;
 }
 
 strong {
@@ -246,6 +682,7 @@ strong {
 strong:hover::before {
   content: "\261E";
   font-weight: 400;
+  font-size: max(25px, 1em);
   position: absolute;
   right: 100%;
   margin-right: 10px;
@@ -260,9 +697,9 @@ strong:hover::before {
 	border: none;
 	font-family: "SilkRemingtonTypewriter";
 	font-size: 16px;
-	line-height: 2;
+	line-height: 1.2;
 	text-decoration: underline;
-	padding: 0 5px;
+	padding: 8px 5px;
 	margin: 0 -5px;
 	mix-blend-mode: multiply;
 	cursor: default;
@@ -275,7 +712,7 @@ strong:hover::before {
 	margin: 0;
 	font-family: "SilkRemingtonTypewriter";
 	font-size: 16px;
-	line-height: 2;
+	line-height: 1.2;
 	cursor: pointer;
 }
 
@@ -284,7 +721,8 @@ strong:hover::before {
 	position: absolute;
 	background-color: white;
 	box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-	padding: 0 5px;
+	padding: 8px 5px;
+	line-height: 1;
 	margin: 0 -5px;
 	width: max-content;
 }
@@ -293,7 +731,7 @@ strong:hover::before {
 	color: black;
 	text-decoration: none;
 	display: block;
-	padding: 0 5px;
+	padding: 8px 5px;
 	margin: 0 -5px;
 }
 
@@ -402,7 +840,8 @@ strong:hover::before {
   margin-top: 2em;
 }
 
-#body a {
+#body a,
+#series-about a {
   color: inherit;
   text-decoration: underline;
   position: relative;
@@ -414,10 +853,22 @@ strong:hover::before {
   font-style: italic;
 }
 
-#body a:hover {
+#body a:hover,
+#series-about a:hover {
   color: #1f3f66;
   opacity: 0.80;
   top: -3px;
+}
+
+#series-about a.style-link {
+  text-decoration: none;
+  transition: none;
+}
+
+#series-about a.style-link:hover {
+  color: inherit;
+  opacity: 1;
+  top: 0;
 }
 
 #body p.end-flower {
@@ -539,6 +990,10 @@ ul {
         margin-right: -40px;
         box-sizing: border-box;
     }
+
+    .info-extra {
+        display: none;
+    }
 }
 
 @media only screen and (max-width: 400px) {
@@ -626,4 +1081,372 @@ ul {
     .specimen-live span {
         width: calc(90vw - 2px);
     }
+}
+
+::selection {
+	background: #1f3f66;
+	color: white;
+}
+
+#newsletter {
+	width: calc(100% - 20px);
+	margin-top: 100px;
+}
+
+#newsletter input,
+#newsletter button {
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1;
+	padding: 6px 14px;
+	border: 1px solid black;
+	background: white;
+	border-radius: 0;
+}
+
+#newsletter button {
+	font-family: "EBGaramond";
+	font-size: 20px;
+	font-weight: 400;
+	line-height: 1.35;
+	padding: 0 14px;
+}
+
+#newsletter-fields {
+	display: flex;
+	align-items: flex-end;
+	gap: 20px;
+	margin-top: 20px;
+}
+
+#newsletter input {
+	flex: 1;
+	min-width: 0;
+	height: 20.5px;
+	box-sizing: border-box;
+	padding: 0 8px;
+	line-height: normal;
+	background: white;
+	border: none;
+	border-bottom: 1px solid black;
+	outline: none;
+}
+
+#newsletter input:focus {
+	background: #ebf2f9;
+}
+
+#newsletter button {
+	cursor: pointer;
+	position: relative;
+	top: 0;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+.download-button:hover,
+.buy-button:hover,
+#newsletter button:hover {
+	color: #1f3f66;
+	border-color: #1f3f66;
+	opacity: 0.80;
+	top: -3px;
+}
+
+.download-button.locked,
+.download-button.locked:hover {
+	color: rgba(0, 0, 0, 0.3);
+	border-color: rgba(0, 0, 0, 0.3);
+	opacity: 100%;
+	top: 0;
+	cursor: pointer;
+}
+
+.download-button.locked:hover::after {
+	content: none;
+}
+
+.series-buttons.has-locked-message {
+	position: relative;
+}
+
+.locked-message {
+	position: absolute;
+	right: 0;
+	top: 100%;
+	margin: 10px 0 0;
+	text-align: right;
+	white-space: nowrap;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1.3;
+	color: #865d57;
+	opacity: 0;
+	transition: opacity 0.4s;
+	cursor: help;
+}
+
+.locked-message.show {
+	opacity: 1;
+}
+
+.checkout-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 1000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: rgba(0, 0, 0, 0.55);
+	opacity: 0;
+	transition: opacity 0.3s;
+}
+
+.checkout-overlay.show {
+	opacity: 1;
+}
+
+.checkout-box {
+	position: relative;
+	box-sizing: border-box;
+	width: min(420px, calc(100vw - 32px));
+	max-height: calc(100vh - 32px);
+	overflow-y: auto;
+	padding: 0 30px 30px;
+	border: 1px solid black;
+	background: white;
+	font-family: "EBGaramond";
+	text-align: center;
+}
+
+.checkout-box h2 {
+	margin: 10px 0;
+	font-size: 45px;
+	font-weight: 400;
+	line-height: 1.3;
+}
+
+.checkout-price {
+	display: block;
+	margin: 0;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+}
+
+.checkout-amount-input {
+	box-sizing: content-box;
+	min-width: 1ch;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-bottom: 1px solid black;
+	border-radius: 0;
+	outline: none;
+	background: transparent;
+	color: inherit;
+	font: inherit;
+}
+
+.checkout-amount-input:focus {
+	background: #ebf2f9;
+}
+
+.checkout-more {
+	position: relative;
+	top: 0;
+	font-family: "EBGaramond";
+	font-size: 20px;
+	font-style: italic;
+	text-decoration: underline;
+	cursor: pointer;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+.checkout-more:hover {
+	color: #1f3f66;
+	opacity: 0.8;
+	top: -3px;
+}
+
+/* Manicule (hand) icons must never be smaller than 25px, the size used on every other manicule on the site (buttons, links, TOC). Always keep font-size: max(25px, 1em) when adding a new one. */
+.checkout-more:hover::after {
+	content: "\261C";
+	position: absolute;
+	left: 100%;
+	margin-left: 10px;
+	top: 50%;
+	transform: translateY(-50%);
+	font-style: normal;
+	font-weight: 400;
+	font-size: max(25px, 1em);
+	line-height: 1;
+	text-decoration: none;
+	color: #1f3f66;
+	opacity: 0.6;
+}
+
+.checkout-hint p {
+	height: 1.3em;
+	margin: 10px 0 0;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 16px;
+	line-height: 1.3;
+	color: #865d57;
+	opacity: 0;
+	transition: opacity 0.4s;
+}
+
+.checkout-hint.open p {
+	opacity: 1;
+}
+
+.checkout-hint p.shake {
+	animation: shakeNo 0.3s ease-in-out;
+}
+
+.checkout-buttons-wrap {
+	position: relative;
+	display: grid;
+	margin-top: 20px;
+}
+
+.checkout-buttons-wrap > * {
+	grid-area: 1 / 1;
+}
+
+.checkout-buttons-wrap.free .checkout-buttons {
+	opacity: 0;
+	pointer-events: none;
+}
+
+.checkout-free-download {
+	align-self: start;
+	margin-top: 59px;
+	width: 100%;
+	height: 45px;
+	padding: 0 14px;
+	opacity: 0;
+	pointer-events: none;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+.checkout-buttons-wrap.free .checkout-free-download {
+	opacity: 1;
+	pointer-events: auto;
+}
+
+.checkout-buttons-wrap.free .checkout-free-download:hover {
+	opacity: 0.8;
+}
+
+.checkout-free-download:hover::after {
+	content: none;
+}
+
+.checkout-buttons {
+	filter: grayscale(60%);
+	transition: filter 0.3s, opacity 0.3s;
+}
+
+.checkout-buttons.disabled {
+	filter: grayscale(100%);
+	opacity: 0.5;
+}
+
+.checkout-block {
+	display: none;
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	cursor: not-allowed;
+}
+
+.checkout-block.on {
+	display: block;
+}
+
+.checkout-close {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	width: 24px;
+	height: 24px;
+	padding: 0;
+	border: 0;
+	background: none;
+	cursor: pointer;
+}
+
+.checkout-close::before,
+.checkout-close::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 10px;
+	height: 1px;
+	background: black;
+}
+
+.checkout-close::before {
+	transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.checkout-close::after {
+	transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.checkout-status {
+	margin: 14px 0 0;
+	font-family: "SilkRemingtonTypewriter";
+	font-size: 15px;
+	line-height: 1.3;
+	color: #865d57;
+}
+
+.checkout-status:empty {
+	display: none;
+}
+
+.price-drag {
+	cursor: e-resize;
+	user-select: none;
+	touch-action: pan-y;
+}
+
+.price-drag.raised {
+	cursor: ew-resize;
+}
+
+body.price-dragging,
+body.price-dragging * {
+	cursor: e-resize !important;
+	user-select: none;
+}
+
+body.price-dragging.price-raised,
+body.price-dragging.price-raised * {
+	cursor: ew-resize !important;
+}
+
+#filters.has-dropdowns {
+	display: flow-root;
+	height: auto;
+	min-height: 42px;
+	padding-top: 8px;
+}
+
+#filters.has-dropdowns p,
+#filters.has-dropdowns .dropdown {
+	margin: -8px 0;
+}
+
+@keyframes shakeNo {
+	0%, 100% { transform: translateX(0); }
+	25% { transform: translateX(-7px); }
+	50% { transform: translateX(6px); }
+	75% { transform: translateX(-4px); }
+}
+
+.download-button.shake {
+	animation: shakeNo 0.3s ease-in-out;
 }

@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="style.css"/>
 		<link rel="shortcut icon" href="Favicon.png">
 		<link rel="icon" type="../image/png" href="Favicon.png">
+		<script src="fade.js"></script>
 		<script>
 		  onmousemove = function(e) {
           const infoBox = document.getElementById("infoBox")
@@ -17,14 +18,14 @@
 		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
 	</head>
 	<body>
-		<div id="logo" onmouseover="document.getElementById('infoBox').style.display = 'block'" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="location.href = '..'"></div>
+		<div id="logo" class="home-link" onmouseover="document.getElementById('infoBox').style.display = 'block'" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="goTo('..')"></div>
 		<div id="infoBox">
 			<div id="about-info">
 			  <p>Return to main page.</p>
 			</div>
 		</div>
 		<div id="header">
-			<h1>American Type Revival</h1>
+			<h1><a href="index.html" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 		</div>
 	    <div id="body">
 	      <h2><span class="small-caps">ATR</span> is an independent type foundry dedicated to making <a href="#model">accessible</a>, <a href="#research">historically accurate</a> revivals of late 19<span class="super">th</span> and early 20<span class="super">th</span> century American typefaces.</h2>

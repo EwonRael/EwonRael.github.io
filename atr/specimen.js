@@ -1,4 +1,3 @@
-// pick precomputed specimen lines (built by build-specimens.html)
 fetch("specimen-lines.json").then(r => r.json()).then(async lines => {
     await Promise.all([...document.querySelectorAll('.specimen-live')].map(card => {
         const style = getComputedStyle(card)

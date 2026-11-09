@@ -1,0 +1,285 @@
+const PAYPAL_CLIENT_ID = "AX1jmI9lD8kowbl5bAl_1QYP7XC7btI_t8AfZ1bj7vWl6yeg_Gz20PoZTAkTwH9tIU3JW9vTlXP73FCX"
+const PAYPAL_CURRENCY = "USD"
+
+let paypalLoading = null
+
+function loadPayPal() {
+	if (window.paypal) return Promise.resolve(window.paypal)
+	if (!paypalLoading) {
+		paypalLoading = new Promise((resolve, reject) => {
+			const script = document.createElement("script")
+			script.src = "https://www.paypal.com/sdk/js?client-id=" + encodeURIComponent(PAYPAL_CLIENT_ID) + "&currency=" + PAYPAL_CURRENCY + "&intent=capture&disable-funding=credit"
+			script.onload = () => resolve(window.paypal)
+			script.onerror = () => { paypalLoading = null; reject(new Error("PayPal failed to load")) }
+			document.head.append(script)
+		})
+	}
+	return paypalLoading
+}
+
+const CHECKOUT_MAX = 10000
+
+function shakeElement(el) {
+	el.classList.remove("shake")
+	void el.offsetWidth
+	el.classList.add("shake")
+}
+
+function openCheckout(button) {
+	const name = button.dataset.name
+	const price = Number(button.dataset.price)
+	const minimum = Number(button.dataset.min || button.dataset.price)
+	const free = button.dataset.free === "true"
+	const style = button.dataset.style
+	const downloadUrl = new URL("download.html" + (style ? "?style=" + encodeURIComponent(style) : ""), location.href).href
+
+	const overlay = document.createElement("div")
+	overlay.className = "checkout-overlay"
+	const box = document.createElement("div")
+	box.className = "checkout-box"
+	const title = document.createElement("h2")
+	title.textContent = name
+	const close = document.createElement("button")
+	close.className = "checkout-close"
+	close.setAttribute("aria-label", "Close")
+
+	const priceLine = document.createElement("p")
+	priceLine.className = "checkout-price"
+	const amountInput = document.createElement("input")
+	amountInput.type = "text"
+	amountInput.inputMode = "decimal"
+	amountInput.autocomplete = "off"
+	amountInput.spellcheck = false
+	amountInput.className = "checkout-amount-input"
+	amountInput.setAttribute("aria-label", "Amount in US dollars")
+	const more = document.createElement("span")
+	more.className = "checkout-more"
+	more.setAttribute("role", "button")
+	more.tabIndex = 0
+	more.textContent = "or\u00a0more"
+	priceLine.append("$", amountInput, "\u00a0USD\u00a0", more)
+
+	const hint = document.createElement("div")
+	hint.className = "checkout-hint"
+	const hintInner = document.createElement("div")
+	hintInner.className = "checkout-hint-inner"
+	const hintText = document.createElement("p")
+	hintInner.append(hintText)
+	hint.append(hintInner)
+	hintText.addEventListener("animationend", () => hintText.classList.remove("shake"))
+
+	const wrap = document.createElement("div")
+	wrap.className = "checkout-buttons-wrap"
+	const container = document.createElement("div")
+	container.className = "checkout-buttons"
+	const block = document.createElement("div")
+	block.className = "checkout-block"
+	const freeDownload = document.createElement("button")
+	freeDownload.className = "download-button checkout-free-download"
+	freeDownload.textContent = "Download for Free"
+	wrap.append(container, freeDownload, block)
+	const status = document.createElement("p")
+	status.className = "checkout-status"
+	box.append(close, title, priceLine, hint, wrap, status)
+	overlay.append(box)
+	document.body.append(overlay)
+	void overlay.offsetWidth
+	overlay.classList.add("show")
+
+	const dismiss = () => {
+		overlay.classList.remove("show")
+		setTimeout(() => overlay.remove(), 300)
+		document.removeEventListener("keydown", onKey)
+	}
+	const onKey = e => { if (e.key === "Escape") dismiss() }
+	document.addEventListener("keydown", onKey)
+	close.addEventListener("click", dismiss)
+	overlay.addEventListener("mousedown", e => { if (e.target === overlay) dismiss() })
+
+	let payActions = null
+	let userOpenedHint = false
+	let hadError = false
+
+	const currentAmount = () => {
+		const text = amountInput.value.trim()
+		if (text === "" || text === ".") return NaN
+		const value = Number(text)
+		return Number.isFinite(value) ? Math.round(value * 100) / 100 : NaN
+	}
+	const amountState = () => {
+		const amount = currentAmount()
+		if (free) {
+			if (!Number.isNaN(amount) && amount < 0.01) return "free"
+			if (Number.isNaN(amount)) return "empty"
+		} else {
+			if (Number.isNaN(amount)) return "empty"
+			if (amount < minimum) return "low"
+		}
+		if (amount > CHECKOUT_MAX) return "high"
+		return "ok"
+	}
+	const messages = { ok: "Type in a custom amount", low: "below the $" + (Number.isInteger(minimum) ? minimum : minimum.toFixed(2)) + " USD minimum", high: "Too high", empty: "Enter an amount" }
+
+	const update = () => {
+		const state = amountState()
+		amountInput.style.width = Math.max(amountInput.value.length, 1) + "ch"
+		const isError = state !== "ok" && state !== "free"
+		if (isError) {
+			hadError = true
+			hintText.textContent = messages[state]
+		} else if (!hadError && userOpenedHint) {
+			hintText.textContent = messages.ok
+		}
+		hint.classList.toggle("open", isError || (userOpenedHint && !hadError))
+		block.classList.toggle("on", isError)
+		container.classList.toggle("disabled", isError)
+		wrap.classList.toggle("free", state === "free")
+		const amount = currentAmount()
+		more.textContent = !Number.isNaN(amount) && Math.abs(amount - minimum) < 0.005 ? "or\u00a0more" : "or\u00a0custom"
+		if (payActions) state === "ok" ? payActions.enable() : payActions.disable()
+		return state
+	}
+
+	amountInput.value = price.toFixed(2)
+	update()
+
+	amountInput.addEventListener("input", () => {
+		const cleaned = amountInput.value.replace(/[^\d.]/g, "").replace(/(\..*?)\./g, "$1")
+		if (cleaned !== amountInput.value) amountInput.value = cleaned
+		update()
+	})
+	amountInput.addEventListener("focus", () => amountInput.select())
+	amountInput.addEventListener("blur", () => {
+		const amount = currentAmount()
+		if (!Number.isNaN(amount)) amountInput.value = amount.toFixed(2)
+		update()
+	})
+	amountInput.addEventListener("keydown", e => { if (e.key === "Enter") amountInput.blur() })
+
+	const toggleMore = () => {
+		userOpenedHint = true
+		hadError = false
+		update()
+		amountInput.focus()
+	}
+	more.addEventListener("click", toggleMore)
+	more.addEventListener("keydown", e => {
+		if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggleMore() }
+	})
+	block.addEventListener("click", () => shakeElement(hintText))
+	freeDownload.addEventListener("click", () => goTo(downloadUrl))
+
+	if (PAYPAL_CLIENT_ID === "YOUR_PAYPAL_CLIENT_ID") {
+		status.textContent = "Checkout isn’t set up yet."
+		return
+	}
+	status.textContent = "Loading PayPal…"
+	loadPayPal().then(paypal => {
+		status.textContent = ""
+		return paypal.Buttons({
+			style: { layout: "vertical", shape: "sharp", color: "white", label: "pay", tagline: false, height: 45 },
+			onInit: (data, actions) => {
+				payActions = actions
+				update()
+			},
+			onClick: (data, actions) => {
+				if (amountState() !== "ok") {
+					shakeElement(hintText)
+					return actions.reject()
+				}
+				status.textContent = ""
+				amountInput.disabled = true
+			},
+			onCancel: () => { amountInput.disabled = false },
+			onError: () => {
+				amountInput.disabled = false
+				status.textContent = "Something went wrong with PayPal. You haven’t been charged – please try again."
+			},
+			createOrder: (data, actions) => actions.order.create({
+				purchase_units: [{
+					description: name + " (American Type Revival)",
+					amount: { currency_code: PAYPAL_CURRENCY, value: currentAmount().toFixed(2) }
+				}],
+				application_context: { shipping_preference: "NO_SHIPPING" }
+			}),
+			onApprove: (data, actions) => actions.order.capture().then(() => {
+				status.textContent = "Thank you! Taking you to your download…"
+				goTo(downloadUrl)
+			})
+		}).render(container)
+	}).catch(() => {
+		status.textContent = "Couldn’t load PayPal. Check your connection and try again."
+	})
+}
+
+document.querySelectorAll(".buy-button[data-price]").forEach(button => {
+	button.addEventListener("click", () => openCheckout(button))
+})
+
+const PRICE_PATTERN = /\$(\d+(?:\.\d+)?)[ \u00a0]USD/
+const PIXELS_PER_DOLLAR = 10
+const MAX_PRICE = 1000
+
+function setupDraggablePrice(info) {
+	const button = info.parentElement.querySelector(".buy-button[data-price]")
+	if (!button) return
+	const walker = document.createTreeWalker(info, NodeFilter.SHOW_TEXT)
+	let textNode = null
+	while (walker.nextNode()) {
+		if (PRICE_PATTERN.test(walker.currentNode.textContent)) { textNode = walker.currentNode; break }
+	}
+	if (!textNode) return
+
+	const match = textNode.textContent.match(PRICE_PATTERN)
+	const decimals = match[1].includes(".") ? 2 : 0
+	const defaultPrice = Number(match[1])
+	const free = !info.parentElement.querySelector(".download-button.locked")
+	const minimum = free ? 0 : defaultPrice
+	const priceText = textNode.splitText(match.index)
+	priceText.splitText(match[0].length)
+	const price = document.createElement("span")
+	price.className = "price-drag"
+	price.textContent = match[0]
+	priceText.replaceWith(price)
+
+	const siblings = () => document.querySelectorAll(".buy-button[data-price]")
+	const group = [...siblings()].filter(b => b.dataset.name === button.dataset.name && b.dataset.style === button.dataset.style)
+	group.forEach(b => { b.dataset.min = minimum; b.dataset.free = free })
+
+	let current = defaultPrice
+	const isRaised = value => free || value > minimum
+	const apply = value => {
+		current = value
+		price.textContent = "$" + value.toFixed(decimals) + "\u00a0USD"
+		price.classList.toggle("raised", isRaised(value))
+		group.forEach(b => { b.dataset.price = value })
+	}
+	price.classList.toggle("raised", isRaised(current))
+
+	price.addEventListener("pointerdown", e => {
+		if (e.button !== 0) return
+		e.preventDefault()
+		price.setPointerCapture(e.pointerId)
+		document.body.classList.add("price-dragging")
+		document.body.classList.toggle("price-raised", isRaised(current))
+		let raw = current
+		let lastX = e.clientX
+		const move = ev => {
+			raw = Math.min(MAX_PRICE, Math.max(minimum, raw + (ev.clientX - lastX) / PIXELS_PER_DOLLAR))
+			lastX = ev.clientX
+			apply(Math.round(raw))
+			document.body.classList.toggle("price-raised", isRaised(current))
+		}
+		const end = () => {
+			price.removeEventListener("pointermove", move)
+			price.removeEventListener("pointerup", end)
+			price.removeEventListener("pointercancel", end)
+			document.body.classList.remove("price-dragging", "price-raised")
+		}
+		price.addEventListener("pointermove", move)
+		price.addEventListener("pointerup", end)
+		price.addEventListener("pointercancel", end)
+	})
+}
+
+document.querySelectorAll(".style-info").forEach(setupDraggablePrice)
