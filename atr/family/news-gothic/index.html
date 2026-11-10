@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
@@ -34,22 +35,19 @@
 		<div id="header">
 			<h1><a href="../../index.html" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../index.html#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;News Gothic</p>
+				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../index.html#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;News Gothic</p>
 			</div>
-			<div id="series-info">
+			<div id="series-info" data-fonts="News_Gothic">
 				<h2 id="series-title" style="font-family: 'NewsGothic'">News Gothic</h2>
-				<div id="funding-bar">
+				<div id="funding-bar" style="cursor: default">
 					<div id="funding-fill" style="--funded: 0%"></div>
 					<span id="funding-label">Funding: 0%</span>
-				</div>
-				<div id="funding-breakdown">
-					<div id="funding-breakdown-inner"></div>
 				</div>
 				<div class="series-buttons">
 					<span class="style-info"><span class="info-extra"><b>News Gothic</b>&nbsp;| </span>1&nbsp;Style&nbsp;| $15&nbsp;USD</span>
 					<div class="button-group">
 						<button class="buy-button" data-name="News Gothic" data-price="15" data-style="">Buy Font</button>
-						<button class="download-button locked" aria-disabled="true">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
 				<div id="series-styles">
@@ -57,21 +55,22 @@
 					<div class="line"></div>
 					<h2>Complete fonts in family:</h2>
 					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'NewsGothic'; font-weight: 400"></div>
-					<div class="series-buttons">
-						<span class="style-info" data-funded="0"><b>News Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
+					<div class="series-buttons" data-fonts="News_Gothic">
+						<span class="style-info"><b>News Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="News Gothic" data-price="15" data-style="regular">Buy Font</button>
-							<button class="download-button locked" aria-disabled="true">Download for Free</button>
+							<button class="download-button locked" data-download="download.html?style=regular" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
 				</div>
 				<div id="series-about">
 					<div class="line"></div>
 					<h2>About the font</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-					<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<p><i>News Gothic</i> was first drawn by Morris Fuller Benton for the <i>American Type Founders</i>, and was released in 1908. As the name implies, it was made to be used in newspapers, and its simple, neutral, and practical construction reflects this. It is a legible and practical choice for body text and headlines alike.</p>
+					<p>Morris Fuller Benton also drew the bolder <i>Franklin Gothic</i>, which was released around the same time. Although these fonts differ in construction in meaningful ways, it is clear they are of the same sort and today are generally considered part of the same font family. <i>Franklin Gothic</i> was named after the American founding father (who was known to be a bit of a type nerd himself), and although this font is neutral and practical, it does have a subtle American flair to it. Over its century+ existence the font family has embedded itself into American culture. It is the sans-serif typeface of choice used by the <i>New York Times</i>, and is featured in the iconic <i>Star Wars</i> opening exposition text crawl.</p>
+					<br><img src="../../resource/NewsGothic-1923.webp" alt="News Gothic specimen page from 1923" />
+					<p class="caption"><i>News Gothic</i> page in 1923 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
+					<p>Over the years, some of the idiosyncrasies and inconsistencies have been rounded out, and digital revivals often adjust letter construction to appeal to modern sensibilities. The ATR revival faithfully preserves the unique qualities of the original 1908 release. The font features a robust set of special characters and symbols. It supports over 300 languages.</p>
 				</div>
 				<div id="series-cards">
 					<div class="line"></div>
@@ -81,60 +80,12 @@
 					<div class="line"></div>
 					<div class="series-buttons">
 						<button class="buy-button" data-name="News Gothic" data-price="15" data-style="">Buy Font</button>
-						<button class="download-button locked" aria-disabled="true">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 					<img class="end-ornament" src="../../ordament.svg"/>
 				</div>
 			</div>
 		</div>
-		<script>
-		  const fill = document.getElementById("funding-fill")
-		  const label = document.getElementById("funding-label")
-		  const target = parseFloat(fill.style.getPropertyValue("--funded"))
-		  const start = performance.now()
-		  label.textContent = "Funding: 0%"
-		  function count(now) {
-		    const t = Math.min((now - start) / 1000, 1)
-		    label.textContent = "Funding: " + Math.round(target * t) + "%"
-		    if (t < 1) requestAnimationFrame(count)
-		  }
-		  requestAnimationFrame(count)
-		  const breakdown = document.getElementById("funding-breakdown-inner")
-		  document.querySelectorAll("#series-styles .style-info[data-funded]").forEach(info => {
-		    const row = document.createElement("div")
-		    row.className = "funding-row"
-		    const name = document.createElement("span")
-		    name.className = "funding-row-name"
-		    name.textContent = info.querySelector("b").textContent
-		    const track = document.createElement("div")
-		    track.className = "funding-row-track"
-		    const rowFill = document.createElement("div")
-		    rowFill.className = "funding-row-fill"
-		    rowFill.style.setProperty("--funded", info.dataset.funded + "%")
-		    track.append(rowFill)
-		    const percent = document.createElement("span")
-		    percent.className = "funding-row-percent"
-		    percent.dataset.target = info.dataset.funded
-		    percent.textContent = "0%"
-		    row.append(name, track, percent)
-		    breakdown.append(row)
-		  })
-		  function countRows() {
-		    const rowStart = performance.now()
-		    const percents = document.querySelectorAll(".funding-row-percent")
-		    percents.forEach(el => el.textContent = "0%")
-		    function step(now) {
-		      const t = Math.min((now - rowStart) / 1000, 1)
-		      percents.forEach(el => el.textContent = Math.round(Number(el.dataset.target) * t) + "%")
-		      if (t < 1) requestAnimationFrame(step)
-		    }
-		    requestAnimationFrame(step)
-		  }
-		  document.getElementById("funding-bar").addEventListener("click", () => {
-		    const opened = document.getElementById("funding-breakdown").classList.toggle("open")
-		    if (opened) countRows()
-		  })
-		</script>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
 		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
@@ -222,6 +173,5 @@
 		    window.addEventListener("resize", fit)
 		  }).catch(error => console.error("Specimen loading failed:", error))
 		</script>
-		<script src="../../resource/locked-download.js"></script>
 	</body>
 </html>

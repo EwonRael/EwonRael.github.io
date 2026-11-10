@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
@@ -34,9 +35,9 @@
 		<div id="header">
 			<h1><a href="../../index.html" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../index.html#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;<a href="index.html" onclick="goTo(this.href); return false">News Gothic</a>&nbsp;&rarr;&nbsp;News Gothic</p>
+				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../index.html#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;<a href="index.html" onclick="goTo(this.href); return false">News Gothic</a>&nbsp;&rarr;&nbsp;News Gothic</p>
 			</div>
-			<div id="series-info">
+			<div id="series-info" data-fonts="News_Gothic">
 				<h2 id="series-title" style="font-family: 'NewsGothic'">News Gothic</h2>
 				<div id="funding-bar" style="cursor: default">
 					<div id="funding-fill" style="--funded: 0%"></div>
@@ -46,7 +47,7 @@
 					<span class="style-info"><b style="font-family: 'EBGaramond'; font-weight: 400"><a href="index.html" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none"><i style="margin-right: 0.25em">Part of</i> <span style="font-weight: 700">News Gothic</span></a></b>&nbsp;| $15&nbsp;USD</span>
 					<div class="button-group">
 						<button class="buy-button" data-name="News Gothic" data-price="15" data-style="regular">Buy Font</button>
-						<button class="download-button locked" aria-disabled="true">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
 				<div id="series-about">
@@ -65,26 +66,13 @@
 						<button class="download-button view-family" onclick="goTo('index.html')">View Full Font Family</button>
 						<div class="button-group">
 							<button class="buy-button" data-name="News Gothic" data-price="15" data-style="regular">Buy Font</button>
-							<button class="download-button locked" aria-disabled="true">Download for Free</button>
+							<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
 					<img class="end-ornament" src="../../ordament.svg"/>
 				</div>
 			</div>
 		</div>
-		<script>
-		  const fill = document.getElementById("funding-fill")
-		  const label = document.getElementById("funding-label")
-		  const target = parseFloat(fill.style.getPropertyValue("--funded"))
-		  const start = performance.now()
-		  label.textContent = "Funding: 0%"
-		  function count(now) {
-		    const t = Math.min((now - start) / 1000, 1)
-		    label.textContent = "Funding: " + Math.round(target * t) + "%"
-		    if (t < 1) requestAnimationFrame(count)
-		  }
-		  requestAnimationFrame(count)
-		</script>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
 		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
@@ -172,6 +160,5 @@
 		    window.addEventListener("resize", fit)
 		  }).catch(error => console.error("Specimen loading failed:", error))
 		</script>
-		<script src="../../resource/locked-download.js"></script>
 	</body>
 </html>

@@ -106,6 +106,15 @@ async function pageLoad() {
             }
         })
         await Promise.all(syncTasks)
+        await new Promise(resolve => setTimeout(resolve, 2000))
+        await Promise.all(specimens.map(async (specimen) => {
+            const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_')
+            const data = window.fontlist[docId]
+            if (!dbData[docId] || data.funding === undefined) return
+            if (data.status === "free" || (Number(data.income) || 0) < Number(data.funding)) return
+            await updateDoc(doc(db, "fonts", docId), { status: "free" })
+            data.status = "free"
+        }))
     } catch (error) {
         console.error("Error with Firebase collection sync:", error);
     }

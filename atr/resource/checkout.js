@@ -1,4 +1,4 @@
-const PAYPAL_CLIENT_ID = "AX1jmI9lD8kowbl5bAl_1QYP7XC7btI_t8AfZ1bj7vWl6yeg_Gz20PoZTAkTwH9tIU3JW9vTlXP73FCX"
+const PAYPAL_CLIENT_ID = "Ab2pxUeHPCbxKpAKT7m3sy8rJY0depZdnKSwRPaOAQUK6Q2bg8pJzq7WOmLwJ5kvcZqIOeNPgb5WGv8h"
 const PAYPAL_CURRENCY = "USD"
 
 let paypalLoading = null
@@ -18,6 +18,7 @@ function loadPayPal() {
 }
 
 const CHECKOUT_MAX = 10000
+const COMPACT_HEIGHT = 150
 
 function shakeElement(el) {
 	el.classList.remove("shake")
@@ -29,6 +30,7 @@ function openCheckout(button) {
 	const name = button.dataset.name
 	const price = Number(button.dataset.price)
 	const minimum = Number(button.dataset.min || button.dataset.price)
+	const moreAt = Number(button.dataset.moreAt ?? minimum)
 	const free = button.dataset.free === "true"
 	const style = button.dataset.style
 	const downloadUrl = new URL("download.html" + (style ? "?style=" + encodeURIComponent(style) : ""), location.href).href
@@ -86,7 +88,15 @@ function openCheckout(button) {
 	void overlay.offsetWidth
 	overlay.classList.add("show")
 
+	const sizeObserver = new ResizeObserver(() => {
+		const frame = container.querySelector("iframe")
+		const height = (frame || container).getBoundingClientRect().height
+		box.classList.toggle("compact", height > COMPACT_HEIGHT)
+	})
+	sizeObserver.observe(container)
+
 	const dismiss = () => {
+		sizeObserver.disconnect()
 		overlay.classList.remove("show")
 		setTimeout(() => overlay.remove(), 300)
 		document.removeEventListener("keydown", onKey)
@@ -135,7 +145,7 @@ function openCheckout(button) {
 		container.classList.toggle("disabled", isError)
 		wrap.classList.toggle("free", state === "free")
 		const amount = currentAmount()
-		more.textContent = !Number.isNaN(amount) && Math.abs(amount - minimum) < 0.005 ? "or\u00a0more" : "or\u00a0custom"
+		more.textContent = !Number.isNaN(amount) && Math.abs(amount - moreAt) < 0.005 ? "or\u00a0more" : "or\u00a0custom"
 		if (payActions) state === "ok" ? payActions.enable() : payActions.disable()
 		return state
 	}
@@ -202,11 +212,24 @@ function openCheckout(button) {
 				}],
 				application_context: { shipping_preference: "NO_SHIPPING" }
 			}),
-			onApprove: (data, actions) => actions.order.capture().then(() => {
+			onApprove: (data, actions) => actions.order.capture().then(async details => {
 				status.textContent = "Thank you! Taking you to your download…"
+				const capture = details?.purchase_units?.[0]?.payments?.captures?.[0]
+				const paid = Number(capture?.amount?.value)
+				const fontsElement = button.closest("[data-fonts]")
+				if (fontsElement && typeof recordPayment === "function") {
+					await recordPayment({
+						id: data.orderID,
+						ids: fontsElement.dataset.fonts.split(",").map(id => id.trim()),
+						amount: paid > 0 ? paid : currentAmount()
+					})
+				}
 				goTo(downloadUrl)
 			})
-		}).render(container)
+		}).render(container).then(() => {
+			const frame = container.querySelector("iframe")
+			if (frame) sizeObserver.observe(frame)
+		})
 	}).catch(() => {
 		status.textContent = "Couldn’t load PayPal. Check your connection and try again."
 	})
@@ -232,9 +255,10 @@ function setupDraggablePrice(info) {
 
 	const match = textNode.textContent.match(PRICE_PATTERN)
 	const decimals = match[1].includes(".") ? 2 : 0
-	const defaultPrice = Number(match[1])
-	const free = !info.parentElement.querySelector(".download-button.locked")
-	const minimum = free ? 0 : defaultPrice
+	const isFamily = button.dataset.style === ""
+	let defaultPrice = Number(match[1])
+	let free
+	let minimum
 	const priceText = textNode.splitText(match.index)
 	priceText.splitText(match[0].length)
 	const price = document.createElement("span")
@@ -244,17 +268,35 @@ function setupDraggablePrice(info) {
 
 	const siblings = () => document.querySelectorAll(".buy-button[data-price]")
 	const group = [...siblings()].filter(b => b.dataset.name === button.dataset.name && b.dataset.style === button.dataset.style)
-	group.forEach(b => { b.dataset.min = minimum; b.dataset.free = free })
-
 	let current = defaultPrice
 	const isRaised = value => free || value > minimum
+	const refresh = () => {
+		free = !info.parentElement.querySelector(".download-button.locked")
+		minimum = free ? 0 : defaultPrice
+		if (isFamily) {
+			const styles = [...document.querySelectorAll("#series-styles .series-buttons[data-fonts]")].map(row => ({
+				price: Number(row.querySelector(".buy-button").dataset.list),
+				unfunded: Boolean(row.querySelector(".download-button.locked"))
+			}))
+			const sum = list => list.reduce((total, style) => total + style.price, 0)
+			const unfunded = styles.filter(style => style.unfunded)
+			minimum = free ? 0 : unfunded.length === 1 ? unfunded[0].price : Math.ceil(sum(unfunded) * 2 / 3)
+			const suggested = styles.length === 1 ? styles[0].price : Math.ceil(sum(styles) * 2 / 3)
+			const wasDefault = current === defaultPrice
+			defaultPrice = Math.max(suggested, minimum)
+			apply(wasDefault ? defaultPrice : Math.max(current, minimum))
+		}
+		group.forEach(b => { b.dataset.min = minimum; b.dataset.free = free; b.dataset.moreAt = free ? 0 : defaultPrice })
+		price.classList.toggle("raised", isRaised(current))
+	}
 	const apply = value => {
 		current = value
 		price.textContent = "$" + value.toFixed(decimals) + "\u00a0USD"
 		price.classList.toggle("raised", isRaised(value))
 		group.forEach(b => { b.dataset.price = value })
 	}
-	price.classList.toggle("raised", isRaised(current))
+	refresh()
+	document.addEventListener("fundingchange", refresh)
 
 	price.addEventListener("pointerdown", e => {
 		if (e.button !== 0) return
@@ -282,4 +324,5 @@ function setupDraggablePrice(info) {
 	})
 }
 
+document.querySelectorAll(".buy-button[data-price]").forEach(b => { b.dataset.list = b.dataset.price })
 document.querySelectorAll(".style-info").forEach(setupDraggablePrice)

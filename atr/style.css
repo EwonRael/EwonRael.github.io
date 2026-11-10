@@ -1295,6 +1295,11 @@ ul {
 	transition: opacity 0.4s;
 }
 
+.checkout-box.compact .checkout-price,
+.checkout-box.compact .checkout-hint {
+	display: none;
+}
+
 .checkout-hint.open p {
 	opacity: 1;
 }
@@ -1449,4 +1454,44 @@ body.price-dragging.price-raised * {
 
 .download-button.shake {
 	animation: shakeNo 0.3s ease-in-out;
+}
+
+@media only screen and (max-width: 1050px) {
+    body.about-page #body {
+        box-sizing: border-box;
+        width: min(640px, calc(100% - 40px));
+        margin-left: auto;
+        margin-right: auto;
+        overflow-wrap: break-word;
+    }
+}
+
+@media only screen and (max-width: 700px) {
+    body.about-page #body {
+        margin-top: 60px;
+    }
+
+    body.about-page #body p.caption {
+        margin: 20px auto;
+    }
+
+    body.about-page #body img.divide {
+        padding: 70px 0;
+        width: 120px;
+    }
+
+    body.about-page #body p.end-flower {
+        margin-bottom: 120px;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+    body.about-page #body img.divide {
+        padding: 50px 0;
+        width: 100px;
+    }
+
+    body.about-page #body p.end-flower {
+        margin-bottom: 80px;
+    }
 }

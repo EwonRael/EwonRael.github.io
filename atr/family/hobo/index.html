@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
@@ -34,13 +35,13 @@
 		<div id="header">
 			<h1><a href="../../index.html" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../index.html#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Hobo Series</p>
+				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../index.html#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Hobo Series</p>
 			</div>
-			<div id="series-info">
+			<div id="series-info" data-fonts="Hobo_Light,Hobo">
 				<h2 id="series-title" style="font-family: 'HoboATR'">Hobo Series</h2>
 				<div id="funding-bar">
-					<div id="funding-fill" style="--funded: 100%"></div>
-					<span id="funding-label">Funding: 100%</span>
+					<div id="funding-fill" style="--funded: 0%"></div>
+					<span id="funding-label">Funding: 0%</span>
 				</div>
 				<div id="funding-breakdown">
 					<div id="funding-breakdown-inner"></div>
@@ -49,7 +50,7 @@
 					<span class="style-info"><span class="info-extra"><b>Hobo Series</b>&nbsp;| </span><span class="styles-hover" onmouseover="showInfo('<span style=&quot;font-family:HoboATR;font-weight:300;font-size:48px;line-height:1.1;margin:10px&quot;>Light Hobo</span><span style=&quot;font-family:HoboATR;font-weight:400;font-size:48px;line-height:1.1;margin:10px&quot;>Hobo</span>')" onmouseleave="document.getElementById('infoBox').style.display = 'none'">2&nbsp;Styles</span>&nbsp;| $20&nbsp;USD</span>
 					<div class="button-group">
 						<button class="buy-button" data-name="Hobo Series" data-price="20" data-style="">Buy Font Family</button>
-						<button class="download-button" onclick="goTo('download.html')">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
 				<div id="series-styles">
@@ -57,19 +58,19 @@
 					<div class="line"></div>
 					<h2>Complete fonts in family:</h2>
 					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'HoboATR'; font-weight: 300"></div>
-					<div class="series-buttons">
-						<span class="style-info" data-funded="100"><b><a href="light.html" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Light Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;300</span>&nbsp;| $15.00&nbsp;USD</span>
+					<div class="series-buttons" data-fonts="Hobo_Light">
+						<span class="style-info"><b><a href="light.html" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Light Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;300</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Light Hobo" data-price="15" data-style="light">Buy Font</button>
-							<button class="download-button" onclick="goTo('download.html?style=light')">Download for Free</button>
+							<button class="download-button locked" data-download="download.html?style=light" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
 					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'HoboATR'; font-weight: 400"></div>
-					<div class="series-buttons">
-						<span class="style-info" data-funded="100"><b><a href="regular.html" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
+					<div class="series-buttons" data-fonts="Hobo">
+						<span class="style-info"><b><a href="regular.html" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Hobo" data-price="15" data-style="regular">Buy Font</button>
-							<button class="download-button" onclick="goTo('download.html?style=regular')">Download for Free</button>
+							<button class="download-button locked" data-download="download.html?style=regular" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
 				</div>
@@ -95,60 +96,12 @@
 					<div class="line"></div>
 					<div class="series-buttons">
 						<button class="buy-button" data-name="Hobo Series" data-price="20" data-style="">Buy Font Family</button>
-						<button class="download-button" onclick="goTo('download.html')">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 					<img class="end-ornament" src="../../ordament.svg"/>
 				</div>
 			</div>
 		</div>
-		<script>
-		  const fill = document.getElementById("funding-fill")
-		  const label = document.getElementById("funding-label")
-		  const target = parseFloat(fill.style.getPropertyValue("--funded"))
-		  const start = performance.now()
-		  label.textContent = "Funding: 0%"
-		  function count(now) {
-		    const t = Math.min((now - start) / 1000, 1)
-		    label.textContent = "Funding: " + Math.round(target * t) + "%"
-		    if (t < 1) requestAnimationFrame(count)
-		  }
-		  requestAnimationFrame(count)
-		  const breakdown = document.getElementById("funding-breakdown-inner")
-		  document.querySelectorAll("#series-styles .style-info[data-funded]").forEach(info => {
-		    const row = document.createElement("div")
-		    row.className = "funding-row"
-		    const name = document.createElement("span")
-		    name.className = "funding-row-name"
-		    name.textContent = info.querySelector("b").textContent
-		    const track = document.createElement("div")
-		    track.className = "funding-row-track"
-		    const rowFill = document.createElement("div")
-		    rowFill.className = "funding-row-fill"
-		    rowFill.style.setProperty("--funded", info.dataset.funded + "%")
-		    track.append(rowFill)
-		    const percent = document.createElement("span")
-		    percent.className = "funding-row-percent"
-		    percent.dataset.target = info.dataset.funded
-		    percent.textContent = "0%"
-		    row.append(name, track, percent)
-		    breakdown.append(row)
-		  })
-		  function countRows() {
-		    const rowStart = performance.now()
-		    const percents = document.querySelectorAll(".funding-row-percent")
-		    percents.forEach(el => el.textContent = "0%")
-		    function step(now) {
-		      const t = Math.min((now - rowStart) / 1000, 1)
-		      percents.forEach(el => el.textContent = Math.round(Number(el.dataset.target) * t) + "%")
-		      if (t < 1) requestAnimationFrame(step)
-		    }
-		    requestAnimationFrame(step)
-		  }
-		  document.getElementById("funding-bar").addEventListener("click", () => {
-		    const opened = document.getElementById("funding-breakdown").classList.toggle("open")
-		    if (opened) countRows()
-		  })
-		</script>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
 		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)

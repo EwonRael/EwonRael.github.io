@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
@@ -34,22 +35,19 @@
 		<div id="header">
 			<h1><a href="../../index.html" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../index.html#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Tiffany Gothic</p>
+				<p><a href="../../index.html" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../index.html#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Tiffany Gothic</p>
 			</div>
-			<div id="series-info">
+			<div id="series-info" data-fonts="Tiffany_Gothic">
 				<h2 id="series-title" style="font-family: 'TiffanyGothicATR'">Tiffany Gothic</h2>
-				<div id="funding-bar">
-					<div id="funding-fill" style="--funded: 100%"></div>
-					<span id="funding-label">Funding: 100%</span>
-				</div>
-				<div id="funding-breakdown">
-					<div id="funding-breakdown-inner"></div>
+				<div id="funding-bar" style="cursor: default">
+					<div id="funding-fill" style="--funded: 0%"></div>
+					<span id="funding-label">Funding: 0%</span>
 				</div>
 				<div class="series-buttons">
 					<span class="style-info"><span class="info-extra"><b>Tiffany Gothic</b>&nbsp;| </span>1&nbsp;Style&nbsp;| $15&nbsp;USD</span>
 					<div class="button-group">
 						<button class="buy-button" data-name="Tiffany Gothic" data-price="15" data-style="">Buy Font</button>
-						<button class="download-button" onclick="goTo('download.html')">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
 				<div id="series-styles">
@@ -57,21 +55,25 @@
 					<div class="line"></div>
 					<h2>Complete fonts in family:</h2>
 					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'TiffanyGothicATR'; font-weight: 400"></div>
-					<div class="series-buttons">
-						<span class="style-info" data-funded="100"><b>Tiffany Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
+					<div class="series-buttons" data-fonts="Tiffany_Gothic">
+						<span class="style-info"><b>Tiffany Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Tiffany Gothic" data-price="15" data-style="regular">Buy Font</button>
-							<button class="download-button" onclick="goTo('download.html?style=regular')">Download for Free</button>
+							<button class="download-button locked" data-download="download.html?style=regular" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
 				</div>
 				<div id="series-about">
 					<div class="line"></div>
 					<h2>About the font</h2>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.</p>
-					<p>Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo.</p>
-					<p>Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem.</p>
-					<p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
+					<p><i>Tiffany Gothic</i> is an antique all-caps display typeface that dates back to at least the late 1800s. Like its more famous cousin <i>Copperplate Gothic</i>, it features wedge serifs on a more sans-serif-style letterform. At the time it was released, its construction was quite modern. The turn of the 20<span class="super">th</span> century was an experimental time for type design, and many of the conventions around sans-serif typefaces that have since been codified were still being worked out. Consequently, back then this typeface was considered a <q>gothic</q> font, which was a term for sans-serifs. Today we would classify it as a serif typeface.</p>
+					<p>Although modern in its time, <i>Tiffany Gothic</i> today looks quite antiquated. Much of this is due to it occupying this ambiguous space between serif and sans-serif, when those two classifications are more distinguished today. Its unique tone of voice and strong sense of era make it inappropriate for most uses, but perfect for when you need old-school elegance. Consider using it as a substitute for the more clichéd <i>Copperplate Gothic</i>.</p>
+					<br><img src="../../resource/Tiffany-1909.webp" alt="Tiffany Gothic specimen page from 1909" />
+					<p class="caption"><i>Tiffany Gothic</i> page in 1909 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
+					<br><br><img src="../../resource/Tiffany-1923.webp" alt="Typo Gothic specimen page from 1923" />
+					<p class="caption"><i>Tiffany Gothic</i> page in 1923 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
+					<p>The name <i>Tiffany Gothic</i> comes from the <i>American Type Founders</i>, who started selling the typeface after it acquired the <i>Illinois Type Foundry</i>, which had previously sold it under the name <i>Lining Antique</i>. It was sold under many names throughout the years, including <i>Cleveland</i>, <i>Olympia</i>, and <i>Typo Gothic</i>, but <i>Tiffany Gothic</i> was chosen for the ATR revival because it captures the more feminine and antique elegance of the typeface, similar to Tiffany lamps or the iconic jeweler.</p>
+					<p>Thoughtfully digitized using high-quality sources, ATR’s <i>Tiffany Gothic</i> includes special characters and accented glyphs. It supports over 200 languages.</p>
 				</div>
 				<div id="series-cards">
 					<div class="line"></div>
@@ -81,60 +83,12 @@
 					<div class="line"></div>
 					<div class="series-buttons">
 						<button class="buy-button" data-name="Tiffany Gothic" data-price="15" data-style="">Buy Font</button>
-						<button class="download-button" onclick="goTo('download.html')">Download for Free</button>
+						<button class="download-button locked" data-download="download.html" aria-disabled="true">Download for Free</button>
 					</div>
 					<img class="end-ornament" src="../../ordament.svg"/>
 				</div>
 			</div>
 		</div>
-		<script>
-		  const fill = document.getElementById("funding-fill")
-		  const label = document.getElementById("funding-label")
-		  const target = parseFloat(fill.style.getPropertyValue("--funded"))
-		  const start = performance.now()
-		  label.textContent = "Funding: 0%"
-		  function count(now) {
-		    const t = Math.min((now - start) / 1000, 1)
-		    label.textContent = "Funding: " + Math.round(target * t) + "%"
-		    if (t < 1) requestAnimationFrame(count)
-		  }
-		  requestAnimationFrame(count)
-		  const breakdown = document.getElementById("funding-breakdown-inner")
-		  document.querySelectorAll("#series-styles .style-info[data-funded]").forEach(info => {
-		    const row = document.createElement("div")
-		    row.className = "funding-row"
-		    const name = document.createElement("span")
-		    name.className = "funding-row-name"
-		    name.textContent = info.querySelector("b").textContent
-		    const track = document.createElement("div")
-		    track.className = "funding-row-track"
-		    const rowFill = document.createElement("div")
-		    rowFill.className = "funding-row-fill"
-		    rowFill.style.setProperty("--funded", info.dataset.funded + "%")
-		    track.append(rowFill)
-		    const percent = document.createElement("span")
-		    percent.className = "funding-row-percent"
-		    percent.dataset.target = info.dataset.funded
-		    percent.textContent = "0%"
-		    row.append(name, track, percent)
-		    breakdown.append(row)
-		  })
-		  function countRows() {
-		    const rowStart = performance.now()
-		    const percents = document.querySelectorAll(".funding-row-percent")
-		    percents.forEach(el => el.textContent = "0%")
-		    function step(now) {
-		      const t = Math.min((now - rowStart) / 1000, 1)
-		      percents.forEach(el => el.textContent = Math.round(Number(el.dataset.target) * t) + "%")
-		      if (t < 1) requestAnimationFrame(step)
-		    }
-		    requestAnimationFrame(step)
-		  }
-		  document.getElementById("funding-bar").addEventListener("click", () => {
-		    const opened = document.getElementById("funding-breakdown").classList.toggle("open")
-		    if (opened) countRows()
-		  })
-		</script>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
 		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
