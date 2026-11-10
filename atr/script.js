@@ -250,10 +250,10 @@ window.setupHoverListeners = function() {
         if (!familyPages.has(family)) return
         const folder = `family/${family.toLowerCase().replace(/\s+/g, "-")}/`
         if (document.getElementById("grouping").textContent.includes("grouped by family")) {
-            window.goTo(folder + "index.html")
+            window.goTo(folder)
         } else {
             const style = card.getAttribute("aria-label").endsWith("Light") ? "light" : "regular"
-            window.goTo(folder + style + ".html")
+            window.goTo(folder + style)
         }
     })
 

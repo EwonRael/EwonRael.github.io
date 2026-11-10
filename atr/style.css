@@ -226,6 +226,8 @@ body.series-page #filters p {
 
 #funding-breakdown-inner {
 	overflow: hidden;
+	padding-left: 40px;
+	margin-left: -40px;
 }
 
 .funding-row {
@@ -245,6 +247,35 @@ body.series-page #filters p {
 	font-family: "SilkRemingtonTypewriter";
 	font-size: 16px;
 	line-height: 1;
+}
+
+a.funding-row-name {
+	position: relative;
+	top: 0;
+	color: inherit;
+	text-decoration: none;
+	cursor: pointer;
+	transition: top 0.3s, opacity 0.3s;
+}
+
+a.funding-row-name:hover {
+	color: #1f3f66;
+	opacity: 0.8;
+	top: -2px;
+}
+
+a.funding-row-name:hover::before {
+	content: "\261E";
+	font-family: "EBGaramond";
+	font-weight: 400;
+	font-size: max(25px, 1em);
+	position: absolute;
+	right: 100%;
+	margin-right: 6px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: #1f3f66;
+	opacity: 0.6;
 }
 
 .funding-row-percent {
@@ -268,10 +299,6 @@ body.series-page #filters p {
 	background: #1f3f66;
 	opacity: 75%;
 	transition: opacity 0.2s;
-}
-
-.funding-row:hover .funding-row-fill {
-	opacity: 100%;
 }
 
 #funding-breakdown.open .funding-row-fill {
@@ -1153,7 +1180,9 @@ ul {
 }
 
 .download-button.locked,
-.download-button.locked:hover {
+.download-button.locked:hover,
+.buy-button.locked,
+.buy-button.locked:hover {
 	color: rgba(0, 0, 0, 0.3);
 	border-color: rgba(0, 0, 0, 0.3);
 	opacity: 100%;
@@ -1161,7 +1190,9 @@ ul {
 	cursor: pointer;
 }
 
-.download-button.locked:hover::after {
+.download-button.locked:hover::after,
+.buy-button.locked:hover::before,
+.buy-button.locked:hover::after {
 	content: none;
 }
 
@@ -1175,7 +1206,8 @@ ul {
 	top: 100%;
 	margin: 10px 0 0;
 	text-align: right;
-	white-space: nowrap;
+	box-sizing: border-box;
+	max-width: 100%;
 	font-family: "SilkRemingtonTypewriter";
 	font-size: 16px;
 	line-height: 1.3;
@@ -1452,7 +1484,8 @@ body.price-dragging.price-raised * {
 	75% { transform: translateX(-4px); }
 }
 
-.download-button.shake {
+.download-button.shake,
+.buy-button.shake {
 	animation: shakeNo 0.3s ease-in-out;
 }
 

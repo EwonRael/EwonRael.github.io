@@ -11,6 +11,8 @@ const UNLOCKED = ["Hobo", "Hobo_Light", "Tiffany_Gothic"]
 
 const LOCKED_MESSAGE = "Free download unlocked when the funding goal is met."
 
+const CUBA_MESSAGE = "Fonts are free for people in Cuba."
+
 const remote = {}
 
 function styleState(id, data) {
@@ -30,6 +32,7 @@ function groupPercent(states) {
 }
 
 function isUnlocked(states) {
+	if (window.region.cuba) return true
 	return groupPercent(states) === 100
 }
 
@@ -45,7 +48,7 @@ function setupLockedButton(button) {
 	button.addEventListener("animationend", () => button.classList.remove("shake"))
 	button.addEventListener("click", () => {
 		if (!button.classList.contains("locked")) {
-			goTo(button.dataset.download)
+			if (button.dataset.download) goTo(button.dataset.download)
 			return
 		}
 		button.classList.remove("shake")
@@ -56,15 +59,32 @@ function setupLockedButton(button) {
 		row.classList.add("has-locked-message")
 		const message = document.createElement("p")
 		message.className = "locked-message"
-		message.textContent = LOCKED_MESSAGE
-		message.addEventListener("click", () => goTo("../../about.html#model"))
+		if (window.region.cuba) {
+			message.textContent = CUBA_MESSAGE
+		} else {
+			message.textContent = LOCKED_MESSAGE
+			message.addEventListener("click", () => goTo("../../about#model"))
+		}
 		row.append(message)
 		void message.offsetWidth
 		message.classList.add("show")
 	})
 }
 
+function renderBuyButtons() {
+	if (!window.region.cuba) return
+	document.querySelectorAll(".buy-button").forEach(button => {
+		if (!button.dataset.wired) {
+			button.dataset.wired = "true"
+			setupLockedButton(button)
+		}
+		button.classList.add("locked")
+		button.setAttribute("aria-disabled", true)
+	})
+}
+
 function renderButtons() {
+	renderBuyButtons()
 	document.querySelectorAll("[data-download]").forEach(button => {
 		if (!button.dataset.wired) {
 			button.dataset.wired = "true"
@@ -73,7 +93,7 @@ function renderButtons() {
 		const locked = !isUnlocked(statesFor(button))
 		button.classList.toggle("locked", locked)
 		button.setAttribute("aria-disabled", locked)
-		if (!locked) {
+		if (!locked && !window.region.cuba) {
 			const row = button.closest(".series-buttons")
 			row.querySelector(".locked-message")?.remove()
 			row.classList.remove("has-locked-message")
@@ -127,9 +147,17 @@ function renderBreakdown() {
 		const percent = groupPercent(statesFor(styleRow))
 		const row = document.createElement("div")
 		row.className = "funding-row"
-		const name = document.createElement("span")
+		const source = styleRow.querySelector(".style-info b a")
+		const name = document.createElement(source ? "a" : "span")
 		name.className = "funding-row-name"
 		name.textContent = styleRow.querySelector(".style-info b").textContent
+		if (source) {
+			name.href = source.getAttribute("href")
+			name.addEventListener("click", event => {
+				event.preventDefault()
+				goTo(name.href)
+			})
+		}
 		const track = document.createElement("div")
 		track.className = "funding-row-track"
 		const rowFill = document.createElement("div")
@@ -151,7 +179,7 @@ function renderCrumb() {
 	if (!crumb) return
 	const free = isUnlocked(statesFor(document.getElementById("series-info")))
 	crumb.textContent = free ? "Free Fonts" : "Paid Fonts"
-	crumb.href = "../../index.html#" + (free ? "free" : "paid")
+	crumb.href = "../../#" + (free ? "free" : "paid")
 }
 
 function render() {

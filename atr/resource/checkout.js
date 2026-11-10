@@ -1,5 +1,5 @@
-const PAYPAL_CLIENT_ID = "Ab2pxUeHPCbxKpAKT7m3sy8rJY0depZdnKSwRPaOAQUK6Q2bg8pJzq7WOmLwJ5kvcZqIOeNPgb5WGv8h"
-const PAYPAL_CURRENCY = "USD"
+const PAYPAL_CLIENT_ID = "AX1jmI9lD8kowbl5bAl_1QYP7XC7btI_t8AfZ1bj7vWl6yeg_Gz20PoZTAkTwH9tIU3JW9vTlXP73FCX"
+const PAYPAL_CURRENCY = window.region.code
 
 let paypalLoading = null
 
@@ -27,13 +27,14 @@ function shakeElement(el) {
 }
 
 function openCheckout(button) {
+	if (window.region.cuba) return
 	const name = button.dataset.name
 	const price = Number(button.dataset.price)
 	const minimum = Number(button.dataset.min || button.dataset.price)
 	const moreAt = Number(button.dataset.moreAt ?? minimum)
 	const free = button.dataset.free === "true"
 	const style = button.dataset.style
-	const downloadUrl = new URL("download.html" + (style ? "?style=" + encodeURIComponent(style) : ""), location.href).href
+	const downloadUrl = new URL("download" + (style ? "?style=" + encodeURIComponent(style) : ""), location.href).href
 
 	const overlay = document.createElement("div")
 	overlay.className = "checkout-overlay"
@@ -53,13 +54,13 @@ function openCheckout(button) {
 	amountInput.autocomplete = "off"
 	amountInput.spellcheck = false
 	amountInput.className = "checkout-amount-input"
-	amountInput.setAttribute("aria-label", "Amount in US dollars")
+	amountInput.setAttribute("aria-label", "Amount in " + window.region.name)
 	const more = document.createElement("span")
 	more.className = "checkout-more"
 	more.setAttribute("role", "button")
 	more.tabIndex = 0
 	more.textContent = "or\u00a0more"
-	priceLine.append("$", amountInput, "\u00a0USD\u00a0", more)
+	priceLine.append(window.region.symbol, amountInput, "\u00a0" + window.region.code + "\u00a0", more)
 
 	const hint = document.createElement("div")
 	hint.className = "checkout-hint"
@@ -128,7 +129,7 @@ function openCheckout(button) {
 		if (amount > CHECKOUT_MAX) return "high"
 		return "ok"
 	}
-	const messages = { ok: "Type in a custom amount", low: "below the $" + (Number.isInteger(minimum) ? minimum : minimum.toFixed(2)) + " USD minimum", high: "Too high", empty: "Enter an amount" }
+	const messages = { ok: "Type in a custom amount", low: "below the " + window.region.symbol + (Number.isInteger(minimum) ? minimum : minimum.toFixed(2)) + " " + window.region.code + " minimum", high: "Too high", empty: "Enter an amount" }
 
 	const update = () => {
 		const state = amountState()
@@ -263,7 +264,7 @@ function setupDraggablePrice(info) {
 	priceText.splitText(match[0].length)
 	const price = document.createElement("span")
 	price.className = "price-drag"
-	price.textContent = match[0]
+	price.textContent = window.region.format(defaultPrice, decimals)
 	priceText.replaceWith(price)
 
 	const siblings = () => document.querySelectorAll(".buy-button[data-price]")
@@ -291,7 +292,7 @@ function setupDraggablePrice(info) {
 	}
 	const apply = value => {
 		current = value
-		price.textContent = "$" + value.toFixed(decimals) + "\u00a0USD"
+		price.textContent = window.region.format(value, decimals)
 		price.classList.toggle("raised", isRaised(value))
 		group.forEach(b => { b.dataset.price = value })
 	}

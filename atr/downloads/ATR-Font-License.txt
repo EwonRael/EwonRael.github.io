@@ -1,0 +1,202 @@
+AMERICAN TYPE REVIVAL FONT LICENSE
+Version 1.0, November 2026
+
+Copyright (c) 2026 American Type Revival. All rights reserved.
+
+This license covers the font files it was delivered with, in any
+format, including any copies or modified versions you make ("the
+Font"). By downloading, installing or using the Font you agree to
+these terms.
+
+                                 ❧
+
+IN SHORT
+
+  - Use the Font for almost anything, personal or commercial.
+  - A license belongs to either one person or one group. A group
+    can be a company, or people sharing one venture, like a band.
+  - Do not sell, share or redistribute the Font files.
+  - Anyone else who needs the Font files buys their own license.
+
+This summary is only a guide. The terms below are what apply.
+
+                                 ❧
+
+1. WHO HOLDS THE LICENSE
+
+Each purchase grants one license to one licensee ("you"). A license
+is one of two kinds, depending on who it was bought for:
+
+  Personal license: bought for one individual person.
+  Group license:    bought for one group.
+
+A group is either:
+
+  - a company, agency, school, non-profit or other organization; or
+  - two or more people working together on one shared venture, such
+    as a band, a partnership, a collective or a business that has
+    not been registered.
+
+A group does not need to be a company or to be legally registered
+in any way. For example, a band may buy one Group license, and
+every member of the band may then use the Font for the band's
+albums, merchandise, posters and website.
+
+If a license is bought on behalf of someone else, for example by a
+designer for a client, the license belongs to the person or group
+it was bought for, not to the buyer.
+
+                                 ❧
+
+2. PERSONAL LICENSE
+
+  a. You, and only you, may use the Font.
+  b. You may install it on any number of devices that you own or
+     control.
+  c. You may use it for any number of projects, personal or
+     commercial, including a business that you run entirely on
+     your own.
+  d. Nobody else may use the Font under your license. Family
+     members and friends each need their own.
+  e. A business, band or other project in which more than one
+     person works needs its own Group license, even if you started
+     it. Your Personal license continues to cover your own separate
+     work.
+
+                                 ❧
+
+3. GROUP LICENSE
+
+  a. The Font may be installed on any number of devices owned or
+     controlled by the group or its members, and used by any number
+     of its members, owners and employees.
+  b. It may be used only for the group's own shared work, which
+     includes work the group produces for its clients. It may not
+     be used for the personal, separate or outside projects of the
+     people in the group. For example, a band member may use the
+     Font for the band, but not for a solo record or a day job.
+  c. Freelancers and contractors may install and use the Font while
+     doing work for the group, and must delete it when that work is
+     finished.
+  d. The license covers one group. For a registered company or
+     organization, that means one legal entity: parent companies,
+     subsidiaries and affiliated companies each need their own. For
+     an unregistered group, that means one shared venture: a
+     different venture needs its own license, even if the same
+     people are involved.
+  e. Anyone who leaves the group must stop using the Font and
+     delete their copies.
+
+                                 ❧
+
+4. WHAT YOU MAY DO
+
+Under either kind of license you may:
+
+  a. Use the Font in any work, personal or commercial, with no limit
+     on quantity, audience or revenue. This includes print, logos,
+     branding, packaging, merchandise, signage, images, video,
+     broadcast and social media.
+  b. Own the logos and artwork you create with the Font, and
+     register them as trademarks.
+  c. Use the Font as a webfont on websites that you own or operate,
+     with no limit on traffic, so that those sites display
+     correctly.
+  d. Embed the Font in apps, games, e-books, PDFs and other digital
+     products that you publish, so that they display correctly.
+  e. Run tools and services in which your customers create text set
+     in the Font, such as product customizers, template editors and
+     print-on-demand, as long as the customers receive only the
+     finished result and never the Font files.
+  f. Modify the Font for your own use, including converting it to
+     other formats, subsetting it, and changing or adding glyphs.
+     Modified versions remain covered by this license.
+  g. Keep backup copies.
+
+                                 ❧
+
+5. WHAT YOU MAY NOT DO
+
+You may not:
+
+  a. Sell, resell, rent, lend, sublicense, give away or otherwise
+     share the Font, on its own or as part of anything else, except
+     as section 6 allows.
+  b. Make the Font files available where people outside your license
+     can obtain them, including font sites, file-sharing services
+     and public code repositories.
+  c. Offer the Font to anyone as a font for them to install or use.
+     Webfont use and embedding under section 4 exist only to make
+     your own site or product display correctly.
+  d. Use the Font as a webfont on, or embed it in, a website or
+     product that belongs to someone else, unless they hold their
+     own license.
+  e. Remove or alter the copyright and license information inside
+     the Font files.
+
+                                 ❧
+
+6. WORK FOR CLIENTS
+
+You may use the Font under your own license to make finished work
+for clients, such as logos, graphics, layouts and printed matter,
+and deliver that work to them.
+
+If a client needs the Font files themselves, for example to install
+on their computers, to use on their website or in their app, or as
+part of a brand guidelines package, the client needs their own
+license. You may buy that license on the client's behalf and then
+give them the Font files together with a copy of this license.
+
+                                 ❧
+
+7. TRANSFER
+
+A license may not be transferred to anyone else. The one exception
+is that a Group license passes to the successor of the group if it
+is merged or acquired, or to the company it becomes if an
+unregistered group later registers as one.
+
+                                 ❧
+
+8. WHEN THE FONT BECOMES FREE
+
+American Type Revival intends to release each of its fonts under
+the SIL Open Font License once its funding goal has been reached.
+From the moment American Type Revival publishes the Font under the
+SIL Open Font License, you may use the Font under that license
+instead of this one.
+
+                                 ❧
+
+9. OWNERSHIP
+
+The Font is licensed, not sold. American Type Revival keeps all
+rights in the Font that this license does not expressly grant.
+
+                                 ❧
+
+10. TERMINATION
+
+This license ends automatically if you break its terms. If it ends,
+you must stop using the Font and delete every copy of it.
+
+                                 ❧
+
+11. NO WARRANTY
+
+The Font is provided "as is", without warranty of any kind, express
+or implied, including warranties of merchantability, fitness for a
+particular purpose and non-infringement. To the fullest extent the
+law allows, American Type Revival's total liability in connection
+with the Font is limited to the amount you paid for this license.
+
+                                 ❧
+
+12. QUESTIONS
+
+If you want to do something this license does not cover, or you are
+unsure whether it does, contact American Type Revival before going
+ahead.
+
+                                 ❧
