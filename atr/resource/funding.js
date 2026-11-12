@@ -61,6 +61,7 @@ function setupLockedButton(button) {
 		message.className = "locked-message"
 		if (window.region.cuba) {
 			message.textContent = CUBA_MESSAGE
+			message.classList.add("static")
 		} else {
 			message.textContent = LOCKED_MESSAGE
 			message.addEventListener("click", () => goTo("../../about#model"))

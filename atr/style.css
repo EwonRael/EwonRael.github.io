@@ -439,6 +439,11 @@ a.funding-row-name:hover::before {
 	position: relative;
 }
 
+.size-pt {
+	position: relative;
+	top: -5px;
+}
+
 .size-label.style-start {
 	margin-top: 100px;
 }
@@ -605,7 +610,7 @@ body.leaving #body {
 	border: black solid 1px;
 }
 
-#specimens div[data-family="Hobo"] {
+#specimens > div {
 	cursor: pointer;
 }
 
@@ -1215,6 +1220,10 @@ ul {
 	opacity: 0;
 	transition: opacity 0.4s;
 	cursor: help;
+}
+
+.locked-message.static {
+	cursor: default;
 }
 
 .locked-message.show {

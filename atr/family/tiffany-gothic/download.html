@@ -28,7 +28,7 @@
 		<div id="header">
 			<h1><a href="../../" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;<a href="./" onclick="goTo(this.href); return false">Tiffany Gothic</a>&nbsp;&rarr;&nbsp;Download</p>
+				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a href="../../#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;<a href="./" onclick="goTo(this.href); return false">Tiffany Gothic</a><span id="style-crumb" hidden>&nbsp;&rarr;&nbsp;<a onclick="goTo(this.href); return false"></a></span>&nbsp;&rarr;&nbsp;Download</p>
 			</div>
 		</div>
 		<div id="body" class="has-breadcrumb">
@@ -54,20 +54,27 @@
 			</form>
 			<img class="divide" src="../../ordament.svg"/>
 		</div>
+		<script src="../../resource/download-count.js"></script>
 		<script>
 		  const singles = {
-		    regular: { name: "Tiffany Gothic", zip: "TiffanyGothicATR-Regular.zip" }
+		    regular: { name: "Tiffany Gothic", zip: "TiffanyGothicATR-Regular.zip", id: "Tiffany_Gothic" }
 		  }
-		  const single = singles[new URLSearchParams(location.search).get("style")]
+		  const style = new URLSearchParams(location.search).get("style")
+		  const single = singles[style]
 		  const link = document.getElementById("download-link")
 		  if (single) {
 		    document.getElementById("download-name").textContent = single.name
 		    link.href = "../../downloads/" + single.zip
+		    const crumb = document.getElementById("style-crumb")
+		    crumb.querySelector("a").href = style
+		    crumb.querySelector("a").textContent = single.name
+		    crumb.hidden = false
 		    document.querySelectorAll("tr[data-style]").forEach(row => {
 		      if (singles[row.dataset.style] !== single) row.remove()
 		    })
 		  }
 		  link.click()
+		  countDownload(single ? [single.id] : Object.values(singles).map(s => s.id))
 		</script>
 	</body>
 </html>
