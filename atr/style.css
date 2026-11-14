@@ -167,11 +167,11 @@ body.series-page #filters p {
 
 #series-info {
 	width: calc(100% - 40px);
-	margin: 40px auto 0;
+	margin: 0 auto;
 }
 
 #series-title {
-	margin: -100px 0 0;
+	margin: 0;
 	padding: 0;
 	font-size: 96px;
 	font-weight: 400;
@@ -703,12 +703,21 @@ td.monospaced {
 #filters:not(.has-dropdowns) {
 	display: flow-root;
 	height: auto;
+	min-height: 50px;
 }
 
 #filters:not(.has-dropdowns) p {
 	float: none;
 	margin-bottom: 0;
 	overflow-wrap: anywhere;
+}
+
+/* The old title's negative margin let the floated breadcrumb push its text
+   down. Reserve that same single-line space explicitly, and let extra lines
+   increase it naturally instead of pushing the title sideways. */
+body.series-page #filters {
+	min-height: 0;
+	padding-bottom: 0;
 }
 
 #filters p a {
@@ -990,6 +999,14 @@ ul {
         height: 100px;
     }
 
+    #filters:not(.has-dropdowns) {
+        min-height: 100px;
+    }
+
+    body.series-page #filters {
+        min-height: 40px;
+    }
+
     #logo {
         left: -200px;
     }
@@ -1032,6 +1049,14 @@ ul {
     #filters {
         height: auto;
         padding-bottom: 20px;
+    }
+
+    #filters:not(.has-dropdowns) {
+        min-height: 0;
+    }
+
+    body.series-page #filters {
+        min-height: 0;
     }
 
     #logo, #logo:hover {
@@ -1098,6 +1123,14 @@ ul {
 
     #filters {
         height: 150px;
+    }
+
+    #filters:not(.has-dropdowns) {
+        min-height: 150px;
+    }
+
+    body.series-page #filters {
+        min-height: 110px;
     }
 
     #infoBox {

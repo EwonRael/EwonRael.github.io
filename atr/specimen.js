@@ -22,24 +22,15 @@ fetch("specimen-lines.json").then(r => r.json()).then(async lines => {
             const style = getComputedStyle(span)
             const available = parseFloat(style.width) - parseFloat(style.paddingLeft) - parseFloat(style.paddingRight)
             if (available <= 0) return
-            span.style.fontSize = `${size * Math.min(1, available / 296)}px`
+            // Scale the whole waterfall with the card, including above its
+            // original desktop width, rather than stretching the tracking.
+            span.style.fontSize = `${size * available / 296}px`
             span.style.letterSpacing = '0px'
             const range = document.createRange()
             range.selectNodeContents(span)
-            let width = range.getBoundingClientRect().width
+            const width = range.getBoundingClientRect().width
             if (width > available) {
                 span.style.fontSize = `${parseFloat(span.style.fontSize) * available / width}px`
-                width = range.getBoundingClientRect().width
-            }
-            const characters = Array.from(span.textContent).length
-            if (!characters || !width) return
-            let spacing = Math.max(0, available - width) / characters
-            // Re-measure after spacing: shaping and browser rounding can change the result.
-            for (let pass = 0; pass < 4; pass++) {
-                span.style.letterSpacing = `${spacing}px`
-                const remaining = available - range.getBoundingClientRect().width
-                if (Math.abs(remaining) < 0.05) break
-                spacing += remaining / characters
             }
         })
     }
