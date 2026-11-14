@@ -495,6 +495,7 @@ a.funding-row-name:hover::before {
 #body.has-breadcrumb {
 	margin-top: 40px;
 	border-top: none;
+	height: auto;
 }
 
 #series-styles h2 {
@@ -697,6 +698,17 @@ td.monospaced {
 	margin-top: 0;
 	padding: 8px 0;
 	float: left;
+}
+
+#filters:not(.has-dropdowns) {
+	display: flow-root;
+	height: auto;
+}
+
+#filters:not(.has-dropdowns) p {
+	float: none;
+	margin-bottom: 0;
+	overflow-wrap: anywhere;
 }
 
 #filters p a {
@@ -991,7 +1003,22 @@ ul {
 }
 @media only screen and (max-width: 700px) {
     #header, #specimens {
-        width: 330px;
+        width: calc(100% - 60px);
+    }
+
+    #filters, #series-info {
+        width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    #specimens div {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .specimen-live span {
+        width: 100%;
     }
 
     #header h1 {
@@ -1028,9 +1055,9 @@ ul {
         transform: translateX(-50%);
     }
     #body {
-        width: calc(100vw -40px);
-        margin-left: calc(50% - 50vw + 40px);
-        margin-right: -40px;
+        width: calc(100% - 60px);
+        margin-left: auto;
+        margin-right: auto;
         box-sizing: border-box;
     }
 
@@ -1047,10 +1074,6 @@ ul {
 	      background-size: 90vw;
     }
     
-    #header, #specimens {
-        width: 100%;
-    }
-    
     #header #subhead {
       margin-top: -30px;
       font-size: 6.5vw;
@@ -1060,7 +1083,6 @@ ul {
     #specimens div {
         float: none;
         margin: 0 auto 60px auto;
-        width: 90vw;
         height: 392vw;
         background-size: 90vw auto;
     }
@@ -1075,8 +1097,6 @@ ul {
     }
 
     #filters {
-        margin-left: 5vw;
-        width: 90vw;
         height: 150px;
     }
 
@@ -1119,10 +1139,6 @@ ul {
     #specimens div.specimen-live.orderHide {
         height: 0;
         padding-bottom: 0;
-    }
-
-    .specimen-live span {
-        width: calc(90vw - 2px);
     }
 }
 
@@ -1521,6 +1537,7 @@ body.price-dragging.price-raised * {
 
 @media only screen and (max-width: 700px) {
     body.about-page #body {
+        width: calc(100% - 60px);
         margin-top: 60px;
     }
 
