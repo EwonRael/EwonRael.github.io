@@ -7,6 +7,7 @@
 		<link rel="shortcut icon" href="Favicon.png">
 		<link rel="icon" type="../image/png" href="Favicon.png">
 		<script src="fade.js"></script>
+		<script src="resource/font-registry.js"></script>
 		<script src="script.js" type="module"></script>
 		<script src="specimen.js" defer></script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
@@ -16,15 +17,15 @@
 	<body>
 		<div id="logo" onclick="goTo('about')"></div>
 		<div id="infoBox">
-		  <div id="all-font-info">
-        <div id="info-title"></div>
-			  <p id="info-family-line">Font Family: <span id="info-family"></span></p>
-			  <p>Status: <span id="info-status"></span></p>
+			<div id="all-font-info">
+				<div id="info-title"></div>
+				<p id="info-family-line">Font Family: <span id="info-family"></span></p>
+				<p>Funding Status: <span id="info-status"></span></p>
 			</div>
 			<div id="font-group-info">
 			</div>
 			<div id="about-info">
-			  <p>Learn about <i>American Type Revival</i></p>
+				<p>Learn about <i>American Type Revival</i></p>
 			</div>
 		</div>
 		<div id="header">
@@ -43,7 +44,7 @@
 					<div class="dropbtn" id="sorting">alphabetically</div>
 					<div class="dropdown-content">
 						<a onclick="sort(0)">alphabetically</a>
-            <a onclick="sort(1)">by date</a>
+						<a onclick="sort(1)">by date</a>
 						<a onclick="sort(2)">by popularity</a>
 					</div>
 				</div>
@@ -59,10 +60,10 @@
 			</div>
 		</div>
 		<div id="specimens">
-			<div id="Hobo" class="specimen-live" style="font-family: 'HoboATR'" data-font="HoboATR" data-font-name="Hobo ATR" aria-label="Hobo" data-date="26-09-07" data-status="free" data-family="Hobo"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
-			<div class="familyHide specimen-live" style="font-family: 'HoboATR'; font-weight: 300" data-font="HoboATR" data-font-name="Light Hobo ATR" data-display-name="Light Hobo" aria-label="Hobo Light" data-date="26-09-07" data-status="free" data-family="Hobo"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
-			<div id="News Gothic" class="specimen-live" style="font-family: 'NewsGothic'" data-font="NewsGothic" data-font-name="News Gothic ATR" aria-label="News Gothic" data-date="26-09-07" data-status="paid" data-funding="10000" data-family="News Gothic"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
-			<div id="Tiffany Gothic" class="specimen-live" style="font-family: 'TiffanyGothicATR'" data-font="TiffanyGothicATR" data-font-name="Tiffany Gothic ATR" aria-label="Tiffany Gothic" data-date="26-09-07" data-status="free" data-family="Tiffany Gothic"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
+			<div id="Hobo" class="specimen-live" style="font-family: 'Hobo ATR'" data-font="Hobo ATR" data-font-name="Hobo ATR" aria-label="Hobo" data-date="2026-09-07" data-status="free" data-family="Hobo" data-font-id="HoboATR-Regular" data-catalogue-name="Hobo" data-index-name="Hobo" data-weight="400" data-width="5" data-style="Regular" data-funding="0"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
+			<div class="familyHide specimen-live" style="font-family: 'Hobo ATR'; font-weight: 300" data-font="Hobo ATR" data-font-name="Light Hobo ATR" data-display-name="Light Hobo" aria-label="Light Hobo" data-date="2026-09-07" data-status="free" data-family="Hobo" data-font-id="HoboATR-Light" data-catalogue-name="Light Hobo" data-index-name="Hobo Light" data-weight="300" data-width="5" data-style="Light" data-funding="0"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
+			<div id="Newsprint Gothic" class="specimen-live" style="font-family: 'Newsprint Gothic ATR'" data-font="Newsprint Gothic ATR" data-font-name="Newsprint Gothic ATR" aria-label="Newsprint Gothic" data-date="2026-09-07" data-status="paid" data-funding="10000" data-family="Newsprint Gothic" data-font-id="NewsprintGothicATR-Regular" data-catalogue-name="Newsprint Gothic" data-index-name="Newsprint Gothic" data-weight="400" data-width="5" data-style="Regular"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
+			<div id="Tiffany Gothic" class="specimen-live" style="font-family: 'Tiffany Gothic ATR'" data-font="Tiffany Gothic ATR" data-font-name="Tiffany Gothic ATR" aria-label="Tiffany Gothic" data-date="2026-09-07" data-status="free" data-family="Tiffany Gothic" data-font-id="TiffanyGothicATR-Regular" data-catalogue-name="Tiffany Gothic" data-index-name="Tiffany Gothic" data-weight="400" data-width="5" data-style="Regular" data-keywords="Lining Antique Standard Lining Antique Cleveland Olympia Typo Gothic" data-funding="0"><span style="font-size: 96px">&nbsp;</span><span style="font-size: 72px">&nbsp;</span><span style="font-size: 60px">&nbsp;</span><span style="font-size: 48px">&nbsp;</span><span style="font-size: 36px">&nbsp;</span><span style="font-size: 30px">&nbsp;</span><span style="font-size: 24px">&nbsp;</span><span style="font-size: 18px">&nbsp;</span><span style="font-size: 14px">&nbsp;</span><span style="font-size: 12px">&nbsp;</span></div>
 		</div>
 	</body>
 </html>

@@ -40,28 +40,28 @@
 }
 
 @font-face {
-	font-family: "NewsGothic";
-	src: url("News Gothic/NewsGothic-Regular.woff2") format("woff2");
+	font-family: "Newsprint Gothic ATR";
+	src: url("Newsprint Gothic/NewsprintGothicATR-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
 }
 
 @font-face {
-	font-family: "HoboATR";
+	font-family: "Hobo ATR";
 	src: url("Hobo/HoboATR-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
 }
 
 @font-face {
-	font-family: "HoboATR";
+	font-family: "Hobo ATR";
 	src: url("Hobo/HoboATR-Light.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 300;
 }
 
 @font-face {
-	font-family: "TiffanyGothicATR";
+	font-family: "Tiffany Gothic ATR";
 	src: url("Tiffany Gothic/TiffanyGothicATR-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
@@ -296,6 +296,7 @@ a.funding-row-name:hover::before {
 .funding-row-fill {
 	height: 100%;
 	width: var(--funded);
+	min-width: 1px;
 	background: #1f3f66;
 	opacity: 75%;
 	transition: opacity 0.2s;
@@ -466,7 +467,7 @@ a.funding-row-name:hover::before {
 	margin-left: calc(50% - 50vw);
 	text-align: center;
 	margin-top: -0.3em;
-	font-family: "HoboATR";
+	font-family: "Hobo ATR";
 	font-weight: 400;
 	line-height: 1.2;
 	white-space: nowrap;
@@ -821,6 +822,16 @@ strong:hover::before {
 	display: block;
 }
 
+#info-status .funding-row {
+	display: flex;
+	margin: 6px 0 0;
+}
+
+#info-status .funding-row-track {
+	flex: 1;
+	min-width: 0;
+}
+
 
 #infoBox::-webkit-scrollbar {
     display: none;
@@ -1098,8 +1109,8 @@ ul {
     font-feature-settings: "salt" 1;
 }
 
-.specimen-live[data-font="TiffanyGothicATR"] span:is([data-size="24"], [data-size="18"], [data-size="14"], [data-size="12"]) {
-    font-family: "TiffanyGothicAlternateG", "TiffanyGothicATR";
+.specimen-live[data-font="Tiffany Gothic ATR"] span:is([data-size="24"], [data-size="18"], [data-size="14"], [data-size="12"]) {
+    font-family: "TiffanyGothicAlternateG", "Tiffany Gothic ATR";
 }
 
 @media only screen and (max-width: 400px) {

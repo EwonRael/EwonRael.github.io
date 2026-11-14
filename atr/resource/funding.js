@@ -7,13 +7,14 @@ const firebaseConfig = {
 	appId: "1:743516545238:web:885d58cecd491e68086977"
 }
 
-const UNLOCKED = ["Hobo", "Hobo_Light", "Tiffany_Gothic"]
+const UNLOCKED = ["HoboATR-Regular", "HoboATR-Light", "TiffanyGothicATR-Regular"]
 
 const LOCKED_MESSAGE = "Free download unlocked when the funding goal is met."
 
 const CUBA_MESSAGE = "Fonts are free for people in Cuba."
 
-const remote = {}
+const remote = Object.fromEntries(Object.entries(window.ATR_FONTS).map(([id, font]) =>
+	[id, { status: font.status, funding: font.funding, income: 0 }]))
 
 function styleState(id, data) {
 	const local = UNLOCKED.includes(id)
@@ -198,7 +199,9 @@ function getFirebase() {
 		firebasePromise = (async () => {
 			const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js")
 			const firestore = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js")
-			return { db: firestore.getFirestore(initializeApp(firebaseConfig)), firestore }
+			const db = firestore.getFirestore(initializeApp(firebaseConfig))
+			await window.atrEnsureFonts(db, firestore)
+			return { db, firestore }
 		})()
 		firebasePromise.catch(() => { firebasePromise = null })
 	}
@@ -244,7 +247,7 @@ const PENDING_KEY = "atrPending"
 function readPending() {
 	try {
 		const list = JSON.parse(localStorage.getItem(PENDING_KEY))
-		return Array.isArray(list) ? list : []
+		return Array.isArray(list) ? list.map(entry => ({ ...entry, ids: entry.ids.map(id => ({Hobo: "HoboATR-Regular", Hobo_Light: "HoboATR-Light", News_Gothic: "NewsprintGothicATR-Regular", Tiffany_Gothic: "TiffanyGothicATR-Regular"}[id] || id)) })) : []
 	} catch (error) {
 		return []
 	}

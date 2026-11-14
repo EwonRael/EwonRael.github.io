@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="keywords" content="Newsprint Gothic, News Gothic, Morris Fuller Benton">
+		<title>Newsprint Gothic – American Type Revival</title>
+		<link rel="stylesheet" href="../../style.css"/>
+		<link rel="shortcut icon" href="../../Favicon.png">
+		<link rel="icon" type="image/png" href="../../Favicon.png">
+		<script src="../../fade.js"></script>
+		<script src="../../resource/font-registry.js"></script>
+		<script src="../../resource/timezone.js"></script>
+		<script src="../../resource/funding.js" defer></script>
+		<script src="../../resource/checkout.js" defer></script>
+		<script src="../../resource/fit-text.js" defer></script>
+		<script>
+			function showInfo(html) {
+				document.getElementById("info-text").innerHTML = html
+				document.getElementById("infoBox").style.display = "block"
+			}
+			onmousemove = function(e) {
+				const infoBox = document.getElementById("infoBox")
+				infoBox.style.top = (e.clientY + 20) + "px"
+				infoBox.style.left = (e.clientX + 10) + "px"
+			}
+		</script>
+		<meta name="viewport" content="width=device-width, initial-scale=0.75">
+		<meta property="og:title" content="Newsprint Gothic – American Type Revival" />
+		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
+	</head>
+	<body class="series-page">
+		<div id="logo" class="home-link" onmouseover="showInfo('Return to main page.')" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="goTo('../../')"></div>
+		<div id="infoBox">
+			<div id="about-info">
+				<p id="info-text">Return to main page.</p>
+			</div>
+		</div>
+		<div id="header">
+			<h1><a href="../../" onclick="goTo(this.href); return false">American Type Revival</a></h1>
+			<div id="filters">
+				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;Newsprint Gothic</p>
+			</div>
+			<div id="series-info" data-fonts="NewsprintGothicATR-Regular">
+				<h2 id="series-title" style="font-family: 'Newsprint Gothic ATR'">Newsprint Gothic</h2>
+				<div id="funding-bar" style="cursor: default">
+					<div id="funding-fill" style="--funded: 0%"></div>
+					<span id="funding-label">Funding: 0%</span>
+				</div>
+				<div class="series-buttons">
+					<span class="style-info"><span class="info-extra"><b>Newsprint Gothic</b>&nbsp;| </span>1&nbsp;Style&nbsp;| $15&nbsp;USD</span>
+					<div class="button-group">
+						<button class="buy-button" data-name="Newsprint Gothic" data-price="15" data-style="">Buy Font</button>
+						<button class="download-button locked" data-download="download" aria-disabled="true">Download for Free</button>
+					</div>
+				</div>
+				<div id="series-styles">
+					<span id="series-ornament">&#x2767;</span>
+					<div class="line"></div>
+					<h2>Complete fonts in family:</h2>
+					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'Newsprint Gothic ATR'; font-weight: 400"></div>
+					<div class="series-buttons" data-fonts="NewsprintGothicATR-Regular">
+						<span class="style-info"><b>Newsprint Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
+						<div class="button-group">
+							<button class="buy-button" data-name="Newsprint Gothic" data-price="15" data-style="regular">Buy Font</button>
+							<button class="download-button locked" data-download="download?style=regular" aria-disabled="true">Download for Free</button>
+						</div>
+					</div>
+				</div>
+				<div id="series-about">
+					<div class="line"></div>
+					<h2>About the font</h2>
+					<p><i>News Gothic</i> was first drawn by Morris Fuller Benton for the <i>American Type Founders</i>, and was released in 1908. As the name implies, it was made to be used in newspapers, and its simple, neutral, and practical construction reflects this. It is a legible and practical choice for body text and headlines alike.</p>
+					<p>Morris Fuller Benton also drew the bolder <i>Franklin Gothic</i>, which was released around the same time. Although these fonts differ in construction in meaningful ways, it is clear they are of the same sort and today are generally considered part of the same font family. <i>Franklin Gothic</i> was named after the American founding father (who was known to be a bit of a type nerd himself), and although this font is neutral and practical, it does have a subtle American flair to it. Over its century+ existence the font family has embedded itself into American culture. It is the sans-serif typeface of choice used by the <i>New York Times</i>, and is featured in the iconic <i>Star Wars</i> opening exposition text crawl.</p>
+					<br><img src="../../resource/NewsGothic-1923.webp" alt="News Gothic specimen page from 1923" />
+					<p class="caption"><i>News Gothic</i> page in 1923 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
+					<p>Over the years, some of the idiosyncrasies and inconsistencies have been rounded out, and digital revivals often adjust letter construction to appeal to modern sensibilities. The ATR revival faithfully preserves the unique qualities of the original 1908 release. The font features a robust set of special characters and symbols. It supports over 300 languages.</p>
+				</div>
+				<div id="series-cards">
+					<div class="line"></div>
+					<h2>Type Specimen</h2>
+				</div>
+				<div id="series-end">
+					<div class="line"></div>
+					<div class="series-buttons">
+						<button class="buy-button" data-name="Newsprint Gothic" data-price="15" data-style="">Buy Font</button>
+						<button class="download-button locked" data-download="download" aria-disabled="true">Download for Free</button>
+					</div>
+					<img class="end-ornament" src="../../ordament.svg"/>
+				</div>
+			</div>
+		</div>
+		<script src="../../resource/pangrams.js"></script>
+		<script>
+			const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
+			document.querySelectorAll(".style-sample").forEach((sample, i) => {
+				sample.textContent = shuffled[i % shuffled.length] + ". You can edit this text."
+				sample.addEventListener("keydown", e => {
+					if (e.key === "Enter") e.preventDefault()
+				})
+				sample.addEventListener("paste", e => {
+					e.preventDefault()
+					document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+				})
+			})
+		</script>
+		<script>
+			fetch("../../specimen-lines.json").then(r => r.json()).then(async lines => {
+				await document.fonts.load("400 96px \"Newsprint Gothic ATR\"")
+				const container = document.getElementById("series-cards")
+				const styles = [
+					{key: "NewsprintGothicATR-Regular", weight: 400, name: "Newsprint Gothic"}
+				]
+				styles.forEach((style, index) => {
+					const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)
+					sizes.forEach((size, i) => {
+						const label = document.createElement("div")
+						label.className = "size-label"
+						if (i === 0) {
+							if (index > 0) label.classList.add("style-start")
+							const name = document.createElement("span")
+							name.className = "size-name"
+							name.textContent = style.name
+							label.append(name)
+						}
+						const pt = document.createElement("span")
+						pt.className = "size-pt"
+						pt.textContent = Math.round(size * 0.75) + " pt"
+						label.append(pt)
+						const row = document.createElement("div")
+						row.labelEl = pt
+						row.className = "size-sample"
+						row.style.fontWeight = style.weight
+						row.style.fontFamily = "Newsprint Gothic ATR"
+						row.contentEditable = "true"
+						row.spellcheck = false
+						row.dataset.size = size
+						const options = lines[style.key][size]
+						row.textContent = options[Math.floor(Math.random() * options.length)]
+						row.addEventListener("keydown", e => {
+							if (e.key === "Enter") e.preventDefault()
+						})
+						row.addEventListener("paste", e => {
+							e.preventDefault()
+							document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+						})
+						container.append(label, row)
+					})
+				})
+				function fit() {
+					container.querySelectorAll(".size-sample").forEach(row => {
+						const size = Number(row.dataset.size)
+						const available = container.clientWidth
+						if (available <= 0) return
+						row.style.letterSpacing = "0px"
+						row.style.fontSize = (size * available / 296) + "px"
+						const range = document.createRange()
+						range.selectNodeContents(row)
+						let width = range.getBoundingClientRect().width
+						if (width > available) {
+							row.style.fontSize = (parseFloat(row.style.fontSize) * available / width) + "px"
+							width = range.getBoundingClientRect().width
+						}
+						const characters = Array.from(row.textContent).length
+						if (!characters || !width) return
+						row.labelEl.textContent = Math.round(parseFloat(row.style.fontSize) * 0.75) + " pt"
+						let spacing = Math.max(0, available - width) / characters
+						for (let pass = 0; pass < 4; pass++) {
+							row.style.letterSpacing = spacing + "px"
+							const remaining = available - range.getBoundingClientRect().width
+							if (Math.abs(remaining) < 0.05) break
+							spacing += remaining / characters
+						}
+					})
+				}
+				fit()
+				window.addEventListener("resize", fit)
+			}).catch(error => console.error("Specimen loading failed:", error))
+		</script>
+	</body>
+</html>

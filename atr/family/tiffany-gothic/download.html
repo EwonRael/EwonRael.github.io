@@ -7,12 +7,13 @@
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/font-registry.js"></script>
 		<script>
-		  onmousemove = function(e) {
-		    const infoBox = document.getElementById("infoBox")
-		    infoBox.style.top = (e.clientY + 20) + "px"
-		    infoBox.style.left = (e.clientX + 10) + "px"
-		  }
+			onmousemove = function(e) {
+				const infoBox = document.getElementById("infoBox")
+				infoBox.style.top = (e.clientY + 20) + "px"
+				infoBox.style.left = (e.clientX + 10) + "px"
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
 		<meta property="og:title" content="Download – American Type Revival" />
@@ -22,7 +23,7 @@
 		<div id="logo" class="home-link" onmouseover="document.getElementById('infoBox').style.display = 'block'" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="goTo('../../')"></div>
 		<div id="infoBox">
 			<div id="about-info">
-			  <p>Return to main page.</p>
+				<p>Return to main page.</p>
 			</div>
 		</div>
 		<div id="header">
@@ -33,14 +34,16 @@
 		</div>
 		<div id="body" class="has-breadcrumb">
 			<h2>Thank You!</h2>
-			<p>Your download of <i id="download-name">Tiffany Gothic</i> should start automatically. If it doesn&#8217;t, <a id="download-link" href="../../downloads/TiffanyGothicATR.zip" download>click here</a>.</p>
+			<p>Your download of <i id="download-name">Tiffany Gothic ATR</i> should start automatically. If it doesn&#8217;t, <a id="download-link" href="../../downloads/TiffanyGothicATR.zip" download>click here</a>.</p>
 			<table>
 				<tr>
 					<th>Included in download</th>
+					<th>In font menus</th>
 					<th>Weight</th>
 				</tr>
 				<tr data-style="regular">
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Tiffany Gothic ATR</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Tiffany Gothic ATR &gt; Regular</td>
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">400</td>
 				</tr>
 			</table>
@@ -56,25 +59,25 @@
 		</div>
 		<script src="../../resource/download-count.js"></script>
 		<script>
-		  const singles = {
-		    regular: { name: "Tiffany Gothic", zip: "TiffanyGothicATR-Regular.zip", id: "Tiffany_Gothic" }
-		  }
-		  const style = new URLSearchParams(location.search).get("style")
-		  const single = singles[style]
-		  const link = document.getElementById("download-link")
-		  if (single) {
-		    document.getElementById("download-name").textContent = single.name
-		    link.href = "../../downloads/" + single.zip
-		    const crumb = document.getElementById("style-crumb")
-		    crumb.querySelector("a").href = style
-		    crumb.querySelector("a").textContent = single.name
-		    crumb.hidden = false
-		    document.querySelectorAll("tr[data-style]").forEach(row => {
-		      if (singles[row.dataset.style] !== single) row.remove()
-		    })
-		  }
-		  link.click()
-		  countDownload(single ? [single.id] : Object.values(singles).map(s => s.id))
+			const singles = {
+				regular: { name: "Tiffany Gothic ATR", catalogueName: "Tiffany Gothic", zip: "TiffanyGothicATR-Regular.zip", id: "TiffanyGothicATR-Regular" }
+			}
+			const style = new URLSearchParams(location.search).get("style")
+			const single = singles[style]
+			const link = document.getElementById("download-link")
+			if (single) {
+				document.getElementById("download-name").textContent = single.name
+				link.href = "../../downloads/" + single.zip
+				const crumb = document.getElementById("style-crumb")
+				crumb.querySelector("a").href = style
+				crumb.querySelector("a").textContent = single.catalogueName
+				crumb.hidden = false
+				document.querySelectorAll("tr[data-style]").forEach(row => {
+					if (singles[row.dataset.style] !== single) row.remove()
+				})
+			}
+			link.click()
+			countDownload(single ? [single.id] : Object.values(singles).map(s => s.id))
 		</script>
 	</body>
 </html>

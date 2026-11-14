@@ -12,7 +12,7 @@ const COUNTED_KEY = "atrDownloaded"
 function readCounted() {
 	try {
 		const list = JSON.parse(localStorage.getItem(COUNTED_KEY))
-		return Array.isArray(list) ? list : []
+		return Array.isArray(list) ? list.map(id => ({Hobo: "HoboATR-Regular", Hobo_Light: "HoboATR-Light", News_Gothic: "NewsprintGothicATR-Regular", Tiffany_Gothic: "TiffanyGothicATR-Regular"}[id] || id)) : []
 	} catch (error) {
 		return null
 	}
@@ -30,8 +30,10 @@ async function countDownload(ids) {
 	if (!fresh.length) return
 	try {
 		const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js")
-		const { getFirestore, doc, updateDoc, increment } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js")
+		const firestore = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js")
+		const { getFirestore, doc, updateDoc, increment } = firestore
 		const db = getFirestore(initializeApp(firebaseConfig))
+		await window.atrEnsureFonts(db, firestore)
 		await Promise.all(fresh.map(async id => {
 			try {
 				await updateDoc(doc(db, "fonts", id), { downloads: increment(1) })

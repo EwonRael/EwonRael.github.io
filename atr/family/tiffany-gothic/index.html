@@ -2,25 +2,27 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta name="keywords" content="Tiffany Gothic, Lining Antique, Standard Lining Antique, Cleveland, Olympia, Typo Gothic">
 		<title>Tiffany Gothic – American Type Revival</title>
 		<link rel="stylesheet" href="../../style.css"/>
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/font-registry.js"></script>
 		<script src="../../resource/timezone.js"></script>
 		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
-		  function showInfo(html) {
-		    document.getElementById("info-text").innerHTML = html
-		    document.getElementById("infoBox").style.display = "block"
-		  }
-		  onmousemove = function(e) {
-		    const infoBox = document.getElementById("infoBox")
-		    infoBox.style.top = (e.clientY + 20) + "px"
-		    infoBox.style.left = (e.clientX + 10) + "px"
-		  }
+			function showInfo(html) {
+				document.getElementById("info-text").innerHTML = html
+				document.getElementById("infoBox").style.display = "block"
+			}
+			onmousemove = function(e) {
+				const infoBox = document.getElementById("infoBox")
+				infoBox.style.top = (e.clientY + 20) + "px"
+				infoBox.style.left = (e.clientX + 10) + "px"
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
 		<meta property="og:title" content="Tiffany Gothic – American Type Revival" />
@@ -30,7 +32,7 @@
 		<div id="logo" class="home-link" onmouseover="showInfo('Return to main page.')" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="goTo('../../')"></div>
 		<div id="infoBox">
 			<div id="about-info">
-			  <p id="info-text">Return to main page.</p>
+				<p id="info-text">Return to main page.</p>
 			</div>
 		</div>
 		<div id="header">
@@ -38,8 +40,8 @@
 			<div id="filters">
 				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Tiffany Gothic</p>
 			</div>
-			<div id="series-info" data-fonts="Tiffany_Gothic">
-				<h2 id="series-title" style="font-family: 'TiffanyGothicATR'">Tiffany Gothic</h2>
+			<div id="series-info" data-fonts="TiffanyGothicATR-Regular">
+				<h2 id="series-title" style="font-family: 'Tiffany Gothic ATR'">Tiffany Gothic</h2>
 				<div id="funding-bar" style="cursor: default">
 					<div id="funding-fill" style="--funded: 0%"></div>
 					<span id="funding-label">Funding: 0%</span>
@@ -55,8 +57,8 @@
 					<span id="series-ornament">&#x2767;</span>
 					<div class="line"></div>
 					<h2>Complete fonts in family:</h2>
-					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'TiffanyGothicATR'; font-weight: 400"></div>
-					<div class="series-buttons" data-fonts="Tiffany_Gothic">
+					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'Tiffany Gothic ATR'; font-weight: 400"></div>
+					<div class="series-buttons" data-fonts="TiffanyGothicATR-Regular">
 						<span class="style-info"><b>Tiffany Gothic</b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Tiffany Gothic" data-price="15" data-style="regular">Buy Font</button>
@@ -72,7 +74,7 @@
 					<br><img src="../../resource/Tiffany-1909.webp" alt="Tiffany Gothic specimen page from 1909" />
 					<p class="caption"><i>Tiffany Gothic</i> page in 1909 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
 					<br><br><img src="../../resource/Tiffany-1923.webp" alt="Typo Gothic specimen page from 1923" />
-					<p class="caption"><i>Tiffany Gothic</i> page in 1923 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
+					<p class="caption"><i>Typo Gothic</i> page in 1923 <i>American Type Founders Specimen Book &amp; Catalogue</i></p>
 					<p>The name <i>Tiffany Gothic</i> comes from the <i>American Type Founders</i>, who started selling the typeface after it acquired the <i>Illinois Type Foundry</i>, which had previously sold it under the name <i>Lining Antique</i>. It was sold under many names throughout the years, including <i>Cleveland</i>, <i>Olympia</i>, and <i>Typo Gothic</i>, but <i>Tiffany Gothic</i> was chosen for the ATR revival because it captures the more feminine and antique elegance of the typeface, similar to Tiffany lamps or the iconic jeweler.</p>
 					<p>Thoughtfully digitized using high-quality sources, ATR’s <i>Tiffany Gothic</i> includes special characters and accented glyphs. It supports over 200 languages.</p>
 				</div>
@@ -92,90 +94,90 @@
 		</div>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
-		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
-		  document.querySelectorAll(".style-sample").forEach((sample, i) => {
-		    sample.textContent = shuffled[i % shuffled.length] + ". You can edit this text."
-		    sample.addEventListener("keydown", e => {
-		      if (e.key === "Enter") e.preventDefault()
-		    })
-		    sample.addEventListener("paste", e => {
-		      e.preventDefault()
-		      document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
-		    })
-		  })
+			const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
+			document.querySelectorAll(".style-sample").forEach((sample, i) => {
+				sample.textContent = shuffled[i % shuffled.length] + ". You can edit this text."
+				sample.addEventListener("keydown", e => {
+					if (e.key === "Enter") e.preventDefault()
+				})
+				sample.addEventListener("paste", e => {
+					e.preventDefault()
+					document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+				})
+			})
 		</script>
 		<script>
-		  fetch("../../specimen-lines.json").then(r => r.json()).then(async lines => {
-		    await document.fonts.load("400 96px TiffanyGothicATR")
-		    const container = document.getElementById("series-cards")
-		    const styles = [
-		      {key: "TiffanyGothicATR", weight: 400, name: "Tiffany Gothic Regular"}
-		    ]
-		    styles.forEach((style, index) => {
-		      const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)
-		      sizes.forEach((size, i) => {
-		        const label = document.createElement("div")
-		        label.className = "size-label"
-		        if (i === 0) {
-		          if (index > 0) label.classList.add("style-start")
-		          const name = document.createElement("span")
-		          name.className = "size-name"
-		          name.textContent = style.name
-		          label.append(name)
-		        }
-		        const pt = document.createElement("span")
-		        pt.className = "size-pt"
-		        pt.textContent = Math.round(size * 0.75) + " pt"
-		        label.append(pt)
-		        const row = document.createElement("div")
-		        row.labelEl = pt
-		        row.className = "size-sample"
-		        row.style.fontWeight = style.weight
-		        row.style.fontFamily = "TiffanyGothicATR"
-		        row.contentEditable = "true"
-		        row.spellcheck = false
-		        row.dataset.size = size
-		        const options = lines[style.key][size]
-		        row.textContent = options[Math.floor(Math.random() * options.length)]
-		        row.addEventListener("keydown", e => {
-		          if (e.key === "Enter") e.preventDefault()
-		        })
-		        row.addEventListener("paste", e => {
-		          e.preventDefault()
-		          document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
-		        })
-		        container.append(label, row)
-		      })
-		    })
-		    function fit() {
-		      container.querySelectorAll(".size-sample").forEach(row => {
-		        const size = Number(row.dataset.size)
-		        const available = container.clientWidth
-		        if (available <= 0) return
-		        row.style.letterSpacing = "0px"
-		        row.style.fontSize = (size * available / 296) + "px"
-		        const range = document.createRange()
-		        range.selectNodeContents(row)
-		        let width = range.getBoundingClientRect().width
-		        if (width > available) {
-		          row.style.fontSize = (parseFloat(row.style.fontSize) * available / width) + "px"
-		          width = range.getBoundingClientRect().width
-		        }
-		        const characters = Array.from(row.textContent).length
-		        if (!characters || !width) return
-		        row.labelEl.textContent = Math.round(parseFloat(row.style.fontSize) * 0.75) + " pt"
-		        let spacing = Math.max(0, available - width) / characters
-		        for (let pass = 0; pass < 4; pass++) {
-		          row.style.letterSpacing = spacing + "px"
-		          const remaining = available - range.getBoundingClientRect().width
-		          if (Math.abs(remaining) < 0.05) break
-		          spacing += remaining / characters
-		        }
-		      })
-		    }
-		    fit()
-		    window.addEventListener("resize", fit)
-		  }).catch(error => console.error("Specimen loading failed:", error))
+			fetch("../../specimen-lines.json").then(r => r.json()).then(async lines => {
+				await document.fonts.load("400 96px \"Tiffany Gothic ATR\"")
+				const container = document.getElementById("series-cards")
+				const styles = [
+					{key: "TiffanyGothicATR-Regular", weight: 400, name: "Tiffany Gothic"}
+				]
+				styles.forEach((style, index) => {
+					const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)
+					sizes.forEach((size, i) => {
+						const label = document.createElement("div")
+						label.className = "size-label"
+						if (i === 0) {
+							if (index > 0) label.classList.add("style-start")
+							const name = document.createElement("span")
+							name.className = "size-name"
+							name.textContent = style.name
+							label.append(name)
+						}
+						const pt = document.createElement("span")
+						pt.className = "size-pt"
+						pt.textContent = Math.round(size * 0.75) + " pt"
+						label.append(pt)
+						const row = document.createElement("div")
+						row.labelEl = pt
+						row.className = "size-sample"
+						row.style.fontWeight = style.weight
+						row.style.fontFamily = "Tiffany Gothic ATR"
+						row.contentEditable = "true"
+						row.spellcheck = false
+						row.dataset.size = size
+						const options = lines[style.key][size]
+						row.textContent = options[Math.floor(Math.random() * options.length)]
+						row.addEventListener("keydown", e => {
+							if (e.key === "Enter") e.preventDefault()
+						})
+						row.addEventListener("paste", e => {
+							e.preventDefault()
+							document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+						})
+						container.append(label, row)
+					})
+				})
+				function fit() {
+					container.querySelectorAll(".size-sample").forEach(row => {
+						const size = Number(row.dataset.size)
+						const available = container.clientWidth
+						if (available <= 0) return
+						row.style.letterSpacing = "0px"
+						row.style.fontSize = (size * available / 296) + "px"
+						const range = document.createRange()
+						range.selectNodeContents(row)
+						let width = range.getBoundingClientRect().width
+						if (width > available) {
+							row.style.fontSize = (parseFloat(row.style.fontSize) * available / width) + "px"
+							width = range.getBoundingClientRect().width
+						}
+						const characters = Array.from(row.textContent).length
+						if (!characters || !width) return
+						row.labelEl.textContent = Math.round(parseFloat(row.style.fontSize) * 0.75) + " pt"
+						let spacing = Math.max(0, available - width) / characters
+						for (let pass = 0; pass < 4; pass++) {
+							row.style.letterSpacing = spacing + "px"
+							const remaining = available - range.getBoundingClientRect().width
+							if (Math.abs(remaining) < 0.05) break
+							spacing += remaining / characters
+						}
+					})
+				}
+				fit()
+				window.addEventListener("resize", fit)
+			}).catch(error => console.error("Specimen loading failed:", error))
 		</script>
 	</body>
 </html>

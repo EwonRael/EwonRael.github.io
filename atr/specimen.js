@@ -5,8 +5,7 @@ fetch("specimen-lines.json").then(r => r.json()).then(async lines => {
     }))
     await document.fonts.load('400 24px "TiffanyGothicAlternateG"', 'g')
     document.querySelectorAll(".specimen-live").forEach(card => {
-        let key = card.dataset.font
-        if (card.getAttribute('aria-label').endsWith("Light")) key += "-300"
+        const key = card.dataset.fontId
         const fontLines = lines[key]
         if (!fontLines) return
         card.querySelectorAll("span").forEach(span => {
@@ -49,7 +48,7 @@ fetch("specimen-lines.json").then(r => r.json()).then(async lines => {
     function switchLine(span) {
         if (!span || !specimens.contains(span)) return
         const card = span.closest('.specimen-live')
-        const key = card.dataset.font + (getComputedStyle(card).fontWeight === '300' ? '-300' : '')
+        const key = card.dataset.fontId
         const options = (lines[key]?.[span.dataset.size] || []).filter(text => text !== span.textContent)
         if (!options.length) return
         span.textContent = options[Math.floor(Math.random() * options.length)]

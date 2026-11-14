@@ -208,7 +208,7 @@ function openCheckout(button) {
 			},
 			createOrder: (data, actions) => actions.order.create({
 				purchase_units: [{
-					description: name + " (American Type Revival)",
+					description: fontIds(button).map(id => window.ATR_FONTS[id].catalogueName + " ATR").join(", ") + " (American Type Revival)",
 					amount: { currency_code: PAYPAL_CURRENCY, value: currentAmount().toFixed(2) }
 				}],
 				application_context: { shipping_preference: "NO_SHIPPING" }

@@ -2,44 +2,45 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Hobo Series – American Type Revival</title>
+		<title>Hobo Family – American Type Revival</title>
 		<link rel="stylesheet" href="../../style.css"/>
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
 		<script src="../../fade.js"></script>
+		<script src="../../resource/font-registry.js"></script>
 		<script src="../../resource/timezone.js"></script>
 		<script src="../../resource/funding.js" defer></script>
 		<script src="../../resource/checkout.js" defer></script>
 		<script src="../../resource/fit-text.js" defer></script>
 		<script>
-		  function showInfo(html) {
-		    document.getElementById("info-text").innerHTML = html
-		    document.getElementById("infoBox").style.display = "block"
-		  }
-		  onmousemove = function(e) {
-		    const infoBox = document.getElementById("infoBox")
-		    infoBox.style.top = (e.clientY + 20) + "px"
-		    infoBox.style.left = (e.clientX + 10) + "px"
-		  }
+			function showInfo(html) {
+				document.getElementById("info-text").innerHTML = html
+				document.getElementById("infoBox").style.display = "block"
+			}
+			onmousemove = function(e) {
+				const infoBox = document.getElementById("infoBox")
+				infoBox.style.top = (e.clientY + 20) + "px"
+				infoBox.style.left = (e.clientX + 10) + "px"
+			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
-		<meta property="og:title" content="Hobo Series – American Type Revival" />
+		<meta property="og:title" content="Hobo Family – American Type Revival" />
 		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
 	</head>
 	<body class="series-page">
 		<div id="logo" class="home-link" onmouseover="showInfo('Return to main page.')" onmouseleave="document.getElementById('infoBox').style.display = 'none'" onclick="goTo('../../')"></div>
 		<div id="infoBox">
 			<div id="about-info">
-			  <p id="info-text">Return to main page.</p>
+				<p id="info-text">Return to main page.</p>
 			</div>
 		</div>
 		<div id="header">
 			<h1><a href="../../" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Hobo Series</p>
+				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#free" onclick="goTo(this.href); return false">Free Fonts</a>&nbsp;&rarr;&nbsp;Hobo Family</p>
 			</div>
-			<div id="series-info" data-fonts="Hobo_Light,Hobo">
-				<h2 id="series-title" style="font-family: 'HoboATR'">Hobo Series</h2>
+			<div id="series-info" data-fonts="HoboATR-Light,HoboATR-Regular">
+				<h2 id="series-title" style="font-family: 'Hobo ATR'">Hobo Family</h2>
 				<div id="funding-bar">
 					<div id="funding-fill" style="--funded: 0%"></div>
 					<span id="funding-label">Funding: 0%</span>
@@ -48,9 +49,9 @@
 					<div id="funding-breakdown-inner"></div>
 				</div>
 				<div class="series-buttons">
-					<span class="style-info"><span class="info-extra"><b>Hobo Series</b>&nbsp;| </span><span class="styles-hover" onmouseover="showInfo('<span style=&quot;font-family:HoboATR;font-weight:300;font-size:48px;line-height:1.1;margin:10px&quot;>Light Hobo</span><span style=&quot;font-family:HoboATR;font-weight:400;font-size:48px;line-height:1.1;margin:10px&quot;>Hobo</span>')" onmouseleave="document.getElementById('infoBox').style.display = 'none'">2&nbsp;Styles</span>&nbsp;| $20&nbsp;USD</span>
+					<span class="style-info"><span class="info-extra"><b>Hobo Family</b>&nbsp;| </span><span class="styles-hover" onmouseover="showInfo('<span style=&quot;font-family:&quot;Hobo ATR&quot;;font-weight:300;font-size:48px;line-height:1.1;margin:10px&quot;>Light Hobo</span><span style=&quot;font-family:&quot;Hobo ATR&quot;;font-weight:400;font-size:48px;line-height:1.1;margin:10px&quot;>Hobo</span>')" onmouseleave="document.getElementById('infoBox').style.display = 'none'">2&nbsp;Styles</span>&nbsp;| $20&nbsp;USD</span>
 					<div class="button-group">
-						<button class="buy-button" data-name="Hobo Series" data-price="20" data-style="">Buy Font Family</button>
+						<button class="buy-button" data-name="Hobo Family" data-price="20" data-style="">Buy Font Family</button>
 						<button class="download-button locked" data-download="download" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
@@ -58,16 +59,16 @@
 					<span id="series-ornament">&#x2767;</span>
 					<div class="line"></div>
 					<h2>Complete fonts in family:</h2>
-					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'HoboATR'; font-weight: 300"></div>
-					<div class="series-buttons" data-fonts="Hobo_Light">
+					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'Hobo ATR'; font-weight: 300"></div>
+					<div class="series-buttons" data-fonts="HoboATR-Light">
 						<span class="style-info"><b><a href="light" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Light Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;300</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Light Hobo" data-price="15" data-style="light">Buy Font</button>
 							<button class="download-button locked" data-download="download?style=light" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
-					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'HoboATR'; font-weight: 400"></div>
-					<div class="series-buttons" data-fonts="Hobo">
+					<div class="style-sample" contenteditable="true" spellcheck="false" style="font-family: 'Hobo ATR'; font-weight: 400"></div>
+					<div class="series-buttons" data-fonts="HoboATR-Regular">
 						<span class="style-info"><b><a href="regular" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none">Hobo</a></b><span class="info-extra">&nbsp;| Weight:&nbsp;400</span>&nbsp;| $15.00&nbsp;USD</span>
 						<div class="button-group">
 							<button class="buy-button" data-name="Hobo" data-price="15" data-style="regular">Buy Font</button>
@@ -96,7 +97,7 @@
 				<div id="series-end">
 					<div class="line"></div>
 					<div class="series-buttons">
-						<button class="buy-button" data-name="Hobo Series" data-price="20" data-style="">Buy Font Family</button>
+						<button class="buy-button" data-name="Hobo Family" data-price="20" data-style="">Buy Font Family</button>
 						<button class="download-button locked" data-download="download" aria-disabled="true">Download for Free</button>
 					</div>
 					<img class="end-ornament" src="../../ordament.svg"/>
@@ -105,90 +106,90 @@
 		</div>
 		<script src="../../resource/pangrams.js"></script>
 		<script>
-		  const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
-		  document.querySelectorAll(".style-sample").forEach((sample, i) => {
-		    sample.textContent = shuffled[i % shuffled.length] + ". You can edit this text."
-		    sample.addEventListener("keydown", e => {
-		      if (e.key === "Enter") e.preventDefault()
-		    })
-		    sample.addEventListener("paste", e => {
-		      e.preventDefault()
-		      document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
-		    })
-		  })
+			const shuffled = pangrams.slice().sort(() => Math.random() - 0.5)
+			document.querySelectorAll(".style-sample").forEach((sample, i) => {
+				sample.textContent = shuffled[i % shuffled.length] + ". You can edit this text."
+				sample.addEventListener("keydown", e => {
+					if (e.key === "Enter") e.preventDefault()
+				})
+				sample.addEventListener("paste", e => {
+					e.preventDefault()
+					document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+				})
+			})
 		</script>
 		<script>
-		  fetch("../../specimen-lines.json").then(r => r.json()).then(async lines => {
-		    await Promise.all([document.fonts.load("300 96px HoboATR"), document.fonts.load("400 96px HoboATR")])
-		    const container = document.getElementById("series-cards")
-		    const styles = [
-		      {key: "HoboATR-300", weight: 300, name: "Light Hobo"},
-		      {key: "HoboATR", weight: 400, name: "Hobo Regular"}
-		    ]
-		    styles.forEach((style, index) => {
-		      const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)
-		      sizes.forEach((size, i) => {
-		        const label = document.createElement("div")
-		        label.className = "size-label"
-		        if (i === 0) {
-		          if (index > 0) label.classList.add("style-start")
-		          const name = document.createElement("span")
-		          name.className = "size-name"
-		          name.textContent = style.name
-		          label.append(name)
-		        }
-		        const pt = document.createElement("span")
-		        pt.className = "size-pt"
-		        pt.textContent = Math.round(size * 0.75) + " pt"
-		        label.append(pt)
-		        const row = document.createElement("div")
-		        row.labelEl = pt
-		        row.className = "size-sample"
-		        row.style.fontWeight = style.weight
-		        row.contentEditable = "true"
-		        row.spellcheck = false
-		        row.dataset.size = size
-		        const options = lines[style.key][size]
-		        row.textContent = options[Math.floor(Math.random() * options.length)]
-		        row.addEventListener("keydown", e => {
-		          if (e.key === "Enter") e.preventDefault()
-		        })
-		        row.addEventListener("paste", e => {
-		          e.preventDefault()
-		          document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
-		        })
-		        container.append(label, row)
-		      })
-		    })
-		    function fit() {
-		      container.querySelectorAll(".size-sample").forEach(row => {
-		        const size = Number(row.dataset.size)
-		        const available = container.clientWidth
-		        if (available <= 0) return
-		        row.style.letterSpacing = "0px"
-		        row.style.fontSize = (size * available / 296) + "px"
-		        const range = document.createRange()
-		        range.selectNodeContents(row)
-		        let width = range.getBoundingClientRect().width
-		        if (width > available) {
-		          row.style.fontSize = (parseFloat(row.style.fontSize) * available / width) + "px"
-		          width = range.getBoundingClientRect().width
-		        }
-		        const characters = Array.from(row.textContent).length
-		        if (!characters || !width) return
-		        row.labelEl.textContent = Math.round(parseFloat(row.style.fontSize) * 0.75) + " pt"
-		        let spacing = Math.max(0, available - width) / characters
-		        for (let pass = 0; pass < 4; pass++) {
-		          row.style.letterSpacing = spacing + "px"
-		          const remaining = available - range.getBoundingClientRect().width
-		          if (Math.abs(remaining) < 0.05) break
-		          spacing += remaining / characters
-		        }
-		      })
-		    }
-		    fit()
-		    window.addEventListener("resize", fit)
-		  }).catch(error => console.error("Specimen loading failed:", error))
+			fetch("../../specimen-lines.json").then(r => r.json()).then(async lines => {
+				await Promise.all([document.fonts.load("300 96px \"Hobo ATR\""), document.fonts.load("400 96px \"Hobo ATR\"")])
+				const container = document.getElementById("series-cards")
+				const styles = [
+					{key: "HoboATR-Light", weight: 300, name: "Light Hobo"},
+					{key: "HoboATR-Regular", weight: 400, name: "Hobo"}
+				]
+				styles.forEach((style, index) => {
+					const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)
+					sizes.forEach((size, i) => {
+						const label = document.createElement("div")
+						label.className = "size-label"
+						if (i === 0) {
+							if (index > 0) label.classList.add("style-start")
+							const name = document.createElement("span")
+							name.className = "size-name"
+							name.textContent = style.name
+							label.append(name)
+						}
+						const pt = document.createElement("span")
+						pt.className = "size-pt"
+						pt.textContent = Math.round(size * 0.75) + " pt"
+						label.append(pt)
+						const row = document.createElement("div")
+						row.labelEl = pt
+						row.className = "size-sample"
+						row.style.fontWeight = style.weight
+						row.contentEditable = "true"
+						row.spellcheck = false
+						row.dataset.size = size
+						const options = lines[style.key][size]
+						row.textContent = options[Math.floor(Math.random() * options.length)]
+						row.addEventListener("keydown", e => {
+							if (e.key === "Enter") e.preventDefault()
+						})
+						row.addEventListener("paste", e => {
+							e.preventDefault()
+							document.execCommand("insertText", false, e.clipboardData.getData("text/plain").replace(/\s+/g, " "))
+						})
+						container.append(label, row)
+					})
+				})
+				function fit() {
+					container.querySelectorAll(".size-sample").forEach(row => {
+						const size = Number(row.dataset.size)
+						const available = container.clientWidth
+						if (available <= 0) return
+						row.style.letterSpacing = "0px"
+						row.style.fontSize = (size * available / 296) + "px"
+						const range = document.createRange()
+						range.selectNodeContents(row)
+						let width = range.getBoundingClientRect().width
+						if (width > available) {
+							row.style.fontSize = (parseFloat(row.style.fontSize) * available / width) + "px"
+							width = range.getBoundingClientRect().width
+						}
+						const characters = Array.from(row.textContent).length
+						if (!characters || !width) return
+						row.labelEl.textContent = Math.round(parseFloat(row.style.fontSize) * 0.75) + " pt"
+						let spacing = Math.max(0, available - width) / characters
+						for (let pass = 0; pass < 4; pass++) {
+							row.style.letterSpacing = spacing + "px"
+							const remaining = available - range.getBoundingClientRect().width
+							if (Math.abs(remaining) < 0.05) break
+							spacing += remaining / characters
+						}
+					})
+				}
+				fit()
+				window.addEventListener("resize", fit)
+			}).catch(error => console.error("Specimen loading failed:", error))
 		</script>
 	</body>
 </html>

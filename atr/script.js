@@ -47,11 +47,12 @@ async function pageLoad() {
     const specimensDiv = document.getElementById("specimens")
     const specimens = [...specimensDiv.children];
     for (const specimen of specimens) {
-        specimen.style.backgroundImage = `url("${specimen.dataset.family}/${specimen.getAttribute('aria-label')}.png")`
+        // Live specimens use the font file; identity is independent of their label.
         // placeholder data from the DOM so the site works before Firebase responds
-        const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_');
+        const docId = specimen.dataset.fontId;
         window.fontlist[docId] = {
-            name: specimen.getAttribute('aria-label'),
+            name: specimen.dataset.catalogueName,
+            sortName: specimen.dataset.indexName,
             fontName: specimen.dataset.fontName,
             family: specimen.dataset.family,
             status: specimen.dataset.status,
@@ -67,15 +68,17 @@ async function pageLoad() {
     // sync with Firebase in the background; failures are non-fatal
     try {
         const { initializeApp } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js")
-        const { getFirestore, doc, setDoc, updateDoc, collection, getDocs } = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js")
+        const firestore = await import("https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js")
+        const { getFirestore, doc, updateDoc, collection, getDocs } = firestore
         const db = getFirestore(initializeApp(firebaseConfig))
+        await window.atrEnsureFonts(db, firestore)
         const querySnapshot = await getDocs(collection(db, "fonts"))
         const dbData = {}
         querySnapshot.forEach((doc) => {
             dbData[doc.id] = doc.data()
         })
         const syncTasks = specimens.map(async (specimen) => {
-            const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_')
+            const docId = specimen.dataset.fontId
             if (dbData[docId]) {
                 let data = dbData[docId];
                 let needsUpdate = false;
@@ -99,16 +102,17 @@ async function pageLoad() {
                     ...data,
                     // The specimen metadata is authoritative because each style
                     // can have a different human-readable font name.
+                    name: specimen.dataset.catalogueName,
+                    sortName: specimen.dataset.indexName,
+                    family: specimen.dataset.family,
                     fontName: specimen.dataset.fontName || data.fontName
                 }
-            } else {
-                await setDoc(doc(db, "fonts", docId), window.fontlist[docId])
             }
         })
         await Promise.all(syncTasks)
         await new Promise(resolve => setTimeout(resolve, 2000))
         await Promise.all(specimens.map(async (specimen) => {
-            const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_')
+            const docId = specimen.dataset.fontId
             const data = window.fontlist[docId]
             if (!dbData[docId] || data.funding === undefined) return
             if (data.status === "free" || (Number(data.income) || 0) < Number(data.funding)) return
@@ -133,7 +137,7 @@ window.display = function(a) {
 	}
 	if (a == 1) {
 		for (const specimen of specimens) {
-			let status = window.fontlist[specimen.getAttribute('aria-label').replace(/\s+/g, '_')]["status"]
+			let status = window.fontlist[specimen.dataset.fontId]["status"]
 			if (status != "free") {
 				specimen.classList.add("statusHide")
 			}
@@ -142,7 +146,7 @@ window.display = function(a) {
 	}
 	if (a == 2) {
 		for (const specimen of specimens) {
-			let status = window.fontlist[specimen.getAttribute('aria-label').replace(/\s+/g, '_')]["status"]
+			let status = window.fontlist[specimen.dataset.fontId]["status"]
 			specimen.classList.toggle("statusHide", status != "paid")
 		}
 		document.getElementById("displaying").innerHTML = "paid fonts"
@@ -154,12 +158,12 @@ window.sort = async function(a) {
     const specimens = [...container.children]
     const labelMapping = ["alphabetically", "by date", "by popularity"]
     const sortedOrder = [...specimens].sort((elA, elB) => {
-        const idA = elA.getAttribute('aria-label').replace(/\s+/g, '_')
-        const idB = elB.getAttribute('aria-label').replace(/\s+/g, '_')
+        const idA = elA.dataset.fontId
+        const idB = elB.dataset.fontId
         const dataA = window.fontlist[idA]
         const dataB = window.fontlist[idB]
         if (a === 0) {
-            return elA.getAttribute('aria-label').localeCompare(elB.getAttribute('aria-label'))
+            return elA.dataset.indexName.localeCompare(elB.dataset.indexName)
         }
         if (a === 1) return elB.dataset.date.localeCompare(elA.dataset.date)
         if (a === 2) {
@@ -240,7 +244,7 @@ window.group = function(a) {
 	}
 }
 
-const familyPages = new Set(["Hobo", "News Gothic", "Tiffany Gothic"])
+const familyPages = new Set(["Hobo", "Newsprint Gothic", "Tiffany Gothic"])
 
 window.setupHoverListeners = function() {
     document.getElementById("specimens").addEventListener("click", (e) => {
@@ -252,7 +256,7 @@ window.setupHoverListeners = function() {
         if (document.getElementById("grouping").textContent.includes("grouped by family")) {
             window.goTo(folder)
         } else {
-            const style = card.getAttribute("aria-label").endsWith("Light") ? "light" : "regular"
+            const style = card.dataset.style === "Light" ? "light" : "regular"
             window.goTo(folder + style)
         }
     })
@@ -268,6 +272,35 @@ window.setupHoverListeners = function() {
     const logo = document.getElementById("logo")
     const getFontName = (specimen, data) =>
         specimen.dataset.fontName || data.fontName || data.family || "Unknown"
+    const showFundingStatus = (fonts, grouped = false) => {
+        const funded = data => data.status === "free"
+            || (Number(data.funding) > 0 && Number(data.income || 0) >= Number(data.funding))
+        if (fonts.length && fonts.every(funded)) {
+            infoStatus.textContent = grouped ? "fully funded" : "funded"
+            return
+        }
+        const goal = fonts.reduce((sum, data) => sum + Math.max(0, Number(data.funding) || 0), 0)
+        const raised = fonts.reduce((sum, data) => {
+            const target = Math.max(0, Number(data.funding) || 0)
+            return sum + (funded(data) ? target : Math.max(0, Math.min(Number(data.income) || 0, target)))
+        }, 0)
+        const percent = goal > 0 ? Math.min(99, Math.round(100 * raised / goal)) : 0
+        const row = document.createElement("span")
+        row.className = "funding-row"
+        const track = document.createElement("span")
+        track.className = "funding-row-track"
+        track.setAttribute("role", "progressbar")
+        track.setAttribute("aria-label", "Funding")
+        track.setAttribute("aria-valuemin", "0")
+        track.setAttribute("aria-valuemax", "100")
+        track.setAttribute("aria-valuenow", percent)
+        const fill = document.createElement("span")
+        fill.className = "funding-row-fill"
+        fill.style.setProperty("--funded", percent + "%")
+        track.append(fill)
+        row.append(track)
+        infoStatus.replaceChildren(row)
+    }
     logo.addEventListener('mouseenter', () => {
         allFontInfo.style.display = "none"
         fontGroupInfo.style.display = "none"
@@ -281,14 +314,9 @@ window.setupHoverListeners = function() {
     const showFullInfo = (specimen, data, faceName, faceWeight) => {
         fontGroupInfo.style.display = "none"
         allFontInfo.style.display = "block"
-        document.getElementById("info-family-line").childNodes[0].textContent = "Font Family: "
+        document.getElementById("info-family-line").childNodes[0].textContent = "Font: "
         infoFamily.textContent = getFontName(specimen, data)
-        infoStatus.textContent = data.status || "Unknown"
-        if (infoStatus.textContent === "free") {
-            infoStatus.textContent = "funded"
-        } else if (data.funding) {
-            infoStatus.textContent = `${Math.round(data.income ?? 0).toLocaleString("en-US")} / ${Number(data.funding).toLocaleString("en-US")} USD`
-        }
+        showFundingStatus([data])
         infoTitle.textContent = specimen.dataset.displayName || specimen.getAttribute('aria-label')
         infoTitle.style.fontFamily = `"${faceName}"`
         infoTitle.style.fontWeight = faceWeight
@@ -296,10 +324,10 @@ window.setupHoverListeners = function() {
     specimens.forEach(specimen => {
         specimen.addEventListener('mouseenter', () => {
             const isGrouped = document.getElementById("grouping").textContent.includes("grouped by family")
-            const docId = specimen.getAttribute('aria-label').replace(/\s+/g, '_')
+            const docId = specimen.dataset.fontId
             const data = window.fontlist[docId]
             const faceName = specimen.dataset.font
-            const faceWeight = specimen.getAttribute('aria-label').endsWith("Light") ? 300 : 400
+            const faceWeight = Number(specimen.dataset.weight)
             if (data) {
                 aboutInfo.style.display = "none"
                 if (isGrouped) {
@@ -307,21 +335,14 @@ window.setupHoverListeners = function() {
                         .filter(el => el.dataset.family === data.family)
                     fontGroupInfo.style.display = "none"
                     allFontInfo.style.display = "block"
-                    infoTitle.textContent = members.length > 1 ? `${data.family} Series` : data.family
+                    infoTitle.textContent = members.length > 1 ? `${data.family} Family` : data.family
                     infoTitle.style.fontFamily = `"${faceName}"`
                     infoTitle.style.fontWeight = faceWeight
                     document.getElementById("info-family-line").childNodes[0].textContent = "Fonts in Family: "
                     infoFamily.innerHTML = members.map(el =>
-                        `<span class="family-member">${getFontName(el, window.fontlist[el.getAttribute('aria-label').replace(/\s+/g, '_')] || {})}</span>`
+                        `<span class="family-member">${getFontName(el, window.fontlist[el.dataset.fontId] || {})}</span>`
                     ).join("")
-                    const isFunded = (el) => {
-                        const d = window.fontlist[el.getAttribute('aria-label').replace(/\s+/g, '_')]
-                        return d && (d.status === "free" || (d.funding > 0 && (d.income ?? 0) >= d.funding))
-                    }
-                    const fundedCount = members.filter(isFunded).length
-                    infoStatus.textContent = fundedCount === members.length ? "fully funded"
-                        : fundedCount === 0 ? "unfunded"
-                        : "partially funded"
+                    showFundingStatus(members.map(el => window.fontlist[el.dataset.fontId] || {}), true)
                 } else {
                     showFullInfo(specimen, data, faceName, faceWeight)
                 }

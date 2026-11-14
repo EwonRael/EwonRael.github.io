@@ -12,10 +12,10 @@ from fontTools.ttLib import TTFont
 
 ROOT = Path(__file__).resolve().parent
 FONTS = {
-    'HoboATR': 'Hobo/HoboATR-Regular.woff2',
-    'HoboATR-300': 'Hobo/HoboATR-Light.woff2',
-    'NewsGothic': 'News Gothic/NewsGothic-Regular.woff2',
-    'TiffanyGothicATR': 'Tiffany Gothic/TiffanyGothicATR-Regular.woff2',
+    'HoboATR-Regular': 'Hobo/HoboATR-Regular.woff2',
+    'HoboATR-Light': 'Hobo/HoboATR-Light.woff2',
+    'NewsprintGothicATR-Regular': 'Newsprint Gothic/NewsprintGothicATR-Regular.woff2',
+    'TiffanyGothicATR-Regular': 'Tiffany Gothic/TiffanyGothicATR-Regular.woff2',
 }
 bank = json.loads((ROOT / 'specimen-words.json').read_text())
 for source in sorted(Path('/tmp/atf_books').glob('*.txt')):
