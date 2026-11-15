@@ -152,7 +152,7 @@ function renderBreakdown() {
 		const source = styleRow.querySelector(".style-info b a")
 		const name = document.createElement(source ? "a" : "span")
 		name.className = "funding-row-name"
-		name.textContent = styleRow.querySelector(".style-info b").textContent
+		name.textContent = styleRow.dataset.breakdownName || styleRow.querySelector(".style-info b").textContent
 		if (source) {
 			name.href = source.getAttribute("href")
 			name.addEventListener("click", event => {

@@ -34,7 +34,7 @@
 		</div>
 		<div id="body" class="has-breadcrumb">
 			<h2>Thank You!</h2>
-			<p>Your download of <i id="download-name">Newsprint Gothic ATR</i> should start automatically. If it doesn&#8217;t, <a id="download-link" href="../../downloads/NewsprintGothicATR.zip" download>click here</a>.</p>
+			<p>Your download of <i id="download-name">Newsprint Gothic</i> should start automatically. If it doesn&#8217;t, <a id="download-link" href="../../downloads/NewsprintGothicATR.zip" download>click here</a>.</p>
 			<table>
 				<tr>
 					<th>Included in download</th>
@@ -45,6 +45,11 @@
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR</td>
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR &gt; Regular</td>
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">400</td>
+				</tr>
+				<tr data-style="headline">
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic Headline ATR</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR &gt; Headline</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">700</td>
 				</tr>
 			</table>
 			<form id="newsletter" onsubmit="return false">
@@ -60,7 +65,8 @@
 		<script src="../../resource/download-count.js"></script>
 		<script>
 			const singles = {
-				regular: { name: "Newsprint Gothic ATR", catalogueName: "Newsprint Gothic", zip: "NewsprintGothicATR-Regular.zip", id: "NewsprintGothicATR-Regular" }
+				regular: { name: "Newsprint Gothic ATR", catalogueName: "Newsprint Gothic Article", zip: "NewsprintGothicATR-450-Regular.zip", id: "NewsprintGothicATR-Regular" },
+				headline: { name: "Newsprint Gothic Headline ATR", catalogueName: "Newsprint Gothic Headline", zip: "NewsprintGothicATR-750-Headline.zip", id: "NewsprintGothicATR-Headline" }
 			}
 			const style = new URLSearchParams(location.search).get("style")
 			const single = singles[style]

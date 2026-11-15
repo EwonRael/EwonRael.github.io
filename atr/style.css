@@ -41,21 +41,28 @@
 
 @font-face {
 	font-family: "Newsprint Gothic ATR";
-	src: url("Newsprint Gothic/NewsprintGothicATR-Regular.woff2") format("woff2");
+	src: url("Newsprint Gothic/NewsprintGothicATR-450-Regular.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Newsprint Gothic ATR";
+	src: url("Newsprint Gothic/NewsprintGothicATR-750-Headline.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 700;
+}
+
+@font-face {
+	font-family: "Hobo ATR";
+	src: url("Hobo/HoboATR-450-Regular.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
 }
 
 @font-face {
 	font-family: "Hobo ATR";
-	src: url("Hobo/HoboATR-Regular.woff2") format("woff2");
-	font-style: normal;
-	font-weight: 400;
-}
-
-@font-face {
-	font-family: "Hobo ATR";
-	src: url("Hobo/HoboATR-Light.woff2") format("woff2");
+	src: url("Hobo/HoboATR-350-Light.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 300;
 }
@@ -85,6 +92,10 @@
 	line-height: 1.1;
 	text-align: left;
 	background-image: none !important;
+}
+
+.specimen-live .card-name {
+	display: none;
 }
 
 .specimen-live span {
@@ -843,6 +854,28 @@ strong:hover::before {
 	display: block;
 }
 
+/* A dot left of the family member whose style the hover title is shown in.
+   It hangs in the left margin so the names keep their usual position, in the
+   blue of the sorting dropdown's highlight. */
+#info-family .family-member {
+	position: relative;
+}
+
+#info-family .family-member.current::before {
+	content: "";
+	position: absolute;
+	right: 100%;
+	/* Centred on the first line, even when the name wraps. */
+	top: 0.4em;
+	top: calc(0.5lh - 0.225em);
+	width: 0.45em;
+	height: 0.45em;
+	margin-right: 0.15em;
+	border-radius: 50%;
+	background: #627894;
+	opacity: 0.6;
+}
+
 #info-status .funding-row {
 	display: flex;
 	margin: 6px 0 0;
@@ -1021,6 +1054,20 @@ ul {
 @media only screen and (max-width: 700px) {
     #header, #specimens {
         width: calc(100% - 60px);
+    }
+
+    /* One waterfall per row: name each card, as the style pages do. */
+    .specimen-live .card-name {
+        display: block;
+        margin: 40px 0 -6px;
+        text-align: center;
+        white-space: nowrap;
+        font-family: "EBGaramond";
+        font-feature-settings: "smcp" 1;
+        font-weight: 400;
+        letter-spacing: 1px;
+        font-size: 25px;
+        line-height: 1;
     }
 
     #filters, #series-info {

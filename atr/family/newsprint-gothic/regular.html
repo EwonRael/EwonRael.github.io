@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>Newsprint Gothic – American Type Revival</title>
+		<title>Newsprint Gothic Article – American Type Revival</title>
 		<link rel="stylesheet" href="../../style.css"/>
 		<link rel="shortcut icon" href="../../Favicon.png">
 		<link rel="icon" type="image/png" href="../../Favicon.png">
@@ -24,7 +24,7 @@
 			}
 		</script>
 		<meta name="viewport" content="width=device-width, initial-scale=0.75">
-		<meta property="og:title" content="Newsprint Gothic – American Type Revival" />
+		<meta property="og:title" content="Newsprint Gothic Article – American Type Revival" />
 		<meta property="og:description" content="A font foundry specializing in high quality digitizations of historical American typefaces" />
 	</head>
 	<body class="series-page">
@@ -37,10 +37,10 @@
 		<div id="header">
 			<h1><a href="../../" onclick="goTo(this.href); return false">American Type Revival</a></h1>
 			<div id="filters">
-				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;<a href="./" onclick="goTo(this.href); return false">Newsprint Gothic</a>&nbsp;&rarr;&nbsp;Newsprint Gothic</p>
+				<p><a href="../../" onclick="goTo(this.href); return false">Home</a>&nbsp;&rarr;&nbsp;<a id="status-crumb" href="../../#paid" onclick="goTo(this.href); return false">Paid Fonts</a>&nbsp;&rarr;&nbsp;<a href="./" onclick="goTo(this.href); return false">Newsprint Gothic</a>&nbsp;&rarr;&nbsp;Newsprint Gothic Article</p>
 			</div>
 			<div id="series-info" data-fonts="NewsprintGothicATR-Regular">
-				<h2 id="series-title" style="font-family: 'Newsprint Gothic ATR'">Newsprint Gothic</h2>
+				<h2 id="series-title" style="font-family: 'Newsprint Gothic ATR'">Newsprint Gothic Article</h2>
 				<div id="funding-bar" style="cursor: default">
 					<div id="funding-fill" style="--funded: 0%"></div>
 					<span id="funding-label">Funding: 0%</span>
@@ -48,15 +48,16 @@
 				<div class="series-buttons">
 					<span class="style-info"><b style="font-family: 'EBGaramond'; font-weight: 400"><a href="./" onclick="goTo(this.href); return false" style="color: inherit; text-decoration: none"><i style="margin-right: 0.25em">Part of</i> <span style="font-weight: 700">Newsprint Gothic</span></a></b>&nbsp;| $15&nbsp;USD</span>
 					<div class="button-group">
-						<button class="buy-button" data-name="Newsprint Gothic" data-price="15" data-style="regular">Buy Font</button>
+						<button class="buy-button" data-name="Newsprint Gothic Article" data-price="15" data-style="regular">Buy Font</button>
 						<button class="download-button locked" data-download="download?style=regular" aria-disabled="true">Download for Free</button>
 					</div>
 				</div>
 				<div id="series-about">
 					<div class="line"></div>
 					<h2>About</h2>
-					<p><i>Newsprint Gothic</i> is part of the <a href="./" onclick="goTo(this.href); return false">Newsprint Gothic</a> font family, which includes 1 total style.</p>
-					<div style="font-family: 'Newsprint Gothic ATR'; font-weight: 400; color: #627894; font-size: 96px; line-height: 1.1">Newsprint Gothic</div>
+					<p><i>Newsprint Gothic Article</i> is part of the <a href="./" onclick="goTo(this.href); return false">Newsprint Gothic</a> font family, which includes 2 total styles.</p>
+					<div style="font-family: 'Newsprint Gothic ATR'; font-weight: 400; color: #627894; font-size: 96px; line-height: 1.1">Article</div>
+					<div style="font-family: 'Newsprint Gothic ATR'; font-weight: 700; font-size: 96px; line-height: 1.1"><a class="style-link" href="headline" onclick="goTo(this.href); return false">Headline</a></div>
 				</div>
 				<div id="series-cards">
 					<div class="line"></div>
@@ -67,7 +68,7 @@
 					<div class="series-buttons">
 						<button class="download-button view-family" onclick="goTo('./')">View Full Font Family</button>
 						<div class="button-group">
-							<button class="buy-button" data-name="Newsprint Gothic" data-price="15" data-style="regular">Buy Font</button>
+							<button class="buy-button" data-name="Newsprint Gothic Article" data-price="15" data-style="regular">Buy Font</button>
 							<button class="download-button locked" data-download="download?style=regular" aria-disabled="true">Download for Free</button>
 						</div>
 					</div>
@@ -94,7 +95,7 @@
 				await document.fonts.load("400 96px \"Newsprint Gothic ATR\"")
 				const container = document.getElementById("series-cards")
 				const styles = [
-					{key: "NewsprintGothicATR-Regular", weight: 400, name: "Newsprint Gothic"}
+					{key: "NewsprintGothicATR-Regular", weight: 400, name: "Newsprint Gothic Article"}
 				]
 				styles.forEach((style, index) => {
 					const sizes = Object.keys(lines[style.key]).sort((a, b) => b - a)

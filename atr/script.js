@@ -19,29 +19,71 @@ onmousemove = function(e) {
 function fitInfoBox(infoBox) {
     // Let the available space determine wrapping before trimming unused width.
     infoBox.style.width = ""
+    const title = document.getElementById("info-title")
+    if (title) title.style.minHeight = ""
     if (!infoBox.getClientRects().length) return
 
     const boxStyle = getComputedStyle(infoBox)
     const contentLeft = infoBox.getBoundingClientRect().left
         + parseFloat(boxStyle.borderLeftWidth) + parseFloat(boxStyle.paddingLeft)
-    const walker = document.createTreeWalker(infoBox, NodeFilter.SHOW_TEXT)
     const range = document.createRange()
-    let width = 0
-    while (walker.nextNode()) {
-        const node = walker.currentNode
-        if (!node.textContent.trim()) continue
-        range.selectNodeContents(node)
-        const textBlock = node.parentElement.closest("#info-title, p")
-        const margin = textBlock ? parseFloat(getComputedStyle(textBlock).marginRight) : 0
-        for (const rect of range.getClientRects()) {
-            width = Math.max(width, rect.right - contentLeft + margin)
+    function measure() {
+        const walker = document.createTreeWalker(infoBox, NodeFilter.SHOW_TEXT)
+        let width = 0
+        while (walker.nextNode()) {
+            const node = walker.currentNode
+            if (!node.textContent.trim()) continue
+            range.selectNodeContents(node)
+            const textBlock = node.parentElement.closest("#info-title, p")
+            const margin = textBlock ? parseFloat(getComputedStyle(textBlock).marginRight) : 0
+            for (const rect of range.getClientRects()) {
+                width = Math.max(width, rect.right - contentLeft + margin)
+            }
         }
+        return width
+    }
+    let width = measure()
+    // While the title cycles through a family's styles, reserve the largest
+    // width and height any of them needs so the box never changes size.
+    const styles = title && title.cycleStyles
+    if (styles) {
+        const shown = [title.style.fontFamily, title.style.fontWeight]
+        let height = 0
+        styles.forEach((style, i) => {
+            title.style.fontFamily = `"${style.font}"`
+            title.style.fontWeight = style.weight
+            title.markStyle(i)
+            width = Math.max(width, measure())
+            height = Math.max(height, title.getBoundingClientRect().height)
+        })
+        ;[title.style.fontFamily, title.style.fontWeight] = shown
+        title.markStyle(title.currentStyle)
+        title.style.minHeight = Math.ceil(height) + "px"
     }
     if (width) infoBox.style.width = Math.ceil(width) + "px"
 }
 
 window.addEventListener("resize", () => fitInfoBox(document.getElementById("infoBox")))
 
+
+// Small-caps name over each card, shown only in the one-column layout (CSS).
+// Grouped by family it names the family; otherwise the individual style.
+window.labelCards = function() {
+    const grouped = document.getElementById("grouping").textContent.includes("grouped by family")
+    document.querySelectorAll("#specimens > .specimen-live").forEach(card => {
+        let label = card.querySelector(":scope > .card-name")
+        if (!label) {
+            label = document.createElement("p")
+            label.className = "card-name"
+            card.prepend(label)
+        }
+        const family = card.dataset.family
+        const size = Object.values(window.fontlist).filter(font => font.family === family).length
+        label.textContent = grouped
+            ? (window.ATR_FAMILY_TITLES || {})[family] || (size > 1 ? `${family} Family` : family)
+            : card.dataset.displayName || card.getAttribute("aria-label")
+    })
+}
 
 async function pageLoad() {
     const specimensDiv = document.getElementById("specimens")
@@ -63,6 +105,7 @@ async function pageLoad() {
         };
     }
     window.setupHoverListeners();
+    window.labelCards()
     if (location.hash === "#free") window.display(1)
     if (location.hash === "#paid") window.display(2)
     // sync with Firebase in the background; failures are non-fatal
@@ -235,12 +278,14 @@ window.group = function(a) {
 			}
 		}
 		document.getElementById("grouping").innerHTML = "grouped by family"
+		window.labelCards()
 	}
 	else {
 		for (const specimen of specimens) {
 			specimen.classList.remove("familyHide")
 		}
 		document.getElementById("grouping").innerHTML = "displaying all styles"
+		window.labelCards()
 	}
 }
 
@@ -256,7 +301,7 @@ window.setupHoverListeners = function() {
         if (document.getElementById("grouping").textContent.includes("grouped by family")) {
             window.goTo(folder)
         } else {
-            const style = card.dataset.style === "Light" ? "light" : "regular"
+            const style = card.dataset.style.toLowerCase()
             window.goTo(folder + style)
         }
     })
@@ -321,8 +366,43 @@ window.setupHoverListeners = function() {
         infoTitle.style.fontFamily = `"${faceName}"`
         infoTitle.style.fontWeight = faceWeight
     }
+    // While a family card is hovered in grouped view, the title cycles once a
+    // second through the family's styles: a uniformly random style other than
+    // the one showing, starting from the card's own (default) style.
+    let styleCycle = null
+    const stopStyleCycle = () => {
+        clearInterval(styleCycle)
+        styleCycle = null
+        infoTitle.cycleStyles = null
+    }
+    // Marks the family list entry for the style the title is shown in.
+    infoTitle.markStyle = index => {
+        infoFamily.querySelectorAll(".family-member").forEach((el, i) => {
+            el.classList.toggle("current", i === index)
+        })
+    }
+    const startStyleCycle = (members, start) => {
+        stopStyleCycle()
+        const styles = members.map(el => ({ font: el.dataset.font, weight: Number(el.dataset.weight) }))
+        let current = Math.max(0, members.indexOf(start))
+        if (styles.length < 2) return
+        infoTitle.currentStyle = current
+        infoTitle.markStyle(current)
+        infoTitle.cycleStyles = styles
+        styleCycle = setInterval(() => {
+            if (!document.getElementById("grouping").textContent.includes("grouped by family")) return stopStyleCycle()
+            let next = Math.floor(Math.random() * (styles.length - 1))
+            if (next >= current) next++
+            current = next
+            infoTitle.currentStyle = next
+            infoTitle.markStyle(next)
+            infoTitle.style.fontFamily = `"${styles[next].font}"`
+            infoTitle.style.fontWeight = styles[next].weight
+        }, 1000)
+    }
     specimens.forEach(specimen => {
         specimen.addEventListener('mouseenter', () => {
+            stopStyleCycle()
             const isGrouped = document.getElementById("grouping").textContent.includes("grouped by family")
             const docId = specimen.dataset.fontId
             const data = window.fontlist[docId]
@@ -335,7 +415,7 @@ window.setupHoverListeners = function() {
                         .filter(el => el.dataset.family === data.family)
                     fontGroupInfo.style.display = "none"
                     allFontInfo.style.display = "block"
-                    infoTitle.textContent = members.length > 1 ? `${data.family} Family` : data.family
+                    infoTitle.textContent = (window.ATR_FAMILY_TITLES || {})[data.family] || (members.length > 1 ? `${data.family} Family` : data.family)
                     infoTitle.style.fontFamily = `"${faceName}"`
                     infoTitle.style.fontWeight = faceWeight
                     document.getElementById("info-family-line").childNodes[0].textContent = "Fonts in Family: "
@@ -343,6 +423,7 @@ window.setupHoverListeners = function() {
                         `<span class="family-member">${getFontName(el, window.fontlist[el.dataset.fontId] || {})}</span>`
                     ).join("")
                     showFundingStatus(members.map(el => window.fontlist[el.dataset.fontId] || {}), true)
+                    startStyleCycle(members, specimen)
                 } else {
                     showFullInfo(specimen, data, faceName, faceWeight)
                 }
@@ -355,6 +436,7 @@ window.setupHoverListeners = function() {
         })
 
         specimen.addEventListener('mouseleave', () => {
+            stopStyleCycle()
             infoBox.style.display = "none"
         })
     })
