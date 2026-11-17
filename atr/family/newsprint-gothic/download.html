@@ -41,10 +41,15 @@
 					<th>In font menus</th>
 					<th>Weight</th>
 				</tr>
-				<tr data-style="regular">
-					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR</td>
-					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR &gt; Regular</td>
+				<tr data-style="article">
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic Article ATR</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR &gt; Article</td>
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">400</td>
+				</tr>
+				<tr data-style="byline">
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic Byline ATR</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic ATR &gt; Byline</td>
+					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">600</td>
 				</tr>
 				<tr data-style="headline">
 					<td style="font-family: 'SilkRemingtonTypewriter'; font-size: 0.8em">Newsprint Gothic Headline ATR</td>
@@ -65,7 +70,8 @@
 		<script src="../../resource/download-count.js"></script>
 		<script>
 			const singles = {
-				regular: { name: "Newsprint Gothic ATR", catalogueName: "Newsprint Gothic Article", zip: "NewsprintGothicATR-450-Regular.zip", id: "NewsprintGothicATR-Regular" },
+				article: { name: "Newsprint Gothic Article ATR", catalogueName: "Newsprint Gothic Article", zip: "NewsprintGothicATR-450-Article.zip", id: "NewsprintGothicATR-Article" },
+				byline: { name: "Newsprint Gothic Byline ATR", catalogueName: "Newsprint Gothic Byline", zip: "NewsprintGothicATR-650-Byline.zip", id: "NewsprintGothicATR-Byline" },
 				headline: { name: "Newsprint Gothic Headline ATR", catalogueName: "Newsprint Gothic Headline", zip: "NewsprintGothicATR-750-Headline.zip", id: "NewsprintGothicATR-Headline" }
 			}
 			const style = new URLSearchParams(location.search).get("style")

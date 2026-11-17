@@ -41,9 +41,16 @@
 
 @font-face {
 	font-family: "Newsprint Gothic ATR";
-	src: url("Newsprint Gothic/NewsprintGothicATR-450-Regular.woff2") format("woff2");
+	src: url("Newsprint Gothic/NewsprintGothicATR-450-Article.woff2") format("woff2");
 	font-style: normal;
 	font-weight: 400;
+}
+
+@font-face {
+	font-family: "Newsprint Gothic ATR";
+	src: url("Newsprint Gothic/NewsprintGothicATR-650-Byline.woff2") format("woff2");
+	font-style: normal;
+	font-weight: 600;
 }
 
 @font-face {

@@ -14,7 +14,8 @@ ROOT = Path(__file__).resolve().parent
 FONTS = {
     'HoboATR-Regular': 'Hobo/HoboATR-450-Regular.woff2',
     'HoboATR-Light': 'Hobo/HoboATR-350-Light.woff2',
-    'NewsprintGothicATR-Regular': 'Newsprint Gothic/NewsprintGothicATR-450-Regular.woff2',
+    'NewsprintGothicATR-Article': 'Newsprint Gothic/NewsprintGothicATR-450-Article.woff2',
+    'NewsprintGothicATR-Byline': 'Newsprint Gothic/NewsprintGothicATR-650-Byline.woff2',
     'NewsprintGothicATR-Headline': 'Newsprint Gothic/NewsprintGothicATR-750-Headline.woff2',
     'TiffanyGothicATR-Regular': 'Tiffany Gothic/TiffanyGothicATR-Regular.woff2',
 }

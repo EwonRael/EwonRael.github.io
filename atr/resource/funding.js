@@ -247,7 +247,7 @@ const PENDING_KEY = "atrPending"
 function readPending() {
 	try {
 		const list = JSON.parse(localStorage.getItem(PENDING_KEY))
-		return Array.isArray(list) ? list.map(entry => ({ ...entry, ids: entry.ids.map(id => ({Hobo: "HoboATR-Regular", Hobo_Light: "HoboATR-Light", News_Gothic: "NewsprintGothicATR-Regular", Tiffany_Gothic: "TiffanyGothicATR-Regular"}[id] || id)) })) : []
+		return Array.isArray(list) ? list.map(entry => ({ ...entry, ids: entry.ids.map(id => ({Hobo: "HoboATR-Regular", Hobo_Light: "HoboATR-Light", News_Gothic: "NewsprintGothicATR-Article", "NewsprintGothicATR-Regular": "NewsprintGothicATR-Article", Tiffany_Gothic: "TiffanyGothicATR-Regular"}[id] || id)) })) : []
 	} catch (error) {
 		return []
 	}

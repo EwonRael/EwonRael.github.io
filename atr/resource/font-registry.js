@@ -23,18 +23,17 @@ window.ATR_FONTS = {
     "status": "free",
     "funding": 0
   },
-  "NewsprintGothicATR-Regular": {
-    "catalogueName": "Newsprint Gothic",
+  "NewsprintGothicATR-Article": {
+    "catalogueName": "Newsprint Gothic Article",
     "family": "Newsprint Gothic",
     "menuFamily": "Newsprint Gothic ATR",
-    "style": "Regular",
+    "style": "Article",
     "weight": 400,
     "width": 5,
-    "indexName": "Newsprint Gothic",
+    "indexName": "Newsprint Gothic Article",
     "released": "2026-09-07",
     "status": "paid",
-    "funding": 10000,
-    "webName": "Newsprint Gothic Article"
+    "funding": 10000
   },
   "NewsprintGothicATR-Headline": {
     "catalogueName": "Newsprint Gothic Headline",
@@ -45,6 +44,18 @@ window.ATR_FONTS = {
     "width": 5,
     "indexName": "Newsprint Gothic Headline",
     "released": "2026-11-14",
+    "status": "paid",
+    "funding": 10000
+  },
+  "NewsprintGothicATR-Byline": {
+    "catalogueName": "Newsprint Gothic Byline",
+    "family": "Newsprint Gothic",
+    "menuFamily": "Newsprint Gothic ATR",
+    "style": "Byline",
+    "weight": 600,
+    "width": 5,
+    "indexName": "Newsprint Gothic Byline",
+    "released": "2026-11-16",
     "status": "paid",
     "funding": 10000
   },
