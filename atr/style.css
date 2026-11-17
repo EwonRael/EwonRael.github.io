@@ -40,6 +40,13 @@
 }
 
 @font-face {
+	font-family: "SilkRemingtonTypewriter";
+	src: url("SilkRemingtonTypewriter-Italic.woff2") format("woff2");
+	font-style: italic;
+	font-weight: 400;
+}
+
+@font-face {
 	font-family: "Newsprint Gothic ATR";
 	src: url("Newsprint Gothic/NewsprintGothicATR-450-Article.woff2") format("woff2");
 	font-style: normal;
